@@ -83,19 +83,46 @@
       main {
         overflow: visible !important;
         height: auto !important;
+        padding-left: 3.5rem !important;
+        padding-right: 3.5rem !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 4.5rem !important;
       }
       .slide {
         height: auto !important;
-        min-height: calc(100dvh - 110px);
+        min-height: calc(100dvh - 120px);
         overflow-y: visible !important;
-        padding-top: 1rem;
-        padding-bottom: 5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 2rem;
       }
+      /* 手機播放模式專屬：超大懸浮導航箭頭（‹ 與 ›），位置固定、點擊熱區超大、防滑動誤觸 */
       #floating-btn-prev, #floating-btn-next {
-        width: 2.5rem !important;
-        height: 2.5rem !important;
-        font-size: 1.25rem !important;
-        opacity: 0.75;
+        width: 3.5rem !important;
+        height: 3.5rem !important;
+        font-size: 2.25rem !important;
+        line-height: 1 !important;
+        font-weight: 900 !important;
+        opacity: 0.95;
+        z-index: 50 !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3) !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #floating-btn-prev {
+        left: 0.5rem !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        color: #0f172a !important;
+        border: 2.5px solid #cbd5e1 !important;
+      }
+      #floating-btn-next {
+        right: 0.5rem !important;
+        background: rgba(244, 63, 94, 0.95) !important;
+        color: #ffffff !important;
+        border: 2.5px solid #ffffff !important;
+      }
+      #floating-btn-prev:active, #floating-btn-next:active {
+        transform: translateY(-50%) scale(0.9) !important;
       }
     }
 
@@ -2342,11 +2369,11 @@
   </div>
 
 
-  <!-- 左右兩側超大懸浮導航按鈕 (任何螢幕輕鬆點擊) -->
-  <button id="floating-btn-prev" onclick="prevSlide()" class="fixed left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/90 hover:bg-white text-slate-800 border-2 border-slate-200 pop-shadow flex items-center justify-center text-2xl font-black transition cursor-pointer hover:scale-110 shadow-lg active:scale-95" title="上一頁 (←)">
+  <!-- 左右兩側超大懸浮導航按鈕 (專屬手機與全螢幕設計，免左右滑動誤觸) -->
+  <button id="floating-btn-prev" onclick="prevSlide()" aria-label="上一頁" class="fixed left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-white/95 hover:bg-white text-slate-800 border-2 border-slate-300 pop-shadow flex items-center justify-center text-3xl font-black transition cursor-pointer hover:scale-110 shadow-2xl active:scale-90" title="上一頁 (←)">
     ‹
   </button>
-  <button id="floating-btn-next" onclick="nextSlide()" class="fixed right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-vivid-pink hover:bg-pink-600 text-white pop-shadow flex items-center justify-center text-2xl font-black transition cursor-pointer hover:scale-110 shadow-lg shadow-pink-500/30 active:scale-95" title="下一頁 (→ 或 空白鍵)">
+  <button id="floating-btn-next" onclick="nextSlide()" aria-label="下一頁" class="fixed right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-vivid-pink/95 hover:bg-pink-600 text-white border-2 border-white pop-shadow flex items-center justify-center text-3xl font-black transition cursor-pointer hover:scale-110 shadow-2xl shadow-pink-500/40 active:scale-90" title="下一頁 (→ 或 空白鍵)">
     ›
   </button>
 
@@ -2640,30 +2667,8 @@
       }
     });
 
-    // 手機與平板觸控滑動支援 (Touch Swipe Support)
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    document.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    document.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].screenX;
-      const touchEndY = e.changedTouches[0].screenY;
-      const dx = touchEndX - touchStartX;
-      const dy = touchEndY - touchStartY;
-
-      // 確保主要是水平滑動且距離大於 50px
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-        if (dx < 0) {
-          nextSlide(); // 左滑下一頁
-        } else {
-          prevSlide(); // 右滑上一頁
-        }
-      }
-    }, { passive: true });
+    // 手機播放模式保護機制：已依指示停用手勢左滑/右滑切頁，避免在點選互動方塊或上下捲動時誤觸換頁
+    // 換頁全面統一由螢幕兩側之「超大懸浮導航箭頭（‹ 與 ›）」或底部控制列進行切換
 
     // 更新浮動按鈕可見狀態
     function updateFloatingNav() {
