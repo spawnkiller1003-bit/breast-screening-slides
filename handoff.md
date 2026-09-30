@@ -60,6 +60,21 @@
   3. **簡報筆與全鍵盤廣域支援**：全面擴充換頁鍵位，除箭頭外，支援簡報筆慣用的 `Enter`、`PageDown`、`PageUp`、`ArrowDown`、`ArrowUp`、`Space`、`n/N` 等所有常見鍵盤操作。
   4. **手機與平板觸控滑動支援（Touch Swipe）**：支援原生水平手勢滑動，左滑下一頁、右滑上一頁，行動裝置操作流暢無阻。
 
+- 已完成 **S5 鏡像切換、S6 寬版 9:3 佈局、S14 Category 與手機雙向相容優化**（直接覆蓋 [`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html) 及 [`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)）：
+  1. **S5（危險因子鏡像切換）**：
+     - 移除「全部 13 項」按鈕，只保留「先天無法改變 (6項)」與「後天完全可控 (7項)」兩大分流標籤。
+     - 點擊「先天 6 項」時：左框為個別因子清單，右框為放大解說聚光卡。
+     - 點擊「後天 7 項」時：反過來！左框為放大解說聚光卡，右框為個別因子清單，形成直覺的鏡像對比佈局。
+  2. **S6（健康價標動態計算機比照 S9 重構）**：
+     - 採用 9:3 格線佈局：左側 9 cols 放置日常生活習慣選項（大字卡片、高對比勾選），右側 3 cols 放置縮小的直立式高科技「發炎監測艙 HUD」（大數字、進度條、即時處方與一鍵清零重設）。
+  3. **S14（BI-RADS 報告分級全面改為英文）**：
+     - 將所有「類別 0 ~ 類別 6」全面改為符合國際醫學慣例的英文「Category 0 ~ Category 6」。
+  4. **手機端直拿與橫拿（Portrait & Landscape）全相容**：
+     - 加入智慧響應式 CSS（`@media (max-width: 1024px), (max-height: 550px)`），當手機直拿或橫拿時，解除固定 `100vh overflow-hidden`，切換為 `overflow-y: auto !important; min-height: 100dvh`，確保手機橫屏或小螢幕下所有內容皆可上下滑動檢視，按鈕不被遮擋。
+     - 兩側懸浮導航鍵在手機模式下自動縮小為精巧的 `w-10 h-10`，不遮擋文字，同時維持原生水平滑動切頁（Touch Swipe）。
+  5. **JavaScript 語法 100% 嚴格驗證**：
+     - 全面修復多餘括號，達成括號對稱性與 Backtick 成對驗證 100% 通過，確保所有按鈕與滑動點擊功能流暢無阻。
+
 ## 🚦 目前狀態
 - **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），全設備導航與點擊全面通暢。
 - **本地檔案清單**：
@@ -73,6 +88,7 @@
 2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
 
 ## 🕐 最後更新
-- **時間**：2026-09-30 22:06
+- **時間**：2026-09-30 22:27
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
+

@@ -23,7 +23,7 @@
 | 層級 | 平台 | 狀態 / 路徑 | 說明 |
 |:---|:---|:---|:---|
 | **L1 本地** | Google 雲端硬碟 | `agents.md` + `handoff.md` | ✅ 本地與雲端硬碟同步，跨對話與電腦核心線索 |
-| **L2 GitHub** | GitHub 公開倉庫 & Pages | [`spawnkiller1003-bit/breast-screening-slides`](https://github.com/spawnkiller1003-bit/breast-screening-slides) ｜ [公開網頁](https://spawnkiller1003-bit.github.io/breast-screening-slides/) | 🚀 正式上線，提供主辦單位與觀眾線上閱讀與掃碼 |
+| **L2 GitHub** | GitHub 公開倉庫 & Pages | [`spawnkiller1003-bit/breast-screening-slides`](https://github.com/spawnkiller1003-bit/breast-screening-slides) ｜ [公開網頁](https://spawnkiller1003-bit.github.io/breast-screening-slides/) ｜ [講者視窗](https://spawnkiller1003-bit.github.io/breast-screening-slides/?view=speaker) | 🚀 正式上線，支援雙螢幕跨視窗同步、提供主辦單位與觀眾線上閱讀與掃碼 |
 | **L3 Obsidian** | 第二大腦 Vault | 待設定（本機未掛載 Obsidian MCP，後續可補建） | 🧠 決策詳細紀錄與衛教知識庫脈絡 |
 
 > ⚠️ **提醒**：本專案位於 Google 雲端硬碟目錄，請確認 Google Drive 桌面版同步圖示顯示正常（打勾狀態），確保跨裝置工作檔案最新。
@@ -34,6 +34,7 @@
 
 - **技術架構**：
   - 純前端單頁 HTML5 + Tailwind CSS + 原生 ES6，零後端伺服器依賴，本機直接雙擊流暢播放。
+  - **雙螢幕講者模式**：支援 `P` 鍵開啟獨立彈出講者控制台（`?view=speaker`），雙螢幕透過 `BroadcastChannel` 與 `localStorage` 零延遲跨視窗雙向同步，主螢幕支援全螢幕（`F` 鍵）與一鍵黑屏控場（`B` 鍵）。
   - 支援投影模式、全螢幕切換（`F` 鍵）、講者備忘（`S` 鍵）、關卡/章節目錄抽屜（`M` 鍵）、鍵盤左右導航。
   - 支援響應式、滿版超大字體（兼顧 16:9 投影機遠距可讀性）。
 - **語言與文字風格**：

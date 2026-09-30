@@ -44,7 +44,7 @@
       background-color: #F8FAFC;
       color: #0F172A;
       font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
       user-select: none;
     }
     .pop-shadow {
@@ -72,7 +72,34 @@
         transform: scale(1) translateY(0);
       }
     }
-    /* 隱藏滾動條 */
+
+    /* 手機全方向（直式 Portrait 與 橫拿 Landscape）完美自適應滾動 */
+    @media (max-width: 1024px), (max-height: 550px) {
+      body {
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100dvh;
+      }
+      main {
+        overflow: visible !important;
+        height: auto !important;
+      }
+      .slide {
+        height: auto !important;
+        min-height: calc(100dvh - 110px);
+        overflow-y: visible !important;
+        padding-top: 1rem;
+        padding-bottom: 5rem;
+      }
+      #floating-btn-prev, #floating-btn-next {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        font-size: 1.25rem !important;
+        opacity: 0.75;
+      }
+    }
+
+    /* 隱藏滾動條但保持滾動功能 */
     ::-webkit-scrollbar {
       display: none;
     }
@@ -433,37 +460,42 @@
       <div class="w-full space-y-4">
         <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-2.5">
           <div>
-            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">RISK MATRIX // 危險因子聚光燈</span>
-            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">13 項危險因子：先天 vs 後天 Switch</h2>
+            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">RISK MATRIX // 因子鏡像聚光燈</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mt-1">13 項危險因子：先天 vs 後天 Switch</h2>
           </div>
-          <!-- 分類切換按鈕 -->
-          <div class="flex items-center gap-2 mt-2 md:mt-0">
-            <button onclick="filterP05Category('all')" id="p05-tab-all" class="px-4 py-2 rounded-full text-sm font-black bg-slate-900 text-white shadow-sm transition">全部 (13項)</button>
-            <button onclick="filterP05Category('born')" id="p05-tab-born" class="px-4 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">先天無法改變 (6項)</button>
-            <button onclick="filterP05Category('ctrl')" id="p05-tab-ctrl" class="px-4 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">後天完全可控 (7項)</button>
+          <!-- 只保留先天 6 項與後天 7 項切換按鈕 -->
+          <div class="flex items-center gap-2.5 mt-2 md:mt-0">
+            <button onclick="filterP05Category('born')" id="p05-tab-born" class="px-5 py-2.5 rounded-full text-sm font-black bg-amber-600 text-white shadow-md transition flex items-center gap-2">
+              <span>🧬</span>
+              <span>先天無法改變 (6項)</span>
+            </button>
+            <button onclick="filterP05Category('ctrl')" id="p05-tab-ctrl" class="px-5 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-2">
+              <span>🛡️</span>
+              <span>後天完全可控 (7項)</span>
+            </button>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-          <!-- 左側因子選擇網格 (5 cols) -->
-          <div class="lg:col-span-5 bg-white p-5 rounded-3xl border border-slate-200 pop-shadow space-y-2.5 max-h-[460px] overflow-y-auto">
-            <div class="text-xs font-black text-slate-400 uppercase tracking-wider flex items-center justify-between">
-              <span>點擊因子展開超大字聚光解碼：</span>
-              <span id="p05-count-badge" class="text-vivid-pink font-bold">13 項清單</span>
+        <div id="p05-grid-layout" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <!-- 因子清單容器 (動態切換 lg:order-1 或 lg:order-2) -->
+          <div id="p05-list-container" class="lg:col-span-5 lg:order-1 bg-white p-5 rounded-3xl border border-slate-200 pop-shadow space-y-2.5 max-h-[460px] overflow-y-auto">
+            <div class="text-xs font-black text-slate-400 uppercase tracking-wider flex items-center justify-between border-b border-slate-100 pb-2">
+              <span id="p05-list-title">點擊先天因子查看右側解析：</span>
+              <span id="p05-count-badge" class="text-amber-600 font-bold">6 項清單</span>
             </div>
             <div id="p05-factors-list" class="space-y-2">
               <!-- JS 動態生成因子按鈕 -->
             </div>
           </div>
 
-          <!-- 右側超大字聚光深層卡 (7 cols) -->
-          <div id="p05-spotlight-panel" class="lg:col-span-7 bg-white p-7 sm:p-8 rounded-3xl border-2 border-vivid-pink pop-shadow flex flex-col justify-between space-y-4">
+          <!-- 放大講解聚光卡 (動態切換 lg:order-2 或 lg:order-1) -->
+          <div id="p05-spotlight-panel" class="lg:col-span-7 lg:order-2 bg-white p-7 sm:p-8 rounded-3xl border-2 border-amber-500 pop-shadow flex flex-col justify-between space-y-4">
             <div class="space-y-3">
               <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3">
                 <div class="flex items-center gap-3">
                   <span id="p05-spot-icon" class="text-4xl">🧬</span>
                   <div>
-                    <span id="p05-spot-type" class="px-3 py-0.5 rounded-full text-xs font-black bg-slate-100 text-slate-700">INBORN 先天因子</span>
+                    <span id="p05-spot-type" class="px-3 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-800">INBORN 先天因子</span>
                     <h3 id="p05-spot-title" class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">乳癌家族史（一等親）</h3>
                   </div>
                 </div>
@@ -485,11 +517,11 @@
             </div>
 
             <!-- 梁醫師臨床防禦對策 -->
-            <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 space-y-1.5">
-              <div class="text-base sm:text-lg font-black text-emerald-900 flex items-center gap-2">
-                <span>🛡️</span> 梁醫師精準防禦對策
+            <div id="p05-spot-action-box" class="p-4 sm:p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 space-y-1.5">
+              <div class="text-base sm:text-lg font-black text-amber-950 flex items-center gap-2">
+                <span>🛡️</span> 梁醫師精準對策
               </div>
-              <p id="p05-spot-action" class="text-base sm:text-lg font-bold text-emerald-950 leading-relaxed">
+              <p id="p05-spot-action" class="text-base sm:text-lg font-bold text-amber-950 leading-relaxed">
                 自 30 歲起提早每年安排乳房超音波；40 歲起享有每 2 年 1 次公費乳房 X 光攝影，並於間隔年加做超音波密切追蹤！
               </p>
             </div>
@@ -504,75 +536,121 @@
       data-quote="健康不是突然崩潰，而是每天點滴累積的結果"
       data-notes="【互動計算】我們來玩一個職場生活計算機。大家可以在螢幕上點選自己有的生活習慣：大杯甜飲、久坐、熬夜、高油炸物。每多選一個，我們的相對發炎風險指針就會往上跑。但好消息是，只要大家隨手反選掉一個，風險就會立刻下降！掌控權永遠在大家手中！">
       
-      <div class="w-full space-y-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+      <div class="w-full space-y-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-2.5">
           <div>
             <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">INTERACTIVE CALCULATOR // 價標計算機</span>
-            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">壞習慣的「健康價標」動態計算機</h2>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mt-1">壞習慣的「健康價標」動態計算機</h2>
           </div>
           <div class="text-sm font-bold text-slate-500">
-            點擊勾選日常習慣，右側即時結算相對風險
+            點擊勾選日常習慣，右側儀表即時結算體內發炎負荷
           </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div class="lg:col-span-7 bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
-            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">點選妳目前的日常習慣：</span>
-            
-            <div class="space-y-2.5">
-              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
-                <div class="flex items-center gap-3">
-                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="15">
-                  <span class="text-sm font-bold text-slate-800">🧋 每天 1 杯大杯半糖手搖飲（高精緻果糖）</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <!-- 左側：日常生活習慣卡片清單（佔 9 cols，接近滿版） -->
+          <div class="lg:col-span-9 bg-white p-6 sm:p-7 rounded-3xl border border-slate-200 pop-shadow space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <span class="text-sm font-black text-slate-600 uppercase tracking-wider">⚡ 點選您目前的日常生活習慣（點擊方塊即可切換計算）：</span>
+              <span class="text-xs font-bold text-slate-400">掌控權永遠在自己手中</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              <label class="cursor-pointer p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-vivid-pink hover:bg-pink-50/30 flex flex-col justify-between h-32 transition group">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-2xl">🥤</span>
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-vivid-pink accent-vivid-pink cursor-pointer" data-risk="20">
                 </div>
-                <span class="text-xs font-black text-vivid-pink">+15% 發炎</span>
+                <div>
+                  <div class="text-base sm:text-lg font-black text-slate-900 group-hover:text-vivid-pink transition">每日大杯全糖手搖飲</div>
+                  <div class="text-xs text-rose-600 font-bold mt-0.5">+20% 體內發炎 | 促發炎糖化反應</div>
+                </div>
               </label>
 
-              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
-                <div class="flex items-center gap-3">
-                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="20">
-                  <span class="text-sm font-bold text-slate-800">🛋️ 連續久坐 > 8 小時（缺乏下肢循環與代謝）</span>
+              <label class="cursor-pointer p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-vivid-pink hover:bg-pink-50/30 flex flex-col justify-between h-32 transition group">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-2xl">🪑</span>
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-vivid-pink accent-vivid-pink cursor-pointer" data-risk="15">
                 </div>
-                <span class="text-xs font-black text-vivid-orange">+20% 負載</span>
+                <div>
+                  <div class="text-base sm:text-lg font-black text-slate-900 group-hover:text-vivid-pink transition">連續久坐超過 6 小時</div>
+                  <div class="text-xs text-rose-600 font-bold mt-0.5">+15% 發炎 | 脂肪芳香化酶增生</div>
+                </div>
               </label>
 
-              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
-                <div class="flex items-center gap-3">
-                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="25">
-                  <span class="text-sm font-bold text-slate-800">🌙 每週超過 3 天 24:00 後才睡（褪黑激素腰斬）</span>
+              <label class="cursor-pointer p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-vivid-pink hover:bg-pink-50/30 flex flex-col justify-between h-32 transition group">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-2xl">🍗</span>
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-vivid-pink accent-vivid-pink cursor-pointer" data-risk="25">
                 </div>
-                <span class="text-xs font-black text-vivid-purple">+25% 抑制</span>
+                <div>
+                  <div class="text-base sm:text-lg font-black text-slate-900 group-hover:text-vivid-pink transition">每週炸物油炸 &gt; 2 次</div>
+                  <div class="text-xs text-rose-600 font-bold mt-0.5">+25% 發炎 | 高溫油脂自由基過載</div>
+                </div>
               </label>
 
-              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
-                <div class="flex items-center gap-3">
-                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="20">
-                  <span class="text-sm font-bold text-slate-800">🍗 頻繁高溫油炸便當或消夜炸物（反式脂肪）</span>
+              <label class="cursor-pointer p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-vivid-pink hover:bg-pink-50/30 flex flex-col justify-between h-32 transition group">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-2xl">🌙</span>
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-vivid-pink accent-vivid-pink cursor-pointer" data-risk="20">
                 </div>
-                <span class="text-xs font-black text-vivid-coral">+20% 氧化</span>
+                <div>
+                  <div class="text-base sm:text-lg font-black text-slate-900 group-hover:text-vivid-pink transition">經常熬夜 (逾午夜入睡)</div>
+                  <div class="text-xs text-rose-600 font-bold mt-0.5">+20% 發炎 | 褪黑激素抗癌中斷</div>
+                </div>
+              </label>
+
+              <label class="cursor-pointer p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-vivid-pink hover:bg-pink-50/30 flex flex-col justify-between h-32 transition group">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-2xl">🍺</span>
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-vivid-pink accent-vivid-pink cursor-pointer" data-risk="15">
+                </div>
+                <div>
+                  <div class="text-base sm:text-lg font-black text-slate-900 group-hover:text-vivid-pink transition">規律飲酒習慣 (每週)</div>
+                  <div class="text-xs text-rose-600 font-bold mt-0.5">+15% 發炎 | 乙醛代謝破壞荷爾蒙</div>
+                </div>
+              </label>
+
+              <label class="cursor-pointer p-4 rounded-2xl bg-slate-50 border-2 border-slate-200 hover:border-vivid-pink hover:bg-pink-50/30 flex flex-col justify-between h-32 transition group">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-2xl">⚡</span>
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-vivid-pink accent-vivid-pink cursor-pointer" data-risk="15">
+                </div>
+                <div>
+                  <div class="text-base sm:text-lg font-black text-slate-900 group-hover:text-vivid-pink transition">長期高壓焦慮 (緊繃)</div>
+                  <div class="text-xs text-rose-600 font-bold mt-0.5">+15% 發炎 | 皮質醇過高免疫失調</div>
+                </div>
               </label>
             </div>
           </div>
 
-          <div class="lg:col-span-5 bg-slate-900 text-white p-8 rounded-3xl pop-shadow-lg space-y-6 border border-slate-800 text-center">
-            <span class="px-3.5 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs font-black border border-pink-500/30">
-              ⚡ LIVE RISK AUDIT // 即時評估
-            </span>
+          <!-- 右側：縮小直立式發炎監測艙 HUD（佔 3 cols，小空間） -->
+          <div class="lg:col-span-3 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 rounded-3xl pop-shadow-lg flex flex-col justify-between items-center text-center border-2 border-slate-700">
+            <div class="w-full space-y-2">
+              <span class="px-2.5 py-0.5 rounded-full bg-vivid-pink/20 text-vivid-pink text-xs font-black border border-vivid-pink/30">
+                ⚡ 發炎監測艙
+              </span>
+              <div class="text-xs text-slate-400 font-bold uppercase mt-1">體內相對發炎指數</div>
 
-            <div class="space-y-1">
-              <div class="text-xs text-slate-400 font-bold uppercase">相對發炎與荷爾蒙累加指數</div>
-              <div id="p06-total-display" class="text-6xl sm:text-7xl font-black text-vivid-mint tracking-tight">
+              <div id="p06-total-display" class="text-4xl sm:text-5xl font-black text-vivid-mint tracking-tight my-2">
                 0%
+              </div>
+
+              <!-- 緊湊進度條 -->
+              <div class="w-full h-3.5 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-white/10 my-2">
+                <div id="p06-bar" class="h-full rounded-full bg-gradient-to-r from-vivid-mint to-vivid-pink transition-all duration-500" style="width: 0%;"></div>
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl bg-slate-800/80 border border-white/10 text-xs text-slate-300 leading-relaxed font-medium" id="p06-advice-text">
-              目前體內無累積不良負荷！點選左側日常習慣，右側即時結算相對發炎負擔。
-            </div>
+            <div class="w-full space-y-3 pt-2">
+              <div class="text-xs text-slate-300 font-bold leading-relaxed" id="p06-advice-text">
+                所有壞習慣均未勾選！身體修復力處於最佳狀態！
+              </div>
 
-            <button onclick="resetP06Habits()" class="w-full py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-xs font-bold text-slate-200 transition">
-              🔄 模擬全部清除（健康清零）
-            </button>
+              <button onclick="resetP06Habits()" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 border border-slate-600 transition">
+                🔄 一鍵清零重設
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1213,37 +1291,37 @@
 
         <div class="grid grid-cols-2 sm:grid-cols-6 gap-3">
           <button onclick="showP14Level(0)" class="p14-btn p-4 rounded-2xl bg-white border-2 border-vivid-pink pop-shadow text-center space-y-1 transition">
-            <div class="text-2xl font-black text-vivid-pink">類別 0</div>
+            <div class="text-2xl font-black text-vivid-pink">Category 0</div>
             <div class="text-xs font-bold text-slate-800">需加做檢查</div>
             <span class="text-[10px] text-pink-600 bg-pink-100 px-1.5 py-0.5 rounded-full block">評估未完成</span>
           </button>
 
           <button onclick="showP14Level(1)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-mint">
-            <div class="text-2xl font-black text-vivid-mint">類別 1</div>
+            <div class="text-2xl font-black text-vivid-mint">Category 1</div>
             <div class="text-xs font-bold text-slate-800">完全正常</div>
             <span class="text-[10px] text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full block">2年後再篩</span>
           </button>
 
           <button onclick="showP14Level(2)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-teal">
-            <div class="text-2xl font-black text-vivid-teal">類別 2</div>
+            <div class="text-2xl font-black text-vivid-teal">Category 2</div>
             <div class="text-xs font-bold text-slate-800">良性發現</div>
             <span class="text-[10px] text-teal-700 bg-teal-100 px-1.5 py-0.5 rounded-full block">囊腫/纖維腺瘤</span>
           </button>
 
           <button onclick="showP14Level(3)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-amber">
-            <div class="text-2xl font-black text-vivid-amber">類別 3</div>
+            <div class="text-2xl font-black text-vivid-amber">Category 3</div>
             <div class="text-xs font-bold text-slate-800">可能良性</div>
             <span class="text-[10px] text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full block">半年後複查</span>
           </button>
 
           <button onclick="showP14Level(4)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-orange">
-            <div class="text-2xl font-black text-vivid-orange">類別 4</div>
+            <div class="text-2xl font-black text-vivid-orange">Category 4</div>
             <div class="text-xs font-bold text-slate-800">疑似異常</div>
             <span class="text-[10px] text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded-full block">建議組織切片</span>
           </button>
 
           <button onclick="showP14Level(5)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-red-500">
-            <div class="text-2xl font-black text-red-500">類別 5</div>
+            <div class="text-2xl font-black text-red-500">Category 5</div>
             <div class="text-xs font-bold text-slate-800">高度疑似</div>
             <span class="text-[10px] text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full block">積極外科處置</span>
           </button>
@@ -1251,12 +1329,12 @@
 
         <div class="p-6 rounded-3xl bg-slate-900 text-white pop-shadow-lg space-y-2 border border-slate-800">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-black text-vivid-pink uppercase tracking-wider" id="p14-badge">類別 0 解碼：不是第 0 期癌！</span>
+            <span class="text-xs font-black text-vivid-pink uppercase tracking-wider" id="p14-badge">Category 0 解碼：不是第 0 期癌！</span>
             <span class="text-xs font-mono text-slate-400">STATUS 0 // RE-EVALUATE</span>
           </div>
           <div class="text-2xl sm:text-3xl font-black text-white" id="p14-title">「影像不完全，請儘速加做乳房超音波比對」</div>
           <p class="text-lg sm:text-xl text-slate-200 leading-relaxed font-bold" id="p14-desc">
-            亞洲族群 70% 屬於緻密型乳房，乳腺在 X 光下白茫茫一片，可能遮蔽微小病灶。類別 0 只是請受檢者掛號乳房外科，搭配超音波掃描一下，90% 以上加做後都是良性水泡或正常乳腺，千萬不要自己嚇自己！
+            亞洲族群 70% 屬於緻密型乳房，乳腺在 X 光下白茫茫一片，可能遮蔽微小病灶。Category 0 只是請受檢者掛號乳房外科，搭配超音波掃描一下，90% 以上加做後都是良性水泡或正常乳腺，千萬不要自己嚇自己！
           </p>
         </div>
       </div>
@@ -2473,7 +2551,7 @@
 
       // 轉場專屬生命週期 hook
       if (currentSlide === 5) {
-        filterP05Category('all');
+        filterP05Category('born');
         selectP05Factor(0);
       } else if (currentSlide === 6) {
         resetP06Habits();
@@ -2928,7 +3006,7 @@
         action: '切勿掉以輕心，請遵照乳房外科專科醫師指示，每 6 個月定期回診追蹤超音波與影像檢查。' },
       { id: 5, cat: 'born', icon: '🥛', name: '緻密型乳房特徵', risk: '相對風險 1.5 ~ 2.0 倍', type: 'INBORN 先天因子',
         mech: '亞洲族群逾 70% 屬於緻密型乳腺，除 X 光下呈現白茫茫可能遮蔽微小病灶外，乳腺上皮比例高本身即代表較多潛在分裂細胞。',
-        action: '公費攝影若報告為「類別 0」，請立刻搭配「乳房超音波」，雙雷達聯手讓腫塊無所遁形！' },
+        action: '公費攝影若報告為「Category 0」，請立刻搭配「乳房超音波」，雙雷達聯手讓腫塊無所遁形！' },
       { id: 6, cat: 'ctrl', icon: '⚖️', name: '肥胖與缺乏運動 (BMI>25)', risk: '停經後風險提高 1.5 ~ 2 倍', type: 'ACQUIRED 後天可控',
         mech: '停經後卵巢停止分泌，脂肪細胞中的「芳香化酶（Aromatase）」成為雌激素主要製造來源，過多脂肪直接持續刺激乳腺！',
         action: '維持 BMI 18.5-24，落實每週 150 分鐘微運動，立刻逆轉脂肪芳香化酶活性！' },
@@ -3005,25 +3083,42 @@
     }
 
     function filterP05Category(cat) {
-      const btnAll = document.getElementById('p05-tab-all');
+      p05CurrentCategory = cat;
       const btnBorn = document.getElementById('p05-tab-born');
       const btnCtrl = document.getElementById('p05-tab-ctrl');
+      const listContainer = document.getElementById('p05-list-container');
+      const spotPanel = document.getElementById('p05-spotlight-panel');
+      const listTitle = document.getElementById('p05-list-title');
 
-      btnAll.className = 'px-4 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
-      btnBorn.className = 'px-4 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
-      btnCtrl.className = 'px-4 py-2 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+      if (cat === 'born') {
+        // 先天 6 項：左側為因子清單，右側為放大講解
+        btnBorn.className = 'px-5 py-2.5 rounded-full text-sm font-black bg-amber-600 text-white shadow-md transition flex items-center gap-2';
+        btnCtrl.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-2';
 
-      if (cat === 'all') {
-        btnAll.className = 'px-4 py-2 rounded-full text-sm font-black bg-slate-900 text-white shadow-sm transition';
-      } else if (cat === 'born') {
-        btnBorn.className = 'px-4 py-2 rounded-full text-sm font-black bg-amber-600 text-white shadow-sm transition';
-      } else if (cat === 'ctrl') {
-        btnCtrl.className = 'px-4 py-2 rounded-full text-sm font-black bg-emerald-600 text-white shadow-sm transition';
+        if (listContainer) {
+          listContainer.className = 'lg:col-span-5 lg:order-1 bg-white p-5 rounded-3xl border border-slate-200 pop-shadow space-y-2.5 max-h-[460px] overflow-y-auto';
+        }
+        if (spotPanel) {
+          spotPanel.className = 'lg:col-span-7 lg:order-2 bg-white p-7 sm:p-8 rounded-3xl border-2 border-amber-500 pop-shadow flex flex-col justify-between space-y-4';
+        }
+        if (listTitle) listTitle.innerText = '點擊先天因子查看右側解析：';
+      } else {
+        // 後天 7 項：反過來！左邊為放大講解，右邊為因子清單
+        btnBorn.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-2';
+        btnCtrl.className = 'px-5 py-2.5 rounded-full text-sm font-black bg-emerald-600 text-white shadow-md transition flex items-center gap-2';
+
+        if (spotPanel) {
+          spotPanel.className = 'lg:col-span-7 lg:order-1 bg-white p-7 sm:p-8 rounded-3xl border-2 border-emerald-500 pop-shadow flex flex-col justify-between space-y-4';
+        }
+        if (listContainer) {
+          listContainer.className = 'lg:col-span-5 lg:order-2 bg-white p-5 rounded-3xl border border-slate-200 pop-shadow space-y-2.5 max-h-[460px] overflow-y-auto';
+        }
+        if (listTitle) listTitle.innerText = '點擊後天因子查看左側解析：';
       }
 
       renderP05List(cat);
-      const filtered = cat === 'all' ? p05Factors : p05Factors.filter(f => f.cat === cat);
-      if (!filtered.some(f => f.id === p05SelectedId)) {
+      const filtered = p05Factors.filter(f => f.cat === cat);
+      if (filtered.length > 0 && !filtered.some(f => f.id === p05SelectedId)) {
         selectP05Factor(filtered[0].id);
       }
     }
@@ -3124,17 +3219,20 @@
 
       const display = document.getElementById('p06-total-display');
       const advice = document.getElementById('p06-advice-text');
-      display.innerText = `+${total}%`;
+      const bar = document.getElementById('p06-bar');
+
+      if (display) display.innerText = `+${total}%`;
+      if (bar) bar.style.width = `${Math.min(total, 100)}%`;
 
       if (total >= 50) {
-        display.className = 'text-6xl sm:text-7xl font-black text-vivid-pink tracking-tight animate-pulse';
-        advice.innerText = `目前累積了 ${count} 項不良習慣（+${total}%）！建議今天起「每週多走兩站」或「手搖飲換無糖綠」，立刻卸除細胞負擔！`;
+        if (display) display.className = 'text-4xl sm:text-5xl font-black text-vivid-pink tracking-tight animate-pulse my-2';
+        if (advice) advice.innerText = `已勾選 ${count} 項不良習慣（+${total}%）！建議今天換無糖茶或多走兩站，立刻逆轉發炎！`;
       } else if (total > 0) {
-        display.className = 'text-6xl sm:text-7xl font-black text-vivid-orange tracking-tight';
-        advice.innerText = `累積負荷處於中等水平（+${total}%）！保持運動與睡眠，妳的身體修復力完全應付得來！`;
+        if (display) display.className = 'text-4xl sm:text-5xl font-black text-vivid-orange tracking-tight my-2';
+        if (advice) advice.innerText = `負荷中等水平（+${total}%）！維持規律睡眠與運動，身體完全能自我修復！`;
       } else {
-        display.className = 'text-6xl sm:text-7xl font-black text-vivid-mint tracking-tight';
-        advice.innerText = '太棒了！所有高負載壞習慣均已解除！保持這樣的平衡節奏，身體的免疫修復系統全速運轉！';
+        if (display) display.className = 'text-4xl sm:text-5xl font-black text-vivid-mint tracking-tight my-2';
+        if (advice) advice.innerText = '所有壞習慣均已解除！體內免疫修復系統全速運轉！';
       }
     }
 
@@ -3628,12 +3726,12 @@
 
     // P14: BI-RADS 報告分級
     const p14Levels = [
-      { badge: '類別 0 解碼：不是第 0 期癌！', title: '「影像不完全，請儘速加做乳房超音波比對」', desc: '亞洲女性 70% 屬於緻密型乳房，乳腺在 X 光下白茫茫一片，可能遮蔽微小病灶。類別 0 只是請妳掛號乳房外科，搭配超音波掃描一下，90% 以上加做後都是良性水泡或正常乳腺！' },
-      { badge: '類別 1 解碼：乾乾淨淨', title: '「完全陰性，無異常發現」', desc: '乳腺組織完全對稱正常，無任何可疑鈣化點或結構扭曲。請繼續維持良好生活作息，並在 2 年後準時接受下一次公費篩檢即可！' },
-      { badge: '類別 2 解碼：安心良性', title: '「確定良性發現，不具惡性傾向」', desc: '看到了明確的良性病灶，如良性纖維腺瘤、分泌囊腫、血管鈣化等。這些都不會變成癌症，一樣維持每 2 年定期檢查即可！' },
-      { badge: '類別 3 解碼：定期快取', title: '「可能為良性，建議半年後短期追蹤」', desc: '惡性機率極低（< 2%）。就像軟體的非致命警告，醫師建議在 6 個月後針對該局部再照一次，確認它大小形狀完全沒變，連追兩年穩定後即可降回類別 2！' },
-      { badge: '類別 4 解碼：疑雲釐清', title: '「疑似異常，強烈建議安排組織切片確認」', desc: '惡性機率約 2%～95%（細分 4A、4B、4C）。切片多採局部麻醉微創粗針切片，像抽血一樣取出微量組織送病理化驗，不用住院，絕不是開大刀！' },
-      { badge: '類別 5 解碼：高度警戒', title: '「高度疑似惡性（> 95%），應儘速外科手術處置」', desc: '影像具有典型的毛刺狀、微細分枝狀鈣化。請不要驚慌，立刻至乳房專科進行全套規劃，早期發現早期切除，存活率依然極高！' }
+      { badge: 'Category 0 解碼：不是第 0 期癌！', title: '「影像不完全，請儘速加做乳房超音波比對」', desc: '亞洲女性 70% 屬於緻密型乳房，乳腺在 X 光下白茫茫一片，可能遮蔽微小病灶。Category 0 只是請妳掛號乳房外科，搭配超音波掃描一下，90% 以上加做後都是良性水泡或正常乳腺！' },
+      { badge: 'Category 1 解碼：乾乾淨淨', title: '「完全陰性，無異常發現」', desc: '乳腺組織完全對稱正常，無任何可疑鈣化點或結構扭曲。請繼續維持良好生活作息，並在 2 年後準時接受下一次公費篩檢即可！' },
+      { badge: 'Category 2 解碼：安心良性', title: '「確定良性發現，不具惡性傾向」', desc: '看到了明確的良性病灶，如良性纖維腺瘤、分泌囊腫、血管鈣化等。這些都不會變成癌症，一樣維持每 2 年定期檢查即可！' },
+      { badge: 'Category 3 解碼：定期快取', title: '「可能為良性，建議半年後短期追蹤」', desc: '惡性機率極低（< 2%）。就像軟體的非致命警告，醫師建議在 6 個月後針對該局部再照一次，確認它大小形狀完全沒變，連追兩年穩定後即可降回Category 2！' },
+      { badge: 'Category 4 解碼：疑雲釐清', title: '「疑似異常，強烈建議安排組織切片確認」', desc: '惡性機率約 2%～95%（細分 4A、4B、4C）。切片多採局部麻醉微創粗針切片，像抽血一樣取出微量組織送病理化驗，不用住院，絕不是開大刀！' },
+      { badge: 'Category 5 解碼：高度警戒', title: '「高度疑似惡性（> 95%），應儘速外科手術處置」', desc: '影像具有典型的毛刺狀、微細分枝狀鈣化。請不要驚慌，立刻至乳房專科進行全套規劃，早期發現早期切除，存活率依然極高！' }
     ];
 
     function showP14Level(lvl) {
