@@ -1,0 +1,20 @@
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Google Drive conflict & temp files
+*.tmp
+~$*
+.tmp.drivedownload
+.tmp.driveupload
+Icon?
+
+# Environment & Secrets
+.env
+.env.local
+*.key
+credentials.*

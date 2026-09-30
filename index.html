@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>守護乳房健康——乳癌預防與篩檢 | 方案 C：活力輕科技敘事風 (大字體滿版·通關高互動完全版)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vivid: {
+              pink: '#FF3366',
+              coral: '#FF5E62',
+              orange: '#FF8A3D',
+              amber: '#FFB800',
+              mint: '#00C48C',
+              teal: '#00B4D8',
+              blue: '#18A0FB',
+              purple: '#7B61FF',
+              dark: '#0F172A',
+              card: '#FFFFFF',
+              surface: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Noto Sans TC"', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+      overflow: hidden;
+      user-select: none;
+    }
+    .pop-shadow {
+      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.05);
+    }
+    .pop-shadow-lg {
+      box-shadow: 0 25px 50px -12px rgba(255, 51, 102, 0.15), 0 0 0 1px rgba(15, 23, 42, 0.06);
+    }
+    .interactive-card {
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .interactive-card:hover {
+      transform: translateY(-4px);
+    }
+    .slide-enter {
+      animation: popSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes popSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98) translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    /* 隱藏滾動條 */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="w-screen h-screen flex flex-col justify-between relative selection:bg-vivid-pink selection:text-white">
+
+  <!-- 明亮活力背景漸層光斑 -->
+  <div class="absolute -top-28 -left-28 w-[640px] h-[640px] bg-gradient-to-br from-pink-200/50 via-orange-100/40 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="absolute -bottom-28 -right-28 w-[680px] h-[680px] bg-gradient-to-tl from-teal-100/50 via-blue-100/40 to-purple-100/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <!-- ================= 頂部任務導航列 (Top Quest Bar) ================= -->
+  <header class="w-full px-8 py-3 bg-white/95 backdrop-blur-md border-b border-slate-200/80 flex items-center justify-between z-20 pop-shadow">
+    <div class="flex items-center space-x-3">
+      <div class="flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-vivid-pink to-vivid-orange text-white text-xs font-black tracking-wider uppercase shadow-sm">
+        <span>⚡ QUEST MODE</span>
+        <span class="opacity-80">|</span>
+        <span>方案 C 活力輕科技</span>
+      </div>
+      <h1 class="text-xs text-slate-500 font-bold hidden xl:block" id="slide-title-header">
+        守護乳房健康 · 科技女性 24 關健康升級挑戰
+      </h1>
+    </div>
+
+    <!-- 原則一：場景引子 (鮮活氣泡標籤) -->
+    <div class="flex-1 max-w-2xl mx-4 hidden lg:flex items-center justify-center">
+      <div class="flex items-center gap-2.5 bg-slate-100 px-4 py-1.5 rounded-full border border-slate-200/80 text-xs text-slate-800">
+        <span class="w-2 h-2 rounded-full bg-vivid-pink animate-ping"></span>
+        <span class="font-extrabold text-vivid-pink">【真實場景】</span>
+        <span id="scene-opener-text" class="truncate font-semibold text-slate-700">
+          你是不是每年健檢，都自動跳過乳房攝影那一格？
+        </span>
+      </div>
+    </div>
+
+    <!-- 右側功能操控區 -->
+    <div class="flex items-center space-x-2.5">
+      <!-- 演講 60 分鐘活力倒數 -->
+      <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-700">
+        <span class="text-vivid-mint font-bold text-sm">⏱</span>
+        <span id="timer-display" class="font-black text-slate-800">60:00</span>
+        <button id="timer-btn" class="hover:text-vivid-pink text-slate-400 ml-1 font-bold" title="開始/暫停">▶</button>
+      </div>
+
+      <!-- 目錄抽屜 (M) -->
+      <button onclick="toggleIndexDrawer()" class="px-3 py-1.5 text-xs font-bold rounded-full bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 pop-shadow flex items-center gap-1 transition" title="24 關章節目錄 (按 M)">
+        <span>🗺️</span>
+        <span class="hidden md:inline">關卡地圖</span>
+      </button>
+
+      <!-- 講者指引 (S) -->
+      <button onclick="toggleSpeakerNotes()" class="px-3 py-1.5 text-xs font-bold rounded-full bg-white hover:bg-slate-100 text-vivid-pink border border-vivid-pink/30 pop-shadow flex items-center gap-1 transition" title="梁醫師講者指引 (按 S)">
+        <span class="w-4 h-4 rounded-full bg-vivid-pink text-white flex items-center justify-center text-[10px]">S</span>
+        <span class="hidden md:inline">講者指引</span>
+      </button>
+
+      <!-- 全螢幕 (F) -->
+      <button onclick="toggleFullScreen()" class="px-3.5 py-1.5 text-xs font-bold rounded-full bg-slate-900 hover:bg-slate-800 text-white flex items-center gap-1 transition shadow-sm" title="全螢幕 (按 F)">
+        <span class="font-mono text-vivid-orange">F</span>
+        <span class="hidden md:inline">全螢幕</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= 主展演舞台 (滿版超大字體 16:9) ================= -->
+  <main class="flex-1 w-full max-w-[1540px] mx-auto px-8 lg:px-12 py-4 flex flex-col justify-center items-center relative overflow-hidden z-10">
+
+    <!-- ==================== P01: 封面 ==================== -->
+    <section class="slide w-full h-full flex flex-col justify-center slide-enter" data-slide="1"
+      data-scene="你是不是每年健檢，都自動跳過乳房攝影那一格？"
+      data-quote="健康，是最重要的事業"
+      data-notes="【活力開場】各位瑞健的同仁、科技界的優秀夥伴們，大家下午好！我是國軍桃園總醫院/敏盛綜合醫院乳房外科梁祖瑋醫師。今天我們不說教、不用沉重的恐懼行銷，而是把這 1 小時當作一次『身體系統健康升級通關』！透過數據、破解迷思、掌握檢查工具，幫大家輕鬆拿回健康主控權！">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full max-h-[82vh]">
+        <div class="lg:col-span-7 space-y-6 flex flex-col justify-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-vivid-pink text-xs font-black tracking-wider uppercase border border-pink-200 w-fit">
+            <span>🚀 WOMEN IN TECH WELLNESS</span>
+            <span class="text-pink-300">•</span>
+            <span>瑞健科技女性專場衛教</span>
+          </div>
+
+          <div class="space-y-2">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]">
+              守護乳房健康
+            </h1>
+            <div class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-vivid-pink via-vivid-orange to-vivid-purple">
+              乳癌預防、篩檢與行動通關指南
+            </div>
+          </div>
+
+          <p class="text-lg sm:text-xl text-slate-600 font-medium max-w-2xl leading-relaxed">
+            給在高壓、快節奏、講求邏輯的科技業女性：一次掌握最新篩檢數據、檢查工具對症派工、破解疼痛迷思，讓守護健康像 Code Review 一樣清晰俐落！
+          </p>
+
+          <!-- 瑞健 3 場次動態核選徽章 -->
+          <div class="p-5 rounded-3xl bg-white border border-slate-200 pop-shadow space-y-3">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">📍 瑞健科技巡迴巡檢專場（點選場次）：</span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/50 text-left transition flex flex-col justify-between">
+                <span class="text-xs font-black text-vivid-pink">場次一 · 10/07 (三)</span>
+                <span class="text-sm font-bold text-slate-900 mt-1">瑞健桃園廠</span>
+              </button>
+              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between">
+                <span class="text-xs font-black text-slate-500">場次二 · 10/14 (三)</span>
+                <span class="text-sm font-bold text-slate-900 mt-1">瑞健南崁廠</span>
+              </button>
+              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between">
+                <span class="text-xs font-black text-slate-500">場次三 · 10/21 (三)</span>
+                <span class="text-sm font-bold text-slate-900 mt-1">瑞健六福廠</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右側通關身份與主講醫師卡 (5 cols) -->
+        <div class="lg:col-span-5 flex flex-col space-y-5">
+          <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-8 rounded-3xl pop-shadow-lg space-y-5 border border-slate-700/60 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-48 h-48 bg-vivid-pink/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-white/10 text-xs font-black tracking-wider text-vivid-mint uppercase border border-white/10">
+                ⭐ SPECIAL SPEAKER
+              </span>
+              <span class="text-xs text-slate-400 font-mono">1 HOUR QUEST</span>
+            </div>
+
+            <div class="space-y-1">
+              <div class="text-3xl sm:text-4xl font-black tracking-tight text-white">梁祖瑋 醫師</div>
+              <p class="text-sm text-pink-300 font-bold">國軍桃園總醫院乳房外科 ｜ 敏盛綜合醫院巡檢醫師</p>
+            </div>
+
+            <div class="space-y-2.5 text-xs text-slate-300 border-t border-white/10 pt-4 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-vivid-mint"></span>
+                <span>專長：乳房微創手術、乳癌篩檢精準影像診斷、個人化輔助治療</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-vivid-orange"></span>
+                <span>核心理念：精準檢查、溫柔陪伴、化繁為簡、守護職場女性</span>
+              </div>
+            </div>
+
+            <button onclick="nextSlide()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-vivid-pink via-vivid-coral to-vivid-orange text-white font-black text-base text-center block shadow-lg shadow-pink-500/30 hover:opacity-95 transition">
+              ⚡ 立即開始健康升級挑戰 ➔
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P02: 引言：身體不是不當機的伺服器 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="2"
+      data-scene="天天盯著專案進度，有多久沒做自己的全身系統掃描？"
+      data-quote="定期篩檢，就是身體的 Code Review"
+      data-notes="【引起共鳴】在座各位都是科技界的菁英，寫軟體有 CI/CD、部署前有單元測試、伺服器有即時監控儀表板。一旦發現 Exception，我們會立刻修復，絕不會放任 Memory Leak 拖垮整座架構。可是面對身體，我們是不是經常忽略 CPU 過熱、忽略警告訊息？今天我們就把預防篩檢，當作身體年度最重要的一次 Code Review！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">QUEST 01 // 思維對齊</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">身體，不是永遠不當機的伺服器</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            用科技人的工程邏輯，重新理解健康防護
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-7 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-pink-100 text-vivid-pink flex items-center justify-center text-2xl font-black">
+              🔍
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-black text-vivid-pink tracking-wider uppercase">CI/CD & UNIT TEST</span>
+              <h3 class="text-2xl font-black text-slate-900">單元測試 vs 定期篩檢</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              軟體上線前要跑無數次自動化測試；乳房攝影就是身體每 2 年一次的底層安全性單元測試，在完全無症狀時揪出潛藏 Bug！
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-orange-100 text-vivid-orange flex items-center justify-center text-2xl font-black">
+              ⚡
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-black text-vivid-orange tracking-wider uppercase">DEBUG & REFACTOR</span>
+              <h3 class="text-2xl font-black text-slate-900">早期除錯成本最低</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              在寫程式初期改一個小拼寫只要 10 秒；等到上線崩潰時重構要花數百萬。第 0 期乳癌只需微創門診手術，存活率近 100%！
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-mint-100 text-vivid-mint flex items-center justify-center text-2xl font-black">
+              🛡️
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-black text-vivid-mint tracking-wider uppercase">SYSTEM RELIABILITY</span>
+              <h3 class="text-2xl font-black text-slate-900">穩定維護才能持續運算</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              高負載伺服器若無定期冷卻與重啟，終將面臨 Core Dump。健康不是單純不出事，而是有計畫的保養與主動防禦！
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-pink-50 via-orange-50 to-purple-50 border border-pink-200/80 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">💡</span>
+            <span class="text-sm sm:text-base font-bold text-slate-800">
+              「不要等到伺服器冒黑煙才看 Error Log；篩檢不是找麻煩，而是最划算的健康投資！」
+            </span>
+          </div>
+          <span class="text-xs font-black px-3 py-1 rounded-full bg-vivid-pink text-white uppercase">TECH WISDOM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P03: 台灣女性乳癌現況 (修正：早10年單行、10-12%不超出) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="3"
+      data-scene="身邊好像越來越常聽說誰的姊妹、同事確診？這不是錯覺，是數據！"
+      data-quote="面對真實數據，才有主動出擊的勇氣"
+      data-notes="【數據震撼】請大家看大螢幕這四個數字。在台灣，乳癌多年位居女性癌症發生率第 1 名。每天有超過 42 位女性確診。更關鍵的是『年輕化』——台灣好發年齡比歐美整整早了近 10 年！許多正處於職場衝刺期的 40 幾歲主管、工程師突然確診。所以，了解這件事不是為了害怕，而是讓自己有裝備！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-coral uppercase">DATA RADAR // 數據警報</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">台灣女性乳癌現況：數字背後的震撼</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            衛福部最新國健署癌症登記報告
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- 指標 1 -->
+          <button onclick="showP03Insight(0)" class="p03-metric-card p-6 rounded-3xl bg-white border-2 border-vivid-pink pop-shadow text-left space-y-3 transition">
+            <span class="text-xs font-black text-vivid-pink px-2.5 py-0.5 rounded-full bg-pink-100">發生率冠軍</span>
+            <div class="text-4xl sm:text-5xl lg:text-5xl font-black text-slate-900 tracking-tight whitespace-nowrap">第 1 名</div>
+            <p class="text-xs text-slate-500 font-medium">連續多年蟬聯女性最常見癌症</p>
+          </button>
+
+          <!-- 指標 2 -->
+          <button onclick="showP03Insight(1)" class="p03-metric-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow text-left space-y-3 transition hover:border-vivid-orange">
+            <span class="text-xs font-black text-vivid-orange px-2.5 py-0.5 rounded-full bg-orange-100">每日新增確診</span>
+            <div class="text-4xl sm:text-5xl lg:text-5xl font-black text-slate-900 tracking-tight whitespace-nowrap">42<span class="text-2xl font-bold ml-1">人/日</span></div>
+            <p class="text-xs text-slate-500 font-medium">年增超過 15,000 名新發個案</p>
+          </button>
+
+          <!-- 指標 3：早 10 年 確保一行 -->
+          <button onclick="showP03Insight(2)" class="p03-metric-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow text-left space-y-3 transition hover:border-vivid-purple">
+            <span class="text-xs font-black text-vivid-purple px-2.5 py-0.5 rounded-full bg-purple-100">年輕化趨勢</span>
+            <div class="text-4xl sm:text-5xl lg:text-5xl font-black text-slate-900 tracking-tight whitespace-nowrap">早 10 年</div>
+            <p class="text-xs text-slate-500 font-medium">好發 45-69 歲（歐美為 60+）</p>
+          </button>
+
+          <!-- 指標 4：10-12% 確保不超出格子 -->
+          <button onclick="showP03Insight(3)" class="p03-metric-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow text-left space-y-3 transition hover:border-vivid-mint">
+            <span class="text-xs font-black text-vivid-mint px-2.5 py-0.5 rounded-full bg-emerald-100">終生罹患風險</span>
+            <div class="text-4xl sm:text-5xl lg:text-5xl font-black text-slate-900 tracking-tight whitespace-nowrap">10～12%</div>
+            <p class="text-xs text-slate-500 font-medium">每 8-10 位女性一生約 1 人罹患</p>
+          </button>
+        </div>
+
+        <!-- 動態解讀看板 -->
+        <div class="p-6 rounded-3xl bg-white border border-slate-200 pop-shadow flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl" id="p03-icon">📊</span>
+            <div>
+              <div class="text-base font-black text-slate-900" id="p03-title">點擊上方任一數據，解鎖科技女性深層洞察</div>
+              <p class="text-xs text-slate-500 mt-0.5" id="p03-desc">年輕化意味著正處於高壓衝刺階段的女性更不可輕忽，定期篩檢能把風險降至最低！</p>
+            </div>
+          </div>
+          <span class="text-xs font-black text-vivid-pink bg-pink-50 px-3 py-1.5 rounded-full border border-pink-200">
+            精準篩檢能救命
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P04: 科技女性 6 大日常隱形負載 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="4"
+      data-scene="上班久坐 8 小時、喝咖啡提神、下班看螢幕放鬆、週五喝杯酒慶祝……"
+      data-quote="辨識隱形負載，是系統重構的第一步"
+      data-notes="【生活共鳴】大家看這 6 個日常情境，妳中了幾個？久坐、熬夜趕案子、高壓責任、外食手搖飲、晚育、咖啡酒精提神。在科技業，大家都很拚，但這 6 個習慣其實正在我們的身體裡啟動微慢性發炎，甚至延長雌激素刺激。今天我們不是要大家明天就當苦行僧，而是學會『微調防護』！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-orange uppercase">LIFESTYLE AUDIT // 負載稽核</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">科技女性的 6 大日常隱形負載</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            點擊任一項目，查看細胞病理解碼
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <button onclick="showP04Load(0)" class="p04-card p-5 rounded-3xl bg-white border-2 border-vivid-pink pop-shadow text-center space-y-2.5 transition">
+            <span class="text-3xl">🪑</span>
+            <div class="text-base font-black text-slate-900">長時間久坐</div>
+            <span class="text-[11px] font-bold text-vivid-pink bg-pink-100 px-2 py-0.5 rounded-full block">代謝低下</span>
+          </button>
+
+          <button onclick="showP04Load(1)" class="p04-card p-5 rounded-3xl bg-white border border-slate-200 pop-shadow text-center space-y-2.5 transition hover:border-vivid-orange">
+            <span class="text-3xl">🌙</span>
+            <div class="text-base font-black text-slate-900">熬夜與作息</div>
+            <span class="text-[11px] font-bold text-vivid-orange bg-orange-100 px-2 py-0.5 rounded-full block">抑制褪黑激素</span>
+          </button>
+
+          <button onclick="showP04Load(2)" class="p04-card p-5 rounded-3xl bg-white border border-slate-200 pop-shadow text-center space-y-2.5 transition hover:border-vivid-purple">
+            <span class="text-3xl">🤯</span>
+            <div class="text-base font-black text-slate-900">高壓責任感</div>
+            <span class="text-[11px] font-bold text-vivid-purple bg-purple-100 px-2 py-0.5 rounded-full block">皮質醇慢性發炎</span>
+          </button>
+
+          <button onclick="showP04Load(3)" class="p04-card p-5 rounded-3xl bg-white border border-slate-200 pop-shadow text-center space-y-2.5 transition hover:border-vivid-coral">
+            <span class="text-3xl">🍟</span>
+            <div class="text-base font-black text-slate-900">外食高油糖</div>
+            <span class="text-[11px] font-bold text-vivid-coral bg-rose-100 px-2 py-0.5 rounded-full block">脂肪芳香化刺激</span>
+          </button>
+
+          <button onclick="showP04Load(4)" class="p04-card p-5 rounded-3xl bg-white border border-slate-200 pop-shadow text-center space-y-2.5 transition hover:border-vivid-teal">
+            <span class="text-3xl">🍼</span>
+            <div class="text-base font-black text-slate-900">未育或晚育</div>
+            <span class="text-[11px] font-bold text-vivid-teal bg-teal-100 px-2 py-0.5 rounded-full block">荷爾蒙曝露長</span>
+          </button>
+
+          <button onclick="showP04Load(5)" class="p04-card p-5 rounded-3xl bg-white border border-slate-200 pop-shadow text-center space-y-2.5 transition hover:border-vivid-amber">
+            <span class="text-3xl">🍷</span>
+            <div class="text-base font-black text-slate-900">飲酒與紓壓</div>
+            <span class="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full block">致癌物乙醛生成</span>
+          </button>
+        </div>
+
+        <!-- 負載機制解碼窗 -->
+        <div class="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white pop-shadow-lg space-y-2 border border-slate-700">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-vivid-pink uppercase tracking-wider" id="p04-detail-badge">長時間久坐的生物學機制</span>
+            <span class="text-xs text-slate-400">點擊上方任一卡片即時解鎖</span>
+          </div>
+          <p class="text-base text-slate-200 leading-relaxed font-medium" id="p04-detail-text">
+            久坐超過 6 小時會大幅降低肌肉脂蛋白脂肪酶（LPL）活性，促進內臟脂肪囤積。脂肪細胞含有芳香化酶（Aromatase），會把雄性素持續轉化為多餘的雌激素，刺激乳腺上皮細胞過度增生！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P05: 13 項危險因子全景地圖 (修正：點選後天可控格子在右邊) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="5"
+      data-scene="危險因子一大堆，到底哪些是注定的？哪些是我能改變的？"
+      data-quote="關注能改變的，接納不能改變的並用篩檢防禦"
+      data-notes="【理性分類】大家常看報章雜誌講危險因子，越看越焦慮。其實只要把 13 項因子分成兩組：『先天無法改變』與『後天完全可控』。先天的因子（如家族史、初經早停經晚），我們不用焦慮，只要按時篩檢就好；後天的因子（飲食、體重、酒精），就是我們每天可以主動出招的武器！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-purple uppercase">RISK MATRIX // 風險地圖</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">13 項危險因子：先天 vs 後天 Switch</h2>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="toggleP05Filter('all')" id="p05-btn-all" class="px-3.5 py-1.5 rounded-full text-xs font-black bg-slate-900 text-white transition shadow-sm">全部 13 項</button>
+            <button onclick="toggleP05Filter('born')" id="p05-btn-born" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">先天固定 (6項)</button>
+            <button onclick="toggleP05Filter('control')" id="p05-btn-control" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">後天可控 (7項)</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[320px]">
+          <!-- 先天因子組 (6 項) - 預設在左邊 -->
+          <div id="p05-born-box" class="bg-white p-6 rounded-3xl border border-slate-200 pop-shadow space-y-4 transition-all duration-300">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <span class="text-xs font-black text-slate-400 uppercase">INBORN // 先天無法改變（依靠定期篩檢防禦）</span>
+              <span class="text-xs font-bold text-slate-500">6 項標記</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5 text-xs font-bold text-slate-700">
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">🧬 乳癌家族史（一等親2-3倍/二等親1.5倍）</div>
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">🩸 初經早於 12 歲</div>
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">⏳ 停經晚於 55 歲</div>
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">🥛 緻密型乳房（亞洲女性逾70%）</div>
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">👶 30 歲後首胎、未曾生育或未哺乳</div>
+              <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">🔬 曾有良性非典型增生或個人癌症史</div>
+            </div>
+          </div>
+
+          <!-- 後天因子組 (7 項) - 點選後天可控時維持在右邊 (md:col-start-2) -->
+          <div id="p05-control-box" class="bg-white p-6 rounded-3xl border-2 border-vivid-mint pop-shadow space-y-4 transition-all duration-300">
+            <div class="flex items-center justify-between border-b border-emerald-100 pb-2">
+              <span class="text-xs font-black text-emerald-600 uppercase">ACTIONABLE // 後天完全可控（主動掌控武器）</span>
+              <span class="text-xs font-bold text-vivid-mint">7 項主導權</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5 text-xs font-bold text-slate-700">
+              <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100">⚖️ 停經後肥胖 BMI > 25</div>
+              <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100">🛋️ 長期缺乏運動習慣</div>
+              <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100">🍔 高油高糖精緻紅肉</div>
+              <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100">🍷 規律飲酒（每增加1杯+7%）</div>
+              <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100">🚬 吸菸或二手菸暴露</div>
+              <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100">💊 長期未經醫囑荷爾蒙替代</div>
+              <div class="p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100 col-span-2">🌙 長期熬夜與晝夜節律失調</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-purple-900 font-bold flex items-center justify-between">
+          <span>💡 梁醫師總結：先天因子決定妳的「篩檢起跑線」，後天習慣決定妳的「日常發炎水平」！</span>
+          <span class="font-mono text-vivid-purple">TAKE CONTROL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P06: 壞習慣健康價標計算機 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="6"
+      data-scene="手搖飲、熬夜、炸雞排，到底默默為身體加了多少負擔？"
+      data-quote="健康不是突然崩潰，而是每天點滴累積的結果"
+      data-notes="【互動計算】我們來玩一個科技女性生活計算機。大家可以在螢幕上點選自己有的生活習慣：大杯甜飲、久坐、熬夜、高油炸物。每多選一個，我們的相對發炎風險指針就會往上跑。但好消息是，只要妳隨便反選掉一個，風險就會立刻下降！掌控權永遠在妳手中！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">INTERACTIVE CALCULATOR // 價標計算機</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">壞習慣的「健康價標」動態計算機</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            點擊勾選日常習慣，右側即時結算相對風險
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">點選妳目前的日常習慣：</span>
+            
+            <div class="space-y-2.5">
+              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="15">
+                  <span class="text-sm font-bold text-slate-800">🧋 每天 1 杯大杯半糖手搖飲（高精緻果糖）</span>
+                </div>
+                <span class="text-xs font-black text-vivid-pink">+15% 發炎</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="20">
+                  <span class="text-sm font-bold text-slate-800">🛋️ 連續久坐 > 8 小時（缺乏下肢循環與代謝）</span>
+                </div>
+                <span class="text-xs font-black text-vivid-orange">+20% 負載</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="25">
+                  <span class="text-sm font-bold text-slate-800">🌙 每週超過 3 天 24:00 後才睡（褪黑激素腰斬）</span>
+                </div>
+                <span class="text-xs font-black text-vivid-purple">+25% 抑制</span>
+              </label>
+
+              <label class="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" onchange="calcP06Risk()" class="p06-habit w-5 h-5 rounded text-vivid-pink focus:ring-0" data-risk="20">
+                  <span class="text-sm font-bold text-slate-800">🍗 頻繁高溫油炸便當或消夜炸物（反式脂肪）</span>
+                </div>
+                <span class="text-xs font-black text-vivid-coral">+20% 氧化</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-slate-900 text-white p-8 rounded-3xl pop-shadow-lg space-y-6 border border-slate-800 text-center">
+            <span class="px-3.5 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs font-black border border-pink-500/30">
+              ⚡ LIVE RISK AUDIT // 即時評估
+            </span>
+
+            <div class="space-y-1">
+              <div class="text-xs text-slate-400 font-bold uppercase">相對發炎與荷爾蒙累加指數</div>
+              <div id="p06-total-display" class="text-6xl sm:text-7xl font-black text-vivid-mint tracking-tight">
+                0%
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-800/80 border border-white/10 text-xs text-slate-300 leading-relaxed font-medium" id="p06-advice-text">
+              目前體內無累積不良負荷！點選左側日常習慣，右側即時結算相對發炎負擔。
+            </div>
+
+            <button onclick="resetP06Habits()" class="w-full py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-xs font-bold text-slate-200 transition">
+              🔄 模擬全部清除（健康清零）
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P07: 護乳生活指南 5 大防禦陣列 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="7"
+      data-scene="別讓生活習慣，成為壓垮免疫系統的最後一根稻草。"
+      data-quote="日常生活裡的微小改變，就是身體最強的防火牆"
+      data-notes="【系統防禦】現在進入第二部分！日常我們能做什麼？我為大家總結了 5 個最強大的『生活防火牆規則』：地中海抗發炎飲食、每週150分鐘運動、BMI標準、節制酒精、適度舒壓。這不是要妳追求100分的聖人生活，而是每天替自己建構一層防禦！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-mint uppercase">DEFENSE SHIELD // 防禦陣列</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">護乳生活指南：5 大日常防禦陣列</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            每天做一點，身體修復力提升 40%
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-4">
+          <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <span class="text-3xl">🥗</span>
+            <div class="text-base font-black text-slate-900">抗發炎飲食</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              地中海飲食原則：深色蔬菜、橄欖油、堅果與深海魚，降低體內發炎反應。
+            </p>
+            <span class="text-[10px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full block text-center">抗氧化 +30%</span>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <span class="text-3xl">🏃‍♀️</span>
+            <div class="text-base font-black text-slate-900">每週 150 分鐘</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              中等強度微出汗活動，提高胰島素敏感度，顯著抑制雌激素過度刺激。
+            </p>
+            <span class="text-[10px] font-black text-vivid-pink bg-pink-100 px-2 py-0.5 rounded-full block text-center">風險降 20%</span>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <span class="text-3xl">⚖️</span>
+            <div class="text-base font-black text-slate-900">控制 BMI</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              避免內臟脂肪囤積。停經後每增加 5 個 BMI 單位，乳癌風險增加 12%。
+            </p>
+            <span class="text-[10px] font-black text-vivid-orange bg-orange-100 px-2 py-0.5 rounded-full block text-center">切斷芳香化</span>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <span class="text-3xl">🚫</span>
+            <div class="text-base font-black text-slate-900">節制飲酒</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              酒精是一級致癌物。每週飲酒量少於 1-2 杯，能避免乙醛破壞 DNA。
+            </p>
+            <span class="text-[10px] font-black text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full block text-center">保護肝代謝</span>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <span class="text-3xl">🧘‍♀️</span>
+            <div class="text-base font-black text-slate-900">釋放工作壓力</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              每天睡前 10 分鐘冥想呼吸，停止皮質醇對免疫殺手細胞（NK細胞）的壓制。
+            </p>
+            <span class="text-[10px] font-black text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full block text-center">修復免疫力</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 pop-shadow flex items-center justify-between text-xs font-bold text-slate-700">
+          <span>⚡ 防禦公式：好習慣不是要 100 分，而是「每天微調 1%，一年強大 37 倍」！</span>
+          <span class="text-vivid-mint font-black">HABIT UPGRADE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P08: 外食族拯救計畫：微替換動態餐盤 (升級為方案 B 同款動態互動) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="8"
+      data-scene="中午炸雞腿便當＋半糖手搖，是不是你今天的午餐？先替換，不必求完美。"
+      data-quote="先替換，不必求完美，微小改變也能守護乳房"
+      data-notes="【午餐微革命】對科技業來說太麻煩是最大障礙。給出具體可替換方案：手搖飲換無糖茶、炸排骨便當換烤魚或雞胸肉、塑膠袋裝熱湯改自備玻璃容器。進步就好，不必完美！大家看右側切換按鈕，點擊就能看見全身發炎指數立刻狂降！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-coral uppercase">SMART MEAL SWAP // 動態微替換餐盤</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">不必求完美：午餐餐盤的微替換哲學</h2>
+          </div>
+          <div class="flex items-center gap-2 bg-white p-1 rounded-full border border-slate-200 pop-shadow">
+            <button onclick="toggleP08MealMode('before')" id="p08-btn-before" class="px-5 py-2 rounded-full bg-slate-900 text-white text-xs font-black transition shadow-sm">
+              🔴 原本的日常便當
+            </button>
+            <button onclick="toggleP08MealMode('after')" id="p08-btn-after" class="px-5 py-2 rounded-full text-slate-600 hover:text-slate-900 text-xs font-bold transition">
+              🟢 ✨ 護乳微替換提案
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl pop-shadow border border-slate-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- 左側餐點組合清單 (7 cols) -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <span id="p08-meal-badge" class="text-sm font-black text-red-600 bg-red-100 px-4 py-1 rounded-full">
+                🍱 典型加班便當組合
+              </span>
+              <span id="p08-calories-badge" class="text-sm font-mono font-bold text-slate-500">
+                預估熱量：約 980 大卡
+              </span>
+            </div>
+
+            <div id="p08-food-list" class="space-y-3 pt-1">
+              <!-- 動態內容由 JS 產生 -->
+            </div>
+          </div>
+
+          <!-- 右側動態負載指標進度條 (5 cols) -->
+          <div class="lg:col-span-5 bg-slate-50 p-7 rounded-3xl border border-slate-200 space-y-5">
+            <div class="flex items-center justify-between">
+              <h4 class="text-lg font-black text-slate-900" id="p08-effect-title">身體細胞發炎負載即時評估</h4>
+              <span class="text-xs font-mono font-bold text-vivid-pink" id="p08-status-tag">HIGH RISK</span>
+            </div>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1.5">
+                  <span class="text-slate-700">全身慢性發炎指數</span>
+                  <span id="p08-bar-inflame-val" class="font-black text-red-600">85% 超載 (Overload)</span>
+                </div>
+                <div class="w-full h-3.5 bg-slate-200 rounded-full overflow-hidden p-0.5">
+                  <div id="p08-bar-inflame" class="h-full bg-red-500 rounded-full w-[85%] transition-all duration-500"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1.5">
+                  <span class="text-slate-700">天然植化素抗氧化力</span>
+                  <span id="p08-bar-anti-val" class="font-black text-slate-500">15% 偏低 (Deficit)</span>
+                </div>
+                <div class="w-full h-3.5 bg-slate-200 rounded-full overflow-hidden p-0.5">
+                  <div id="p08-bar-anti" class="h-full bg-emerald-500 rounded-full w-[15%] transition-all duration-500"></div>
+                </div>
+              </div>
+            </div>
+
+            <p id="p08-summary-text" class="text-xs text-slate-600 leading-relaxed pt-3 border-t border-slate-200 font-medium">
+              長期高糖高脂外食容易促成脂肪芳香化。點擊上方「護乳微替換提案」切換按鈕，查看醫師推薦的無痛微替換方案！
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P09: 辦公室 150 分鐘微運動蓄力儀 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="9"
+      data-scene="沒時間去健身房？那就把運動化整為零，藏進工作日常！"
+      data-quote="不是非得跑半馬，把運動化整為零一樣有效"
+      data-notes="【運動微習慣】世界衛生組織建議每週 150 分鐘中等強度運動。很多人一聽就舉白旗：『我哪來的 150 分鐘？』但科學證實：『碎片化運動效果等同連續運動』！搭捷運提早一站走 10 分鐘、爬 3 層樓梯、站立辦公 25 分鐘。我們現在就來點螢幕上的微動作，看能量槽如何瞬間集滿！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-orange uppercase">ENERGY ACCUMULATOR // 微活動蓄力儀</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">每週 150 分鐘微運動蓄力儀</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            點擊微動作，替身體能量槽快速充能
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">點擊加入今天的碎片活動：</span>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button onclick="addP09Energy(15)" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-orange text-left transition flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-black text-slate-800">🪜 捨電梯爬樓梯 3 層</div>
+                  <span class="text-xs text-slate-500 font-medium">心肺激活 + 下肢代謝</span>
+                </div>
+                <span class="text-xs font-black text-vivid-orange bg-orange-100 px-2 py-1 rounded-full">+15 分鐘</span>
+              </button>
+
+              <button onclick="addP09Energy(20)" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-orange text-left transition flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-black text-slate-800">🚶‍♀️ 午餐快走 20 分鐘</div>
+                  <span class="text-xs text-slate-500 font-medium">走出辦公室曬太陽吸收維D</span>
+                </div>
+                <span class="text-xs font-black text-vivid-orange bg-orange-100 px-2 py-1 rounded-full">+20 分鐘</span>
+              </button>
+
+              <button onclick="addP09Energy(10)" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-orange text-left transition flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-black text-slate-800">🙆‍♀️ 辦公椅擴胸伸展</div>
+                  <span class="text-xs text-slate-500 font-medium">放鬆胸大肌與肩頸淋巴</span>
+                </div>
+                <span class="text-xs font-black text-vivid-orange bg-orange-100 px-2 py-1 rounded-full">+10 分鐘</span>
+              </button>
+
+              <button onclick="addP09Energy(25)" class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-orange text-left transition flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-black text-slate-800">🧍 站立會議或升降桌</div>
+                  <span class="text-xs text-slate-500 font-medium">打斷連續久坐燃燒卡路里</span>
+                </div>
+                <span class="text-xs font-black text-vivid-orange bg-orange-100 px-2 py-1 rounded-full">+25 分鐘</span>
+              </button>
+            </div>
+
+            <button onclick="resetP09Energy()" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-600 transition mt-2">
+              🔄 重新歸零蓄力
+            </button>
+          </div>
+
+          <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-3xl pop-shadow-lg space-y-5 border border-slate-700 text-center">
+            <span class="px-3.5 py-1 rounded-full bg-vivid-mint/20 text-vivid-mint text-xs font-black border border-vivid-mint/30">
+              ⚡ POWER ACCUMULATOR
+            </span>
+
+            <div class="space-y-1">
+              <div class="text-xs text-slate-400 font-bold uppercase">本週已累積微活動時間</div>
+              <div id="p09-display-num" class="text-6xl sm:text-7xl font-black text-vivid-mint tracking-tight">
+                0 <span class="text-2xl text-slate-400 font-bold">/ 150 分鐘</span>
+              </div>
+            </div>
+
+            <div class="w-full h-4 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-white/10">
+              <div id="p09-bar" class="h-full rounded-full bg-gradient-to-r from-vivid-orange to-vivid-mint transition-all duration-500" style="width: 0%;"></div>
+            </div>
+
+            <div class="text-xs text-slate-300 font-medium" id="p09-msg">
+              請點擊左側碎片活動按鈕，替每週 150 分鐘運動量蓄力充能！
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P10: 夜間修復工程 (修正：全面改成 22:00) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="10"
+      data-scene="睡前滑手機追劇回信，身體以為天還沒黑，DNA 修復工程完全停擺！"
+      data-quote="睡眠不是偷懶，是體內最重要的修復程式"
+      data-notes="【修復機制】各位工程師最清楚，深夜伺服器離峰時，正是跑 DB Backup 和系統重組的最佳時機。人體的修復工程也是一樣，靠的就是『褪黑激素（Melatonin）』。褪黑激素是超強天然抗氧化劑，能抑止乳癌細胞生長。但只要睡前螢幕藍光一照，松果體立刻以為現在是正中午，褪黑激素直接斷崖式下跌！請大家今晚 22:00 前放下手機！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-purple uppercase">NIGHT REPAIR // 夜間修復工程</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">別讓螢幕藍光，吃掉體內修復記憶體</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            晚上 22:00 數位停機線：褪黑激素的抗癌奇蹟
+          </div>
+        </div>
+
+        <!-- 左右可點擊互動模式對比卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          <!-- 左框：熬夜藍光模式（點擊互動） -->
+          <div id="p10-box-blue" onclick="setP10Mode('blue')" class="cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-200 pop-shadow space-y-3.5 transition-all duration-300 hover:scale-[1.01] hover:border-red-400">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="text-base">📱</span>
+                <span class="text-xs font-black text-slate-800 uppercase tracking-wide">睡前藍光模式（熬夜追劇回信）</span>
+              </div>
+              <span id="p10-badge-blue" class="text-xs font-bold text-red-500 bg-red-50 px-2 py-0.5 rounded-full">點擊切換 ⚠️</span>
+            </div>
+            <div class="space-y-2.5 text-xs text-slate-600 font-medium">
+              <div class="p-2.5 rounded-xl bg-red-50/60 border border-red-100">
+                • <strong>藍光直射視網膜</strong>：大腦誤判為白晝，抑制松果體褪黑激素分泌達 <strong>80%</strong> 以上。
+              </div>
+              <div class="p-2.5 rounded-xl bg-red-50/60 border border-red-100">
+                • <strong>DNA 修復中斷</strong>：天然抑癌屏障當機，突變受損細胞逃脫深夜清查修正。
+              </div>
+              <div class="p-2.5 rounded-xl bg-red-50/60 border border-red-100">
+                • <strong>皮質醇居高不下</strong>：隔日晨間胰島素阻抗升高，全身維持慢性微發炎狀態。
+              </div>
+            </div>
+          </div>
+
+          <!-- 右框：22:00 數位停機模式（點擊互動） -->
+          <div id="p10-box-repair" onclick="setP10Mode('repair')" class="cursor-pointer bg-white p-6 rounded-3xl border-2 border-vivid-purple pop-shadow space-y-3.5 transition-all duration-300 hover:scale-[1.01]">
+            <div class="flex items-center justify-between border-b border-purple-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="text-base">🌙</span>
+                <span class="text-xs font-black text-vivid-purple uppercase tracking-wide">22:00 數位停機修復模式</span>
+              </div>
+              <span id="p10-badge-repair" class="text-xs font-black text-purple-700 bg-purple-100 px-2.5 py-0.5 rounded-full">天然抑癌開關 ✨</span>
+            </div>
+            <div class="space-y-2.5 text-xs text-slate-700 font-medium">
+              <div class="p-2.5 rounded-xl bg-purple-50/70 border border-purple-200">
+                • <strong>褪黑激素如期分泌</strong>：高濃度褪黑激素發揮強效抗氧化，中和自由基。
+              </div>
+              <div class="p-2.5 rounded-xl bg-purple-50/70 border border-purple-200">
+                • <strong>活化 NK 殺手細胞</strong>：深層睡眠中，免疫防衛隊全面清查並吞噬異變細胞。
+              </div>
+              <div class="p-2.5 rounded-xl bg-purple-50/70 border border-purple-200">
+                • <strong>荷爾蒙重新校準</strong>：下視丘-腦下垂體軸重置，雌激素分泌回歸穩定節律。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 點擊即時動態生理指標監測儀 -->
+        <div id="p10-monitor-panel" class="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-slate-800 transition-all duration-300 space-y-2">
+          <!-- JS 動態更新內容 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P11: 公費篩檢 (官方最新資料：114年起 40-74 歲全面給付，未滿 40 歲具家族史指引) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="11"
+      data-scene="政府出的錢，專門為女性安排的免費檢查，妳領過了嗎？"
+      data-quote="善用國家福利，是給自己最理性的健康禮物"
+      data-notes="【政策解鎖】很多人不知道，自 114 年 1 月 1 日起，衛福部國健署正式擴大公費乳癌篩檢補助對象：40 歲至 74 歲女性，全面享有每 2 年 1 次免費乳房 X 光攝影！如果未滿 40 歲但有一等親或二等親家族史，雖然公費攝影因乳腺緻密不建議過早輻射累積，但強烈建議 30 歲起由乳房外科醫師安排定期『乳房超音波』！">
+      
+      <div class="w-full space-y-5">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-2.5">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-teal-100 text-teal-800 text-[11px] font-black uppercase">
+              🏛️ 衛福部國健署 114 年最新官方擴大公費政策
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mt-1">公費篩檢：國家給科技女性的免費系統健檢</h2>
+          </div>
+          <div class="text-xs font-bold text-slate-500">
+            每 2 年 1 次 · 全額補助零自費
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- 資格判斷小工具 (7 cols) -->
+          <div class="lg:col-span-7 bg-white p-6 rounded-3xl border border-slate-200 pop-shadow space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+              <span class="text-xs font-black text-slate-400 uppercase tracking-wider">輸入年齡與勾選危險因子：</span>
+              <span class="text-xs text-slate-500 font-bold">即時判定篩檢資格與處置</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-slate-700">您的年齡：</span>
+                <input type="number" id="p11-age-input" value="42" min="18" max="85" oninput="checkP11Eligibility()" class="w-24 p-2.5 rounded-2xl border-2 border-slate-200 text-center text-xl font-black text-slate-900 focus:border-vivid-pink focus:outline-none">
+                <span class="text-sm font-bold text-slate-700">歲</span>
+              </div>
+              <div class="text-xs text-slate-400 font-medium">（國健署公費標準：40～74 歲每 2 年 1 次）</div>
+            </div>
+
+            <!-- 危險因子勾選清單（完全對齊 S5 先天因子標準） -->
+            <div class="space-y-2 text-xs">
+              <span class="font-black text-slate-700 block">請勾選符合的危險因子（精準對齊 S5 先天風險指標）：</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                  <input type="checkbox" onchange="checkP11Eligibility()" class="p11-risk-item w-4 h-4 rounded text-vivid-pink focus:ring-0">
+                  <span class="font-bold text-slate-800">🧬 一等親或二等親血親曾患乳癌</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                  <input type="checkbox" onchange="checkP11Eligibility()" class="p11-risk-item w-4 h-4 rounded text-vivid-pink focus:ring-0">
+                  <span class="font-bold text-slate-800">🔬 曾有良性非典型增生/癌症史</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                  <input type="checkbox" onchange="checkP11Eligibility()" class="p11-risk-item w-4 h-4 rounded text-vivid-pink focus:ring-0">
+                  <span class="font-bold text-slate-800">🩸 初經早(&lt;12歲)或停經晚(&gt;55歲)</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition">
+                  <input type="checkbox" onchange="checkP11Eligibility()" class="p11-risk-item w-4 h-4 rounded text-vivid-pink focus:ring-0">
+                  <span class="font-bold text-slate-800">👶 30歲後首胎/未生育/未哺乳</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition sm:col-span-2">
+                  <input type="checkbox" onchange="checkP11Eligibility()" class="p11-risk-item w-4 h-4 rounded text-vivid-pink focus:ring-0">
+                  <span class="font-bold text-slate-800">🥛 亞洲緻密型乳房（Dense Breast，X 光需防重疊遮蔽）</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 即時動態判定結果卡 -->
+            <div id="p11-result-box" class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-slate-800 space-y-1.5 transition-all">
+              <!-- JS 動態寫入 -->
+            </div>
+          </div>
+
+          <!-- 右側官方篩檢法規快查卡 (5 cols) -->
+          <div class="lg:col-span-5 bg-gradient-to-br from-teal-900 to-slate-900 text-white p-7 rounded-3xl pop-shadow-lg space-y-4 border border-teal-700">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-0.5 rounded-full bg-teal-400/20 text-teal-300 text-xs font-black border border-teal-400/30">
+                OFFICIAL POLICY // 官方公費規範
+              </span>
+              <span class="text-xs font-mono text-emerald-400">114.01.01 生效</span>
+            </div>
+
+            <div class="space-y-2 text-xs text-slate-200 leading-relaxed font-medium">
+              <div class="p-3 rounded-2xl bg-white/10 space-y-1">
+                <div class="font-black text-vivid-mint text-sm">✅ 一般族群（無危險因子）：</div>
+                <div><strong>40 歲至 74 歲女性</strong>，每 2 年 1 次公費乳房 X 光攝影檢查（完全免費，持健保卡至特約機構受檢）。</div>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/10 space-y-1">
+                <div class="font-black text-vivid-orange text-sm">⚠️ 高風險族群（具家族史或個人病史）：</div>
+                <div><strong>40 歲以上</strong>同享公費攝影，強烈建議每年加做「乳房超音波」；<strong>未滿 40 歲</strong>公費不宜過早曝露 X 光，建議 30 歲起自費或門診做乳房超音波！</div>
+              </div>
+            </div>
+
+            <div class="text-[11px] text-slate-400 text-center pt-1 border-t border-white/10">
+              篩檢可降低 41% 乳癌死亡率 · 早期偵測率逾 60%
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P12: 打破篩檢 5 大迷思 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="12"
+      data-scene="聽說很痛？聽說有輻射？沒家族史不用驗？今天一次講清楚！"
+      data-quote="戳破迷思，恐懼就失去控制妳的力量"
+      data-notes="【迷思粉碎】很多人裹足不前，是因為聽信了許多未經證實的迷思。今天梁醫師化身迷思粉碎機，為大家現場戳破 5 大迷思！大家點擊大螢幕上的每一張迷思卡，我們立刻蓋上『已戳破』印章，並用最新的醫學證據讓大家安心！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">MYTH BUSTER // 迷思粉碎機</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">打破篩檢 5 大迷思：點擊加蓋戳破印章</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            點擊任一迷思卡片，彈出科學事實真相
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3.5">
+          <div onclick="bustP12Myth(this, '80% 以上的乳癌患者根本沒有家族史！環境、荷爾蒙、高壓等後天因素才是大宗！')" class="p12-card bg-white p-5 rounded-3xl border-2 border-slate-200 pop-shadow cursor-pointer transition flex flex-col justify-between h-44">
+            <div class="space-y-1">
+              <span class="text-xs font-black text-slate-400">MYTH 01</span>
+              <div class="text-sm font-black text-slate-900">家裡沒人得過，我就很安全？</div>
+            </div>
+            <div class="myth-stamp text-xs font-black text-red-500 border border-red-300 rounded-full px-2 py-1 text-center bg-red-50">
+              ❌ 迷思點擊戳破
+            </div>
+          </div>
+
+          <div onclick="bustP12Myth(this, '壓迫只有 3-5 秒！避開生理期前一週（水腫期），疼痛感直接大降 70%！')" class="p12-card bg-white p-5 rounded-3xl border-2 border-slate-200 pop-shadow cursor-pointer transition flex flex-col justify-between h-44">
+            <div class="space-y-1">
+              <span class="text-xs font-black text-slate-400">MYTH 02</span>
+              <div class="text-sm font-black text-slate-900">聽說會被夾到瘀青痛死？</div>
+            </div>
+            <div class="myth-stamp text-xs font-black text-red-500 border border-red-300 rounded-full px-2 py-1 text-center bg-red-50">
+              ❌ 迷思點擊戳破
+            </div>
+          </div>
+
+          <div onclick="bustP12Myth(this, '一次乳房攝影輻射僅 0.7 毫西弗，相當於坐飛機去舊金山來回一趟！安全性極高！')" class="p12-card bg-white p-5 rounded-3xl border-2 border-slate-200 pop-shadow cursor-pointer transition flex flex-col justify-between h-44">
+            <div class="space-y-1">
+              <span class="text-xs font-black text-slate-400">MYTH 03</span>
+              <div class="text-sm font-black text-slate-900">X 光射線輻射量很高會致癌？</div>
+            </div>
+            <div class="myth-stamp text-xs font-black text-red-500 border border-red-300 rounded-full px-2 py-1 text-center bg-red-50">
+              ❌ 迷思點擊戳破
+            </div>
+          </div>
+
+          <div onclick="bustP12Myth(this, '早期原位癌（第0期）多數是微小鈣化點，手摸根本摸不出來！只能靠攝影！')" class="p12-card bg-white p-5 rounded-3xl border-2 border-slate-200 pop-shadow cursor-pointer transition flex flex-col justify-between h-44">
+            <div class="space-y-1">
+              <span class="text-xs font-black text-slate-400">MYTH 04</span>
+              <div class="text-sm font-black text-slate-900">我平時洗澡摸沒有硬塊就沒事？</div>
+            </div>
+            <div class="myth-stamp text-xs font-black text-red-500 border border-red-300 rounded-full px-2 py-1 text-center bg-red-50">
+              ❌ 迷思點擊戳破
+            </div>
+          </div>
+
+          <div onclick="bustP12Myth(this, '台灣 40 歲以下乳癌佔比達 8-10%！年輕女性若摸到硬塊或有家族史，超音波是第一首選！')" class="p12-card bg-white p-5 rounded-3xl border-2 border-slate-200 pop-shadow cursor-pointer transition flex flex-col justify-between h-44">
+            <div class="space-y-1">
+              <span class="text-xs font-black text-slate-400">MYTH 05</span>
+              <div class="text-sm font-black text-slate-900">我才 30 幾歲，乳癌跟我無關？</div>
+            </div>
+            <div class="myth-stamp text-xs font-black text-red-500 border border-red-300 rounded-full px-2 py-1 text-center bg-red-50">
+              ❌ 迷思點擊戳破
+            </div>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-3xl bg-slate-900 text-white pop-shadow flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">💡</span>
+            <span id="p12-detail-text" class="text-sm font-bold text-slate-200">
+              點擊上方任一迷思，立刻查看梁醫師科學解讀！
+            </span>
+          </div>
+          <span class="text-xs font-black text-vivid-mint uppercase">FACTS ONLY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P13: 乳房 X 光攝影檢查流程實戰拆解 (升級為互動式 Stepper 模擬器) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="13"
+      data-scene="踏進檢查室之前，先讓心裡有張清楚的地圖。"
+      data-quote="知道每一步在做什麼，恐懼就減少一半"
+      data-notes="【互動實戰拆解】很多女生第一次做乳房攝影，因為不知道會發生什麼事，身體僵硬緊繃，結果壓迫時痛感加倍。今天我們直接在螢幕上模擬完整的 4 個步驟！大家可以點擊步驟切換，尤其在第 3 步，我們做了一個『3 秒微壓迫倒數體驗』，讓大家親身體會只要配合吐氣，時間咻一下就過了！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-teal uppercase">INTERACTIVE STEPPER // 流程實境模擬</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">乳房 X 光攝影檢查流程實戰拆解</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            全女放射師環境 · 點擊步驟進入實境體驗
+          </div>
+        </div>
+
+        <!-- 4 步驟切換頁籤 -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <button onclick="setP13Step(1)" id="p13-step-btn-1" class="p13-step-btn p-3.5 rounded-2xl bg-white border-2 border-vivid-teal pop-shadow text-left transition flex items-center gap-3">
+            <span class="w-8 h-8 rounded-xl bg-teal-100 text-vivid-teal font-black flex items-center justify-center text-sm">1</span>
+            <div>
+              <div class="text-xs text-slate-400 font-bold uppercase">STEP 01</div>
+              <div class="text-sm font-black text-slate-900">更衣準備</div>
+            </div>
+          </button>
+
+          <button onclick="setP13Step(2)" id="p13-step-btn-2" class="p13-step-btn p-3.5 rounded-2xl bg-white border border-slate-200 pop-shadow text-left transition hover:border-vivid-teal flex items-center gap-3">
+            <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-600 font-black flex items-center justify-center text-sm">2</span>
+            <div>
+              <div class="text-xs text-slate-400 font-bold uppercase">STEP 02</div>
+              <div class="text-sm font-black text-slate-900">專業擺位</div>
+            </div>
+          </button>
+
+          <button onclick="setP13Step(3)" id="p13-step-btn-3" class="p13-step-btn p-3.5 rounded-2xl bg-white border border-slate-200 pop-shadow text-left transition hover:border-vivid-pink flex items-center gap-3">
+            <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-600 font-black flex items-center justify-center text-sm">3</span>
+            <div>
+              <div class="text-xs text-slate-400 font-bold uppercase">STEP 03</div>
+              <div class="text-sm font-black text-slate-900">微壓迫取像</div>
+            </div>
+          </button>
+
+          <button onclick="setP13Step(4)" id="p13-step-btn-4" class="p13-step-btn p-3.5 rounded-2xl bg-white border border-slate-200 pop-shadow text-left transition hover:border-vivid-teal flex items-center gap-3">
+            <span class="w-8 h-8 rounded-xl bg-slate-100 text-slate-600 font-black flex items-center justify-center text-sm">4</span>
+            <div>
+              <div class="text-xs text-slate-400 font-bold uppercase">STEP 04</div>
+              <div class="text-sm font-black text-slate-900">雙角度4張搞定</div>
+            </div>
+          </button>
+        </div>
+
+        <!-- 步驟內容展示卡 -->
+        <div class="bg-white p-7 rounded-3xl border border-slate-200 pop-shadow grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-8 space-y-3">
+            <div class="flex items-center gap-3">
+              <span id="p13-step-badge" class="px-3 py-1 rounded-full bg-teal-100 text-vivid-teal text-xs font-black">
+                步驟 1 / 4 · 更衣與前置準備
+              </span>
+              <span id="p13-step-time" class="text-xs font-mono text-slate-400 font-bold">耗時約 2 分鐘</span>
+            </div>
+
+            <h3 id="p13-step-title" class="text-2xl font-black text-slate-900">
+              換穿檢查袍，切勿在胸部塗抹爽身粉或止汗劑
+            </h3>
+
+            <p id="p13-step-desc" class="text-sm text-slate-600 leading-relaxed font-medium">
+              褪去上半身衣物與項鍊耳環，換穿專用檢查袍。<strong>特別注意：</strong>檢查當天胸部與腋下切勿塗抹止汗劑、爽身粉、護膚乳液，以免其中的礦物顆粒在 X 光下產生「假鈣化點」假影，引發不必要的虛驚！
+            </p>
+
+            <div id="p13-step-tip" class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700">
+              💡 穿著建議：當天穿著「兩件式上衣＋長褲/裙」，穿脫更衣最自在！
+            </div>
+          </div>
+
+          <!-- 右側互動體驗模組 (4 cols) -->
+          <div class="lg:col-span-4 bg-slate-50 p-6 rounded-3xl border border-slate-200 flex flex-col justify-center items-center text-center space-y-4">
+            <div id="p13-interactive-box" class="w-full space-y-3">
+              <span class="text-xs font-black text-slate-400 uppercase tracking-wider">互動模擬體驗</span>
+              <div id="p13-sim-display" class="text-4xl font-black text-vivid-teal">👕 更衣就緒</div>
+              <div id="p13-sim-sub" class="text-xs text-slate-500 font-medium">請配合女放射師引導進入檢查台</div>
+              
+              <!-- 倒數按鈕（Step 3 專用） -->
+              <button onclick="runP13Sim()" id="p13-sim-action-btn" class="w-full py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-black text-xs transition">
+                進入下一流程 ➔
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P14: BI-RADS 報告分級解碼 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="14"
+      data-scene="健檢報告寄到家，打開看見寫著 BI-RADS 0 或 3，心臟漏跳半拍？"
+      data-quote="讀懂分級代碼，掌握健康主控權"
+      data-notes="【讀懂報告】健檢報告寄來，很多人看見英文字母和數字就嚇得睡不著覺。其實 BI-RADS 就像軟體裡的 HTTP Status Code！200 代表 OK（1類正常），304 代表快取追蹤（3類可能良性半年複查）。最常見的『0 類』不是第 0 期癌，而是『影像看不清楚，需要加做超音波補足資料』！大家看右側點選各類，立刻懂口訣！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">REPORT DECODER // 報告解碼</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">BI-RADS 報告分級解碼：看懂分流口訣</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            國際放射醫學會乳房影像標準判定
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-6 gap-3">
+          <button onclick="showP14Level(0)" class="p14-btn p-4 rounded-2xl bg-white border-2 border-vivid-pink pop-shadow text-center space-y-1 transition">
+            <div class="text-2xl font-black text-vivid-pink">類別 0</div>
+            <div class="text-xs font-bold text-slate-800">需加做檢查</div>
+            <span class="text-[10px] text-pink-600 bg-pink-100 px-1.5 py-0.5 rounded-full block">評估未完成</span>
+          </button>
+
+          <button onclick="showP14Level(1)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-mint">
+            <div class="text-2xl font-black text-vivid-mint">類別 1</div>
+            <div class="text-xs font-bold text-slate-800">完全正常</div>
+            <span class="text-[10px] text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full block">2年後再篩</span>
+          </button>
+
+          <button onclick="showP14Level(2)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-teal">
+            <div class="text-2xl font-black text-vivid-teal">類別 2</div>
+            <div class="text-xs font-bold text-slate-800">良性發現</div>
+            <span class="text-[10px] text-teal-700 bg-teal-100 px-1.5 py-0.5 rounded-full block">囊腫/纖維腺瘤</span>
+          </button>
+
+          <button onclick="showP14Level(3)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-amber">
+            <div class="text-2xl font-black text-vivid-amber">類別 3</div>
+            <div class="text-xs font-bold text-slate-800">可能良性</div>
+            <span class="text-[10px] text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full block">半年後複查</span>
+          </button>
+
+          <button onclick="showP14Level(4)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-orange">
+            <div class="text-2xl font-black text-vivid-orange">類別 4</div>
+            <div class="text-xs font-bold text-slate-800">疑似異常</div>
+            <span class="text-[10px] text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded-full block">建議組織切片</span>
+          </button>
+
+          <button onclick="showP14Level(5)" class="p14-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-red-500">
+            <div class="text-2xl font-black text-red-500">類別 5</div>
+            <div class="text-xs font-bold text-slate-800">高度疑似</div>
+            <span class="text-[10px] text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full block">積極外科處置</span>
+          </button>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-900 text-white pop-shadow-lg space-y-2 border border-slate-800">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-vivid-pink uppercase tracking-wider" id="p14-badge">類別 0 解碼：不是第 0 期癌！</span>
+            <span class="text-xs font-mono text-slate-400">STATUS 0 // RE-EVALUATE</span>
+          </div>
+          <div class="text-lg font-bold text-white" id="p14-title">「影像不完全，請儘速加做乳房超音波比對」</div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium" id="p14-desc">
+            亞洲女性 70% 屬於緻密型乳房，乳腺在 X 光下白茫茫一片，可能遮蔽微小病灶。類別 0 只是請妳掛號乳房外科，搭配超音波掃描一下，90% 以上加做後都是良性水泡或正常乳腺，千萬不要自己嚇自己！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P14-1: 篩檢一種不夠？檢查工具總覽地圖 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="15"
+      data-scene="同事做超音波，主管做攝影，到底差別在哪？我該做哪一種？"
+      data-quote="工具各有所長，互補才是最強防護網"
+      data-notes="【工具地圖】大家最常問我：『梁醫師，我只做超音波行不行？可不可以不要夾攝影？』答案是：不行！因為這兩種工具的專長完全不同。乳房攝影專看『微小鈣化點（第0期原位癌唯一徵兆）』；超音波專看『實心腫塊與水泡』。兩者搭配，才是天衣無縫的雙雷達系統！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-purple uppercase">TOOL LANDSCAPE // 工具總覽</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">篩檢一種不夠？檢查工具總覽地圖</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            亞洲女性緻密型乳房必備的雙重雷達
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-7 rounded-3xl border-2 border-vivid-pink pop-shadow space-y-4">
+            <div class="flex items-center justify-between border-b border-pink-100 pb-3">
+              <span class="text-xs font-black text-vivid-pink uppercase tracking-wider">🔬 乳房 X 光攝影（Mammography）</span>
+              <span class="text-xs font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">公費第一線</span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 font-medium">
+              <div class="flex items-start gap-2">
+                <span class="text-vivid-pink font-bold">🎯 最強優勢：</span>
+                <span>抓微小鈣化點的第一高手！能偵測摸不到的第 0 期原位癌。</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-400 font-bold">⚠️ 限制盲區：</span>
+                <span>緻密乳房（乳腺密集白茫茫）可能遮住腫塊，需微壓迫 3-5 秒。</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border-2 border-vivid-teal pop-shadow space-y-4">
+            <div class="flex items-center justify-between border-b border-teal-100 pb-3">
+              <span class="text-xs font-black text-vivid-teal uppercase tracking-wider">📡 乳房超音波（Ultrasound）</span>
+              <span class="text-xs font-black text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full">無輻射零痛感</span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 font-medium">
+              <div class="flex items-start gap-2">
+                <span class="text-vivid-teal font-bold">🎯 最強優勢：</span>
+                <span>分辨水泡（囊腫）還是實心腫瘤；亞洲緻密乳房的最佳透視搭檔。</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-slate-400 font-bold">⚠️ 限制盲區：</span>
+                <span>完全看不到初期的微小鈣化點！無法單獨取代攝影做首選篩檢。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-purple-900 font-bold flex items-center justify-between">
+          <span>💡 梁醫師金句：攝影是「看鈣化的鷹眼」，超音波是「穿透濃霧的雷達」，兩者聯手才是 100 分防護！</span>
+          <span class="font-mono text-vivid-purple">DUAL RADAR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P14-2: 加做 4 種檢查——對症派工羅盤 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="16"
+      data-scene="醫生說要加做檢查，到底是加做什麼？需要自費嗎？"
+      data-quote="對症派工，每一分健康預算都花在刀口上"
+      data-notes="【精準派工】如果初步報告有疑慮，醫師通常會建議加做 4 種進階檢查之一：超音波、放大攝影、3D DBT 斷層攝影或乳房 MRI。大家看大螢幕，這就是我們的『檢查派工羅盤』。點選不同的工具，立刻了解它的適用時機、做法、優缺點，讓大家面對自費或加做時不再迷惘！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-orange uppercase">DECISION COMPASS // 派工羅盤</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">加做 4 種檢查：對症派工決策羅盤</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            點擊切換檢查工具，查看做法與優缺點
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <button onclick="setP142Tool('us')" id="p142-btn-us" class="p142-btn p-4 rounded-2xl bg-white border-2 border-vivid-purple pop-shadow text-left space-y-1 transition">
+            <span class="text-xs font-black text-vivid-purple">01 // 首選搭檔</span>
+            <div class="text-sm font-black text-slate-900">乳房超音波</div>
+          </button>
+          <button onclick="setP142Tool('mag')" id="p142-btn-mag" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition hover:border-vivid-pink">
+            <span class="text-xs font-black text-slate-400">02 // 鈣化專用</span>
+            <div class="text-sm font-black text-slate-900">放大／局部壓迫</div>
+          </button>
+          <button onclick="setP142Tool('dbt')" id="p142-btn-dbt" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition hover:border-vivid-teal">
+            <span class="text-xs font-black text-slate-400">03 // 立體薄切</span>
+            <div class="text-sm font-black text-slate-900">3D 斷層合成 (DBT)</div>
+          </button>
+          <button onclick="setP142Tool('mri')" id="p142-btn-mri" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition hover:border-amber-500">
+            <span class="text-xs font-black text-slate-400">04 // 最高敏感度</span>
+            <div class="text-sm font-black text-slate-900">乳房磁振造影 (MRI)</div>
+          </button>
+        </div>
+
+        <div class="bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <span id="p142-detail-badge" class="px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-black">
+              超音波（Ultrasound）
+            </span>
+            <span id="p142-detail-tag" class="text-xs font-bold text-slate-500">無輻射 · 零痛感</span>
+          </div>
+
+          <div class="text-lg font-black text-slate-900" id="p142-detail-title">
+            時機：攝影報告 0 類釐清、年輕緻密乳房、自己摸到硬塊時的第一首選
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-3.5 rounded-2xl bg-slate-50 space-y-1">
+              <span class="font-black text-slate-500">做法與過程：</span>
+              <p class="text-slate-700 leading-relaxed font-medium" id="p142-detail-how">
+                平躺塗抹水性凝膠，探頭滑動掃描乳房與腋下淋巴，約 10-15 分鐘完成，無任何不適。
+              </p>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-emerald-50 space-y-1">
+              <span class="font-black text-emerald-800">優點與強項：</span>
+              <p class="text-emerald-900 leading-relaxed font-medium" id="p142-detail-pro">
+                能清楚分辨是液體水泡（囊腫）還是實心腫瘤；亞洲緻密乳房的最佳透視搭檔。
+              </p>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-rose-50 space-y-1">
+              <span class="font-black text-rose-800">缺點與限制：</span>
+              <p class="text-rose-900 leading-relaxed font-medium" id="p142-detail-con">
+                完全看不到初期的微小鈣化點！因此無法單獨取代乳房攝影做第一線普篩。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P15 (Slide 17): 身體在送 Error Code！七大乳房異常警訊 (升級：每格專業 SVG 醫療小圖示) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="17"
+      data-scene="一旦摸到或看到這些異常，立刻跳過健檢，直奔乳房外科！"
+      data-quote="聽懂身體的警報，任何異常都不拖延"
+      data-notes="【異常警訊】進入第四部分：如果真的發現異常怎麼辦？請大家記住這 7 個乳房異常警訊。在軟體裡這叫 Fatal Error！這時候請不要再等公司年度健檢，更不要等公費通知單，請立刻掛號乳房外科門診！絕大多數硬塊仍是良性纖維腺瘤或水泡，但只有專業醫師能替妳確認！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-red-500 uppercase">FATAL ERROR // 異常警訊</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">身體在送 Error Code！七大乳房異常警訊</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            出現任一徵兆：跳過篩檢，直奔乳房外科門診
+          </div>
+        </div>
+
+        <!-- 七大警訊互動方塊矩陣（可點擊互動切換深層鑑別面板） -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+          <!-- 1. 無痛硬塊 -->
+          <div id="p17-card-0" onclick="selectP17Symptom(0)" class="p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border-2 border-red-500 bg-red-50/40 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105">
+            <div class="w-11 h-11 mx-auto rounded-2xl bg-rose-50 flex items-center justify-center">
+              <svg class="w-6 h-6 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9a9 9 0 0 0-9-9z"/>
+                <circle cx="14" cy="11" r="3.5" fill="#FF3366" stroke="#E11D48"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-slate-900">無痛單側腫塊</div>
+              <span class="text-[10px] text-red-600 bg-red-100 px-1.5 py-0.5 rounded-full block mt-1">最常見徵兆</span>
+            </div>
+          </div>
+
+          <!-- 2. 皮膚凹陷 -->
+          <div id="p17-card-1" onclick="selectP17Symptom(1)" class="p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border border-slate-200 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105 hover:border-amber-400">
+            <div class="w-11 h-11 mx-auto rounded-2xl bg-amber-50 flex items-center justify-center">
+              <svg class="w-6 h-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 14c4-1 6-7 9-7s5 6 9 7"/>
+                <path d="M12 8v8m-3-3l3 3 3-3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-slate-900">局部皮膚凹陷</div>
+              <span class="text-[10px] text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full block mt-1">酒窩徵兆</span>
+            </div>
+          </div>
+
+          <!-- 3. 乳頭異常分泌 -->
+          <div id="p17-card-2" onclick="selectP17Symptom(2)" class="p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border border-slate-200 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105 hover:border-rose-400">
+            <div class="w-11 h-11 mx-auto rounded-2xl bg-rose-50 flex items-center justify-center">
+              <svg class="w-6 h-6 text-rose-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3a6 6 0 0 1 6 6c0 4-6 11-6 11S6 13 6 9a6 6 0 0 1 6-6z" fill="#FFE4E6"/>
+                <circle cx="12" cy="9" r="2.5" fill="#E11D48"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-slate-900">乳頭異常分泌</div>
+              <span class="text-[10px] text-rose-600 bg-rose-100 px-1.5 py-0.5 rounded-full block mt-1">單側帶血絲</span>
+            </div>
+          </div>
+
+          <!-- 4. 乳頭凹陷內縮 -->
+          <div id="p17-card-3" onclick="selectP17Symptom(3)" class="p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border border-slate-200 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105 hover:border-purple-400">
+            <div class="w-11 h-11 mx-auto rounded-2xl bg-purple-50 flex items-center justify-center">
+              <svg class="w-6 h-6 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 6v10m-3-3l3 3 3-3" stroke-linecap="round"/>
+                <circle cx="12" cy="16" r="1.5" fill="#7B61FF"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-slate-900">乳頭局部內縮</div>
+              <span class="text-[10px] text-purple-600 bg-purple-100 px-1.5 py-0.5 rounded-full block mt-1">近期新凹陷</span>
+            </div>
+          </div>
+
+          <!-- 5. 橘皮樣水腫發紅 -->
+          <div id="p17-card-4" onclick="selectP17Symptom(4)" class="p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border border-slate-200 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105 hover:border-orange-400">
+            <div class="w-11 h-11 mx-auto rounded-2xl bg-orange-50 flex items-center justify-center">
+              <svg class="w-6 h-6 text-orange-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9"/>
+                <circle cx="9" cy="9" r="1.2" fill="#FF8A3D"/>
+                <circle cx="15" cy="9" r="1.2" fill="#FF8A3D"/>
+                <circle cx="12" cy="12" r="1.2" fill="#FF8A3D"/>
+                <circle cx="9" cy="15" r="1.2" fill="#FF8A3D"/>
+                <circle cx="15" cy="15" r="1.2" fill="#FF8A3D"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-slate-900">皮膚橘皮樣變</div>
+              <span class="text-[10px] text-orange-600 bg-orange-100 px-1.5 py-0.5 rounded-full block mt-1">淋巴水腫</span>
+            </div>
+          </div>
+
+          <!-- 6. 雙側形狀不對稱 -->
+          <div id="p17-card-5" onclick="selectP17Symptom(5)" class="p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border border-slate-200 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105 hover:border-teal-400">
+            <div class="w-11 h-11 mx-auto rounded-2xl bg-teal-50 flex items-center justify-center">
+              <svg class="w-6 h-6 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 14a5 5 0 0 1 5-5c2.5 0 3.5 2 3 5s-2 5-5 5-3-2-3-5z"/>
+                <path d="M12 14c.5-5 4-7 7-4s1 7-2 9-5 0-5-5z" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-slate-900">形狀突然改變</div>
+              <span class="text-[10px] text-teal-700 bg-teal-100 px-1.5 py-0.5 rounded-full block mt-1">兩側不對稱</span>
+            </div>
+          </div>
+
+          <!-- 7. 腋下淋巴腫塊 -->
+          <div id="p17-card-6" onclick="selectP17Symptom(6)" class="p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border border-slate-200 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105 hover:border-blue-400">
+            <div class="w-11 h-11 mx-auto rounded-2xl bg-blue-50 flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4l8 8m0 0l8-8M12 12v9"/>
+                <circle cx="16" cy="7" r="3.5" fill="#3B82F6" stroke="#1D4ED8"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-black text-slate-900">腋下淋巴腫塊</div>
+              <span class="text-[10px] text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded-full block mt-1">堅硬無痛感</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 互動式臨床醫師深層鑑別面板 -->
+        <div id="p17-detail-panel" class="bg-white p-5 rounded-3xl border-2 border-slate-200 pop-shadow transition-all duration-300">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-3 gap-2">
+            <div class="flex items-center gap-2.5">
+              <span id="p17-detail-icon" class="text-2xl">🚨</span>
+              <div>
+                <span id="p17-detail-badge" class="px-2.5 py-0.5 rounded-full text-xs font-black bg-red-100 text-red-700">CLINICAL AUDIT</span>
+                <span id="p17-detail-name" class="ml-2 font-black text-slate-900 text-base">無痛單側腫塊</span>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-slate-400">👆 點選上方 7 個小方格切換鑑別要點</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3.5 text-xs">
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+              <div class="font-black text-slate-800 flex items-center gap-1.5">
+                <span>✋</span> 觸摸與外觀特徵
+              </div>
+              <p id="p17-detail-feel" class="text-slate-600 leading-relaxed font-medium">
+                多數為單側、質地堅硬如小石頭、邊緣不平整、推動時固定在深層組織。
+              </p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-1">
+              <div class="font-black text-amber-900 flex items-center gap-1.5">
+                <span>⚖️</span> 良性 vs 惡性鑑別
+              </div>
+              <p id="p17-detail-diff" class="text-amber-900/80 leading-relaxed font-medium">
+                「會痛」多為荷爾蒙水泡或乳腺炎；反而「完全不會痛、持續增大」的硬塊惡性機率顯著提高！
+              </p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-rose-50/60 border border-rose-200 space-y-1">
+              <div class="font-black text-rose-900 flex items-center gap-1.5">
+                <span>🩺</span> 梁醫師建議處置
+              </div>
+              <p id="p17-detail-action" class="text-rose-900/80 leading-relaxed font-medium">
+                切勿自行大力推拿按摩！請跳過常規健檢排程，直接至醫院乳房外科由專科醫師安排超音波。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P16: 乳房自我檢查 3 步驟實戰 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="18"
+      data-scene="洗澡時順便花 2 分鐘，做自己身體最貼心的守門員。"
+      data-quote="熟悉自己的身體，才能在第一時間發現變化"
+      data-notes="【自我檢查】乳房自我檢查不能取代每 2 年一次的乳房攝影，但它是妳最貼身的即時警報器。口訣非常簡單：『看、觸、臥』。看外觀、沐浴時用三指指腹打圈觸摸、躺下時深層按壓。最好的時機是『生理期結束後 7 到 10 天』，此時乳腺最鬆軟，最容易摸出真實狀況！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">SELF-EXAM // 自我檢查</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">乳房自我檢查 3 步驟實戰：看、觸、臥</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            黃金時機：生理期結束後第 7～10 天
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-7 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-pink-100 text-vivid-pink flex items-center justify-center text-xl font-black">
+              👀
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-black text-vivid-pink uppercase">STEP 1 // 鏡前觀察</span>
+              <h3 class="text-2xl font-black text-slate-900">一、看外觀</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              雙手自然下垂、雙手叉腰、雙手高舉過頭。在鏡前仔細觀察乳房兩側大小是否對稱、皮膚有無凹陷或橘皮、乳頭有無牽拉內縮。
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-orange-100 text-vivid-orange flex items-center justify-center text-xl font-black">
+              ✋
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-black text-vivid-orange uppercase">STEP 2 // 沐浴指摸</span>
+              <h3 class="text-2xl font-black text-slate-900">二、觸滑摸</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              洗澡時抹上沐浴乳，右手摸左乳、左手摸右乳。以食指、中指、無名指三指「指腹平貼」，順時針或同心圓打圈滑動，不可用抓捏的！
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border-2 border-slate-200 pop-shadow interactive-card space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-mint-100 text-vivid-mint flex items-center justify-center text-xl font-black">
+              🛏️
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-black text-vivid-mint uppercase">STEP 3 // 平躺深層</span>
+              <h3 class="text-2xl font-black text-slate-900">三、臥深觸</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              平躺床上，受檢側肩下墊小枕頭讓乳房展平。同樣以指腹全面觸診乳房內側、外側，最後一路往上摸至腋下淋巴結區域。
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 pop-shadow flex items-center justify-between text-xs font-bold text-slate-700">
+          <span>💡 提醒：停經後女性可固定在每個月「1 號」做自我檢查，養成規律守護習慣！</span>
+          <span class="text-vivid-pink font-black">MONTHLY ROUTINE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P17: 數據說話：早期發現近 100% 存活率階梯 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="19"
+      data-scene="乳癌真的很可怕嗎？看數據：只要抓得早，根本不用怕！"
+      data-quote="早期發現，乳癌就像慢性病一樣完全可以治癒"
+      data-notes="【希望數據】今天這場演講最重要的核心數據就是這一張！大家看大螢幕：第 0 期（原位癌）5 年存活率 99.9%，幾乎是百分之百！第 1 期高達 95.6%。就算到了第 2 期也有近 9 成！現在的醫療技術有微創保留手術、標靶藥物、免疫治療，只要早期抓出來，絕大多數女性都能重返職場、繼續精彩生活！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-mint uppercase">SURVIVAL CURVE // 存活率階梯</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">數據說話：早期發現近 100% 存活率階梯</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            衛福部國健署台灣癌症登記統計五年存活率
+          </div>
+        </div>
+
+        <div class="grid grid-cols-5 gap-3">
+          <button onclick="setP17Stage(0)" class="p17-btn p-4 rounded-2xl bg-white border-2 border-vivid-mint pop-shadow text-center space-y-1 transition">
+            <span class="text-xs font-black text-vivid-mint">第 0 期</span>
+            <div class="text-xl font-black text-slate-900">99.9%</div>
+            <span class="text-[10px] text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full block">原位癌</span>
+          </button>
+
+          <button onclick="setP17Stage(1)" class="p17-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-mint">
+            <span class="text-xs font-black text-slate-400">第 1 期</span>
+            <div class="text-xl font-black text-slate-900">95.6%</div>
+            <span class="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-full block">< 2cm 無淋巴</span>
+          </button>
+
+          <button onclick="setP17Stage(2)" class="p17-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-amber">
+            <span class="text-xs font-black text-slate-400">第 2 期</span>
+            <div class="text-xl font-black text-slate-900">89.7%</div>
+            <span class="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-full block">2-5cm 局限</span>
+          </button>
+
+          <button onclick="setP17Stage(3)" class="p17-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-vivid-orange">
+            <span class="text-xs font-black text-slate-400">第 3 期</span>
+            <div class="text-xl font-black text-slate-900">72.3%</div>
+            <span class="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-full block">淋巴轉移較多</span>
+          </button>
+
+          <button onclick="setP17Stage(4)" class="p17-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-center space-y-1 transition hover:border-red-500">
+            <span class="text-xs font-black text-slate-400">第 4 期</span>
+            <div class="text-xl font-black text-slate-900">36.1%</div>
+            <span class="text-[10px] text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-full block">遠端轉移</span>
+          </button>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-7 rounded-3xl pop-shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-700">
+          <div class="space-y-2">
+            <div class="flex items-center gap-3">
+              <span id="p17-stage-badge" class="px-3 py-1 rounded-full bg-vivid-mint/20 text-vivid-mint text-xs font-black border border-vivid-mint/30">
+                第 0 期：原位癌（非侵襲性）
+              </span>
+              <span class="text-xs text-slate-400">五年存活率</span>
+            </div>
+            <p id="p17-stage-desc" class="text-sm text-slate-200 leading-relaxed font-medium">
+              癌細胞完全局限在乳腺管或乳小葉內部，根本還沒跑出基底膜！只要微創切除，不需要化療，幾乎 100% 治癒！
+            </p>
+          </div>
+          <div id="p17-rate-display" class="text-6xl sm:text-7xl font-black text-vivid-mint tracking-tight">
+            99.9%
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P18: 你不是一個人在戰鬥：台灣支持網絡 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="20"
+      data-scene="萬一確診，台灣有全世界最溫暖、最完整的醫療支持網絡！"
+      data-quote="尋求支持不是軟弱，是最聰明的資源配置"
+      data-notes="【支持網絡】在台灣面對乳癌，妳絕對不是孤軍奮戰。台灣有非常強大的病友團體、基金會、心理諮商與多專科醫療團隊。如果真的遇到疑慮，各大醫院都有第二意見諮詢門診。把資源找齊，身邊永遠有專業的力量陪妳通關！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-teal uppercase">SUPPORT NETWORK // 支持網絡</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">你不是一個人在戰鬥：台灣乳癌支持網絡</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            全方位多專科整合醫療團隊
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
+            <span class="text-3xl">🤝</span>
+            <div class="text-lg font-black text-slate-900">病友協會社群</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              社團法人中華民國乳癌病友協會（TBCA）、勇源基金會等，提供學姊一對一陪伴與康復指引。
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
+            <span class="text-3xl">👩‍⚕️</span>
+            <div class="text-lg font-black text-slate-900">多專科醫療團隊</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              乳房外科、腫瘤內科、放射腫瘤科、整型外科共同會診，量身定制個人化最佳策略。
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
+            <span class="text-3xl">❤️</span>
+            <div class="text-lg font-black text-slate-900">心理與社工資源</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              各大醫學中心均配置臨床心理師與醫療社工，協助重大傷病卡申請與情緒支持。
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
+            <span class="text-3xl">🩺</span>
+            <div class="text-lg font-black text-slate-900">第二意見門診</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              尊重每位病患知的權利，安心帶著影像光碟尋求第二意見，讓治療決策更篤定。
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-teal-50 border border-teal-200 text-xs text-teal-900 font-bold flex items-center justify-between">
+          <span>💡 台灣資源專線：乳癌病友協會 (02) 2557-8050 ｜ 癌症希望基金會 0800-888-999</span>
+          <span class="font-mono text-vivid-teal">WE ARE HERE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P19: 今天就能設定的 3 個健康 To Do ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="21"
+      data-scene="聽完很感動，回家就忘記——所以今天只勾三件事！"
+      data-quote="最好的計畫，是立刻執行的最小行動"
+      data-notes="【通關行動】進入最後第五部分：行動召喚！今天聽了這麼多，如果沒有落實在日曆上，就只是好聽的故事。我只要大家承諾這三件最小的 To Do：第一，打開健保快易通 APP 查資格；第二，把篩檢時間排進行事曆；第三，下午點飲料換成無糖茶。現在就拿起手機打勾！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-pink uppercase">ACTION COMMITMENT // 行動承諾</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">今天就能設定的 3 個健康 To Do</h2>
+          </div>
+          <div class="text-base font-black text-vivid-pink">
+            已打勾承諾：<span id="p19-count-display" class="text-2xl text-vivid-mint">0 / 3</span> 項行動
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 bg-white p-7 rounded-3xl border border-slate-200 pop-shadow space-y-3">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">點選今天妳決定執行的行動：</span>
+
+            <div class="space-y-3">
+              <label id="p19-card-1" class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition-all">
+                <div class="flex items-center gap-3.5">
+                  <input type="checkbox" onchange="calcP19Count()" class="p19-check w-5 h-5 rounded text-vivid-pink focus:ring-0">
+                  <div>
+                    <div class="text-base font-black text-slate-900 flex items-center gap-2">
+                      <span>To Do 1 · 查資格（30秒）</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-0.5">下載或打開 <strong>健保快易通 APP</strong> 查詢自己或媽媽的 40-74 歲免費篩檢資格</p>
+                  </div>
+                </div>
+                <span id="p19-badge-1" class="text-[11px] font-bold text-slate-400">待完成</span>
+              </label>
+
+              <label id="p19-card-2" class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition-all">
+                <div class="flex items-center gap-3.5">
+                  <input type="checkbox" onchange="calcP19Count()" class="p19-check w-5 h-5 rounded text-vivid-pink focus:ring-0">
+                  <div>
+                    <div class="text-base font-black text-slate-900 flex items-center gap-2">
+                      <span>To Do 2 · 排入行事曆（2分鐘）</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-0.5">上網預約特約院所 <strong>乳房 X 光攝影檢查</strong>（每 2 年 1 次完全免費零自費）</p>
+                  </div>
+                </div>
+                <span id="p19-badge-2" class="text-[11px] font-bold text-slate-400">待完成</span>
+              </label>
+
+              <label id="p19-card-3" class="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition-all">
+                <div class="flex items-center gap-3.5">
+                  <input type="checkbox" onchange="calcP19Count()" class="p19-check w-5 h-5 rounded text-vivid-pink focus:ring-0">
+                  <div>
+                    <div class="text-base font-black text-slate-900 flex items-center gap-2">
+                      <span>To Do 3 · 22:00 停機修復（今晚）</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-0.5">今天下午飲料換無糖茶，今晚 <strong>22:00 準時數位停機</strong> 釋放最高抗癌褪黑激素</p>
+                  </div>
+                </div>
+                <span id="p19-badge-3" class="text-[11px] font-bold text-slate-400">待完成</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-3xl text-white pop-shadow-lg space-y-5 border border-slate-700">
+            <span class="px-3 py-1 rounded-full bg-vivid-pink text-white text-xs font-black uppercase">
+              🏆 LEVEL COMPLETE
+            </span>
+
+            <div class="space-y-1">
+              <h3 class="text-2xl font-black">「健康，是最重要的事業」</h3>
+              <p class="text-xs text-slate-300">給自己 20 分鐘，完成最關鍵的年度系統檢查。</p>
+            </div>
+
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E4%B9%B3%E6%88%BFX%E5%85%89%E6%94%9D%E5%BD%B1%E5%85%AC%E8%B2%BB%E7%AF%A9%E6%AA%A2%E9%A0%90%E7%B4%84%EF%BC%88%E6%A2%81%E7%A5%96%E7%91%89%E9%86%AB%E5%B8%AB%E8%A1%9B%E6%95%99%E8%AC%9B%E5%BA%A7%EF%BC%89&details=%E5%9C%8B%E5%81%A5%E7%BD%B2%E8%A3%9C%E5%8A%A9%EF%BC%9A40-74%E6%AD%B2%E6%AF%8F2%E5%B9%B41%E6%AC%A1%E5%AE%8C%E5%85%A8%E5%85%8D%E8%B2%BB%E3%80%82%E6%8F%90%E9%86%92%E7%A9%BF%E5%85%A9%E4%BB%B6%E5%BC%8F%E8%A1%A3%E6%9C%8D%EF%BC%8C%E6%9C%88%E7%B6%93%E5%BE%8C3-5%E5%A4%A9%E6%9C%80%E4%BD%B3%EF%BC%81" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="w-full py-3.5 px-4 rounded-2xl bg-vivid-pink hover:bg-pink-600 text-white font-black text-center flex items-center justify-center gap-2 transition shadow-lg shadow-pink-500/30">
+              <span>📅 一鍵排入 Google 日曆</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P20: 六大精華金句速記卡 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="22"
+      data-scene="把這六句話記在心裡，或截圖發到工作群組，妳就是守護健康的播種者！"
+      data-quote="金句帶走，守護隨行"
+      data-notes="【金句總結】這六句話，是我行醫多年最想送給各位科技女性的心底話。大家點擊每一張金句卡，可以放大顯示，也可以按右下角的『拍存金句卡』截圖保存。把健康當成不可妥協的第一優先級！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-orange uppercase">WISDOM CARDS // 金句速記</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">今天演講的六大精華金句速記卡</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            點擊任一張卡片放大，長按即可截圖珍藏
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div onclick="selectQuoteCard(this)" class="quote-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow cursor-pointer transition hover:border-vivid-pink space-y-2">
+            <span class="text-xs font-black text-vivid-pink">GOLDEN 01</span>
+            <div class="text-lg font-black text-slate-900">「健康，是最重要的事業。」</div>
+            <p class="text-xs text-slate-500">沒有健康的身體做基石，所有成就都將歸零。</p>
+          </div>
+
+          <div onclick="selectQuoteCard(this)" class="quote-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow cursor-pointer transition hover:border-vivid-orange space-y-2">
+            <span class="text-xs font-black text-vivid-orange">GOLDEN 02</span>
+            <div class="text-lg font-black text-slate-900">「定期篩檢，就是身體的 Code Review。」</div>
+            <p class="text-xs text-slate-500">在早期發現潛在 Bug，除錯成本永遠最低。</p>
+          </div>
+
+          <div onclick="selectQuoteCard(this)" class="quote-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow cursor-pointer transition hover:border-vivid-mint space-y-2">
+            <span class="text-xs font-black text-vivid-mint">GOLDEN 03</span>
+            <div class="text-lg font-black text-slate-900">「早期發現，治癒率高達 99.9%！」</div>
+            <p class="text-xs text-slate-500">第 0 期原位癌只需微創手術，免化療保乳房。</p>
+          </div>
+
+          <div onclick="selectQuoteCard(this)" class="quote-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow cursor-pointer transition hover:border-vivid-purple space-y-2">
+            <span class="text-xs font-black text-vivid-purple">GOLDEN 04</span>
+            <div class="text-lg font-black text-slate-900">「微壓迫 3 秒鐘，換來兩年大安心。」</div>
+            <p class="text-xs text-slate-500">選對生理期後一週，檢查真的沒有想像中痛。</p>
+          </div>
+
+          <div onclick="selectQuoteCard(this)" class="quote-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow cursor-pointer transition hover:border-vivid-teal space-y-2">
+            <span class="text-xs font-black text-vivid-teal">GOLDEN 05</span>
+            <div class="text-lg font-black text-slate-900">「攝影看鈣化，超音波看水泡腫塊。」</div>
+            <p class="text-xs text-slate-500">亞洲緻密乳房雙雷達，缺一不可互為搭檔。</p>
+          </div>
+
+          <div onclick="selectQuoteCard(this)" class="quote-card p-6 rounded-3xl bg-white border-2 border-slate-200 pop-shadow cursor-pointer transition hover:border-rose-500 space-y-2">
+            <span class="text-xs font-black text-rose-600">GOLDEN 06</span>
+            <div class="text-lg font-black text-slate-900">「妳不是一個人在戰鬥，我們都在。」</div>
+            <p class="text-xs text-slate-500">台灣支持網絡完善，專業陪伴每一步通關。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P21 (Slide 23): Q&A 時間與隨身資源包 (修正正確官方網址) ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="23"
+      data-scene="有任何疑問，梁醫師現場為大家一對一解惑！"
+      data-quote="問得清楚，走得踏實"
+      data-notes="【現場問答】現在是 Q&A 時間！大家無論是針對自己健檢的困惑、家人的家族史疑慮、還是飲食生活的調整，都歡迎提出來！我也把大家最常問的三個問題整理在大螢幕上，點擊即可展開答案！右側也提供了正確的國健署認證院所名冊與 TBCA 病友協會官網連結！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-purple uppercase">Q&A & RESOURCES // 問答資源包</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">Q&A 時間與隨身資源包</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            現場解惑 · 點擊手風琴展開常見科技女性問答
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- 常見問題手風琴 (7 cols) -->
+          <div class="lg:col-span-7 space-y-3">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 pop-shadow cursor-pointer" onclick="toggleP21Faq(1)">
+              <div class="flex items-center justify-between font-black text-sm text-slate-900">
+                <span>Q1：我怕痛，可不可以只做乳房超音波就好？</span>
+                <span class="text-vivid-pink text-lg" id="p21-icon-1">+</span>
+              </div>
+              <div id="p21-ans-1" class="hidden text-xs text-slate-600 font-medium mt-3 pt-3 border-t border-slate-100 leading-relaxed">
+                不行！超音波看不到初期的「微小鈣化點」，而鈣化點往往是第 0 期原位癌唯一的影像特徵。乳房攝影不可被完全取代！
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 pop-shadow cursor-pointer" onclick="toggleP21Faq(2)">
+              <div class="flex items-center justify-between font-black text-sm text-slate-900">
+                <span>Q2：年輕摸到硬塊一定要開刀切除嗎？</span>
+                <span class="text-vivid-pink text-lg" id="p21-icon-2">+</span>
+              </div>
+              <div id="p21-ans-2" class="hidden text-xs text-slate-600 font-medium mt-3 pt-3 border-t border-slate-100 leading-relaxed">
+                不一定！年輕女性 80% 以上硬塊是良性纖維腺瘤或水泡。只要超音波評估外觀平滑邊界清晰，定期每半年追蹤即可，不需急著動刀。
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 pop-shadow cursor-pointer" onclick="toggleP21Faq(3)">
+              <div class="flex items-center justify-between font-black text-sm text-slate-900">
+                <span>Q3：美容美胸按摩可以預防乳癌或推散硬塊嗎？</span>
+                <span class="text-vivid-pink text-lg" id="p21-icon-3">+</span>
+              </div>
+              <div id="p21-ans-3" class="hidden text-xs text-slate-600 font-medium mt-3 pt-3 border-t border-slate-100 leading-relaxed">
+                完全無法！惡性腫瘤不可用力推拿，過度按壓反而可能造成組織發炎或血腫。預防乳癌請依靠正確的生活習慣與正規醫學篩檢！
+              </div>
+            </div>
+          </div>
+
+          <!-- 右側資源下載卡 (5 cols，已更新為正確可用官方連結) -->
+          <div class="lg:col-span-5 bg-white p-6 rounded-3xl border border-slate-200 pop-shadow space-y-3.5">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">官方特約院所與病友互助資源：</span>
+            <div class="space-y-2.5 text-xs font-bold text-slate-700">
+              <!-- 修正：國健署全國癌症篩檢院所即時查詢系統 (不跳 500 錯誤) -->
+              <a href="https://escreening.hpa.gov.tw/Home" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl bg-teal-50 hover:bg-teal-100 border border-teal-200 flex items-center justify-between transition text-teal-950 group">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-lg">🏥</span>
+                  <div>
+                    <div class="font-black text-xs text-slate-800 group-hover:text-vivid-teal transition">國健署全國癌症篩檢院所即時查詢</div>
+                    <div class="text-[10px] text-teal-700 font-normal">線上依縣市與行政區查詢乳房攝影特約機構</div>
+                  </div>
+                </div>
+                <span class="text-vivid-teal font-mono font-bold text-sm">➔</span>
+              </a>
+
+              <!-- 備用：健保署特約醫事機構查詢系統 -->
+              <a href="https://info.nhi.gov.tw/INAE1000/INAE1000S01" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center justify-between transition text-slate-800 text-[11px] group">
+                <div class="flex items-center gap-2">
+                  <span>🔍</span>
+                  <span class="font-bold">健保署特約醫事機構查詢系統（備用）</span>
+                </div>
+                <span class="text-slate-400 group-hover:text-slate-700 font-mono">➔</span>
+              </a>
+
+              <!-- 修正：TBCA 正確官方網址 -->
+              <a href="https://tbca-npo.org.tw/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl bg-pink-50 hover:bg-pink-100 border border-pink-200 flex items-center justify-between transition text-pink-950 group">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-lg">🌸</span>
+                  <div>
+                    <div class="font-black text-xs text-slate-800 group-hover:text-vivid-pink transition">社團法人中華民國乳癌病友協會 (TBCA)</div>
+                    <div class="text-[10px] text-pink-700 font-normal">病友同儕陪伴、諮詢專線與照護指南</div>
+                  </div>
+                </div>
+                <span class="text-vivid-pink font-mono font-bold text-sm">➔</span>
+              </a>
+
+              <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 leading-relaxed text-[11px] font-normal">
+                💡 <strong>梁祖瑋醫師溫馨提醒</strong>：公費篩檢只需攜帶健保卡即可受檢；亦可直接下載「健保快易通 APP」查詢個人資格或就近預約特約院所！
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== P22: 結尾致謝：客製通關戰報證書卡 ==================== -->
+    <section class="slide w-full h-full hidden flex-col justify-center" data-slide="24"
+      data-scene="給自己的身體一次溫柔的定期體檢，守護健康，從今天開始！"
+      data-quote="健康，是最重要的事業"
+      data-notes="【結尾致謝】恭喜大家！完成了今天 24 關的身體健康升級挑戰！在右側輸入妳的名字，立刻能為自己生成一張專屬的『守護乳房健康通關證書戰報卡』！截圖保存發限時動態，讓這份健康意識傳遞出去！我是梁祖瑋醫師，祝大家工作順利、身心健康！謝謝大家！">
+      
+      <div class="w-full space-y-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+          <div>
+            <span class="text-xs font-black tracking-widest text-vivid-mint uppercase">MISSION COMPLETE // 結業通關</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">給自己的身體，一次溫柔的定期體檢</h2>
+          </div>
+          <div class="text-sm font-bold text-slate-500">
+            守護乳房健康 · 活力輕科技通關達成
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black">
+              🏅 ALL 24 QUESTS CLEARED
+            </div>
+
+            <div class="space-y-2">
+              <h3 class="text-3xl sm:text-4xl font-black text-slate-900">
+                感謝大家的專注與熱情參與！
+              </h3>
+              <p class="text-base text-slate-600 font-medium leading-relaxed">
+                在程式碼與專案的海洋裡，妳是不可或缺的核心架構師；而在生命的長河裡，妳更該是自己身體最溫柔的守護者。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-3xl bg-white border border-slate-200 pop-shadow space-y-1.5 text-xs text-slate-700 font-medium">
+              <div class="font-bold text-vivid-pink text-sm">主講醫師 · 梁祖瑋 醫師</div>
+              <div>國軍桃園總醫院乳房外科 ｜ 敏盛綜合醫院巡檢醫師</div>
+              <div class="text-slate-500 text-[11px]">門診諮詢 · 篩檢複檢 · 個人化微創醫療諮詢</div>
+            </div>
+
+            <!-- 專屬 QR Code 供觀眾掃描取用 -->
+            <div class="p-4 rounded-3xl bg-pink-50/70 border-2 border-pink-200 flex items-center gap-4 pop-shadow">
+              <div class="w-24 h-24 bg-white p-2 rounded-2xl border border-pink-200 flex-shrink-0 flex items-center justify-center shadow-sm">
+                <svg class="w-full h-full" version="1.1" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM9,1H10V2H9zM11,1H12V2H11zM13,1H14V2H13zM14,1H15V2H14zM15,1H16V2H15zM16,1H17V2H16zM17,1H18V2H17zM18,1H19V2H18zM21,1H22V2H21zM22,1H23V2H22zM24,1H25V2H24zM27,1H28V2H27zM28,1H29V2H28zM29,1H30V2H29zM30,1H31V2H30zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM1,2H2V3H1zM7,2H8V3H7zM12,2H13V3H12zM13,2H14V3H13zM15,2H16V3H15zM17,2H18V3H17zM18,2H19V3H18zM20,2H21V3H20zM21,2H22V3H21zM23,2H24V3H23zM25,2H26V3H25zM27,2H28V3H27zM33,2H34V3H33zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM10,3H11V4H10zM11,3H12V4H11zM12,3H13V4H12zM13,3H14V4H13zM15,3H16V4H15zM18,3H19V4H18zM22,3H23V4H22zM25,3H26V4H25zM27,3H28V4H27zM29,3H30V4H29zM30,3H31V4H30zM31,3H32V4H31zM33,3H34V4H33zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM9,4H10V5H9zM10,4H11V5H10zM12,4H13V5H12zM14,4H15V5H14zM16,4H17V5H16zM19,4H20V5H19zM27,4H28V5H27zM29,4H30V5H29zM30,4H31V5H30zM31,4H32V5H31zM33,4H34V5H33zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM9,5H10V6H9zM11,5H12V6H11zM12,5H13V6H12zM15,5H16V6H15zM16,5H17V6H16zM17,5H18V6H17zM19,5H20V6H19zM22,5H23V6H22zM23,5H24V6H23zM24,5H25V6H24zM25,5H26V6H25zM27,5H28V6H27zM29,5H30V6H29zM30,5H31V6H30zM31,5H32V6H31zM33,5H34V6H33zM1,6H2V7H1zM7,6H8V7H7zM9,6H10V7H9zM10,6H11V7H10zM12,6H13V7H12zM13,6H14V7H13zM14,6H15V7H14zM15,6H16V7H15zM17,6H18V7H17zM19,6H20V7H19zM20,6H21V7H20zM22,6H23V7H22zM25,6H26V7H25zM27,6H28V7H27zM33,6H34V7H33zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM28,7H29V8H28zM29,7H30V8H29zM30,7H31V8H30zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM9,8H10V9H9zM11,8H12V9H11zM12,8H13V9H12zM15,8H16V9H15zM16,8H17V9H16zM18,8H19V9H18zM22,8H23V9H22zM24,8H25V9H24zM25,8H26V9H25zM1,9H2V10H1zM5,9H6V10H5zM7,9H8V10H7zM8,9H9V10H8zM9,9H10V10H9zM13,9H14V10H13zM18,9H19V10H18zM19,9H20V10H19zM22,9H23V10H22zM23,9H24V10H23zM25,9H26V10H25zM26,9H27V10H26zM27,9H28V10H27zM28,9H29V10H28zM29,9H30V10H29zM30,9H31V10H30zM33,9H34V10H33zM2,10H3V11H2zM4,10H5V11H4zM9,10H10V11H9zM12,10H13V11H12zM13,10H14V11H13zM16,10H17V11H16zM17,10H18V11H17zM21,10H22V11H21zM24,10H25V11H24zM26,10H27V11H26zM30,10H31V11H30zM31,10H32V11H31zM32,10H33V11H32zM1,11H2V12H1zM4,11H5V12H4zM5,11H6V12H5zM7,11H8V12H7zM9,11H10V12H9zM11,11H12V12H11zM12,11H13V12H12zM13,11H14V12H13zM14,11H15V12H14zM15,11H16V12H15zM16,11H17V12H16zM17,11H18V12H17zM19,11H20V12H19zM21,11H22V12H21zM23,11H24V12H23zM24,11H25V12H24zM25,11H26V12H25zM30,11H31V12H30zM32,11H33V12H32zM3,12H4V13H3zM6,12H7V13H6zM8,12H9V13H8zM11,12H12V13H11zM15,12H16V13H15zM18,12H19V13H18zM19,12H20V13H19zM22,12H23V13H22zM25,12H26V13H25zM27,12H28V13H27zM32,12H33V13H32zM3,13H4V14H3zM4,13H5V14H4zM6,13H7V14H6zM7,13H8V14H7zM8,13H9V14H8zM10,13H11V14H10zM11,13H12V14H11zM12,13H13V14H12zM13,13H14V14H13zM14,13H15V14H14zM15,13H16V14H15zM16,13H17V14H16zM18,13H19V14H18zM19,13H20V14H19zM20,13H21V14H20zM21,13H22V14H21zM22,13H23V14H22zM23,13H24V14H23zM27,13H28V14H27zM29,13H30V14H29zM30,13H31V14H30zM33,13H34V14H33zM5,14H6V15H5zM10,14H11V15H10zM11,14H12V15H11zM13,14H14V15H13zM15,14H16V15H15zM16,14H17V15H16zM17,14H18V15H17zM19,14H20V15H19zM22,14H23V15H22zM24,14H25V15H24zM28,14H29V15H28zM31,14H32V15H31zM1,15H2V16H1zM2,15H3V16H2zM4,15H5V16H4zM5,15H6V16H5zM6,15H7V16H6zM7,15H8V16H7zM10,15H11V16H10zM11,15H12V16H11zM12,15H13V16H12zM14,15H15V16H14zM16,15H17V16H16zM17,15H18V16H17zM22,15H23V16H22zM23,15H24V16H23zM24,15H25V16H24zM25,15H26V16H25zM26,15H27V16H26zM27,15H28V16H27zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM1,16H2V17H1zM3,16H4V17H3zM4,16H5V17H4zM8,16H9V17H8zM11,16H12V17H11zM14,16H15V17H14zM15,16H16V17H15zM16,16H17V17H16zM18,16H19V17H18zM19,16H20V17H19zM20,16H21V17H20zM21,16H22V17H21zM22,16H23V17H22zM26,16H27V17H26zM27,16H28V17H27zM30,16H31V17H30zM1,17H2V18H1zM3,17H4V18H3zM4,17H5V18H4zM5,17H6V18H5zM7,17H8V18H7zM8,17H9V18H8zM10,17H11V18H10zM12,17H13V18H12zM13,17H14V18H13zM14,17H15V18H14zM18,17H19V18H18zM19,17H20V18H19zM22,17H23V18H22zM23,17H24V18H23zM27,17H28V18H27zM29,17H30V18H29zM32,17H33V18H32zM2,18H3V19H2zM6,18H7V19H6zM9,18H10V19H9zM14,18H15V19H14zM16,18H17V19H16zM18,18H19V19H18zM19,18H20V19H19zM21,18H22V19H21zM24,18H25V19H24zM30,18H31V19H30zM31,18H32V19H31zM1,19H2V20H1zM7,19H8V20H7zM10,19H11V20H10zM15,19H16V20H15zM16,19H17V20H16zM17,19H18V20H17zM18,19H19V20H18zM19,19H20V20H19zM23,19H24V20H23zM24,19H25V20H24zM25,19H26V20H25zM28,19H29V20H28zM30,19H31V20H30zM32,19H33V20H32zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM5,20H6V21H5zM9,20H10V21H9zM11,20H12V21H11zM12,20H13V21H12zM13,20H14V21H13zM14,20H15V21H14zM16,20H17V21H16zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM22,20H23V21H22zM24,20H25V21H24zM27,20H28V21H27zM28,20H29V21H28zM3,21H4V22H3zM5,21H6V22H5zM7,21H8V22H7zM9,21H10V22H9zM13,21H14V22H13zM15,21H16V22H15zM18,21H19V22H18zM20,21H21V22H20zM21,21H22V22H21zM22,21H23V22H22zM23,21H24V22H23zM27,21H28V22H27zM29,21H30V22H29zM30,21H31V22H30zM32,21H33V22H32zM1,22H2V23H1zM3,22H4V23H3zM5,22H6V23H5zM8,22H9V23H8zM9,22H10V23H9zM10,22H11V23H10zM11,22H12V23H11zM13,22H14V23H13zM16,22H17V23H16zM17,22H18V23H17zM18,22H19V23H18zM22,22H23V23H22zM23,22H24V23H23zM24,22H25V23H24zM26,22H27V23H26zM30,22H31V23H30zM32,22H33V23H32zM3,23H4V24H3zM4,23H5V24H4zM5,23H6V24H5zM6,23H7V24H6zM7,23H8V24H7zM8,23H9V24H8zM9,23H10V24H9zM11,23H12V24H11zM13,23H14V24H13zM14,23H15V24H14zM16,23H17V24H16zM18,23H19V24H18zM19,23H20V24H19zM21,23H22V24H21zM22,23H23V24H22zM24,23H25V24H24zM25,23H26V24H25zM30,23H31V24H30zM31,23H32V24H31zM32,23H33V24H32zM3,24H4V25H3zM4,24H5V25H4zM5,24H6V25H5zM9,24H10V25H9zM16,24H17V25H16zM17,24H18V25H17zM18,24H19V25H18zM19,24H20V25H19zM21,24H22V25H21zM22,24H23V25H22zM23,24H24V25H23zM24,24H25V25H24zM26,24H27V25H26zM27,24H28V25H27zM33,24H34V25H33zM1,25H2V26H1zM2,25H3V26H2zM3,25H4V26H3zM6,25H7V26H6zM7,25H8V26H7zM8,25H9V26H8zM10,25H11V26H10zM11,25H12V26H11zM12,25H13V26H12zM15,25H16V26H15zM16,25H17V26H16zM17,25H18V26H17zM18,25H19V26H18zM20,25H21V26H20zM22,25H23V26H22zM23,25H24V26H23zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM28,25H29V26H28zM29,25H30V26H29zM9,26H10V27H9zM12,26H13V27H12zM16,26H17V27H16zM17,26H18V27H17zM19,26H20V27H19zM25,26H26V27H25zM29,26H30V27H29zM31,26H32V27H31zM32,26H33V27H32zM1,27H2V28H1zM2,27H3V28H2zM3,27H4V28H3zM4,27H5V28H4zM5,27H6V28H5zM6,27H7V28H6zM7,27H8V28H7zM9,27H10V28H9zM10,27H11V28H10zM12,27H13V28H12zM13,27H14V28H13zM15,27H16V28H15zM16,27H17V28H16zM21,27H22V28H21zM23,27H24V28H23zM25,27H26V28H25zM27,27H28V28H27zM29,27H30V28H29zM30,27H31V28H30zM32,27H33V28H32zM1,28H2V29H1zM7,28H8V29H7zM12,28H13V29H12zM15,28H16V29H15zM16,28H17V29H16zM17,28H18V29H17zM18,28H19V29H18zM19,28H20V29H19zM21,28H22V29H21zM22,28H23V29H22zM23,28H24V29H23zM25,28H26V29H25zM29,28H30V29H29zM1,29H2V30H1zM3,29H4V30H3zM4,29H5V30H4zM5,29H6V30H5zM7,29H8V30H7zM9,29H10V30H9zM10,29H11V30H10zM13,29H14V30H13zM15,29H16V30H15zM16,29H17V30H16zM18,29H19V30H18zM20,29H21V30H20zM21,29H22V30H21zM22,29H23V30H22zM23,29H24V30H23zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM33,29H34V30H33zM1,30H2V31H1zM3,30H4V31H3zM4,30H5V31H4zM5,30H6V31H5zM7,30H8V31H7zM11,30H12V31H11zM12,30H13V31H12zM16,30H17V31H16zM17,30H18V31H17zM19,30H20V31H19zM22,30H23V31H22zM25,30H26V31H25zM27,30H28V31H27zM28,30H29V31H28zM29,30H30V31H29zM1,31H2V32H1zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM7,31H8V32H7zM11,31H12V32H11zM16,31H17V32H16zM17,31H18V32H17zM21,31H22V32H21zM22,31H23V32H22zM24,31H25V32H24zM26,31H27V32H26zM27,31H28V32H27zM28,31H29V32H28zM29,31H30V32H29zM1,32H2V33H1zM7,32H8V33H7zM10,32H11V33H10zM11,32H12V33H11zM13,32H14V33H13zM15,32H16V33H15zM16,32H17V33H16zM18,32H19V33H18zM21,32H22V33H21zM22,32H23V33H22zM23,32H24V33H23zM24,32H25V33H24zM25,32H26V33H25zM26,32H27V33H26zM1,33H2V34H1zM2,33H3V34H2zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM6,33H7V34H6zM7,33H8V34H7zM9,33H10V34H9zM10,33H11V34H10zM13,33H14V34H13zM16,33H17V34H16zM18,33H19V34H18zM20,33H21V34H20zM21,33H22V34H21zM22,33H23V34H22zM23,33H24V34H23zM24,33H25V34H24zM25,33H26V34H25zM27,33H28V34H27zM33,33H34V34H33z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg>
+              </div>
+              <div class="space-y-1 text-xs">
+                <div class="font-black text-slate-900 text-sm flex items-center gap-1.5">
+                  <span>📱</span> 手機掃描帶走完整簡報
+                </div>
+                <p class="text-slate-600 leading-relaxed font-medium text-[11px]">
+                  歡迎掃描取用或分享給重要的人！隨時回顧 24 關衛教互動與特約院所查詢。
+                </p>
+                <a href="https://spawnkiller1003-bit.github.io/breast-screening-slides/" target="_blank" rel="noopener noreferrer" class="text-vivid-pink font-mono font-bold text-[11px] hover:underline flex items-center gap-1">
+                  <span>🔗 前往公開簡報網頁 ➔</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 bg-white p-7 rounded-3xl border-2 border-pink-200 pop-shadow-lg space-y-4 text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-100 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center justify-between text-xs font-black text-slate-400 border-b border-slate-100 pb-2">
+              <span>CERTIFICATE OF COMPLETION</span>
+              <span class="text-vivid-pink">2026 WELLNESS</span>
+            </div>
+
+            <div class="space-y-1">
+              <div class="text-xs text-slate-400 font-bold uppercase">通關夥伴姓名</div>
+              <input type="text" id="cert-name-input" value="瑞健科技夥伴" oninput="updateCertName()" class="text-center text-2xl font-black text-slate-900 border-b-2 border-vivid-pink pb-1 focus:outline-none w-4/5 mx-auto block">
+            </div>
+
+            <div class="py-4 px-6 rounded-2xl bg-gradient-to-br from-pink-50 via-orange-50 to-purple-50 border border-pink-100 space-y-2 text-center">
+              <div class="text-xs font-black text-vivid-pink tracking-wider uppercase">🏅 守護乳房健康 · 榮譽通關認證</div>
+              <div class="text-xl font-black text-slate-900">「健康，是最重要的事業！」</div>
+              <p class="text-xs text-slate-600 font-medium">
+                已解鎖 13 項危險因子對策、BI-RADS 報告解碼、雙雷達檢查工具，並承諾定期公費篩檢！
+              </p>
+            </div>
+
+            <div class="flex justify-between items-center text-[11px] text-slate-400 font-medium pt-1">
+              <span>主講醫師：梁祖瑋 醫師 簽署</span>
+              <span>截圖保存珍藏 📸</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= 底部狀態與金句列 (Bottom Bar) ================= -->
+  <footer class="w-full px-8 py-3 bg-white border-t border-slate-200/80 flex items-center justify-between z-20 pop-shadow">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-black text-white bg-vivid-pink px-2.5 py-0.5 rounded-full">
+          #金句帶走
+        </span>
+        <span class="text-base font-black text-slate-900 tracking-wide" id="key-takeaway-text">
+          健康，是最重要的事業
+        </span>
+      </div>
+
+      <button onclick="openVividQuoteModal()" class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 transition flex items-center gap-1">
+        <span>📸 拍存金句卡</span>
+      </button>
+    </div>
+
+    <!-- 頁碼控制器 -->
+    <div class="flex items-center space-x-4">
+      <div class="text-xs font-mono font-bold text-slate-500">
+        STAGE <span id="current-slide-num" class="text-vivid-pink text-base font-black">1</span> / <span id="total-slides-num">24</span>
+      </div>
+
+      <div class="flex items-center space-x-1.5">
+        <button onclick="prevSlide()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="上一關 (←)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="nextSlide()" class="p-2 rounded-xl bg-vivid-pink hover:bg-pink-600 text-white transition shadow-sm" title="下一關 (→ 或 空白鍵)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 頂部/底部活力進度條 -->
+  <div class="w-full h-1.5 bg-slate-200 fixed bottom-0 left-0 z-30">
+    <div id="deck-progress-bar" class="h-full bg-gradient-to-r from-vivid-pink via-vivid-orange to-vivid-mint w-[4.16%] transition-all duration-300"></div>
+  </div>
+
+  <!-- ================= 演講者指引備忘彈窗 (Speaker Notes Modal - S 鍵) ================= -->
+  <div id="speaker-notes-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
+    <div class="bg-white max-w-2xl w-full p-8 rounded-3xl pop-shadow-lg border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-vivid-pink"></span>
+          <span class="text-base font-black text-slate-900">梁祖瑋醫師 · 講者指引備忘</span>
+        </div>
+        <button onclick="toggleSpeakerNotes()" class="text-slate-400 hover:text-slate-800 text-2xl leading-none">&times;</button>
+      </div>
+
+      <div class="space-y-2">
+        <div class="text-xs font-black text-vivid-pink uppercase">SPEAKER FOCUS // 本關演講節奏引導：</div>
+        <div id="speaker-notes-content" class="text-base text-slate-700 leading-relaxed bg-slate-50 p-5 rounded-2xl border border-slate-200 font-medium">
+          --
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-500 pt-2 border-t border-slate-100">
+        <span>快捷鍵：按 <kbd class="px-2 py-0.5 bg-slate-100 rounded font-mono text-slate-800">S</kbd> 開關</span>
+        <button onclick="toggleSpeakerNotes()" class="px-5 py-2 rounded-full bg-vivid-pink text-white font-bold hover:bg-pink-600 transition">
+          關閉備忘
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 金句小卡彈窗 (Quote Modal) ================= -->
+  <div id="vivid-quote-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
+    <div class="max-w-sm w-full p-7 rounded-3xl bg-white text-center space-y-5 pop-shadow-lg border-2 border-pink-100 relative">
+      <button onclick="closeVividQuoteModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl">&times;</button>
+      
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 text-vivid-pink text-xs font-black">
+        🌟 科技女性守護金句
+      </div>
+
+      <div class="py-6 px-4 rounded-2xl bg-gradient-to-br from-pink-50 via-orange-50 to-purple-50 border border-pink-100 space-y-3">
+        <div class="text-3xl text-vivid-pink">“</div>
+        <div id="modal-quote-text" class="text-2xl font-black text-slate-900 tracking-tight leading-snug">
+          健康，是最重要的事業
+        </div>
+        <div class="text-xs text-slate-500 font-bold pt-1">
+          守護乳房健康 · 活力輕科技指南
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-400 flex justify-between font-medium">
+        <span>主講：梁祖瑋 醫師</span>
+        <span>長按截圖保存 📸</span>
+      </div>
+
+      <button onclick="closeVividQuoteModal()" class="w-full py-3 rounded-full bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition">
+        保存關閉
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= 24 關卡地圖目錄抽屜 (M 鍵) ================= -->
+  <div id="index-drawer" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-end">
+    <div class="w-full max-w-lg h-full bg-white p-7 flex flex-col justify-between shadow-2xl border-l border-slate-200 overflow-y-auto">
+      <div class="space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div>
+            <div class="text-lg font-black text-slate-900">🗺️ 24 關全景章節地圖</div>
+            <p class="text-xs text-slate-400 font-medium">點選任一關卡直接穿梭</p>
+          </div>
+          <button onclick="toggleIndexDrawer()" class="text-slate-400 hover:text-slate-900 text-2xl leading-none">&times;</button>
+        </div>
+
+        <div class="space-y-4 text-xs">
+          <div class="space-y-1">
+            <span class="font-black text-vivid-pink uppercase tracking-wider">第一部 · 現況與認知 (P01~P06)</span>
+            <div class="grid grid-cols-2 gap-1.5 font-bold">
+              <button onclick="jumpTo(1)" class="p-2 rounded-xl bg-slate-50 hover:bg-pink-50 text-left truncate">P01 封面與場次</button>
+              <button onclick="jumpTo(2)" class="p-2 rounded-xl bg-slate-50 hover:bg-pink-50 text-left truncate">P02 不當機伺服器</button>
+              <button onclick="jumpTo(3)" class="p-2 rounded-xl bg-slate-50 hover:bg-pink-50 text-left truncate">P03 台灣乳癌現況</button>
+              <button onclick="jumpTo(4)" class="p-2 rounded-xl bg-slate-50 hover:bg-pink-50 text-left truncate">P04 科技女性6負載</button>
+              <button onclick="jumpTo(5)" class="p-2 rounded-xl bg-slate-50 hover:bg-pink-50 text-left truncate">P05 13項危險因子</button>
+              <button onclick="jumpTo(6)" class="p-2 rounded-xl bg-slate-50 hover:bg-pink-50 text-left truncate">P06 健康價標計算機</button>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <span class="font-black text-vivid-orange uppercase tracking-wider">第二部 · 日常防護 (P07~P10)</span>
+            <div class="grid grid-cols-2 gap-1.5 font-bold">
+              <button onclick="jumpTo(7)" class="p-2 rounded-xl bg-slate-50 hover:bg-orange-50 text-left truncate">P07 護乳5招防禦</button>
+              <button onclick="jumpTo(8)" class="p-2 rounded-xl bg-slate-50 hover:bg-orange-50 text-left truncate">P08 外食微替換餐盤</button>
+              <button onclick="jumpTo(9)" class="p-2 rounded-xl bg-slate-50 hover:bg-orange-50 text-left truncate">P09 150分蓄力儀</button>
+              <button onclick="jumpTo(10)" class="p-2 rounded-xl bg-slate-50 hover:bg-orange-50 text-left truncate">P10 夜間修復工程</button>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <span class="font-black text-vivid-teal uppercase tracking-wider">第三部 · 精準篩檢 (P11~P16)</span>
+            <div class="grid grid-cols-2 gap-1.5 font-bold">
+              <button onclick="jumpTo(11)" class="p-2 rounded-xl bg-slate-50 hover:bg-teal-50 text-left truncate">P11 公費篩檢福利</button>
+              <button onclick="jumpTo(12)" class="p-2 rounded-xl bg-slate-50 hover:bg-teal-50 text-left truncate">P12 打破5大迷思</button>
+              <button onclick="jumpTo(13)" class="p-2 rounded-xl bg-slate-50 hover:bg-teal-50 text-left truncate">P13 攝影流程拆解</button>
+              <button onclick="jumpTo(14)" class="p-2 rounded-xl bg-slate-50 hover:bg-teal-50 text-left truncate">P14 BI-RADS分級</button>
+              <button onclick="jumpTo(15)" class="p-2 rounded-xl bg-slate-50 hover:bg-teal-50 text-left truncate">P14-1 工具總覽地圖</button>
+              <button onclick="jumpTo(16)" class="p-2 rounded-xl bg-slate-50 hover:bg-teal-50 text-left truncate">P14-2 加做派工羅盤</button>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <span class="font-black text-vivid-purple uppercase tracking-wider">第四部 · 應對思維 (P17~P20)</span>
+            <div class="grid grid-cols-2 gap-1.5 font-bold">
+              <button onclick="jumpTo(17)" class="p-2 rounded-xl bg-slate-50 hover:bg-purple-50 text-left truncate">P15 七大異常警訊</button>
+              <button onclick="jumpTo(18)" class="p-2 rounded-xl bg-slate-50 hover:bg-purple-50 text-left truncate">P16 自我檢查3步驟</button>
+              <button onclick="jumpTo(19)" class="p-2 rounded-xl bg-slate-50 hover:bg-purple-50 text-left truncate">P17 存活率階梯</button>
+              <button onclick="jumpTo(20)" class="p-2 rounded-xl bg-slate-50 hover:bg-purple-50 text-left truncate">P18 台灣支持網絡</button>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <span class="font-black text-vivid-mint uppercase tracking-wider">第五部 · 行動結語 (P21~P24)</span>
+            <div class="grid grid-cols-2 gap-1.5 font-bold">
+              <button onclick="jumpTo(21)" class="p-2 rounded-xl bg-slate-50 hover:bg-emerald-50 text-left truncate">P19 三個健康 To Do</button>
+              <button onclick="jumpTo(22)" class="p-2 rounded-xl bg-slate-50 hover:bg-emerald-50 text-left truncate">P20 六大精華金句</button>
+              <button onclick="jumpTo(23)" class="p-2 rounded-xl bg-slate-50 hover:bg-emerald-50 text-left truncate">P21 Q&A隨身包</button>
+              <button onclick="jumpTo(24)" class="p-2 rounded-xl bg-slate-50 hover:bg-emerald-50 text-left truncate">P22 結尾通關證書</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-xs text-slate-400 border-t border-slate-100 pt-3 flex justify-between items-center">
+        <span>快捷鍵：按 <kbd class="px-2 py-0.5 bg-slate-100 rounded font-mono">M</kbd> 開關</span>
+        <button onclick="toggleIndexDrawer()" class="text-slate-600 font-bold hover:text-slate-900">關閉地圖</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 互動驅動腳本 ================= -->
+  <script>
+    let currentSlide = 1;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      slides.forEach((slide, idx) => {
+        if (idx + 1 === currentSlide) {
+          slide.classList.remove('hidden');
+          slide.classList.add('flex', 'slide-enter');
+          
+          const scene = slide.getAttribute('data-scene') || '';
+          const quote = slide.getAttribute('data-quote') || '';
+          const notes = slide.getAttribute('data-notes') || '';
+          
+          document.getElementById('scene-opener-text').innerText = scene;
+          document.getElementById('key-takeaway-text').innerText = quote;
+          document.getElementById('speaker-notes-content').innerText = notes;
+        } else {
+          slide.classList.add('hidden');
+          slide.classList.remove('flex', 'slide-enter');
+        }
+      });
+
+      document.getElementById('current-slide-num').innerText = currentSlide;
+      document.getElementById('total-slides-num').innerText = totalSlides;
+      const progressPercent = (currentSlide / totalSlides) * 100;
+      document.getElementById('deck-progress-bar').style.width = `${progressPercent}%`;
+
+      // 轉場專屬生命週期 hook
+      if (currentSlide === 6) {
+        // S6 一轉場出來：左方全不勾，右方發炎 0%
+        resetP06Habits();
+      } else if (currentSlide === 9) {
+        // S9 一轉場出來：從歸零開始，右方匡內用「分鐘」中文字
+        resetP09Energy();
+      } else if (currentSlide === 10) {
+        // S10 初始化修復模式對比
+        setP10Mode('repair');
+      } else if (currentSlide === 17) {
+        // S17 初始化第 0 項警訊
+        selectP17Symptom(0);
+      } else if (currentSlide === 21) {
+        // S21 To Do 初始化重置
+        resetP19Todos();
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function jumpTo(slideNum) {
+      showSlide(slideNum);
+      const drawer = document.getElementById('index-drawer');
+      if (!drawer.classList.contains('hidden')) {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    // 鍵盤導航
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      } else if (e.key === 's' || e.key === 'S') {
+        toggleSpeakerNotes();
+      } else if (e.key === 'm' || e.key === 'M') {
+        toggleIndexDrawer();
+      } else if (e.key === 'Home') {
+        showSlide(1);
+      } else if (e.key === 'End') {
+        showSlide(totalSlides);
+      }
+    });
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    }
+
+    function toggleSpeakerNotes() {
+      document.getElementById('speaker-notes-modal').classList.toggle('hidden');
+    }
+
+    function toggleIndexDrawer() {
+      document.getElementById('index-drawer').classList.toggle('hidden');
+    }
+
+    function openVividQuoteModal() {
+      const currentQuote = document.getElementById('key-takeaway-text').innerText;
+      document.getElementById('modal-quote-text').innerText = currentQuote;
+      document.getElementById('vivid-quote-modal').classList.remove('hidden');
+    }
+
+    function closeVividQuoteModal() {
+      document.getElementById('vivid-quote-modal').classList.add('hidden');
+    }
+
+    // P01: 場次切換
+    function selectP01Venue(btn) {
+      document.querySelectorAll('.venue-btn').forEach(b => {
+        b.className = 'venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between';
+      });
+      btn.className = 'venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/50 text-left transition flex flex-col justify-between';
+    }
+
+    // P03: 數據解讀
+    const p03Insights = [
+      { icon: '🥇', title: '連續多年女性癌症冠軍', desc: '平均每 36 分鐘就有 1 位台灣女性被宣告罹患乳癌，及早建立篩檢意識至關重要！' },
+      { icon: '📈', title: '每日新增 42 位勇敢女性', desc: '每年總確診突破 15,000 例，乳癌已非罕見疾病，而是隨處可見的現代健康挑戰。' },
+      { icon: '⏳', title: '高峰年齡比歐美整整早 10 年', desc: '台灣高峰落在 45-69 歲，正是職場與家庭的中流砥柱，守護她們就是守護社會支柱！' },
+      { icon: '🎯', title: '一生有 10-12% 罹病機率', desc: '每 8 到 10 位女性就有 1 位可能面臨挑戰，因此「定期篩檢」是所有女性必修課！' }
+    ];
+
+    function showP03Insight(idx) {
+      const item = p03Insights[idx];
+      document.getElementById('p03-icon').innerText = item.icon;
+      document.getElementById('p03-title').innerText = item.title;
+      document.getElementById('p03-desc').innerText = item.desc;
+      document.querySelectorAll('.p03-metric-card').forEach((c, i) => {
+        if (i === idx) {
+          c.classList.add('border-vivid-pink');
+          c.classList.remove('border-slate-200');
+        } else {
+          c.classList.remove('border-vivid-pink');
+          c.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P04: 6 大負載
+    const p04Loads = [
+      { badge: '長時間久坐的生物學機制', text: '久坐超過 6 小時會大幅降低肌肉脂蛋白脂肪酶（LPL）活性，促進內臟脂肪囤積。脂肪細胞含有芳香化酶，會把雄性素持續轉化為多餘的雌激素！' },
+      { badge: '熬夜與作息失調機制', text: '深夜屏幕藍光會強力壓抑松果體分泌褪黑激素（Melatonin）。褪黑激素是天然腫瘤抑制劑，分泌腰斬會讓受損的 DNA 失去夜間修復屏障！' },
+      { badge: '高壓責任感機制', text: '長期處於 Deadline 與突發狀況下，皮質醇（Cortisol）持續分泌，導致全身慢性發炎，並顯著抑制體內 NK 自然殺手細胞的巡邏功能！' },
+      { badge: '外食高油糖飲食機制', text: '精緻果糖與反式脂肪引發高胰島素血症，刺激類胰島素生長因子-1（IGF-1）飆升，是乳腺上皮細胞過度增生的催化劑！' },
+      { badge: '晚育或未育荷爾蒙機制', text: '女性在懷孕與哺乳期間，卵巢會暫停排卵，乳腺上皮得到分化成熟。若未曾懷孕或晚育，一生中暴露於雌激素的週期相對延長很多！' },
+      { badge: '飲酒與代謝負載機制', text: '酒精經肝臟代謝產生的乙醛是明確致癌物，同時會抑制肝臟代謝多餘雌激素的能力，每天多喝 1 杯酒，乳癌相對風險增加 7%！' }
+    ];
+
+    function showP04Load(idx) {
+      const item = p04Loads[idx];
+      document.getElementById('p04-detail-badge').innerText = item.badge;
+      document.getElementById('p04-detail-text').innerText = item.text;
+      document.querySelectorAll('.p04-card').forEach((c, i) => {
+        if (i === idx) {
+          c.classList.add('border-vivid-pink');
+          c.classList.remove('border-slate-200');
+        } else {
+          c.classList.remove('border-vivid-pink');
+          c.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P05: 先天 vs 後天 Switch (修改：點選後天可控時卡片固定在右側)
+    function toggleP05Filter(mode) {
+      const bornBox = document.getElementById('p05-born-box');
+      const ctrlBox = document.getElementById('p05-control-box');
+      const btnAll = document.getElementById('p05-btn-all');
+      const btnBorn = document.getElementById('p05-btn-born');
+      const btnCtrl = document.getElementById('p05-btn-control');
+
+      btnAll.className = 'px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+      btnBorn.className = 'px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+      btnCtrl.className = 'px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+
+      if (mode === 'all') {
+        bornBox.classList.remove('hidden');
+        ctrlBox.classList.remove('hidden');
+        ctrlBox.classList.remove('md:col-start-2');
+        btnAll.className = 'px-3.5 py-1.5 rounded-full text-xs font-black bg-slate-900 text-white transition shadow-sm';
+      } else if (mode === 'born') {
+        bornBox.classList.remove('hidden');
+        ctrlBox.classList.add('hidden');
+        ctrlBox.classList.remove('md:col-start-2');
+        btnBorn.className = 'px-3.5 py-1.5 rounded-full text-xs font-black bg-slate-900 text-white transition shadow-sm';
+      } else {
+        // 後天可控按鍵：隱藏先天，後天卡片出現在右側 (md:col-start-2)
+        bornBox.classList.add('hidden');
+        ctrlBox.classList.remove('hidden');
+        ctrlBox.classList.add('md:col-start-2');
+        btnCtrl.className = 'px-3.5 py-1.5 rounded-full text-xs font-black bg-slate-900 text-white transition shadow-sm';
+      }
+    }
+
+    // P06: 價標計算機
+    function calcP06Risk() {
+      const habits = document.querySelectorAll('.p06-habit');
+      let total = 0;
+      let count = 0;
+      habits.forEach(h => {
+        if (h.checked) {
+          total += parseInt(h.getAttribute('data-risk'));
+          count++;
+        }
+      });
+
+      const display = document.getElementById('p06-total-display');
+      const advice = document.getElementById('p06-advice-text');
+      display.innerText = `+${total}%`;
+
+      if (total >= 50) {
+        display.className = 'text-6xl sm:text-7xl font-black text-vivid-pink tracking-tight animate-pulse';
+        advice.innerText = `目前累積了 ${count} 項不良習慣（+${total}%）！建議今天起「每週多走兩站」或「手搖飲換無糖綠」，立刻卸除細胞負擔！`;
+      } else if (total > 0) {
+        display.className = 'text-6xl sm:text-7xl font-black text-vivid-orange tracking-tight';
+        advice.innerText = `累積負荷處於中等水平（+${total}%）！保持運動與睡眠，妳的身體修復力完全應付得來！`;
+      } else {
+        display.className = 'text-6xl sm:text-7xl font-black text-vivid-mint tracking-tight';
+        advice.innerText = '太棒了！所有高負載壞習慣均已解除！保持這樣的平衡節奏，身體的免疫修復系統全速運轉！';
+      }
+    }
+
+    function resetP06Habits() {
+      document.querySelectorAll('.p06-habit').forEach(h => h.checked = false);
+      calcP06Risk();
+    }
+
+    // P08: 動態餐盤切換（同方案 B 互動邏輯，C 風格）
+    const p08MealData = {
+      before: {
+        badge: '🍱 典型加班便當組合',
+        badgeClass: 'text-red-600 bg-red-100',
+        calories: '預估熱量：約 980 大卡',
+        statusTag: 'HIGH RISK ⚠️',
+        statusTagClass: 'text-red-600',
+        inflamePct: 85,
+        inflameText: '85% 超載 (Overload)',
+        inflameBarClass: 'bg-red-500',
+        antiPct: 15,
+        antiText: '15% 偏低 (Deficit)',
+        summary: '長期高糖高脂外食容易促成脂肪芳香化。點擊上方「護乳微替換提案」切換按鈕，查看醫師推薦的無痛微替換方案！',
+        items: [
+          { icon: '🍗', title: '油炸酥脆大雞排 / 炸排骨', desc: '高溫氧化油脂、反式脂肪酸加劇體內慢性發炎反應', tag: '促發炎 ⚠️', tagClass: 'text-red-600 font-black' },
+          { icon: '🧋', title: '半糖波霸紅茶拿鐵 / 甜飲', desc: '高果糖玉米糖漿促使三酸甘油酯與內臟脂肪激增', tag: '刺激雌激素 ⚠️', tagClass: 'text-red-600 font-black' },
+          { icon: '🥡', title: '塑膠袋或淋膜紙盒直接裝熱湯', desc: '高溫高油溶出鄰苯二甲酸酯（環境荷爾蒙/塑化劑干擾）', tag: '環境荷爾蒙 ⚠️', tagClass: 'text-red-600 font-black' }
+        ]
+      },
+      after: {
+        badge: '🥗 智慧護乳微替換提案',
+        badgeClass: 'text-emerald-700 bg-emerald-100',
+        calories: '預估熱量：約 520 大卡（減 46%）',
+        statusTag: 'OPTIMAL PROTECT ✨',
+        statusTagClass: 'text-emerald-600',
+        inflamePct: 20,
+        inflameText: '20% 低風險 (Anti-inflammatory)',
+        inflameBarClass: 'bg-emerald-500',
+        antiPct: 90,
+        antiText: '90% 極佳 (Optimal Defense)',
+        summary: '恭喜切換！每週只要有 3 天午餐完成這 3 個微替換，全身慢性發炎指數立降 75%，細胞天然抗氧化屏障瞬間建立！',
+        items: [
+          { icon: '🐟', title: '舒肥烤雞胸 / 乾煎低溫鹽麴鮭魚', desc: '優質蛋白與 Omega-3 不飽和脂肪酸，強力抑制發炎因子', tag: '抗發炎蛋白 ✅', tagClass: 'text-emerald-600 font-black' },
+          { icon: '🍵', title: '無糖高山冷泡綠茶 / 鮮檸氣泡水', desc: '豐富茶多酚兒茶素（EGCG），中和自由基並抑制異常細胞增生', tag: '兒茶素防禦 ✅', tagClass: 'text-emerald-600 font-black' },
+          { icon: '🍱', title: '自備 304 不鏽鋼 / 耐熱玻璃保鮮盒', desc: '杜絕環境荷爾蒙滲入熱食，給內分泌系統乾淨安全的空間', tag: '零塑化劑 ✅', tagClass: 'text-emerald-600 font-black' }
+        ]
+      }
+    };
+
+    function toggleP08MealMode(mode) {
+      const btnBefore = document.getElementById('p08-btn-before');
+      const btnAfter = document.getElementById('p08-btn-after');
+      const data = p08MealData[mode];
+
+      if (mode === 'before') {
+        btnBefore.className = 'px-5 py-2 rounded-full bg-slate-900 text-white text-xs font-black transition shadow-sm';
+        btnAfter.className = 'px-5 py-2 rounded-full text-slate-600 hover:text-slate-900 text-xs font-bold transition';
+      } else {
+        btnBefore.className = 'px-5 py-2 rounded-full text-slate-600 hover:text-slate-900 text-xs font-bold transition';
+        btnAfter.className = 'px-5 py-2 rounded-full bg-emerald-600 text-white text-xs font-black transition shadow-sm';
+      }
+
+      // 更新 Badges 與文字
+      const badge = document.getElementById('p08-meal-badge');
+      badge.innerText = data.badge;
+      badge.className = `text-sm font-black px-4 py-1 rounded-full ${data.badgeClass}`;
+      document.getElementById('p08-calories-badge').innerText = data.calories;
+      
+      const tag = document.getElementById('p08-status-tag');
+      tag.innerText = data.statusTag;
+      tag.className = `text-xs font-mono font-bold ${data.statusTagClass}`;
+
+      // 更新進度條
+      const inflameBar = document.getElementById('p08-bar-inflame');
+      inflameBar.style.width = `${data.inflamePct}%`;
+      inflameBar.className = `h-full rounded-full transition-all duration-500 ${data.inflameBarClass}`;
+      document.getElementById('p08-bar-inflame-val').innerText = data.inflameText;
+      document.getElementById('p08-bar-inflame-val').className = `font-black ${mode === 'before' ? 'text-red-600' : 'text-emerald-600'}`;
+
+      const antiBar = document.getElementById('p08-bar-anti');
+      antiBar.style.width = `${data.antiPct}%`;
+      document.getElementById('p08-bar-anti-val').innerText = data.antiText;
+      document.getElementById('p08-bar-anti-val').className = `font-black ${mode === 'before' ? 'text-slate-500' : 'text-emerald-600'}`;
+
+      document.getElementById('p08-summary-text').innerText = data.summary;
+
+      // 渲染 3 項食物卡片
+      const listContainer = document.getElementById('p08-food-list');
+      listContainer.innerHTML = data.items.map(item => `
+        <div class="p-3.5 rounded-2xl ${mode === 'before' ? 'bg-slate-50 border border-slate-200' : 'bg-emerald-50/60 border border-emerald-200'} flex items-center justify-between transition-all">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">${item.icon}</span>
+            <div>
+              <div class="font-black text-slate-900 text-sm">${item.title}</div>
+              <div class="text-xs text-slate-500">${item.desc}</div>
+            </div>
+          </div>
+          <span class="text-xs ${item.tagClass}">${item.tag}</span>
+        </div>
+      `).join('');
+    }
+
+    // P09: 150 分鐘微運動蓄力（轉場歸零，單位改為「分鐘」中文字）
+    let p09CurrentMinutes = 0;
+    function addP09Energy(mins) {
+      p09CurrentMinutes += mins;
+      if (p09CurrentMinutes > 150) p09CurrentMinutes = 150;
+      updateP09Display();
+    }
+
+    function resetP09Energy() {
+      p09CurrentMinutes = 0;
+      updateP09Display();
+    }
+
+    function updateP09Display() {
+      document.getElementById('p09-display-num').innerHTML = `${p09CurrentMinutes} <span class="text-2xl text-slate-400 font-bold">/ 150 分鐘</span>`;
+      const pct = Math.round((p09CurrentMinutes / 150) * 100);
+      document.getElementById('p09-bar').style.width = `${pct}%`;
+      const msg = document.getElementById('p09-msg');
+      if (p09CurrentMinutes === 0) {
+        msg.innerHTML = '請點擊左側碎片活動按鈕，替每週 150 分鐘運動量蓄力充能！';
+        msg.className = 'text-xs text-slate-300 font-medium';
+      } else if (pct >= 100) {
+        msg.innerHTML = '🎉 恭喜達成 100% 本週微運動目標！降低乳癌風險 20% 成就解鎖！';
+        msg.className = 'text-xs text-vivid-mint font-black';
+      } else {
+        msg.innerHTML = `已達成目標 ${pct}%！再動一動，輕鬆累積每週健康能量！`;
+        msg.className = 'text-xs text-slate-300 font-medium';
+      }
+    }
+
+    // P11: 公費資格即時判定（依據 114 年官方最新擴大補助政策）
+    function checkP11Eligibility() {
+      const age = parseInt(document.getElementById('p11-age-input').value) || 0;
+      const checkedRisks = document.querySelectorAll('.p11-risk-item:checked').length;
+      const box = document.getElementById('p11-result-box');
+
+      if (age >= 40 && age <= 74) {
+        if (checkedRisks > 0) {
+          box.className = 'p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-300 text-slate-800 space-y-1.5';
+          box.innerHTML = `
+            <div class="text-sm font-black text-emerald-900 flex items-center gap-1.5">
+              <span>🎉 符合公費資格！</span>
+              <span class="text-xs bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-full">40-74歲全面給付</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+              自 114 年 1 月 1 日起，您完全享有政府補助<strong>每 2 年 1 次免費乳房 X 光攝影</strong>！
+            </p>
+            <div class="text-xs font-bold text-amber-800 bg-amber-50 p-2 rounded-xl border border-amber-200">
+              💡 <strong>醫師高風險提醒：</strong>因勾選了 ${checkedRisks} 項危險因子，強烈建議在每 2 年的公費攝影間隔年，主動搭配「乳房超音波」密切追蹤！
+            </div>
+          `;
+        } else {
+          box.className = 'p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-slate-800 space-y-1.5';
+          box.innerHTML = `
+            <div class="text-sm font-black text-emerald-900 flex items-center gap-1.5">
+              <span>🎉 恭喜！您完全符合「每 2 年 1 次公費免費乳房攝影」資格！</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+              自 114 年起，40～74 歲女性全面納入公費補助，攜帶健保卡至特約醫療機構即可免費檢查，零自費！
+            </p>
+            <div class="text-xs text-emerald-700 font-bold">
+              無顯著家族史或危險因子，只要每 2 年按時拍一次攝影，即可達到 95% 以上防護！
+            </div>
+          `;
+        }
+      } else if (age < 40) {
+        if (checkedRisks > 0) {
+          box.className = 'p-4 rounded-2xl bg-amber-50 border-2 border-amber-300 text-slate-800 space-y-1.5';
+          box.innerHTML = `
+            <div class="text-sm font-black text-amber-900 flex items-center gap-1.5">
+              <span>⚠️ 年齡未滿 40 歲（尚未達公費攝影年齡）</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+              因勾選了 ${checkedRisks} 項高風險因子，年輕女性乳腺緻密且不宜過早累積 X 光輻射。
+            </p>
+            <div class="text-xs font-bold text-rose-800 bg-white p-2 rounded-xl border border-rose-200">
+              🩺 <strong>醫師專業指引：</strong>強烈建議提早自 30 歲起，由乳房專科醫師安排「<strong>每年 1 次定期乳房超音波檢查</strong>」；若有強大家族遺傳史可諮詢基因篩檢！
+            </div>
+          `;
+        } else {
+          box.className = 'p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1.5';
+          box.innerHTML = `
+            <div class="text-sm font-black text-slate-800">
+              ✨ 您正值 40 歲以下黃金青春期（目前未達 40 歲公費攝影年齡）
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              目前無特定危險因子。建議養成每個月生理期後「自我檢查」習慣；30 歲起可在年度常規健檢中自選「乳房超音波」作為基線參考！
+            </p>
+          `;
+        }
+      } else {
+        box.className = 'p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1.5';
+        box.innerHTML = `
+          <div class="text-sm font-black text-slate-800">
+            超過 74 歲補助年齡。若有摸到硬塊或家族史，隨時可至乳房外科由健保給付門診檢查！
+          </div>
+        `;
+      }
+    }
+
+    // P12: 戳破迷思
+    function bustP12Myth(card, truth) {
+      const stamp = card.querySelector('.myth-stamp');
+      stamp.innerText = '💥 已戳破！';
+      stamp.className = 'myth-stamp text-xs font-black text-emerald-700 border border-emerald-300 rounded-full px-2 py-1 text-center bg-emerald-100 animate-pulse';
+      card.classList.add('border-vivid-pink', 'bg-pink-50/30');
+      document.getElementById('p12-detail-text').innerText = truth;
+    }
+
+    // P13: 攝影流程 Stepper 模擬器
+    const p13Steps = {
+      1: {
+        badge: '步驟 1 / 4 · 更衣與前置準備',
+        time: '耗時約 2 分鐘',
+        title: '換穿檢查袍，切勿在胸部塗抹爽身粉或止汗劑',
+        desc: '褪去上半身衣物與項鍊耳環，換穿專用檢查袍。<strong>特別注意：</strong>檢查當天胸部與腋下切勿塗抹止汗劑、爽身粉、護膚乳液，以免其中的礦物微粒在 X 光下產生假鈣化點，引發虛驚！',
+        tip: '💡 穿著建議：當天穿著「兩件式上衣＋褲/裙」，更衣最自在！',
+        simDisplay: '👕 更衣就緒',
+        simSub: '請配合女放射師引導進入檢查室',
+        btnText: '進入步驟 2：專業擺位 ➔',
+        action: () => setP13Step(2)
+      },
+      2: {
+        badge: '步驟 2 / 4 · 專業女放射師擺位',
+        time: '耗時約 2 分鐘',
+        title: '放鬆肩膀，放射師協助將乳腺組織妥善置於托架',
+        desc: '由合格女性放射師一對一服務。放射師會輕柔將一側乳房提托放置在攝影台上，調整角度，以確保深部乳腺組織與腋下淋巴都能完整呈現在底片中。',
+        tip: '💡 放鬆訣竅：雙腳站穩、雙肩下沉、吐氣放鬆，不要聳肩，擺位就會順暢！',
+        simDisplay: '📐 擺位完成',
+        simSub: '放射師即將輕柔下降壓迫板',
+        btnText: '進入步驟 3：微壓迫體驗 ➔',
+        action: () => setP13Step(3)
+      },
+      3: {
+        badge: '步驟 3 / 4 · 微壓迫取像（核心步驟）',
+        time: '僅維持 3～5 秒',
+        title: '壓平組織僅需 3 秒，配合吐氣痛感減半！',
+        desc: '透明壓迫板會緩緩固定加壓，把立體的乳房組織展平，避免重疊遮蔽病灶，並大幅減少輻射劑量。<strong>只有 3 秒鐘</strong>，聽到逼逼聲即拍攝完成並瞬間鬆開！',
+        tip: '💡 減痛黃金期：選在「月經結束後第 3～5 天」受檢，水腫消退痛感狂降 80%！',
+        simDisplay: '⏱️ 準備好了嗎？',
+        simSub: '點擊下方按鈕，體驗 3 秒微壓迫倒數！',
+        btnText: '▶ 開始體驗 3 秒微壓迫倒數',
+        action: () => startP13CountDown()
+      },
+      4: {
+        badge: '步驟 4 / 4 · 雙角度 4 張搞定',
+        time: '全流程 10 分鐘完成',
+        title: '左右兩側各拍正面與斜位，換衣打卡收工！',
+        desc: '雙側各拍由上往下（CC view）與內外斜位（MLO view）共 4 張標準影像。完成後即可更衣離開，約 10-14 天收到書面報告，或在健保快易通 APP 查看結果！',
+        tip: '💡 通關獎勵：給勇敢做完篩檢的自己一杯無糖拿鐵或一份健康午餐！',
+        simDisplay: '🎉 恭喜通關！',
+        simSub: '4 張清晰影像已歸檔，守護完成！',
+        btnText: '🔄 重新回顧流程',
+        action: () => setP13Step(1)
+      }
+    };
+
+    let p13CurrentStep = 1;
+    function setP13Step(step) {
+      p13CurrentStep = step;
+      document.querySelectorAll('.p13-step-btn').forEach((b, idx) => {
+        if (idx + 1 === step) {
+          b.className = 'p13-step-btn p-3.5 rounded-2xl bg-white border-2 border-vivid-teal pop-shadow text-left transition flex items-center gap-3';
+        } else {
+          b.className = 'p13-step-btn p-3.5 rounded-2xl bg-white border border-slate-200 pop-shadow text-left transition hover:border-vivid-teal flex items-center gap-3';
+        }
+      });
+
+      const d = p13Steps[step];
+      document.getElementById('p13-step-badge').innerText = d.badge;
+      document.getElementById('p13-step-time').innerText = d.time;
+      document.getElementById('p13-step-title').innerText = d.title;
+      document.getElementById('p13-step-desc').innerHTML = d.desc;
+      document.getElementById('p13-step-tip').innerHTML = d.tip;
+      document.getElementById('p13-sim-display').innerText = d.simDisplay;
+      document.getElementById('p13-sim-sub').innerText = d.simSub;
+      
+      const actionBtn = document.getElementById('p13-sim-action-btn');
+      actionBtn.innerText = d.btnText;
+      actionBtn.onclick = d.action;
+    }
+
+    function startP13CountDown() {
+      const display = document.getElementById('p13-sim-display');
+      const sub = document.getElementById('p13-sim-sub');
+      const btn = document.getElementById('p13-sim-action-btn');
+      btn.disabled = true;
+
+      let sec = 3;
+      display.className = 'text-5xl font-black text-vivid-pink animate-ping';
+      display.innerText = `${sec}`;
+      sub.innerText = '正在壓迫取像中... 配合深長吐氣！';
+
+      const interval = setInterval(() => {
+        sec--;
+        if (sec > 0) {
+          display.className = 'text-5xl font-black text-vivid-pink animate-ping';
+          display.innerText = `${sec}`;
+        } else {
+          clearInterval(interval);
+          display.className = 'text-4xl font-black text-emerald-600';
+          display.innerText = '嗶！拍攝完成！';
+          sub.innerText = '壓迫板瞬間鬆開！是不是完全在忍受範圍內？';
+          btn.disabled = false;
+          btn.innerText = '進入步驟 4：通關收工 ➔';
+          btn.onclick = () => setP13Step(4);
+        }
+      }, 1000);
+    }
+
+    // P10: 左右方框點擊切換互動
+    const p10Modes = {
+      blue: {
+        title: '🚨 當前模擬：睡前螢幕藍光警報狀態',
+        badge: '高發炎警戒 ⚠️',
+        badgeClass: 'bg-red-500 text-white',
+        melatonin: '暴跌 82% ⚠️（松果體誤判為白晝，抑癌素嚴重缺工）',
+        cortisol: '飆升 +65% ⚠️（體內皮質醇持續燃燒，早晨胰島素阻抗升高）',
+        repair: '被迫停擺 ⚠️（突變與 DNA 鏈損傷逃避夜間糾錯清查）',
+        quote: '梁醫師臨床警示：深夜滑手機就像不斷取消伺服器備份排程，讓癌變細胞有可乘之機！今晚 22:00 請務必停機！'
+      },
+      repair: {
+        title: '✨ 當前模擬：22:00 數位停機自癒修復模式',
+        badge: '黃金自癒中 🛡️',
+        badgeClass: 'bg-emerald-600 text-white',
+        melatonin: '達 100% 峰值釋放 ✨（超強天然抗氧化劑全面中和自由基）',
+        cortisol: '平穩回落 ✨（消除全身慢性發炎，免疫大軍精神飽滿）',
+        repair: '全速運轉 ✨（NK 自然殺手細胞全面巡邏清除異變細胞）',
+        quote: '梁醫師溫馨提醒：每晚 22:00 放下手機，就是送給身體最頂級、完全免費的天然抗癌重組程式！'
+      }
+    };
+
+    function setP10Mode(mode) {
+      const boxBlue = document.getElementById('p10-box-blue');
+      const boxRepair = document.getElementById('p10-box-repair');
+      const badgeBlue = document.getElementById('p10-badge-blue');
+      const badgeRepair = document.getElementById('p10-badge-repair');
+      const panel = document.getElementById('p10-monitor-panel');
+      const d = p10Modes[mode];
+
+      if (mode === 'blue') {
+        boxBlue.className = 'cursor-pointer bg-red-50/40 p-6 rounded-3xl border-2 border-red-500 pop-shadow space-y-3.5 transition-all duration-300 scale-[1.02] shadow-lg shadow-red-500/10';
+        boxRepair.className = 'cursor-pointer bg-white/70 p-6 rounded-3xl border border-slate-200 pop-shadow space-y-3.5 transition-all duration-300 opacity-60 hover:opacity-100';
+        badgeBlue.className = 'text-xs font-black text-white bg-red-600 px-2.5 py-0.5 rounded-full animate-pulse';
+        badgeRepair.className = 'text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full';
+        panel.className = 'p-4 rounded-2xl bg-red-50 border-2 border-red-200 text-slate-800 transition-all duration-300 space-y-2';
+      } else {
+        boxBlue.className = 'cursor-pointer bg-white/70 p-6 rounded-3xl border border-slate-200 pop-shadow space-y-3.5 transition-all duration-300 opacity-60 hover:opacity-100';
+        boxRepair.className = 'cursor-pointer bg-purple-50/40 p-6 rounded-3xl border-2 border-vivid-purple pop-shadow space-y-3.5 transition-all duration-300 scale-[1.02] shadow-lg shadow-purple-500/10';
+        badgeBlue.className = 'text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full';
+        badgeRepair.className = 'text-xs font-black text-white bg-vivid-purple px-2.5 py-0.5 rounded-full';
+        panel.className = 'p-4 rounded-2xl bg-purple-50 border-2 border-purple-200 text-slate-800 transition-all duration-300 space-y-2';
+      }
+
+      panel.innerHTML = `
+        <div class="flex items-center justify-between border-b border-black/5 pb-1.5">
+          <div class="font-black text-xs sm:text-sm text-slate-900 flex items-center gap-2">
+            <span>📊 體內即時修復指標監測：</span>
+            <span>${d.title}</span>
+          </div>
+          <span class="text-xs font-bold px-2 py-0.5 rounded-full ${d.badgeClass}">${d.badge}</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs pt-1">
+          <div class="p-2 rounded-xl bg-white/80 border border-black/5">
+            <span class="font-bold text-slate-500 block text-[10px]">褪黑激素（Melatonin）：</span>
+            <span class="font-black text-slate-800">${d.melatonin}</span>
+          </div>
+          <div class="p-2 rounded-xl bg-white/80 border border-black/5">
+            <span class="font-bold text-slate-500 block text-[10px]">皮質醇發炎負荷：</span>
+            <span class="font-black text-slate-800">${d.cortisol}</span>
+          </div>
+          <div class="p-2 rounded-xl bg-white/80 border border-black/5">
+            <span class="font-bold text-slate-500 block text-[10px]">DNA 自主糾錯巡邏：</span>
+            <span class="font-black text-slate-800">${d.repair}</span>
+          </div>
+        </div>
+        <div class="text-[11px] font-bold text-slate-700 pt-1">
+          💡 ${d.quote}
+        </div>
+      `;
+    }
+
+    // P17: 七大異常警訊互動式切換
+    const p17Symptoms = [
+      {
+        icon: '🚨',
+        name: '無痛單側腫塊（最常見警訊）',
+        badge: 'CLINICAL PRIORITY 01',
+        feel: '多數位於乳房外上方（接近腋下），質地堅硬如小石頭、邊界不規則、無法在皮下滑動。',
+        diff: '良性水泡或腺瘤多數有彈性且會微滑；「完全不痛且固定不動」的堅硬腫塊更具高度臨床意義！',
+        action: '切勿大力推拿揉捏！請於 1 週內掛號醫院乳房外科門診，安排高階超音波與攝影比對。'
+      },
+      {
+        icon: '🕳️',
+        name: '局部皮膚凹陷（酒窩徵兆）',
+        badge: 'CLINICAL PRIORITY 02',
+        feel: '雙手自然下垂或高舉時，某一局部皮膚表面牽拉凹陷，宛如酒窩般固定。',
+        diff: '腫瘤侵犯牽扯到乳房深層的庫柏氏韌帶（Cooper Ligament），造成表皮拉扯，屬結構性異常！',
+        action: '自我檢查照鏡子時最容易發現！發現皮膚牽拉凹陷，請直接就醫，由醫師觸診確認深部病灶。'
+      },
+      {
+        icon: '🩸',
+        name: '乳頭異常分泌（單側帶血絲）',
+        badge: 'CLINICAL PRIORITY 03',
+        feel: '非哺乳期、未經刻意擠壓，乳頭單孔自發性流出「清澈水狀」或「咖啡色帶血絲」液體。',
+        diff: '雙側多孔白色乳汁多為泌乳激素影響；「單側單孔自發性血水」需高度懷疑管內乳突瘤或惡性病變！',
+        action: '就診時可自備棉花棒採樣分泌物給醫師辨識，專科醫師會安排乳管造影或微創切片確認。'
+      },
+      {
+        icon: '⚓',
+        name: '乳頭局部內縮（近期新凹陷）',
+        badge: 'CLINICAL PRIORITY 04',
+        feel: '原本正常的乳頭，在數週或數月內突然往內縮進去，無法輕易拉出。',
+        diff: '天生乳頭凹陷多屬先天發育；「後天成年後才新發生的內陷」常是深部乳管受到腫瘤牽引內縮！',
+        action: '若伴隨乳暈周圍皮膚變厚，請儘早讓乳房專科醫師評估，勿自行使用拔罐吸附器材。'
+      },
+      {
+        icon: '🍊',
+        name: '皮膚橘皮樣變（淋巴水腫）',
+        badge: 'CLINICAL PRIORITY 05',
+        feel: '乳房局部皮膚變厚、毛孔粗大凹陷，外觀就像橘子皮或葡萄柚皮一樣。',
+        diff: '真皮層表淺淋巴管受到阻塞導致水腫；若同時伴隨發紅發熱，需鑑別發炎性乳癌與乳腺炎！',
+        action: '若非哺乳期卻出現乳房大面積紅腫與橘皮變化，切勿當作普通毛囊炎，應立刻就醫！'
+      },
+      {
+        icon: '📐',
+        name: '形狀突然改變（兩側不對稱）',
+        badge: 'CLINICAL PRIORITY 06',
+        feel: '短時間內一側乳房明顯變形、局部隆起腫大、邊界輪廓突然改變。',
+        diff: '天生雙側乳房微不對稱屬常態；若在數週內「單側明顯膨出或局部扭曲」，需立即查明原因。',
+        action: '每月經期結束後在鏡前雙手高舉平舉觀察對比，有明確變化時立即由專科醫師檢查。'
+      },
+      {
+        icon: '🔵',
+        name: '腋下淋巴腫塊（淋巴腺腫大）',
+        badge: 'CLINICAL PRIORITY 07',
+        feel: '在腋窩深處摸到堅硬、不會痛、花生或鳥蛋大小的硬塊。',
+        diff: '感冒或傷口引發的淋巴發炎通常會紅腫脹痛；若「無任何感染卻摸到無痛堅硬淋巴」，需高度防範。',
+        action: '洗澡抹沐浴乳時順手由外側往腋窩深處觸摸滑動，摸到硬塊請立刻請乳房專科醫師掃描。'
+      }
+    ];
+
+    function selectP17Symptom(idx) {
+      document.querySelectorAll('.p17-sym-card').forEach((c, i) => {
+        if (i === idx) {
+          c.className = 'p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border-2 border-red-500 bg-red-50/50 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 scale-105 shadow-md shadow-red-500/10';
+        } else {
+          c.className = 'p17-sym-card cursor-pointer bg-white p-3.5 rounded-2xl border border-slate-200 pop-shadow text-center space-y-2 flex flex-col justify-between transition-all duration-200 hover:scale-105';
+        }
+      });
+
+      const d = p17Symptoms[idx];
+      document.getElementById('p17-detail-icon').innerText = d.icon;
+      document.getElementById('p17-detail-badge').innerText = d.badge;
+      document.getElementById('p17-detail-name').innerText = d.name;
+      document.getElementById('p17-detail-feel').innerText = d.feel;
+      document.getElementById('p17-detail-diff').innerText = d.diff;
+      document.getElementById('p17-detail-action').innerText = d.action;
+    }
+
+    // P19 (S21): To Do 清單連動
+    function calcP19Count() {
+      const checks = document.querySelectorAll('.p19-check');
+      let count = 0;
+      checks.forEach((c, idx) => {
+        const card = document.getElementById(`p19-card-${idx + 1}`);
+        const badge = document.getElementById(`p19-badge-${idx + 1}`);
+        if (c.checked) {
+          count++;
+          if (card) card.className = 'flex items-center justify-between p-4 rounded-2xl bg-emerald-50/70 border-2 border-emerald-400 cursor-pointer transition-all';
+          if (badge) {
+            badge.innerText = 'COMPLETED ✅';
+            badge.className = 'text-[11px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full';
+          }
+        } else {
+          if (card) card.className = 'flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition-all';
+          if (badge) {
+            badge.innerText = '待完成';
+            badge.className = 'text-[11px] font-bold text-slate-400';
+          }
+        }
+      });
+      document.getElementById('p19-count-display').innerText = `${count} / 3`;
+    }
+
+    function resetP19Todos() {
+      document.querySelectorAll('.p19-check').forEach(c => c.checked = false);
+      calcP19Count();
+    }
+
+    // P14: BI-RADS 報告分級
+    const p14Levels = [
+      { badge: '類別 0 解碼：不是第 0 期癌！', title: '「影像不完全，請儘速加做乳房超音波比對」', desc: '亞洲女性 70% 屬於緻密型乳房，乳腺在 X 光下白茫茫一片，可能遮蔽微小病灶。類別 0 只是請妳掛號乳房外科，搭配超音波掃描一下，90% 以上加做後都是良性水泡或正常乳腺！' },
+      { badge: '類別 1 解碼：乾乾淨淨', title: '「完全陰性，無異常發現」', desc: '乳腺組織完全對稱正常，無任何可疑鈣化點或結構扭曲。請繼續維持良好生活作息，並在 2 年後準時接受下一次公費篩檢即可！' },
+      { badge: '類別 2 解碼：安心良性', title: '「確定良性發現，不具惡性傾向」', desc: '看到了明確的良性病灶，如良性纖維腺瘤、分泌囊腫、血管鈣化等。這些都不會變成癌症，一樣維持每 2 年定期檢查即可！' },
+      { badge: '類別 3 解碼：定期快取', title: '「可能為良性，建議半年後短期追蹤」', desc: '惡性機率極低（< 2%）。就像軟體的非致命警告，醫師建議在 6 個月後針對該局部再照一次，確認它大小形狀完全沒變，連追兩年穩定後即可降回類別 2！' },
+      { badge: '類別 4 解碼：疑雲釐清', title: '「疑似異常，強烈建議安排組織切片確認」', desc: '惡性機率約 2%～95%（細分 4A、4B、4C）。切片多採局部麻醉微創粗針切片，像抽血一樣取出微量組織送病理化驗，不用住院，絕不是開大刀！' },
+      { badge: '類別 5 解碼：高度警戒', title: '「高度疑似惡性（> 95%），應儘速外科手術處置」', desc: '影像具有典型的毛刺狀、微細分枝狀鈣化。請不要驚慌，立刻至乳房專科進行全套規劃，早期發現早期切除，存活率依然極高！' }
+    ];
+
+    function showP14Level(lvl) {
+      const d = p14Levels[lvl];
+      document.getElementById('p14-badge').innerText = d.badge;
+      document.getElementById('p14-title').innerText = d.title;
+      document.getElementById('p14-desc').innerText = d.desc;
+      document.querySelectorAll('.p14-btn').forEach((b, i) => {
+        if (i === lvl) {
+          b.classList.add('border-2', 'border-vivid-pink');
+          b.classList.remove('border-slate-200');
+        } else {
+          b.classList.remove('border-2', 'border-vivid-pink');
+          b.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P14-2: 派工羅盤
+    const p142Tools = {
+      us: {
+        badge: '超音波（Ultrasound）',
+        badgeClass: 'bg-purple-100 text-purple-700',
+        title: '時機：攝影報告 0 類釐清、年輕緻密乳房、自己摸到硬塊時的第一首選',
+        tag: '無輻射 · 零痛感',
+        how: '平躺塗抹水性凝膠，探頭滑動掃描乳房與腋下淋巴，約 10-15 分鐘完成，無任何不適。',
+        pro: '能清楚分辨是液體水泡（囊腫）還是實心腫瘤；亞洲緻密乳房的最佳透視搭檔。',
+        con: '完全看不到初期的微小鈣化點！因此無法單獨取代乳房攝影做第一線普篩。'
+      },
+      mag: {
+        badge: '放大／局部壓迫攝影（Magnification / Spot View）',
+        badgeClass: 'bg-pink-100 text-vivid-pink',
+        title: '時機：初篩發現微小鈣化點，需拉近放大判定形態是良性或惡性',
+        tag: '微小鈣化剋星',
+        how: '使用特製小壓迫板，針對懷疑的 1-2 公分區域定點加壓拍攝，數分鐘內完成。',
+        pro: '將鈣化點形狀清晰放大數倍，協助醫師精準判讀，大幅減少不必要的開刀切片。',
+        con: '需針對局部再次壓迫，仍會有數秒的緊繃不適感。'
+      },
+      dbt: {
+        badge: '3D 斷層合成攝影（Digital Breast Tomosynthesis - DBT）',
+        badgeClass: 'bg-teal-100 text-teal-700',
+        title: '時機：高緻密乳房、組織重疊疑似病灶、大幅降低召回複查率',
+        tag: '1mm 薄切立體透視',
+        how: '姿勢同一般攝影，球管呈圓弧角度旋轉掃描，電腦重組出數十張 1mm 薄切面。',
+        pro: '徹底撥開重疊組織，緻密乳房侵襲癌偵測率提升 30-40%，大幅降低虛驚召回！',
+        con: '健保尚未全面給付（目前多數院所自費約 2000-3000 元）。'
+      },
+      mri: {
+        badge: '乳房磁振造影（Breast MRI）',
+        badgeClass: 'bg-amber-100 text-amber-800',
+        title: '時機：高風險基因帶原（BRCA）、術前評估侵犯範圍與對側乳房',
+        tag: '敏感度最高 (>90%)',
+        how: '俯臥於檢查床，乳房垂入專用線圈，需施打顯影劑，全程約 30-40 分鐘。',
+        pro: '完全無輻射，對軟組織與新生血管異常極度敏感，評估多發性病灶最精準。',
+        con: '費用較高（自費萬元以上），檢查時間較長且有運轉噪音，幽閉恐懼者需評估。'
+      }
+    };
+
+    function setP142Tool(tool) {
+      document.querySelectorAll('.p142-btn').forEach(b => {
+        b.className = 'p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition hover:border-vivid-pink';
+      });
+      document.getElementById(`p142-btn-${tool}`).className = 'p142-btn p-4 rounded-2xl bg-white border-2 border-vivid-purple pop-shadow text-left space-y-1 transition';
+
+      const d = p142Tools[tool];
+      const badge = document.getElementById('p142-detail-badge');
+      badge.innerText = d.badge;
+      badge.className = `px-3 py-1 rounded-full text-xs font-black ${d.badgeClass}`;
+      document.getElementById('p142-detail-tag').innerText = d.tag;
+      document.getElementById('p142-detail-title').innerText = d.title;
+      document.getElementById('p142-detail-how').innerText = d.how;
+      document.getElementById('p142-detail-pro').innerText = d.pro;
+      document.getElementById('p142-detail-con').innerText = d.con;
+    }
+
+    // P17: 期別切換
+    const p17Stages = [
+      { name: '第 0 期：原位癌（非侵襲性）', rate: '99.9%', color: 'text-vivid-mint', desc: '癌細胞完全局限在乳腺管或乳小葉內部，根本還沒跑出基底膜！只要微創切除，不需要化療，幾乎 100% 治癒！' },
+      { name: '第 1 期：腫瘤 < 2cm，無淋巴轉移', rate: '95.6%', color: 'text-vivid-mint', desc: '腫瘤非常微小，多數可做微創乳房保留手術。術後依型態搭配荷爾蒙或放療，存活率超過 95%！' },
+      { name: '第 2 期：腫瘤 2～5cm 或 少數淋巴轉移', rate: '89.7%', color: 'text-amber-500', desc: '腫瘤稍大或有 1-3 顆淋巴微小侵犯。正規手術搭配輔助治療，5 年存活率仍逼近 9 成！' },
+      { name: '第 3 期：局部晚期（> 5cm 或 多顆淋巴轉移）', rate: '72.3%', color: 'text-vivid-orange', desc: '現在有術前輔助化療與標靶治療，能先將腫瘤大幅縮小後再手術，依然有 7 成以上存活率！' },
+      { name: '第 4 期：遠端器官轉移', rate: '36.1%', color: 'text-red-500', desc: '新一代免疫治療、CDK4/6 抑制劑與 ADC 抗體藥物複合體問世，大幅延長存活時間並維持良好生活品質！' }
+    ];
+
+    function setP17Stage(idx) {
+      const d = p17Stages[idx];
+      document.getElementById('p17-stage-badge').innerText = d.name;
+      document.getElementById('p17-stage-desc').innerText = d.desc;
+      const rate = document.getElementById('p17-rate-display');
+      rate.innerText = d.rate;
+      rate.className = `text-6xl sm:text-7xl font-black ${d.color} tracking-tight`;
+
+      document.querySelectorAll('.p17-btn').forEach((b, i) => {
+        if (i === idx) {
+          b.classList.add('border-2', 'border-vivid-mint');
+          b.classList.remove('border-slate-200');
+        } else {
+          b.classList.remove('border-2', 'border-vivid-mint');
+          b.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P19: 3 個 To Do
+    function calcP19Count() {
+      const checks = document.querySelectorAll('.p19-check');
+      let count = 0;
+      checks.forEach(c => {
+        if (c.checked) count++;
+      });
+      document.getElementById('p19-count-display').innerText = `${count} / 3`;
+    }
+
+    // P20: 金句卡選取
+    function selectQuoteCard(card) {
+      document.querySelectorAll('.quote-card').forEach(c => {
+        c.classList.remove('border-vivid-pink', 'bg-pink-50/40');
+      });
+      card.classList.add('border-vivid-pink', 'bg-pink-50/40');
+    }
+
+    // P21: FAQ
+    function toggleP21Faq(id) {
+      const ans = document.getElementById(`p21-ans-${id}`);
+      const icon = document.getElementById(`p21-icon-${id}`);
+      if (ans.classList.contains('hidden')) {
+        ans.classList.remove('hidden');
+        icon.innerText = '−';
+      } else {
+        ans.classList.add('hidden');
+        icon.innerText = '+';
+      }
+    }
+
+    // P22: 證書名字即時更新
+    function updateCertName() {
+      // 即時連動
+    }
+
+    // 60 分鐘計時器
+    let timerSeconds = 60 * 60;
+    let timerInterval = null;
+    const timerDisplay = document.getElementById('timer-display');
+    const timerBtn = document.getElementById('timer-btn');
+
+    function updateTimer() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      timerDisplay.innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      if (timerSeconds > 0) {
+        timerSeconds--;
+      } else {
+        clearInterval(timerInterval);
+        timerDisplay.classList.add('text-vivid-pink', 'animate-pulse');
+      }
+    }
+
+    timerBtn.addEventListener('click', () => {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerBtn.innerText = '▶';
+      } else {
+        timerInterval = setInterval(updateTimer, 1000);
+        timerBtn.innerText = '⏸';
+      }
+    });
+
+    // 初始展示 Slide 1，並初始化各模組
+    showSlide(1);
+    toggleP08MealMode('before');
+    checkP11Eligibility();
+    setP13Step(1);
+    setP10Mode('repair');
+    selectP17Symptom(0);
+    resetP19Todos();
+  </script>
+</body>
+</html>
