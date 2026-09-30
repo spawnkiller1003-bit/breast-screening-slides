@@ -25,20 +25,39 @@
   - **開源倉庫 (Public Repo)**：[`https://github.com/spawnkiller1003-bit/breast-screening-slides`](https://github.com/spawnkiller1003-bit/breast-screening-slides)
   - **最後一頁（Slide 24）專屬 QR Code**：已生成高品質純向量 SVG QR Code，零外網依賴內嵌於簡報第 24 頁，點擊可直接放大燈箱（Click-to-Zoom），供演講現場觀眾以手機鏡頭直接掃描帶走整份簡報！
 
+- 已完成 **全體聽眾友善調整、企業名稱修正與互動欄位滿版大字化**（直接覆蓋 [`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html) 及 [`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)）：
+  1. **主辦企業名稱精準修正**：全面將「瑞健科技」修正為「瑞健公司」（封面專場、巡迴場次切換、結尾榮譽通關證書）。
+  2. **全體聽眾包容性視角（破除單一女性設定）**：
+     - 將標題與內文「科技女性」升級為「科技職場夥伴」、「職場同仁」、「科技人」，讓全體聽眾（包括男性主管、工程師等）產生共鳴。
+     - 講者備忘與醫學指引融入男性視角：男性亦有 1% 罹患乳癌機率，且男士更是身邊伴侶、母親、女兒最關鍵的「健康神隊友」，提醒並守護全家人的公費篩檢福利。
+  3. **互動點擊後展開欄位字體全面加大滿版**：
+     - **P03 數據洞察**：標題升級至 `text-2xl`，內文升級至 `text-lg font-bold`。
+     - **P04 隱形負載詳情**：標籤與生物學機制全面升級為 `text-xl font-black` 與 `text-lg font-bold`。
+     - **P05 先天與後天卡片**：13 項危險因子格子字體由原本的 `text-xs` 大幅升級為 `text-base sm:text-lg font-bold`，padding 加大。
+     - **P08 微替換動態餐盤**：按鈕、菜色標題、說明與臨床總結全面大字滿版展示。
+     - **P10 藍光 vs 修復監測儀**：指標數值由 `text-xs` 升級為 `text-2xl font-black`，臨床解析升級至 `text-lg font-bold`。
+     - **P11 公費篩檢小工具**：判定結果大標題升級為 `text-2xl`，指引內容全面大字滿版。
+     - **P12 戳破迷思面板**：醫學解讀升級為 `text-xl font-bold`。
+     - **P13 攝影 Stepper**：說明文字升級至 `text-lg font-bold`，小撇步提示全面加大。
+     - **P14 BI-RADS 解碼**：標題升級為 `text-3xl`，影像臨床解析升級至 `text-xl font-bold`。
+     - **P17 七大異常警訊臨床深層鑑別面板**：名稱加大至 `text-2xl`，觸摸外觀、良惡性鑑別、醫師建議處置三欄內文由原本極小的 `text-xs` 大幅放大至 `text-base sm:text-lg font-bold`，滿版大氣！
+     - **P18 存活率期別**：期別說明文字升級至 `text-xl font-bold`。
+     - **P22 FAQ 常見問答手風琴**：題目由 `text-sm` 升級為 `text-xl font-black`，展開解答由 `text-xs` 放大為 `text-lg font-bold`！
+     - **P23 金句卡放大**：字體升級至 `text-4xl sm:text-5xl font-black`。
+
 ## 🚦 目前狀態
 - **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），支援雙螢幕演講者同步模式。
 - **本地檔案清單**：
-  - 🌟 線上發布主檔（Plan C + 講者模式）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
-  - 🌟 三大風格導覽中心：[`portal.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/portal.html)
+  - 🌟 線上發布主檔（Plan C 定稿完全版）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
+  - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
   - 🌟 方案 A 完全版：[`投影片方案/守護乳房健康_現代科技儀表板風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_現代科技儀表板風.html)
   - 🌟 方案 B 完全版：[`投影片方案/守護乳房健康_溫潤人文雜誌風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_溫潤人文雜誌風.html)
-  - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
 
 ## ➡️ 下一步
 1. 演講現場打開主螢幕投影片，按 `P` 鍵開啟演講者專屬螢幕，按 `F` 鍵將主螢幕全螢幕投影。
 2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
 
 ## 🕐 最後更新
-- **時間**：2026-09-30 12:06
+- **時間**：2026-09-30 14:18
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
