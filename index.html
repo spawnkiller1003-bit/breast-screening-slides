@@ -3286,7 +3286,7 @@
       stamp.innerText = '💥 已戳破！';
       stamp.className = 'myth-stamp text-xs font-black text-emerald-700 border border-emerald-300 rounded-full px-2 py-1 text-center bg-emerald-100 animate-pulse';
       card.classList.add('border-vivid-pink', 'bg-pink-50/30');
-      document.getElementById('p12-detail-text').innerText = truth;
+      const dText = document.getElementById('p12-detail-text') || document.getElementById('p12-spot-truth'); if (dText) dText.innerText = truth;
     }
 
     // P13: 攝影流程 Stepper 模擬器
@@ -3649,7 +3649,7 @@
       if (!d) return;
       const badge = document.getElementById('p142-detail-badge');
       badge.innerText = d.badge;
-      badge.className = ;
+      badge.className = 'px-3.5 py-1 rounded-full text-sm font-black ' + (d.badgeClass || 'bg-purple-100 text-purple-700');
       document.getElementById('p142-detail-tag').innerText = d.tag;
       document.getElementById('p142-detail-title').innerText = d.title;
       document.getElementById('p142-detail-how').innerText = d.how;
