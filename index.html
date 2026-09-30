@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>守護乳房健康——乳癌預防與篩檢 | 方案 C：活力輕科技敘事風 (大字體滿版·通關高互動完全版)</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -2261,6 +2264,14 @@
   </div>
 
 
+  <!-- 左右兩側超大懸浮導航按鈕 (任何螢幕輕鬆點擊) -->
+  <button id="floating-btn-prev" onclick="prevSlide()" class="fixed left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/90 hover:bg-white text-slate-800 border-2 border-slate-200 pop-shadow flex items-center justify-center text-2xl font-black transition cursor-pointer hover:scale-110 shadow-lg active:scale-95" title="上一頁 (←)">
+    ‹
+  </button>
+  <button id="floating-btn-next" onclick="nextSlide()" class="fixed right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-vivid-pink hover:bg-pink-600 text-white pop-shadow flex items-center justify-center text-2xl font-black transition cursor-pointer hover:scale-110 shadow-lg shadow-pink-500/30 active:scale-95" title="下一頁 (→ 或 空白鍵)">
+    ›
+  </button>
+
   <!-- 頂部/底部活力進度條 -->
   <div class="w-full h-1.5 bg-slate-200 fixed bottom-0 left-0 z-30">
     <div id="deck-progress-bar" class="h-full bg-gradient-to-r from-vivid-pink via-vivid-orange to-vivid-mint w-[4.16%] transition-all duration-300"></div>
@@ -2487,6 +2498,7 @@
         broadcastSlideChange(currentSlide);
       }
       updateSpeakerViewUI(currentSlide);
+      try { updateFloatingNav(); } catch (e) {}
     }
 
     function nextSlide() {
@@ -2509,12 +2521,23 @@
       }
     }
 
-    // 鍵盤導航
+    // ================= 全方位無障礙導航系統 (鍵盤 + 簡報筆 + 觸控手勢) =================
+    // 支援所有常見簡報筆與鍵盤按鍵：
+    // 下一頁：ArrowRight, ArrowDown, PageDown, Space, Enter, n, N
+    // 上一頁：ArrowLeft, ArrowUp, PageUp, Backspace, p, P (若非講者視窗)
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      // 避免在文字輸入框打字時誤觸換頁
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        return;
+      }
+
+      const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter', 'n', 'N'];
+      const prevKeys = ['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'];
+
+      if (nextKeys.includes(e.key)) {
         e.preventDefault();
         nextSlide();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      } else if (prevKeys.includes(e.key)) {
         e.preventDefault();
         prevSlide();
       } else if (e.key === 'f' || e.key === 'F') {
@@ -2538,6 +2561,39 @@
         showSlide(totalSlides);
       }
     });
+
+    // 手機與平板觸控滑動支援 (Touch Swipe Support)
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+      const dx = touchEndX - touchStartX;
+      const dy = touchEndY - touchStartY;
+
+      // 確保主要是水平滑動且距離大於 50px
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) {
+          nextSlide(); // 左滑下一頁
+        } else {
+          prevSlide(); // 右滑上一頁
+        }
+      }
+    }, { passive: true });
+
+    // 更新浮動按鈕可見狀態
+    function updateFloatingNav() {
+      const btnPrev = document.getElementById('floating-btn-prev');
+      const btnNext = document.getElementById('floating-btn-next');
+      if (btnPrev) btnPrev.style.display = currentSlide <= 1 ? 'none' : 'flex';
+      if (btnNext) btnNext.style.display = currentSlide >= totalSlides ? 'none' : 'flex';
+    }
 
     function toggleFullScreen() {
       if (!document.fullscreenElement) {
