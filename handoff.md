@@ -45,8 +45,17 @@
      - **P22 FAQ 常見問答手風琴**：題目由 `text-sm` 升級為 `text-xl font-black`，展開解答由 `text-xs` 放大為 `text-lg font-bold`！
      - **P23 金句卡放大**：字體升級至 `text-4xl sm:text-5xl font-black`。
 
+- 已完成 **C 方案「聚光燈模式（Spotlight Mode）」降噪與版面重構**（直接覆蓋 [`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html) 及 [`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)）：
+  1. **S5（13 項危險因子）**：改為聚光卡架構。左側 13 項因子大字清單（支援全部/先天/後天篩選），點擊任一項目即於右側滿版展開超大字（標題 32px、機轉 20px、防禦對策 20px）聚光卡，徹底解決後排看不清問題。
+  2. **S9（微運動蓄力儀）**：**碎片活動靠左接近滿版（9 cols）**，排成 6 個大字微運動方塊；**累積時間縮小放右側小空間（3 cols）**，形成精巧的高科技直立充電座 HUD。
+  3. **S10（藍光 vs 修復模式）**：**預設左框先亮（熬夜藍光模式）**！套用紅色高亮光暈與當前狀態動畫，進入頁面時下方即時監測儀預設呈現藍光模式下的生理數據。
+  4. **S12（打破篩檢 5 大迷思）**：5 張迷思卡升級為聚光燈互動，點選任一迷思時其他卡片淡化，下方滿版黑色聚光卡以 32px 巨幅綠字白字投射梁醫師科學真相。
+  5. **S15（檢查工具總覽地圖）**：攝影 vs 超音波兩大武器升級為聚光燈切換，點選即展開 30px 超大字武器剖析卡（最強戰場 vs 盲區應對）。
+  6. **S16（加做 4 種檢查羅盤）**：4 大進階工具（超音波、放大攝影、3D DBT、MRI）點選即展開大字派工指令卡。
+  7. **S17（七大乳房異常警訊）**：點選任一警訊方塊時，該項目放大發光，其餘 6 項優雅淡化（opacity-40），下方以紅色巨幅橫標＋超大字呈現觸摸特徵、良惡性鑑別與梁醫師處置指令！
+
 ## 🚦 目前狀態
-- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），支援雙螢幕演講者同步模式。
+- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），支援雙螢幕演講者同步模式與全新 C 方案聚光卡。
 - **本地檔案清單**：
   - 🌟 線上發布主檔（Plan C 定稿完全版）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
   - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
@@ -58,6 +67,6 @@
 2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
 
 ## 🕐 最後更新
-- **時間**：2026-09-30 14:18
+- **時間**：2026-09-30 21:35
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
