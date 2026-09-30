@@ -2040,6 +2040,13 @@
       <button onclick="openVividQuoteModal()" class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 transition flex items-center gap-1">
         <span>📸 拍存金句卡</span>
       </button>
+
+      <!-- 講者雙螢幕控制台快捷按鈕 -->
+      <button onclick="openSpeakerView()" class="px-3.5 py-1 text-xs font-black rounded-full bg-purple-100 hover:bg-purple-200 text-vivid-purple border border-purple-200 transition flex items-center gap-1.5 shadow-sm" title="開啟講者獨立視窗，雙螢幕即時同步 (快捷鍵 P)">
+        <span>🖥️</span>
+        <span class="hidden sm:inline">講者視窗</span>
+        <kbd class="text-[10px] bg-white px-1.5 py-0.2 rounded font-mono font-bold text-purple-700">P</kbd>
+      </button>
     </div>
 
     <!-- 頁碼控制器 -->
@@ -2058,6 +2065,163 @@
       </div>
     </div>
   </footer>
+  <!-- ================= 黑屏遮罩 (按 B 鍵切換，讓觀眾注意力回到講者身上) ================= -->
+  <div id="blank-screen-overlay" class="fixed inset-0 bg-black z-50 hidden flex flex-col items-center justify-center text-white cursor-pointer" onclick="toggleBlankScreen()">
+    <div class="text-slate-600 text-sm font-mono flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-slate-700 animate-ping"></span>
+      <span>黑屏模式 · 按任意處或 B 鍵恢復投影</span>
+    </div>
+  </div>
+
+  <!-- ================= 專屬雙螢幕講者控制台 (Speaker View Console - 透過 ?view=speaker 啟動) ================= -->
+  <div id="speaker-view-console" class="fixed inset-0 bg-slate-950 text-white z-50 hidden flex-col h-screen w-screen overflow-hidden select-none font-sans">
+    <!-- 頂部資訊與控制列 -->
+    <header class="h-16 px-6 bg-slate-900 border-b border-slate-800 flex items-center justify-between flex-shrink-0">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-2xl bg-vivid-pink/20 border border-vivid-pink/40 flex items-center justify-center text-lg">
+          🎙️
+        </div>
+        <div>
+          <div class="font-black text-sm text-white flex items-center gap-2">
+            <span>梁祖瑋醫師 · 講者控制台 (Speaker View)</span>
+            <span id="spk-sync-status" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              🟢 大螢幕同步中
+            </span>
+          </div>
+          <div class="text-[11px] text-slate-400 font-mono">
+            守護乳房健康 · 活力輕科技敘事風
+          </div>
+        </div>
+      </div>
+
+      <!-- 中間計時器群組 -->
+      <div class="flex items-center gap-4 bg-slate-950/80 px-4 py-2 rounded-2xl border border-slate-800">
+        <div class="text-center">
+          <div class="text-[10px] font-bold text-slate-500 uppercase">演講進行時間</div>
+          <div id="spk-elapsed-time" class="text-base font-mono font-black text-white">00:00:00</div>
+        </div>
+        <div class="w-px h-6 bg-slate-800"></div>
+        <div class="text-center">
+          <div class="text-[10px] font-bold text-slate-500 uppercase">60 分鐘倒數</div>
+          <div id="spk-remaining-time" class="text-base font-mono font-black text-vivid-mint">60:00</div>
+        </div>
+        <div class="flex items-center gap-1.5 ml-1">
+          <button id="spk-timer-toggle-btn" onclick="toggleSpkTimer()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-white transition" title="啟動/暫停計時">▶</button>
+          <button onclick="resetSpkTimer()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-slate-400 hover:text-white transition" title="重置計時">🔄</button>
+        </div>
+      </div>
+
+      <!-- 右側按鍵操作提示 -->
+      <div class="flex items-center gap-2 text-xs">
+        <button onclick="toggleBlankScreen()" id="spk-blank-btn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1 border border-slate-700">
+          <span>⬛</span>
+          <span>黑屏 (B)</span>
+        </button>
+        <button onclick="window.close()" class="px-3 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 font-bold transition border border-rose-500/30">
+          關閉控制台
+        </button>
+      </div>
+    </header>
+
+    <!-- 講者控制台主要三欄區域 -->
+    <main class="flex-1 grid grid-cols-12 gap-4 p-4 overflow-hidden bg-slate-950">
+      <!-- 左欄 (7 欄)：當前投影片縮圖即時鏡像 + 翻頁大按鈕 -->
+      <div class="col-span-7 flex flex-col gap-3 h-full overflow-hidden">
+        <!-- 當前投影片畫面容器 -->
+        <div class="flex-1 bg-slate-900 rounded-3xl border border-slate-800 p-3 flex flex-col justify-between overflow-hidden shadow-2xl relative">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono pb-2 border-b border-slate-800/80">
+            <span class="flex items-center gap-1.5 text-vivid-pink font-bold">
+              <span class="w-2 h-2 rounded-full bg-vivid-pink animate-pulse"></span>
+              LIVE ON STAGE // 當前大螢幕畫面
+            </span>
+            <span class="font-bold text-white">
+              STAGE <span id="spk-current-num" class="text-vivid-pink text-base">1</span> / <span id="spk-total-num">24</span>
+            </span>
+          </div>
+
+          <!-- 鏡像即時視窗 -->
+          <div class="flex-1 my-2 rounded-2xl overflow-hidden bg-white text-slate-900 relative shadow-inner flex items-center justify-center">
+            <iframe id="spk-mirror-frame" class="w-full h-full border-0 pointer-events-none select-none"></iframe>
+          </div>
+
+          <!-- 底部快速導航與大按鈕 -->
+          <div class="flex items-center justify-between pt-1">
+            <button onclick="spkPrevSlide()" class="px-5 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition flex items-center gap-2 border border-slate-700">
+              <span>◀</span>
+              <span>上一關 (←)</span>
+            </button>
+
+            <!-- 關卡選單 -->
+            <select id="spk-jump-select" onchange="spkJumpTo(this.value)" class="bg-slate-800 text-xs font-bold text-slate-200 py-2 px-3 rounded-xl border border-slate-700 focus:outline-none">
+              <!-- JS 動態生成 24 關選項 -->
+            </select>
+
+            <button onclick="spkNextSlide()" class="px-6 py-2.5 rounded-2xl bg-vivid-pink hover:bg-pink-600 text-white font-black text-sm transition flex items-center gap-2 shadow-lg shadow-pink-500/20">
+              <span>下一關 (Space / →)</span>
+              <span>▶</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右欄 (5 欄)：下一頁預覽 + 大字版講者備忘話術 -->
+      <div class="col-span-5 flex flex-col gap-3 h-full overflow-hidden">
+        <!-- 下一頁預覽卡片 (Next Slide Preview) -->
+        <div class="bg-slate-900 p-4 rounded-3xl border border-slate-800 space-y-2 flex-shrink-0 shadow-lg">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-vivid-mint font-bold flex items-center gap-1.5">
+              <span>⏭️</span>
+              <span>NEXT SLIDE PREVIEW // 下一關預覽</span>
+            </span>
+            <span id="spk-next-num" class="text-slate-400">STAGE 2</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800/80 space-y-1">
+            <div id="spk-next-title" class="text-sm font-black text-slate-200">--</div>
+            <div id="spk-next-scene" class="text-xs text-slate-400 line-clamp-2">--</div>
+          </div>
+        </div>
+
+        <!-- 講者私房備忘話術 (超大高對比字體) -->
+        <div class="flex-1 bg-slate-900 p-5 rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-lg space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2 flex-shrink-0">
+            <div class="flex items-center gap-2 text-xs font-black text-vivid-purple uppercase tracking-wider">
+              <span>📝</span>
+              <span>SPEAKER NOTES // 梁醫師講者私房指引</span>
+            </div>
+            <span class="text-[11px] text-slate-500">超大字好讀模式</span>
+          </div>
+
+          <!-- 滾動備忘內文 -->
+          <div class="flex-1 overflow-y-auto pr-1 space-y-3.5 text-slate-200 font-sans">
+            <!-- 場景痛點 -->
+            <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-pink-500/20 space-y-1">
+              <span class="text-[11px] font-black text-vivid-pink uppercase tracking-wide">🎬 本關場景引子</span>
+              <p id="spk-notes-scene" class="text-sm font-bold text-slate-300 leading-relaxed">
+                --
+              </p>
+            </div>
+
+            <!-- 核心演講指引話術 -->
+            <div class="p-4 rounded-2xl bg-purple-950/30 border border-purple-500/30 space-y-1.5">
+              <span class="text-xs font-black text-purple-300 uppercase tracking-wide">🎯 節奏掌控與核心話術</span>
+              <p id="spk-notes-body" class="text-base sm:text-lg font-bold text-slate-100 leading-relaxed">
+                --
+              </p>
+            </div>
+
+            <!-- 金句帶走 -->
+            <div class="p-3.5 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 space-y-1">
+              <span class="text-[11px] font-black text-vivid-mint uppercase tracking-wide">💡 本關帶走金句</span>
+              <p id="spk-notes-quote" class="text-base font-black text-emerald-300">
+                --
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
 
   <!-- 頂部/底部活力進度條 -->
   <div class="w-full h-1.5 bg-slate-200 fixed bottom-0 left-0 z-30">
@@ -2230,7 +2394,7 @@
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
 
-    function showSlide(index) {
+    function showSlide(index, broadcast = true) {
       if (index < 1) index = 1;
       if (index > totalSlides) index = totalSlides;
       currentSlide = index;
@@ -2260,21 +2424,22 @@
 
       // 轉場專屬生命週期 hook
       if (currentSlide === 6) {
-        // S6 一轉場出來：左方全不勾，右方發炎 0%
         resetP06Habits();
       } else if (currentSlide === 9) {
-        // S9 一轉場出來：從歸零開始，右方匡內用「分鐘」中文字
         resetP09Energy();
       } else if (currentSlide === 10) {
-        // S10 初始化修復模式對比
         setP10Mode('repair');
       } else if (currentSlide === 17) {
-        // S17 初始化第 0 項警訊
         selectP17Symptom(0);
       } else if (currentSlide === 21) {
-        // S21 To Do 初始化重置
         resetP19Todos();
       }
+
+      // 雙螢幕同步廣播與 UI 更新
+      if (broadcast) {
+        broadcastSlideChange(currentSlide);
+      }
+      updateSpeakerViewUI(currentSlide);
     }
 
     function nextSlide() {
@@ -2312,6 +2477,12 @@
       } else if (e.key === 'Escape') {
         closeQrModal();
         closeVividQuoteModal();
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        openSpeakerView();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBlankScreen();
       } else if (e.key === 'm' || e.key === 'M') {
         toggleIndexDrawer();
       } else if (e.key === 'Home') {
@@ -2355,6 +2526,225 @@
 
     function closeVividQuoteModal() {
       document.getElementById('vivid-quote-modal').classList.add('hidden');
+    }
+
+
+    // ================= 雙螢幕跨視窗同步引擎 (Dual-Screen Broadcast Engine) =================
+    const SYNC_CHANNEL_NAME = 'breast_screening_slides_sync';
+    const syncChannel = (typeof BroadcastChannel !== 'undefined') ? new BroadcastChannel(SYNC_CHANNEL_NAME) : null;
+    const isSpeakerView = new URLSearchParams(window.location.search).get('view') === 'speaker';
+
+    // 開啟講者獨立視窗 (Speaker View)
+    function openSpeakerView() {
+      const url = window.location.origin + window.location.pathname + '?view=speaker';
+      const w = 1320;
+      const h = 860;
+      const left = window.screen.width ? (window.screen.width - w) / 2 : 50;
+      const top = window.screen.height ? (window.screen.height - h) / 2 : 50;
+      window.open(url, 'SpeakerViewWindow', `width=${w},height=${h},top=${top},left=${left},resizable=yes,scrollbars=yes`);
+    }
+
+    // 黑屏切換 (Blank Screen / 按 B 鍵)
+    let isBlankScreen = false;
+    function toggleBlankScreen(broadcast = true) {
+      isBlankScreen = !isBlankScreen;
+      const overlay = document.getElementById('blank-screen-overlay');
+      if (overlay) {
+        if (isBlankScreen) overlay.classList.remove('hidden');
+        else overlay.classList.add('hidden');
+      }
+      const spkBtn = document.getElementById('spk-blank-btn');
+      if (spkBtn) {
+        if (isBlankScreen) {
+          spkBtn.className = 'px-3 py-1.5 rounded-xl bg-rose-600 text-white font-black transition flex items-center gap-1';
+          spkBtn.innerHTML = '<span>🔴</span><span>黑屏生效中 (B)</span>';
+        } else {
+          spkBtn.className = 'px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1 border border-slate-700';
+          spkBtn.innerHTML = '<span>⬛</span><span>黑屏 (B)</span>';
+        }
+      }
+
+      if (broadcast) {
+        if (syncChannel) syncChannel.postMessage({ type: 'BLANK_SCREEN', blank: isBlankScreen });
+        localStorage.setItem('breast_sync_blank', isBlankScreen ? '1' : '0');
+      }
+    }
+
+    // 跨視窗廣播幻燈片頁碼
+    function broadcastSlideChange(idx) {
+      if (syncChannel) {
+        syncChannel.postMessage({ type: 'SLIDE_CHANGE', index: idx });
+      }
+      try {
+        localStorage.setItem('breast_sync_slide', idx);
+      } catch (e) {}
+    }
+
+    // 監聽跨視窗廣播訊息
+    if (syncChannel) {
+      syncChannel.onmessage = (e) => {
+        if (e.data.type === 'SLIDE_CHANGE') {
+          if (e.data.index !== currentSlide) {
+            showSlide(e.data.index, false);
+          }
+        } else if (e.data.type === 'BLANK_SCREEN') {
+          if (e.data.blank !== isBlankScreen) {
+            toggleBlankScreen(false);
+          }
+        }
+      };
+    }
+
+    // 監聽 localStorage 備援通訊 (兼容跨瀏覽器分頁)
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'breast_sync_slide') {
+        const idx = parseInt(e.newValue);
+        if (idx && idx !== currentSlide) {
+          showSlide(idx, false);
+        }
+      } else if (e.key === 'breast_sync_blank') {
+        const blank = e.newValue === '1';
+        if (blank !== isBlankScreen) {
+          toggleBlankScreen(false);
+        }
+      }
+    });
+
+    // 講者控制台專屬導航函式
+    function spkNextSlide() {
+      nextSlide();
+    }
+    function spkPrevSlide() {
+      prevSlide();
+    }
+    function spkJumpTo(num) {
+      jumpTo(parseInt(num));
+    }
+
+    // 講者控制台專屬計時器
+    let spkTimerSeconds = 0;
+    let spkCountdownSeconds = 60 * 60;
+    let spkTimerInterval = null;
+    let spkTimerRunning = false;
+
+    function toggleSpkTimer() {
+      const btn = document.getElementById('spk-timer-toggle-btn');
+      if (spkTimerRunning) {
+        clearInterval(spkTimerInterval);
+        spkTimerRunning = false;
+        if (btn) btn.innerText = '▶';
+      } else {
+        spkTimerInterval = setInterval(() => {
+          spkTimerSeconds++;
+          if (spkCountdownSeconds > 0) spkCountdownSeconds--;
+          updateSpkTimerDisplay();
+        }, 1000);
+        spkTimerRunning = true;
+        if (btn) btn.innerText = '⏸';
+      }
+    }
+
+    function resetSpkTimer() {
+      clearInterval(spkTimerInterval);
+      spkTimerRunning = false;
+      spkTimerSeconds = 0;
+      spkCountdownSeconds = 60 * 60;
+      const btn = document.getElementById('spk-timer-toggle-btn');
+      if (btn) btn.innerText = '▶';
+      updateSpkTimerDisplay();
+    }
+
+    function updateSpkTimerDisplay() {
+      const elHours = Math.floor(spkTimerSeconds / 3600);
+      const elMins = Math.floor((spkTimerSeconds % 3600) / 60);
+      const elSecs = spkTimerSeconds % 60;
+      const elText = `${String(elHours).padStart(2,'0')}:${String(elMins).padStart(2,'0')}:${String(elSecs).padStart(2,'0')}`;
+      const elElem = document.getElementById('spk-elapsed-time');
+      if (elElem) elElem.innerText = elText;
+
+      const cdMins = Math.floor(spkCountdownSeconds / 60);
+      const cdSecs = spkCountdownSeconds % 60;
+      const cdElem = document.getElementById('spk-remaining-time');
+      if (cdElem) {
+        cdElem.innerText = `${String(cdMins).padStart(2,'0')}:${String(cdSecs).padStart(2,'0')}`;
+        if (spkCountdownSeconds <= 300) {
+          cdElem.className = 'text-base font-mono font-black text-rose-500 animate-pulse';
+        } else if (spkCountdownSeconds <= 600) {
+          cdElem.className = 'text-base font-mono font-black text-vivid-orange';
+        } else {
+          cdElem.className = 'text-base font-mono font-black text-vivid-mint';
+        }
+      }
+    }
+
+    // 更新講者控制台的所有動態面板 (縮圖、預覽、備忘)
+    function updateSpeakerViewUI(slideIndex) {
+      if (!isSpeakerView) return;
+
+      const currentSlideEl = document.querySelector(`.slide[data-slide="${slideIndex}"]`);
+      if (!currentSlideEl) return;
+
+      // 1. 數字更新
+      const curNum = document.getElementById('spk-current-num');
+      const totalNum = document.getElementById('spk-total-num');
+      if (curNum) curNum.innerText = slideIndex;
+      if (totalNum) totalNum.innerText = totalSlides;
+
+      // 2. 備忘話術更新
+      const scene = currentSlideEl.getAttribute('data-scene') || '無特定場景備註';
+      const quote = currentSlideEl.getAttribute('data-quote') || '健康，是最重要的事業';
+      const notes = currentSlideEl.getAttribute('data-notes') || '按章節節奏帶領觀眾深入淺出';
+
+      const nScene = document.getElementById('spk-notes-scene');
+      const nBody = document.getElementById('spk-notes-body');
+      const nQuote = document.getElementById('spk-notes-quote');
+      if (nScene) nScene.innerText = scene;
+      if (nBody) nBody.innerText = notes;
+      if (nQuote) nQuote.innerText = quote;
+
+      // 3. 下一張投影片預覽更新
+      const nextSlideIndex = slideIndex < totalSlides ? slideIndex + 1 : null;
+      const nextNum = document.getElementById('spk-next-num');
+      const nextTitle = document.getElementById('spk-next-title');
+      const nextScene = document.getElementById('spk-next-scene');
+
+      if (nextSlideIndex) {
+        const nextSlideEl = document.querySelector(`.slide[data-slide="${nextSlideIndex}"]`);
+        if (nextNum) nextNum.innerText = `STAGE ${nextSlideIndex} / ${totalSlides}`;
+        if (nextSlideEl) {
+          const h2 = nextSlideEl.querySelector('h2');
+          const titleText = h2 ? h2.innerText : `關卡 ${nextSlideIndex}`;
+          const nextSceneText = nextSlideEl.getAttribute('data-scene') || '';
+          if (nextTitle) nextTitle.innerText = titleText;
+          if (nextScene) nextScene.innerText = nextSceneText;
+        }
+      } else {
+        if (nextNum) nextNum.innerText = 'END OF DECK';
+        if (nextTitle) nextTitle.innerText = '🎉 演講圓滿結束！進入 Q&A 與聽眾互動';
+        if (nextScene) nextScene.innerText = '感謝大家專注聆聽，邀請大家掃碼帶走簡報。';
+      }
+
+      // 4. 下拉選單選中當前項
+      const jumpSelect = document.getElementById('spk-jump-select');
+      if (jumpSelect) jumpSelect.value = slideIndex;
+
+      // 5. 更新 iframe 鏡像 (載入主螢幕乾淨簡報同一頁)
+      const mirrorFrame = document.getElementById('spk-mirror-frame');
+      if (mirrorFrame) {
+        // 設定 iframe 顯示主畫面
+        if (!mirrorFrame.src || mirrorFrame.src === 'about:blank') {
+          mirrorFrame.src = window.location.origin + window.location.pathname;
+          mirrorFrame.onload = () => {
+            try {
+              mirrorFrame.contentWindow.showSlide(slideIndex, false);
+            } catch(e) {}
+          };
+        } else {
+          try {
+            mirrorFrame.contentWindow.showSlide(slideIndex, false);
+          } catch(e) {}
+        }
+      }
     }
 
     // P01: 場次切換
@@ -3136,6 +3526,27 @@
         timerBtn.innerText = '⏸';
       }
     });
+
+    // 初始化講者控制台與雙螢幕模式
+    if (isSpeakerView) {
+      // 若帶有 ?view=speaker，啟動講者專屬控制台視窗
+      document.body.classList.add('bg-slate-950');
+      const spkConsole = document.getElementById('speaker-view-console');
+      if (spkConsole) spkConsole.classList.remove('hidden');
+      
+      // 動態填入關卡跳轉選單
+      const sel = document.getElementById('spk-jump-select');
+      if (sel) {
+        sel.innerHTML = Array.from(slides).map((s, idx) => {
+          const h2 = s.querySelector('h2');
+          const title = h2 ? h2.innerText : `關卡 ${idx + 1}`;
+          return `<option value="${idx + 1}">P${idx + 1}: ${title}</option>`;
+        }).join('');
+      }
+
+      // 自動啟動演講計時器
+      toggleSpkTimer();
+    }
 
     // 初始展示 Slide 1，並初始化各模組
     showSlide(1);
