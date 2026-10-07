@@ -1555,7 +1555,7 @@
           </div>
 
           <div id="p17-card-1" onclick="selectP17Symptom(1)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
-            <span class="text-3xl">凹</span>
+            <span class="text-3xl">🕳️</span>
             <div>
               <div class="text-sm font-black text-slate-900">局部皮膚凹陷</div>
               <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full block mt-1 font-bold">酒窩徵象</span>
@@ -1571,6 +1571,14 @@
           </div>
 
           <div id="p17-card-3" onclick="selectP17Symptom(3)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
+            <span class="text-3xl">⚓</span>
+            <div>
+              <div class="text-sm font-black text-slate-900">乳頭凹陷回縮</div>
+              <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full block mt-1 font-bold">牽拉變形</span>
+            </div>
+          </div>
+
+          <div id="p17-card-4" onclick="selectP17Symptom(4)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
             <span class="text-3xl">🍊</span>
             <div>
               <div class="text-sm font-black text-slate-900">橘皮樣水腫</div>
@@ -1578,18 +1586,10 @@
             </div>
           </div>
 
-          <div id="p17-card-4" onclick="selectP17Symptom(4)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
-            <span class="text-3xl">🔴</span>
-            <div>
-              <div class="text-sm font-black text-slate-900">乳頭凹陷回縮</div>
-              <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full block mt-1 font-bold">牽拉變形</span>
-            </div>
-          </div>
-
           <div id="p17-card-5" onclick="selectP17Symptom(5)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
             <span class="text-3xl">🪨</span>
             <div>
-              <div class="text-sm font-black text-slate-900">腋下淋巴腫大</div>
+              <div class="text-sm font-black text-slate-900">腋下淋巴水腫</div>
               <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full block mt-1 font-bold">硬質成串</span>
             </div>
           </div>
@@ -1598,7 +1598,7 @@
             <span class="text-3xl">📏</span>
             <div>
               <div class="text-sm font-black text-slate-900">兩側大小突變</div>
-              <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full block mt-1 font-bold">不對稱</span>
+              <span class="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full block mt-1 font-bold">輪廓不對稱</span>
             </div>
           </div>
         </div>
@@ -3838,7 +3838,7 @@
       },
       {
         icon: '⚓',
-        name: '乳頭局部內縮（近期新凹陷）',
+        name: '乳頭凹陷回縮（牽拉變形）',
         badge: 'CLINICAL PRIORITY 04',
         feel: '原本正常的乳頭，在數週或數月內突然往內縮進去，無法輕易拉出。',
         diff: '天生乳頭凹陷多屬先天發育；「後天成年後才新發生的內陷」常是深部乳管受到腫瘤牽引內縮！',
@@ -3846,27 +3846,27 @@
       },
       {
         icon: '🍊',
-        name: '皮膚橘皮樣變（淋巴水腫）',
+        name: '橘皮樣水腫（毛孔粗大凹陷）',
         badge: 'CLINICAL PRIORITY 05',
         feel: '乳房局部皮膚變厚、毛孔粗大凹陷，外觀就像橘子皮或葡萄柚皮一樣。',
         diff: '真皮層表淺淋巴管受到阻塞導致水腫；若同時伴隨發紅發熱，需鑑別發炎性乳癌與乳腺炎！',
         action: '若非哺乳期卻出現乳房大面積紅腫與橘皮變化，切勿當作普通毛囊炎，應立刻就醫！'
       },
       {
-        icon: '📐',
-        name: '形狀突然改變（兩側不對稱）',
+        icon: '🪨',
+        name: '腋下淋巴水腫（淋巴腺腫大）',
         badge: 'CLINICAL PRIORITY 06',
-        feel: '短時間內一側乳房明顯變形、局部隆起腫大、邊界輪廓突然改變。',
-        diff: '天生雙側乳房微不對稱屬常態；若在數週內「單側明顯膨出或局部扭曲」，需立即查明原因。',
-        action: '每月經期結束後在鏡前雙手高舉平舉觀察對比，有明確變化時立即由專科醫師檢查。'
+        feel: '在腋窩深處摸到堅硬、不會痛、花生或鳥蛋大小的硬塊，可能單顆或成串固定。',
+        diff: '感冒發炎引發的淋巴結多數會紅腫壓痛；若「無感染卻摸到無痛堅硬淋巴」，具高度轉移警戒意義！',
+        action: '洗澡抹沐浴乳時順手由乳房外側往腋窩深處觸摸滑動，摸到無痛硬塊請立刻請乳房專科醫師掃描。'
       },
       {
-        icon: '🔵',
-        name: '腋下淋巴腫塊（淋巴腺腫大）',
+        icon: '📏',
+        name: '兩側大小突變（輪廓突然改變）',
         badge: 'CLINICAL PRIORITY 07',
-        feel: '在腋窩深處摸到堅硬、不會痛、花生或鳥蛋大小的硬塊。',
-        diff: '感冒或傷口引發的淋巴發炎通常會紅腫脹痛；若「無任何感染卻摸到無痛堅硬淋巴」，需高度防範。',
-        action: '洗澡抹沐浴乳時順手由外側往腋窩深處觸摸滑動，摸到硬塊請立刻請乳房專科醫師掃描。'
+        feel: '短時間（數週至數月）內一側乳房明顯變形、局部隆起腫大、邊界輪廓突然改變或左右明顯不對稱。',
+        diff: '天生雙側乳房微不對稱屬常態；若在短時間內「單側明顯膨出或局部扭曲改變」，需立即查明原因。',
+        action: '每月經期結束後在鏡前雙手自然下垂、高舉、叉腰觀察對比，發現明顯不對稱改變請及早由專科醫師檢查。'
       }
     ];
 

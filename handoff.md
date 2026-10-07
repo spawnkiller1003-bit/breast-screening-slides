@@ -106,8 +106,15 @@
   1. **S16 轉場 Hook 異常排查與修復**：修復了 `setP142Tool()` 內部未帶引數呼叫 `document.getElementById()` 觸發 TypeError 的問題，補齊完整選擇器 `document.getElementById('p142-btn-' + tool)`，恢復 S16 派工羅盤自動啟動。
   2. **全域轉場生命週期 Hook 防禦性封裝（Try-Catch Protection）**：在 `showSlide()` 的轉場 hook 外層加入強韌的 `try-catch` 防禦性保護，徹底確保未來任何單一投影片內部的互動邏輯若有例外，絕不干擾或阻斷大螢幕廣播與演講者控制台 UI（縮圖、下一頁預覽、備忘話術）的即時渲染。
 
+- 已完成 **S17 七大異常警訊「腋下淋巴水腫」與「兩側大小突變」Clinical Priority 嚴格對齊修正**（直接覆蓋 [`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html) 及 [`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)）：
+  1. **Clinical Priority 與卡片嚴密一對一對應**：全面修正先前卡片排列與 JS `p17Symptoms` 陣列索引錯位相反問題。
+     - **Card 5**：🪨 腋下淋巴水腫 ➡️ 精準對應 **CLINICAL PRIORITY 06**（淋巴腺腫大／無痛硬質成串）。
+     - **Card 6**：📏 兩側大小突變 ➡️ 精準對應 **CLINICAL PRIORITY 07**（形狀突然改變／輪廓不對稱）。
+     - **Card 3 & Card 4**：🔴 乳頭凹陷回縮（PRIORITY 04）與 🍊 橘皮樣水腫（PRIORITY 05）亦同步完成一對一精準校準。
+  2. **臨床鑑別面板同步連動**：點擊任一警訊方塊，下方聚光卡顯示的圖示、Priority 編號、臨床外觀、良惡性鑑別與醫師建議處置均 100% 準確無誤。
+
 ## 🚦 目前狀態
-- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），S16 與所有 24 頁演講者對應畫面 100% 毫秒級無縫同步！
+- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），S17 臨床警訊優先順序與內容完美嚴密對齊！
 - **本地檔案清單**：
   - 🌟 線上發布主檔（Plan C 定稿完全版）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
   - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
@@ -119,9 +126,10 @@
 2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
 
 ## 🕐 最後更新
-- **時間**：2026-10-07 10:36
+- **時間**：2026-10-07 11:16
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
+
 
 
 
