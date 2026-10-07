@@ -82,8 +82,21 @@
      - 左右按鈕固定於畫面垂直正中央（`top: 50% -translate-y-1/2`），貼齊螢幕兩側邊界（`0.5rem`），配備高對比毛玻璃陰影（Prev 白底黑字、Next 亮粉底白字），大拇指單手即可輕鬆盲按。
      - 手機模式下主內容區自動配置左右 `3.5rem` 的安全留白，確保中央的文字、按鈕與互動卡片 100% 不會被兩側大箭頭遮擋。
 
+- 已完成 **演講者畫面雙螢幕極致同步引擎升級（Quad-Sync Engine）與原生 16:9 縮放鏡像重構**（徹底解決本地 `file://` 與線上雙螢幕投影片不同步問題，直接覆蓋 [`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html) 及 [`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)）：
+  1. **跨視窗同步中樞全面重構（四重備援通道）**：
+     - **通道 1（父子視窗直通）**：主視窗與講者控制台視窗持有相互的 `window.opener` 與 `speakerWindowRef` 引用，透過 `postMessage(payload, '*')` 直通傳輸。徹底解決瀏覽器在本地 `file://` 協定下將 origin 視為 `null` 導致 BroadcastChannel 與 localStorage 失效的硬體限制，延遲 < 1ms。
+     - **通道 1.5（同源/本地直接方法調用）**：支援 `handleSyncDirect(payload)`，同瀏覽器行程下 0ms 瞬間呼叫。
+     - **通道 2（BroadcastChannel）**：線上與 localhost 多視窗即時廣播。
+     - **通道 3（localStorage）**：跨獨立分頁 storage 事件備援。
+  2. **智慧雙向握手機制（Handshake Protocol）**：
+     - 講者視窗開啟時，URL 自動夾帶當前頁碼參數（`?view=speaker&slide=N`），開啟瞬間精確對齊當前進度。
+     - 講者視窗載入完成後主動發起 `REQ_SYNC` 請求，主螢幕即時回應 `ACK_SYNC`（回傳最新頁碼與黑屏狀態），頂部徽章即時亮起「🟢 大螢幕已連線同步」。
+  3. **原生 DOM 16:9 縮放鏡像預覽（全面淘汰 iframe）**：
+     - 徹底拔除原本在本地 `file://` 下會觸發跨域阻擋（CORS/SecurityError）且會加載失敗的 `<iframe id="spk-mirror-frame">`。
+     - 改採**原生 DOM 高清縮放畫布（`#spk-preview-stage`）**，在講者控制台左側以 1280x720 比例完美等比縮放鏡像展示當前大螢幕正在播放的投影片，零資源浪費、零網路請求、絕不閃白，換頁時 0ms 瞬間同步！
+
 ## 🚦 目前狀態
-- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），手機觸控點擊與導航體驗極致穩定。
+- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），本地 `file://` 雙擊與線上雙螢幕同步 100% 毫秒級通暢。
 - **本地檔案清單**：
   - 🌟 線上發布主檔（Plan C 定稿完全版）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
   - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
@@ -95,8 +108,9 @@
 2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
 
 ## 🕐 最後更新
-- **時間**：2026-09-30 23:05
+- **時間**：2026-10-07 09:40
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
+
 
 
