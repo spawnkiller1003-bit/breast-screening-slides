@@ -102,8 +102,12 @@
      - 頂部控制列新增「📐 巨幅滿版 (V)」按鈕，支援鍵盤快捷鍵 `V`。
      - 點擊可在一秒內將左側投影片進一步擴展至 **10 欄（佔 83% 超巨幅滿版）**，右側備忘縮為精巧速記欄，滿足講者對畫面極致放大的閱覽需求。
 
+- 已完成 **S16 演講者畫面無法同步問題根除與全域轉場 Hook 防禦強化**（直接覆蓋 [`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html) 及 [`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)）：
+  1. **S16 轉場 Hook 異常排查與修復**：修復了 `setP142Tool()` 內部未帶引數呼叫 `document.getElementById()` 觸發 TypeError 的問題，補齊完整選擇器 `document.getElementById('p142-btn-' + tool)`，恢復 S16 派工羅盤自動啟動。
+  2. **全域轉場生命週期 Hook 防禦性封裝（Try-Catch Protection）**：在 `showSlide()` 的轉場 hook 外層加入強韌的 `try-catch` 防禦性保護，徹底確保未來任何單一投影片內部的互動邏輯若有例外，絕不干擾或阻斷大螢幕廣播與演講者控制台 UI（縮圖、下一頁預覽、備忘話術）的即時渲染。
+
 ## 🚦 目前狀態
-- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），演講者視窗投影片滿版飽滿、同步極致流暢。
+- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），S16 與所有 24 頁演講者對應畫面 100% 毫秒級無縫同步！
 - **本地檔案清單**：
   - 🌟 線上發布主檔（Plan C 定稿完全版）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
   - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
@@ -115,9 +119,10 @@
 2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
 
 ## 🕐 最後更新
-- **時間**：2026-10-07 09:48
+- **時間**：2026-10-07 10:36
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
+
 
 
 

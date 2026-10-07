@@ -2582,26 +2582,30 @@
       const progressPercent = (currentSlide / totalSlides) * 100;
       document.getElementById('deck-progress-bar').style.width = `${progressPercent}%`;
 
-      // 轉場專屬生命週期 hook
-      if (currentSlide === 5) {
-        filterP05Category('born');
-        selectP05Factor(0);
-      } else if (currentSlide === 6) {
-        resetP06Habits();
-      } else if (currentSlide === 9) {
-        resetP09Energy();
-      } else if (currentSlide === 10) {
-        setP10Mode('blue'); // 預設左框先亮（藍光高壓模式）
-      } else if (currentSlide === 12) {
-        selectP12Myth(0);
-      } else if (currentSlide === 15) {
-        selectP15Tool('mammo');
-      } else if (currentSlide === 16) {
-        setP142Tool('us');
-      } else if (currentSlide === 17) {
-        selectP17Symptom(0);
-      } else if (currentSlide === 21) {
-        resetP19Todos();
+      // 轉場專屬生命週期 hook (以 try-catch 嚴密保護，防禦任何局部異常中斷講者畫面與廣播)
+      try {
+        if (currentSlide === 5) {
+          filterP05Category('born');
+          selectP05Factor(0);
+        } else if (currentSlide === 6) {
+          resetP06Habits();
+        } else if (currentSlide === 9) {
+          resetP09Energy();
+        } else if (currentSlide === 10) {
+          setP10Mode('blue'); // 預設左框先亮（藍光高壓模式）
+        } else if (currentSlide === 12) {
+          selectP12Myth(0);
+        } else if (currentSlide === 15) {
+          selectP15Tool('mammo');
+        } else if (currentSlide === 16) {
+          setP142Tool('us');
+        } else if (currentSlide === 17) {
+          selectP17Symptom(0);
+        } else if (currentSlide === 21) {
+          resetP19Todos();
+        }
+      } catch (hookErr) {
+        console.warn('Slide hook notice on stage ' + currentSlide + ':', hookErr);
       }
 
       // 雙螢幕同步廣播與 UI 更新
@@ -3984,7 +3988,7 @@
       document.querySelectorAll('.p142-btn').forEach(b => {
         b.className = 'p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-50 hover:opacity-100 hover:scale-105';
       });
-      const targetBtn = document.getElementById();
+      const targetBtn = document.getElementById('p142-btn-' + tool);
       if (targetBtn) {
         targetBtn.className = 'p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-purple bg-purple-50/40 pop-shadow text-left space-y-1 transition scale-105 shadow-xl shadow-purple-500/15 opacity-100';
       }
@@ -3992,13 +3996,20 @@
       const d = p142Tools[tool];
       if (!d) return;
       const badge = document.getElementById('p142-detail-badge');
-      badge.innerText = d.badge;
-      badge.className = 'px-3.5 py-1 rounded-full text-sm font-black ' + (d.badgeClass || 'bg-purple-100 text-purple-700');
-      document.getElementById('p142-detail-tag').innerText = d.tag;
-      document.getElementById('p142-detail-title').innerText = d.title;
-      document.getElementById('p142-detail-how').innerText = d.how;
-      document.getElementById('p142-detail-pro').innerText = d.pro;
-      document.getElementById('p142-detail-con').innerText = d.con;
+      if (badge) {
+        badge.innerText = d.badge;
+        badge.className = 'px-3.5 py-1 rounded-full text-sm font-black ' + (d.badgeClass || 'bg-purple-100 text-purple-700');
+      }
+      const tag = document.getElementById('p142-detail-tag');
+      if (tag) tag.innerText = d.tag;
+      const title = document.getElementById('p142-detail-title');
+      if (title) title.innerText = d.title;
+      const how = document.getElementById('p142-detail-how');
+      if (how) how.innerText = d.how;
+      const pro = document.getElementById('p142-detail-pro');
+      if (pro) pro.innerText = d.pro;
+      const con = document.getElementById('p142-detail-con');
+      if (con) con.innerText = d.con;
     }
 
     // P17: 期別切換
