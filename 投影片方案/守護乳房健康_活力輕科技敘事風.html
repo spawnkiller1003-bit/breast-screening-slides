@@ -2259,6 +2259,10 @@
 
       <!-- 右側按鍵操作提示 -->
       <div class="flex items-center gap-2 text-xs">
+        <button onclick="toggleSpeakerLayout()" id="spk-layout-btn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1.5 border border-slate-700" title="切換投影片畫面滿版程度 (V)">
+          <span>📐</span>
+          <span id="spk-layout-text">巨幅滿版 (V)</span>
+        </button>
         <button onclick="toggleBlankScreen()" id="spk-blank-btn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1 border border-slate-700">
           <span>⬛</span>
           <span>黑屏 (B)</span>
@@ -2269,32 +2273,32 @@
       </div>
     </header>
 
-    <!-- 講者控制台主要三欄區域 -->
-    <main class="flex-1 grid grid-cols-12 gap-4 p-4 overflow-hidden bg-slate-950">
-      <!-- 左欄 (7 欄)：當前投影片縮圖即時鏡像 + 翻頁大按鈕 -->
-      <div class="col-span-7 flex flex-col gap-3 h-full overflow-hidden">
+    <!-- 講者控制台主要雙欄區域 (滿版強化：左側投影片佔比擴大至 8~9 欄，貼滿邊界) -->
+    <main id="spk-main-grid" class="flex-1 grid grid-cols-12 gap-3 p-3 overflow-hidden bg-slate-950">
+      <!-- 左欄：當前投影片超大滿版即時鏡像 + 翻頁大按鈕 -->
+      <div id="spk-left-col" class="col-span-8 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300">
         <!-- 當前投影片畫面容器 -->
-        <div class="flex-1 bg-slate-900 rounded-3xl border border-slate-800 p-3 flex flex-col justify-between overflow-hidden shadow-2xl relative">
-          <div class="flex items-center justify-between text-xs text-slate-400 font-mono pb-2 border-b border-slate-800/80">
+        <div class="flex-1 bg-slate-900 rounded-2xl border border-slate-800 p-2.5 flex flex-col justify-between overflow-hidden shadow-2xl relative">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono pb-1.5 border-b border-slate-800/80">
             <span class="flex items-center gap-1.5 text-vivid-pink font-bold">
               <span class="w-2 h-2 rounded-full bg-vivid-pink animate-pulse"></span>
-              LIVE ON STAGE // 當前大螢幕畫面
+              LIVE ON STAGE // 當前大螢幕滿版畫面
             </span>
             <span class="font-bold text-white">
               STAGE <span id="spk-current-num" class="text-vivid-pink text-base">1</span> / <span id="spk-total-num">24</span>
             </span>
           </div>
 
-          <!-- 鏡像即時視窗 (原生 DOM 16:9 高清縮放鏡像，零 iframe、零 CORS/file:// 限制、毫秒即時渲染) -->
-          <div id="spk-mirror-wrapper" class="flex-1 my-2 rounded-2xl overflow-hidden bg-slate-950 text-slate-900 relative shadow-inner flex items-center justify-center border border-slate-800">
-            <div id="spk-preview-stage" class="w-full h-full relative flex items-center justify-center overflow-hidden p-2 select-none pointer-events-none">
+          <!-- 鏡像即時視窗 (原生 DOM 16:9 極致滿版縮放鏡像，無多餘黑邊) -->
+          <div id="spk-mirror-wrapper" class="flex-1 w-full my-1 rounded-xl overflow-hidden bg-slate-950 text-slate-900 relative shadow-inner flex items-center justify-center border border-slate-800/60">
+            <div id="spk-preview-stage" class="w-full h-full relative flex items-center justify-center overflow-hidden select-none pointer-events-none">
               <!-- JS 動態生成 1280x720 等比縮放鏡像 -->
             </div>
           </div>
 
-          <!-- 底部快速導航與大按鈕 -->
+          <!-- 底部快速導航與大按鈕 (緊湊高雅，節省垂直空間) -->
           <div class="flex items-center justify-between pt-1">
-            <button onclick="spkPrevSlide()" class="px-5 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition flex items-center gap-2 border border-slate-700">
+            <button onclick="spkPrevSlide()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition flex items-center gap-2 border border-slate-700">
               <span>◀</span>
               <span>上一關 (←)</span>
             </button>
@@ -2304,7 +2308,7 @@
               <!-- JS 動態生成 24 關選項 -->
             </select>
 
-            <button onclick="spkNextSlide()" class="px-6 py-2.5 rounded-2xl bg-vivid-pink hover:bg-pink-600 text-white font-black text-sm transition flex items-center gap-2 shadow-lg shadow-pink-500/20">
+            <button onclick="spkNextSlide()" class="px-6 py-2 rounded-xl bg-vivid-pink hover:bg-pink-600 text-white font-black text-sm transition flex items-center gap-2 shadow-lg shadow-pink-500/20">
               <span>下一關 (Space / →)</span>
               <span>▶</span>
             </button>
@@ -2312,8 +2316,8 @@
         </div>
       </div>
 
-      <!-- 右欄 (5 欄)：下一頁預覽 + 大字版講者備忘話術 -->
-      <div class="col-span-5 flex flex-col gap-3 h-full overflow-hidden">
+      <!-- 右欄：下一頁預覽 + 大字版講者備忘話術 -->
+      <div id="spk-right-col" class="col-span-4 xl:col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300">
         <!-- 下一頁預覽卡片 (Next Slide Preview) -->
         <div class="bg-slate-900 p-4 rounded-3xl border border-slate-800 space-y-2 flex-shrink-0 shadow-lg">
           <div class="flex items-center justify-between text-xs font-mono">
@@ -2654,6 +2658,11 @@
       } else if (e.key === 'Escape') {
         closeQrModal();
         closeVividQuoteModal();
+      } else if (e.key === 'v' || e.key === 'V') {
+        if (isSpeakerView) {
+          e.preventDefault();
+          toggleSpeakerLayout();
+        }
       } else if (e.key === 'p' || e.key === 'P') {
         e.preventDefault();
         openSpeakerView();
@@ -3026,7 +3035,31 @@
     }
 
     
-    // 原生 DOM 16:9 高清縮放鏡像預覽函式
+    // 講者控制台視圖滿版切換 (8:4 滿版標準 vs 10:2 巨幅放大)
+    let spkLayoutMode = 'large';
+    function toggleSpeakerLayout() {
+      const leftCol = document.getElementById('spk-left-col');
+      const rightCol = document.getElementById('spk-right-col');
+      const btnText = document.getElementById('spk-layout-text');
+      if (!leftCol || !rightCol) return;
+
+      if (spkLayoutMode === 'large') {
+        spkLayoutMode = 'max';
+        leftCol.className = 'col-span-10 xl:col-span-10 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        rightCol.className = 'col-span-2 xl:col-span-2 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        if (btnText) btnText.innerText = '標準雙欄 (V)';
+      } else {
+        spkLayoutMode = 'large';
+        leftCol.className = 'col-span-8 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        rightCol.className = 'col-span-4 xl:col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        if (btnText) btnText.innerText = '巨幅滿版 (V)';
+      }
+      setTimeout(() => {
+        updateSpeakerMirror(currentSlide);
+      }, 50);
+    }
+
+    // 原生 DOM 16:9 極致滿版高清縮放鏡像預覽函式
     function updateSpeakerMirror(slideIndex) {
       const stage = document.getElementById('spk-preview-stage');
       const sourceSlide = document.querySelector(`.slide[data-slide="${slideIndex}"]`);
@@ -3034,9 +3067,24 @@
 
       stage.innerHTML = '';
 
-      // 建立虛擬 16:9 畫布容器 (以 1280x720 比例縮放)
+      // 建立虛擬 16:9 畫布容器 (以 1280x720 比例縮放，填滿貼合)
       const wrapper = document.createElement('div');
-      wrapper.className = 'w-[1280px] h-[720px] bg-slate-50 text-slate-900 rounded-3xl p-8 flex flex-col justify-between overflow-hidden shadow-2xl relative select-none pointer-events-none';
+      wrapper.style.position = 'absolute';
+      wrapper.style.width = '1280px';
+      wrapper.style.height = '720px';
+      wrapper.style.left = '50%';
+      wrapper.style.top = '50%';
+      wrapper.style.backgroundColor = '#ffffff';
+      wrapper.style.color = '#0f172a';
+      wrapper.style.borderRadius = '16px';
+      wrapper.style.padding = '24px 32px';
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.justifyContent = 'space-between';
+      wrapper.style.overflow = 'hidden';
+      wrapper.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.6)';
+      wrapper.style.pointerEvents = 'none';
+      wrapper.style.userSelect = 'none';
 
       // 複製投影片內容
       const clone = sourceSlide.cloneNode(true);
@@ -3047,20 +3095,18 @@
       clone.style.height = '100%';
       clone.style.maxHeight = '100%';
       clone.style.overflow = 'hidden';
+      clone.style.justifyContent = 'center';
 
       wrapper.appendChild(clone);
+      stage.appendChild(wrapper);
 
-      const container = document.createElement('div');
-      container.className = 'w-full h-full flex items-center justify-center overflow-hidden';
-      container.appendChild(wrapper);
-      stage.appendChild(container);
-
-      // 計算並套用 scale
+      // 計算並套用 scale (貼滿寬度與高度，最大化滿版展示)
       function fitScale() {
-        const sw = stage.clientWidth || 580;
-        const sh = stage.clientHeight || 320;
-        const scale = Math.min((sw - 16) / 1280, (sh - 16) / 720);
-        wrapper.style.transform = `scale(${Math.max(scale, 0.2)})`;
+        const sw = stage.clientWidth;
+        const sh = stage.clientHeight;
+        if (!sw || !sh) return;
+        const scale = Math.min((sw - 4) / 1280, (sh - 4) / 720);
+        wrapper.style.transform = `translate(-50%, -50%) scale(${Math.max(scale, 0.15)})`;
         wrapper.style.transformOrigin = 'center center';
       }
       fitScale();

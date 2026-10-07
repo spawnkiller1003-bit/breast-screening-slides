@@ -95,8 +95,15 @@
      - 徹底拔除原本在本地 `file://` 下會觸發跨域阻擋（CORS/SecurityError）且會加載失敗的 `<iframe id="spk-mirror-frame">`。
      - 改採**原生 DOM 高清縮放畫布（`#spk-preview-stage`）**，在講者控制台左側以 1280x720 比例完美等比縮放鏡像展示當前大螢幕正在播放的投影片，零資源浪費、零網路請求、絕不閃白，換頁時 0ms 瞬間同步！
 
+- 已完成 **演講者控制台「投影片畫面極致滿版」升級（Full-Bleed Speaker View）**（直接覆蓋 [`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html) 及 [`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)）：
+  1. **投影片畫面佔比擴大至 8 ~ 9 欄**：將左側投影片畫面由原本的 7 欄大幅擴大至 `col-span-8 xl:col-span-9`（佔全螢幕 67% ~ 75% 面積），大幅壓制周圍留白，大字體與圖表細節一覽無遺。
+  2. **16:9 原生縮放畫布邊界極限貼合**：縮放演算法升級為滿版貼邊（扣除微量 4px），內部 1280×720 畫布移除多餘外層邊距與黑邊，投影片內容以最大比例飽滿呈現。
+  3. **視圖切換模式支援（巨幅滿版 V 鍵）**：
+     - 頂部控制列新增「📐 巨幅滿版 (V)」按鈕，支援鍵盤快捷鍵 `V`。
+     - 點擊可在一秒內將左側投影片進一步擴展至 **10 欄（佔 83% 超巨幅滿版）**，右側備忘縮為精巧速記欄，滿足講者對畫面極致放大的閱覽需求。
+
 ## 🚦 目前狀態
-- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），本地 `file://` 雙擊與線上雙螢幕同步 100% 毫秒級通暢。
+- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），演講者視窗投影片滿版飽滿、同步極致流暢。
 - **本地檔案清單**：
   - 🌟 線上發布主檔（Plan C 定稿完全版）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
   - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
@@ -108,9 +115,10 @@
 2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
 
 ## 🕐 最後更新
-- **時間**：2026-10-07 09:40
+- **時間**：2026-10-07 09:48
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
+
 
 
 
