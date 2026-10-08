@@ -122,21 +122,32 @@
   2. **臨床鑑別面板同步連動**：點擊任一警訊方塊，下方聚光卡顯示的圖示、Priority 編號、臨床外觀、良惡性鑑別與醫師建議處置均 100% 準確無誤。
 
 ## 🚦 目前狀態
-- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），S17 臨床警訊優先順序與內容完美嚴密對齊！
+- **線上運行狀態**：GitHub Pages 100% 在線（HTTP/2 200 OK），S24 雙 QR Code（簡報收藏 + 課後回饋問卷）並排展示、一鍵放大燈箱、直連填寫 100% 正常運作！
+- **Google 表單課後問卷正式上線**：
+  - 【填答網址】：`https://docs.google.com/forms/d/e/1FAIpQLSe3dcVYeutsomWTDca0YhUuL7HUQY7_XpNk5skJ3gAuLscIeg/viewform`
+  - 【官方短網址】：`https://forms.gle/uCh98fYDbEDW7cJd7`（已驗證 100% 導向原表單）
+  - 【自訂短網址】：`https://tinyurl.com/dr-liang-survey`
+  - 【後台編輯/即時統計網址】：`https://docs.google.com/forms/d/1lKH4a0wny1V5BcvL38uR2jTSkQc_dXRBAf4oS3rM_vk/edit`
 - **本地檔案清單**：
   - 🌟 線上發布主檔（Plan C 定稿完全版）：[`index.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/index.html)
-  - 🌟 方案 C 完全版（含講者模式與 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
+  - 🌟 方案 C 完全版（含講者模式與雙 QR Code）：[`投影片方案/守護乳房健康_活力輕科技敘事風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html)
   - 🌟 方案 A 完全版：[`投影片方案/守護乳房健康_現代科技儀表板風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_現代科技儀表板風.html)
   - 🌟 方案 B 完全版：[`投影片方案/守護乳房健康_溫潤人文雜誌風.html`](file:///Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_溫潤人文雜誌風.html)
 
-## ➡️ 下一步
-1. 演講現場打開主螢幕投影片，按 `P` 鍵開啟演講者專屬螢幕，按 `F` 鍵將主螢幕全螢幕投影。
-2. 演講結尾（Slide 24）邀請聽眾拿出手機掃描右下角 QR Code（點一下可全螢幕放大）收藏簡報。
+## ➡️ 下一步（收工交接待辦）
+1. **第一場講座（115/10/07 瑞健桃園）正式登場**：
+   - 現場打開主螢幕投影片，按 `P` 鍵開啟演講者專屬螢幕，按 `F` 鍵將主螢幕全螢幕投影。
+   - 演講結尾（Slide 24）邀請聽眾掃描 QR Code 填寫課後回饋問卷及收藏簡報。
+2. **第一堂課問卷回收與分析**：
+   - 講座結束後進入 Google 表單後台檢視統計數據、理解聽眾在各題知識吸收狀況與質性回饋。
+3. **第二堂課（115/10/14 瑞健南崁）前投影片優化**：
+   - 依據第一場回收之學員數據、答錯率偏高的觀念或聽眾現場反應，針對性微調特定投影片之圖解、提示或講者備忘話術。
 
 ## 🕐 最後更新
-- **時間**：2026-10-07 11:16
+- **時間**：2026-10-08 09:38
 - **更新者**：Antigravity @ liangzuweideMacBook-Pro.local
 - **Git push**：已同步推送至 `spawnkiller1003-bit/breast-screening-slides:main`
+
 
 
 
