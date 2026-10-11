@@ -3846,104 +3846,103 @@
       calcP06Risk();
     }
 
-    // P08: 動態餐盤切換（同方案 B 互動邏輯，C 風格）
+    // ==================== S7: 外食微替換動態餐盤 ====================
     const p08MealData = {
-      before: {
-        badge: '🍱 典型加班便當組合',
-        badgeClass: 'text-red-600 bg-red-100',
-        calories: '預估熱量：約 980 大卡',
-        statusTag: 'HIGH RISK ⚠️',
-        statusTagClass: 'text-red-600',
-        inflamePct: 85,
-        inflameText: '85% 超載 (Overload)',
-        inflameBarClass: 'bg-red-500',
-        antiPct: 15,
-        antiText: '15% 偏低 (Deficit)',
-        summary: '長期高糖高脂外食容易促成脂肪芳香化。點擊上方「護乳微替換提案」切換按鈕，查看醫師推薦的無痛微替換方案！',
+      bad: {
+        badge: "傳統高負載便當",
+        badgeColor: "bg-red-100 text-red-700 border-red-200",
+        calories: "約 950 ~ 1100 大卡",
+        summaryText: "⚠️ 高油炸、高精緻澱粉、半糖手搖！體內發炎反應 +65%，長期增加體內雌激素蓄積與肥胖風險。",
+        summaryBadge: "高發炎高負載 ⚠️",
+        summaryBadgeColor: "bg-red-100 text-red-700",
         items: [
-          { icon: '🍗', title: '油炸酥脆大雞排 / 炸排骨', desc: '高溫氧化油脂、反式脂肪酸加劇體內慢性發炎反應', tag: '促發炎 ⚠️', tagClass: 'text-red-600 font-black' },
-          { icon: '🧋', title: '半糖波霸紅茶拿鐵 / 甜飲', desc: '高果糖玉米糖漿促使三酸甘油酯與內臟脂肪激增', tag: '刺激雌激素 ⚠️', tagClass: 'text-red-600 font-black' },
-          { icon: '🥡', title: '塑膠袋或淋膜紙盒直接裝熱湯', desc: '高溫高油溶出鄰苯二甲酸酯（環境荷爾蒙/塑化劑干擾）', tag: '環境荷爾蒙 ⚠️', tagClass: 'text-red-600 font-black' }
+          { icon: "🍗", name: "脆皮炸雞腿", desc: "高溫油炸反式脂肪", tag: "促發炎油脂", tagColor: "bg-red-50 text-red-600 border-red-200" },
+          { icon: "🍚", name: "精緻白米飯 (滿碗)", desc: "高 GI 升糖指數", tag: "胰島素飆升", tagColor: "bg-orange-50 text-orange-600 border-orange-200" },
+          { icon: "🌭", name: "重鹽炒香腸配菜", desc: "加工肉品含亞硝酸鹽", tag: "一級致癌物", tagColor: "bg-red-50 text-red-600 border-red-200" },
+          { icon: "🥤", name: "珍珠奶茶 (半糖)", desc: "高果糖玉米糖漿 35g", tag: "內臟脂肪堆積", tagColor: "bg-amber-50 text-amber-600 border-amber-200" }
         ]
       },
-      after: {
-        badge: '🥗 智慧護乳微替換提案',
-        badgeClass: 'text-emerald-700 bg-emerald-100',
-        calories: '預估熱量：約 520 大卡（減 46%）',
-        statusTag: 'OPTIMAL PROTECT ✨',
-        statusTagClass: 'text-emerald-600',
-        inflamePct: 20,
-        inflameText: '20% 低風險 (Anti-inflammatory)',
-        inflameBarClass: 'bg-emerald-500',
-        antiPct: 90,
-        antiText: '90% 極佳 (Optimal Defense)',
-        summary: '恭喜切換！每週只要有 3 天午餐完成這 3 個微替換，全身慢性發炎指數立降 75%，細胞天然抗氧化屏障瞬間建立！',
+      good: {
+        badge: "護乳微替換動態餐盤",
+        badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+        calories: "約 580 ~ 650 大卡",
+        summaryText: "🌿 地中海抗發炎原則！富含 Omega-3、深色十字花科蔬果與兒茶素，阻斷發炎連鎖反應，抗氧化能力 +80%！",
+        summaryBadge: "抗發炎抗氧化 ✨",
+        summaryBadgeColor: "bg-emerald-100 text-emerald-800",
         items: [
-          { icon: '🐟', title: '舒肥烤雞胸 / 乾煎低溫鹽麴鮭魚', desc: '優質蛋白與 Omega-3 不飽和脂肪酸，強力抑制發炎因子', tag: '抗發炎蛋白 ✅', tagClass: 'text-emerald-600 font-black' },
-          { icon: '🍵', title: '無糖高山冷泡綠茶 / 鮮檸氣泡水', desc: '豐富茶多酚兒茶素（EGCG），中和自由基並抑制異常細胞增生', tag: '兒茶素防禦 ✅', tagClass: 'text-emerald-600 font-black' },
-          { icon: '🍱', title: '自備 304 不鏽鋼 / 耐熱玻璃保鮮盒', desc: '杜絕環境荷爾蒙滲入熱食，給內分泌系統乾淨安全的空間', tag: '零塑化劑 ✅', tagClass: 'text-emerald-600 font-black' }
+          { icon: "🐟", name: "香煎烤鯖魚", desc: "深海優質 Omega-3 魚油", tag: "強效抗發炎", tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+          { icon: "🥣", name: "糙米五穀飯", desc: "高纖低 GI 維持血糖平穩", tag: "豐富膳食纖維", tagColor: "bg-teal-50 text-teal-700 border-teal-200" },
+          { icon: "🥦", name: "雙色花椰菜 + 綠木耳", desc: "十字花科吲哚-3-甲醇 (I3C)", tag: "調節雌激素代謝", tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+          { icon: "🍵", name: "無糖冷泡綠茶", desc: "富含兒茶素 EGCG", tag: "自由基清除", tagColor: "bg-teal-50 text-teal-700 border-teal-200" }
         ]
       }
     };
 
     function toggleP08MealMode(mode) {
-      const btnBefore = document.getElementById('p08-btn-before');
-      const btnAfter = document.getElementById('p08-btn-after');
-      const data = p08MealData[mode];
+      const btnBad = document.getElementById('p08-tab-bad');
+      const btnGood = document.getElementById('p08-tab-good');
+      const container = document.getElementById('p08-meal-container');
+      const summaryBox = document.getElementById('p08-summary-box');
+      const d = p08MealData[mode];
+      if (!d) return;
 
-      if (mode === 'before') {
-        btnBefore.className = 'px-5 py-2 rounded-full bg-slate-900 text-white text-xs font-black transition shadow-sm';
-        btnAfter.className = 'px-5 py-2 rounded-full text-slate-600 hover:text-slate-900 text-xs font-bold transition';
-      } else {
-        btnBefore.className = 'px-5 py-2 rounded-full text-slate-600 hover:text-slate-900 text-xs font-bold transition';
-        btnAfter.className = 'px-5 py-2 rounded-full bg-emerald-600 text-white text-xs font-black transition shadow-sm';
+      if (btnBad && btnGood) {
+        if (mode === 'bad') {
+          btnBad.className = 'px-3.5 py-1.5 rounded-xl text-xs font-black transition-all bg-white text-slate-900 shadow-sm';
+          btnGood.className = 'px-3.5 py-1.5 rounded-xl text-xs font-black transition-all text-slate-500 hover:text-slate-900';
+        } else {
+          btnBad.className = 'px-3.5 py-1.5 rounded-xl text-xs font-black transition-all text-slate-500 hover:text-slate-900';
+          btnGood.className = 'px-3.5 py-1.5 rounded-xl text-xs font-black transition-all bg-emerald-600 text-white shadow-sm';
+        }
       }
 
-      // 更新 Badges 與文字
-      const badge = document.getElementById('p08-meal-badge');
-      badge.innerText = data.badge;
-      badge.className = `text-sm font-black px-4 py-1 rounded-full ${data.badgeClass}`;
-      document.getElementById('p08-calories-badge').innerText = data.calories;
-      
-      const tag = document.getElementById('p08-status-tag');
-      tag.innerText = data.statusTag;
-      tag.className = `text-xs font-mono font-bold ${data.statusTagClass}`;
-
-      // 更新進度條
-      const inflameBar = document.getElementById('p08-bar-inflame');
-      inflameBar.style.width = `${data.inflamePct}%`;
-      inflameBar.className = `h-full rounded-full transition-all duration-500 ${data.inflameBarClass}`;
-      document.getElementById('p08-bar-inflame-val').innerText = data.inflameText;
-      document.getElementById('p08-bar-inflame-val').className = `font-black ${mode === 'before' ? 'text-red-600' : 'text-emerald-600'}`;
-
-      const antiBar = document.getElementById('p08-bar-anti');
-      antiBar.style.width = `${data.antiPct}%`;
-      document.getElementById('p08-bar-anti-val').innerText = data.antiText;
-      document.getElementById('p08-bar-anti-val').className = `font-black ${mode === 'before' ? 'text-slate-500' : 'text-emerald-600'}`;
-
-      document.getElementById('p08-summary-text').innerText = data.summary;
-
-      // 渲染 3 項食物卡片
-      const listContainer = document.getElementById('p08-food-list');
-      listContainer.innerHTML = data.items.map(item => `
-        <div class="p-4 sm:p-5 rounded-2xl ${mode === 'before' ? 'bg-slate-50 border-2 border-slate-200' : 'bg-emerald-50/70 border-2 border-emerald-300'} flex items-center justify-between transition-all">
-          <div class="flex items-center gap-4">
-            <span class="text-3xl sm:text-4xl flex-shrink-0">${item.icon}</span>
-            <div>
-              <div class="font-black text-slate-900 text-base sm:text-lg">${item.title}</div>
-              <div class="text-sm sm:text-base text-slate-600 font-bold mt-0.5">${item.desc}</div>
+      if (container) {
+        container.innerHTML = d.items.map(it => `
+          <div class="p-3.5 rounded-2xl ${mode === 'bad' ? 'bg-slate-50 border border-slate-200' : 'bg-emerald-50/60 border-2 border-emerald-300'} flex items-start gap-3 transition-all hover:scale-[1.01]">
+            <span class="text-3xl flex-shrink-0">${it.icon}</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-black text-slate-900 text-sm sm:text-base truncate">${it.name}</span>
+                <span class="text-[11px] font-black px-2 py-0.5 rounded-md border shrink-0 ${it.tagColor}">${it.tag}</span>
+              </div>
+              <p class="text-xs text-slate-600 font-bold mt-1 line-clamp-1">${it.desc}</p>
             </div>
           </div>
-          <span class="text-xs sm:text-sm font-black px-3 py-1.5 rounded-full flex-shrink-0 ${item.tagClass}">${item.tag}</span>
-        </div>
-      `).join('');
+        `).join('');
+      }
+
+      if (summaryBox) {
+        summaryBox.className = `p-4 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 ${mode === 'bad' ? 'bg-red-50/80 border-red-200' : 'bg-emerald-50/90 border-emerald-300'}`;
+        summaryBox.innerHTML = `
+          <div class="space-y-0.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-black px-2.5 py-0.5 rounded-full ${d.summaryBadgeColor}">${d.summaryBadge}</span>
+              <span class="text-xs font-bold text-slate-500">預估熱量：${d.calories}</span>
+            </div>
+            <p class="text-xs sm:text-sm font-bold text-slate-800">${d.summaryText}</p>
+          </div>
+          <div class="shrink-0 text-right self-end sm:self-center">
+            <span class="text-[11px] font-black px-3 py-1 rounded-full ${mode === 'bad' ? 'bg-red-600 text-white' : 'bg-emerald-700 text-white'}">
+              ${mode === 'bad' ? '促發炎便當' : '地中海低發炎'}
+            </span>
+          </div>
+        `;
+      }
     }
 
-    // P09: 150 分鐘微運動蓄力（轉場歸零，單位改為「分鐘」中文字）
+    // ==================== S8: 150 分鐘碎片運動蓄力儀 ====================
     let p09CurrentMinutes = 0;
-    function addP09Energy(mins) {
+
+    function addP09Energy(mins, btn) {
       p09CurrentMinutes += mins;
       if (p09CurrentMinutes > 150) p09CurrentMinutes = 150;
+      
+      if (btn) {
+        btn.classList.add('ring-2', 'ring-orange-500', 'scale-95');
+        setTimeout(() => {
+          btn.classList.remove('ring-2', 'ring-orange-500', 'scale-95');
+        }, 200);
+      }
       updateP09Display();
     }
 
@@ -3953,19 +3952,29 @@
     }
 
     function updateP09Display() {
-      document.getElementById('p09-display-num').innerHTML = `${p09CurrentMinutes} <span class="text-2xl text-slate-400 font-bold">/ 150 分鐘</span>`;
+      const textEl = document.getElementById('p09-progress-text');
+      const barEl = document.getElementById('p09-bar');
+      const badgeEl = document.getElementById('p09-shield-badge');
+
       const pct = Math.round((p09CurrentMinutes / 150) * 100);
-      document.getElementById('p09-bar').style.width = `${pct}%`;
-      const msg = document.getElementById('p09-msg');
-      if (p09CurrentMinutes === 0) {
-        msg.innerHTML = '請點擊左側碎片活動按鈕，替每週 150 分鐘運動量蓄力充能！';
-        msg.className = 'text-xs text-slate-300 font-medium';
-      } else if (pct >= 100) {
-        msg.innerHTML = '🎉 恭喜達成 100% 本週微運動目標！降低乳癌風險 20% 成就解鎖！';
-        msg.className = 'text-xs text-vivid-mint font-black';
-      } else {
-        msg.innerHTML = `已達成目標 ${pct}%！再動一動，輕鬆累積每週健康能量！`;
-        msg.className = 'text-xs text-slate-300 font-medium';
+
+      if (textEl) {
+        textEl.innerText = `${p09CurrentMinutes} / 150 分鐘 (${pct}%)`;
+      }
+      if (barEl) {
+        barEl.style.width = `${pct}%`;
+      }
+      if (badgeEl) {
+        if (p09CurrentMinutes >= 150) {
+          badgeEl.innerHTML = '🎉 啟動 20% 防禦盾！';
+          badgeEl.className = 'px-3 py-1.5 rounded-xl bg-emerald-500 border border-emerald-600 text-xs font-black text-white text-center shadow-sm animate-bounce';
+        } else if (p09CurrentMinutes > 0) {
+          badgeEl.innerHTML = `蓄力中 (${pct}%)`;
+          badgeEl.className = 'px-3 py-1.5 rounded-xl bg-orange-100 border border-orange-300 text-xs font-black text-orange-800 text-center';
+        } else {
+          badgeEl.innerHTML = '尚未達標';
+          badgeEl.className = 'px-3 py-1.5 rounded-xl bg-white border border-orange-200 text-xs font-black text-slate-400 text-center';
+        }
       }
     }
 
@@ -4149,76 +4158,85 @@
       }, 1000);
     }
 
-    // P10: 左右方框點擊切換互動
+    // ==================== S8: 睡眠修復工程與藍光對比 ====================
     const p10Modes = {
       blue: {
-        title: '🚨 當前模擬：睡前螢幕藍光警報狀態',
+        title: '🚨 睡前螢幕藍光干擾狀態',
         badge: '高發炎警戒 ⚠️',
         badgeClass: 'bg-red-500 text-white',
-        melatonin: '暴跌 82% ⚠️（松果體誤判為白晝，抑癌素嚴重缺工）',
-        cortisol: '飆升 +65% ⚠️（體內皮質醇持續燃燒，早晨胰島素阻抗升高）',
-        repair: '被迫停擺 ⚠️（突變與 DNA 鏈損傷逃避夜間糾錯清查）',
-        quote: '梁醫師臨床警示：深夜滑手機就像不斷取消伺服器備份排程，讓癌變細胞有可乘之機！今晚 22:00 請務必停機！'
+        panelBg: 'bg-red-50/90 border-2 border-red-300',
+        melatonin: '暴跌 82% ⚠️',
+        melatoninDesc: '松果體誤判為白晝，抑癌素嚴重缺工',
+        cortisol: '飆升 +65% ⚠️',
+        cortisolDesc: '皮質醇持續高檔，早晨胰島素阻抗升',
+        repair: '被迫停擺 ⚠️',
+        repairDesc: 'DNA 突變鏈逃避夜間糾錯清查',
+        quote: '深夜滑手機就像不斷取消伺服器備份排程，讓癌變細胞有可乘之機！今晚 22:00 請務必停機！'
       },
       repair: {
-        title: '✨ 當前模擬：22:00 數位停機自癒修復模式',
-        badge: '黃金自癒中 🛡️',
+        title: '✨ 22:00 數位停機自癒修復模式',
+        badge: '黃金修復中 🛡️',
         badgeClass: 'bg-emerald-600 text-white',
-        melatonin: '達 100% 峰值釋放 ✨（超強天然抗氧化劑全面中和自由基）',
-        cortisol: '平穩回落 ✨（消除全身慢性發炎，免疫大軍精神飽滿）',
-        repair: '全速運轉 ✨（NK 自然殺手細胞全面巡邏清除異變細胞）',
-        quote: '梁醫師溫馨提醒：每晚 22:00 放下手機，就是送給身體最頂級、完全免費的天然抗癌重組程式！'
+        panelBg: 'bg-indigo-50/90 border-2 border-indigo-300',
+        melatonin: '100% 釋放 ✨',
+        melatoninDesc: '超強天然抗氧化劑全面清除自由基',
+        cortisol: '平穩回落 ✨',
+        cortisolDesc: '消除全身發炎，免疫大軍精神飽滿',
+        repair: '全速運轉 ✨',
+        repairDesc: 'NK 自然殺手細胞全面巡邏清除異變',
+        quote: '每晚 22:00 放下手機，就是送給身體最頂級、完全免費的天然抗癌重組程式！'
       }
     };
 
     function setP10Mode(mode) {
-      const boxBlue = document.getElementById('p10-box-blue');
-      const boxRepair = document.getElementById('p10-box-repair');
-      const badgeBlue = document.getElementById('p10-badge-blue');
-      const badgeRepair = document.getElementById('p10-badge-repair');
+      const btnBlue = document.getElementById('p10-btn-blue');
+      const btnRepair = document.getElementById('p10-btn-repair');
       const panel = document.getElementById('p10-monitor-panel');
       const d = p10Modes[mode];
+      if (!d) return;
 
-      if (mode === 'blue') {
-        boxBlue.className = 'cursor-pointer bg-red-50/40 p-6 rounded-3xl border-2 border-red-500 pop-shadow space-y-3.5 transition-all duration-300 scale-[1.02] shadow-lg shadow-red-500/10';
-        boxRepair.className = 'cursor-pointer bg-white/70 p-6 rounded-3xl border border-slate-200 pop-shadow space-y-3.5 transition-all duration-300 opacity-60 hover:opacity-100';
-        badgeBlue.className = 'text-xs font-black text-white bg-red-600 px-2.5 py-0.5 rounded-full animate-pulse';
-        badgeRepair.className = 'text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full';
-        panel.className = 'p-4 rounded-2xl bg-red-50 border-2 border-red-200 text-slate-800 transition-all duration-300 space-y-2';
-      } else {
-        boxBlue.className = 'cursor-pointer bg-white/70 p-6 rounded-3xl border border-slate-200 pop-shadow space-y-3.5 transition-all duration-300 opacity-60 hover:opacity-100';
-        boxRepair.className = 'cursor-pointer bg-purple-50/40 p-6 rounded-3xl border-2 border-vivid-purple pop-shadow space-y-3.5 transition-all duration-300 scale-[1.02] shadow-lg shadow-purple-500/10';
-        badgeBlue.className = 'text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full';
-        badgeRepair.className = 'text-xs font-black text-white bg-vivid-purple px-2.5 py-0.5 rounded-full';
-        panel.className = 'p-4 rounded-2xl bg-purple-50 border-2 border-purple-200 text-slate-800 transition-all duration-300 space-y-2';
+      if (btnBlue && btnRepair) {
+        if (mode === 'blue') {
+          btnBlue.className = 'p-3.5 rounded-2xl border-2 border-red-500 bg-red-50/70 transition-all text-left space-y-1 ring-2 ring-red-400 shadow-sm';
+          btnRepair.className = 'p-3.5 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 transition-all text-left space-y-1 opacity-70';
+        } else {
+          btnBlue.className = 'p-3.5 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 transition-all text-left space-y-1 opacity-70';
+          btnRepair.className = 'p-3.5 rounded-2xl border-2 border-indigo-600 bg-indigo-50/80 transition-all text-left space-y-1 ring-2 ring-indigo-400 shadow-sm';
+        }
       }
 
-      panel.innerHTML = `
-        <div class="flex items-center justify-between border-b border-black/10 pb-2.5">
-          <div class="font-black text-base sm:text-lg text-slate-900 flex items-center gap-2">
-            <span>📊 體內即時修復指標監測：</span>
-            <span>${d.title}</span>
+      if (panel) {
+        panel.className = `p-4 rounded-2xl transition-all space-y-2.5 ${d.panelBg}`;
+        panel.innerHTML = `
+          <div class="flex items-center justify-between border-b border-black/10 pb-2">
+            <div class="font-black text-sm sm:text-base text-slate-900 flex items-center gap-2">
+              <span>📊 生物修復指標：</span>
+              <span>${d.title}</span>
+            </div>
+            <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${d.badgeClass}">${d.badge}</span>
           </div>
-          <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full ${d.badgeClass}">${d.badge}</span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm pt-2">
-          <div class="p-3.5 rounded-2xl bg-white/90 border border-black/5 shadow-sm">
-            <div class="font-bold text-slate-500 text-xs sm:text-sm">褪黑激素（Melatonin）</div>
-            <div class="font-black text-slate-900 text-xl sm:text-2xl mt-1">${d.melatonin}</div>
+          <div class="grid grid-cols-3 gap-2 text-xs pt-1">
+            <div class="p-2.5 rounded-xl bg-white/90 border border-black/5 shadow-sm">
+              <div class="font-bold text-slate-500 text-[11px]">褪黑激素</div>
+              <div class="font-black text-slate-900 text-sm mt-0.5">${d.melatonin}</div>
+              <div class="text-[10px] text-slate-500 font-medium mt-0.5">${d.melatoninDesc}</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/90 border border-black/5 shadow-sm">
+              <div class="font-bold text-slate-500 text-[11px]">皮質醇發炎</div>
+              <div class="font-black text-slate-900 text-sm mt-0.5">${d.cortisol}</div>
+              <div class="text-[10px] text-slate-500 font-medium mt-0.5">${d.cortisolDesc}</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/90 border border-black/5 shadow-sm">
+              <div class="font-bold text-slate-500 text-[11px]">DNA 修復</div>
+              <div class="font-black text-slate-900 text-sm mt-0.5">${d.repair}</div>
+              <div class="text-[10px] text-slate-500 font-medium mt-0.5">${d.repairDesc}</div>
+            </div>
           </div>
-          <div class="p-3.5 rounded-2xl bg-white/90 border border-black/5 shadow-sm">
-            <div class="font-bold text-slate-500 text-xs sm:text-sm">皮質醇發炎負荷</div>
-            <div class="font-black text-slate-900 text-xl sm:text-2xl mt-1">${d.cortisol}</div>
-          </div>
-          <div class="p-3.5 rounded-2xl bg-white/90 border border-black/5 shadow-sm">
-            <div class="font-bold text-slate-500 text-xs sm:text-sm">DNA 修復進程</div>
-            <div class="font-black text-slate-900 text-xl sm:text-2xl mt-1">${d.repair}</div>
-          </div>
-        </div>
-        <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-bold pt-2">
-          ${d.desc}
-        </p>
-      `;
+          <p class="text-xs sm:text-sm text-slate-800 font-bold pt-1 leading-snug">
+            💡 梁醫師叮嚀：${d.quote}
+          </p>
+        `;
+      }
     }
 
     // P17: 七大異常警訊互動式切換
@@ -4451,15 +4469,7 @@
       });
     }
 
-    // P19: 3 個 To Do
-    function calcP19Count() {
-      const checks = document.querySelectorAll('.p19-check');
-      let count = 0;
-      checks.forEach(c => {
-        if (c.checked) count++;
-      });
-      document.getElementById('p19-count-display').innerText = `${count} / 3`;
-    }
+
 
     // P20: 金句卡選取
     function selectQuoteCard(card) {
@@ -4555,39 +4565,21 @@
     resetP19Todos();
   
     
-    // ==================== S7: 外食微替換動態餐盤 (完全適配 S7 HTML) ====================
-    const p08MealData = {
-      bad: {
-        badge: "傳統高負載便當",
-        badgeColor: "bg-red-100 text-red-700 border-red-200",
-        calories: "約 950 ~ 1100 大卡",
-        summaryText: "⚠️ 高油炸、高精緻澱粉、半糖手搖！體內發炎反應 +65%，長期增加體內雌激素蓄積與肥胖風險。",
-        summaryBadge: "高發炎高負載",
-        summaryBadgeColor: "bg-red-100 text-red-700",
-        items: [
-          { icon: "🍗", name: "脆皮炸雞腿", desc: "高溫油炸反式脂肪", tag: "促發炎油脂", tagColor: "bg-red-50 text-red-600 border-red-200" },
-          { icon: "🍚", name: "精緻白米飯 (滿碗)", desc: "高 GI 升糖指數", tag: "胰島素飆升", tagColor: "bg-orange-50 text-orange-600 border-orange-200" },
-          { icon: "🌭", name: "重鹽炒香腸配菜", desc: "加工肉品含亞硝酸鹽", tag: "一級致癌物", tagColor: "bg-red-50 text-red-600 border-red-200" },
-          { icon: "🥤", name: "珍珠奶茶 (半糖)", desc: "高果糖玉米糖漿 35g", tag: "內臟脂肪堆積", tagColor: "bg-amber-50 text-amber-600 border-amber-200" }
-        ]
-      },
-      good: {
-        badge: "護乳微替換動態餐盤",
-        badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
-        calories: "約 580 ~ 650 大卡",
-        summaryText: "🌿 地中海抗發炎原則！富含 Omega-3、深色十字花科蔬果與兒茶素，阻斷發炎連鎖反應，抗氧化能力 +80%！",
-        summaryBadge: "抗發炎抗氧化",
-        summaryBadgeColor: "bg-emerald-100 text-emerald-800",
-        items: [
-          { icon: "🐟", name: "香煎烤鯖魚", desc: "深海優質 Omega-3 魚油", tag: "強效抗發炎", tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
-          { icon: "🥣", name: "糙米五穀飯", desc: "高纖低 GI 維持血糖平穩", tag: "豐富膳食纖維", tagColor: "bg-teal-50 text-teal-700 border-teal-200" },
-          { icon: "🥦", name: "雙色花椰菜 + 綠木耳", desc: "十字花科吲哚-3-甲醇 (I3C)", tag: "調節雌激素代謝", tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
-          { icon: "🍵", name: "無糖冷泡綠茶", desc: "富含兒茶素 EGCG", tag: "自由基清除", tagColor: "bg-teal-50 text-teal-700 border-teal-200" }
-        ]
-      }
-    };
-
-    function try { toggleP08MealMode('bad'); } catch (e) {}
+    
+    // ==================== 頁面初次載入預設啟動狀態 ====================
+    window.addEventListener('DOMContentLoaded', () => {
+      try { toggleP08MealMode('bad'); } catch (e) {}
+      try { resetP09Energy(); } catch (e) {}
+      try { setP10Mode('blue'); } catch (e) {}
+      try { selectP18Weapon('surg'); } catch (e) {}
+      try { selectP19Umbrella('nhi'); } catch (e) {}
+      try { checkP11Eligibility(); } catch (e) {}
+      try { setP13Step(1); } catch (e) {}
+      try { selectP17Symptom(0); } catch (e) {}
+      try { resetP19Todos(); } catch (e) {}
+    });
+    // 立即直接調用一次，確保 DOM 已存在時即刻上色
+    try { toggleP08MealMode('bad'); } catch (e) {}
     try { resetP09Energy(); } catch (e) {}
     try { setP10Mode('blue'); } catch (e) {}
     try { selectP18Weapon('surg'); } catch (e) {}
@@ -4596,6 +4588,6 @@
     try { setP13Step(1); } catch (e) {}
     try { selectP17Symptom(0); } catch (e) {}
     try { resetP19Todos(); } catch (e) {}
-  </script>
+</script>
 </body>
 </html>
