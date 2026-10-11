@@ -2746,29 +2746,31 @@
           selectP05Factor(0);
         } else if (currentSlide === 6) {
           resetP06Habits();
-        } else if (currentSlide === 7) {
-          toggleP08MealMode('bad');
+                } else if (currentSlide === 7) {
+          try { toggleP08MealMode('bad'); } catch(e){}
         } else if (currentSlide === 8) {
-          resetP09Energy();
-          setP10Mode('blue');
+          try { resetP09Energy(); } catch(e){}
+          try { setP10Mode('blue'); } catch(e){}
         } else if (currentSlide === 10) {
-          selectP12Myth(0);
+          try { selectP12Myth(0); } catch(e){}
         } else if (currentSlide === 11) {
-          setP13Step(1);
+          try { setP13Step(1); } catch(e){}
         } else if (currentSlide === 12) {
-          showP14Level(0);
+          try { showP14Level(0); } catch(e){}
         } else if (currentSlide === 13) {
-          selectP15Tool('mammo');
+          try { selectP15Tool('mammo'); } catch(e){}
         } else if (currentSlide === 14) {
-          setP142Tool('us');
+          try { setP142Tool('us'); } catch(e){}
         } else if (currentSlide === 15) {
-          selectP17Symptom(0);
+          try { selectP17Symptom(0); } catch(e){}
         } else if (currentSlide === 17) {
-          setP17Stage('0');
+          try { setP17Stage('0'); } catch(e){}
         } else if (currentSlide === 18) {
-          selectP18Weapon('surg');
+          try { selectP18Weapon('surg'); } catch(e){}
         } else if (currentSlide === 19) {
-          selectP19Umbrella('nhi');
+          try { selectP19Umbrella('nhi'); } catch(e){}
+        } else if (currentSlide === 21) {
+          try { resetP19Todos(); } catch(e){}
         } else if (currentSlide === 21) {
           resetP19Todos();
         }
@@ -3297,6 +3299,247 @@
       });
       btn.className = 'venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/50 text-left transition flex flex-col justify-between';
     }
+
+
+    // ==================== P18: 現代乳癌 5 大臨床決策實證武器庫 ====================
+    const p18Weapons = {
+      surg: {
+        title: "1. 手術決策：何時微創？何時保留？何時全切？",
+        badge: "實證醫學 EBM · 保留與全切存活相當",
+        badgeColor: "bg-pink-500/20 text-pink-300 border-pink-500/30",
+        summary: "臨床決策依據：腫瘤大小與乳房比例、病灶分佈、基因風險與患者意願",
+        col1Title: "🩺 臨床判斷依據（何時保留 vs 何時全切）",
+        col1Points: [
+          "【何時可以保留 (BCS)】：單一病灶、腫瘤與乳房體積比例適當（切除後外觀不嚴重變形）、無廣泛惡性鈣化點、術後切緣無癌細胞 (Margin negative)。",
+          "【何時只能全乳切除 (Mastectomy)】：多中心病灶 (Multicentric)、廣泛瀰漫性惡性微鈣化、腫瘤過大相對於乳房、過去曾接受胸壁放療、懷孕無法放療者。",
+          "【何時可以微創 (Minimally Invasive)】：早期病灶可經乳暈/側乳微創切口，或搭配內視鏡/達文西保留乳頭乳暈全切 (NSM) 並同步立即重建。"
+        ],
+        col2Title: "📊 國際實證醫學 (EBM) 權威背書",
+        col2Points: [
+          "【保留 vs 全切】：國際經典 NSABP B-06 與 Milan 試驗 20 年長期追蹤證實：『乳房保留手術 ＋ 術後放射治療 (BCS + RT)』其整體存活率與全乳切除『完全相等』！",
+          "【前哨淋巴 SLNB vs 全廓清 ALND】：NSABP B-32 與 Z0011 試驗證實：前哨淋巴無轉移或僅 1~2 顆轉移且做放療者，『免做全腋下淋巴廓清』，存活率完全相同，但手臂淋巴水腫率由 20% 暴跌至 <5%！"
+        ],
+        quote: "“切得剛好才是真醫術；實證醫學證實：留住乳房與手臂靈活，存活率毫不打折！”"
+      },
+      target: {
+        title: "2. 標靶治療：健保給付標準 vs 何時需要自費？",
+        badge: "HER2 專屬巡弋飛彈 · 健保規範解碼",
+        badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
+        summary: "適用對象：HER2 基因過度表現陽性（IHC 3+ 或 FISH 擴增陽性，約佔 20%~25%）",
+        col1Title: "🏛️ 台灣健保目前給付標準",
+        col1Points: [
+          "【早期乳癌單標靶 (賀癌平 Trastuzumab)】：必須為『腋下淋巴結有轉移 (Node-positive)』且符合 HER2 陽性，健保全額給付 1 年賀癌平輔助治療！",
+          "【轉移性乳癌雙標靶 (賀癌平 + 賀疾妥 Pertuzumab)】：轉移性第一線給付雙標靶合併化療。",
+          "【術後殘存癌細胞 (T-DM1 Kadcyla)】：術前輔助化療加標靶後，手術檢體仍有殘存癌細胞者，健保近年放寬有條件給付。"
+        ],
+        col2Title: "💡 何時需要自費？（商業保險啟動時機）",
+        col2Points: [
+          "【早期 HER2 陽性但『無淋巴轉移』(Node-negative)】：腫瘤 > 1cm（或 0.5~1cm）臨床指引強烈建議打標靶，但健保不給付，需自費約 40~60 萬（1年賀癌平療程）。",
+          "【早期高風險自費雙標靶 (Pertuzumab)】：若無淋巴轉移但想追求極致預後加用賀疾妥，需全自費（年約 100 萬以上）。",
+          "【自費新一代抗體藥物複合體 (ADC, 如 Enhertu)】：針對後線或 HER2-弱陽性轉移，療效卓越但多數仍需自費或實支實付支應。"
+        ],
+        quote: "“淋巴轉移健保挺，無轉移及早自費或保險補位；定點殲滅，早期預後大幅提升至 95%！”"
+      },
+      hormone: {
+        title: "3. 荷爾蒙療法 vs 化學治療：何時用？何時免化療？",
+        badge: "佔比 70% · 釐清何時必化療 vs 安全免化療",
+        badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
+        summary: "荷爾蒙受體 ER 或 PR 陽性（受體染色 ≥ 1%）即強烈建議接受 5~10 年口服荷爾蒙治療",
+        col1Title: "💊 荷爾蒙療法適用原則（每日口服一顆）",
+        col1Points: [
+          "【作用機轉】：阻斷體內雌激素滋養癌細胞。停經前口服泰莫西芬 (Tamoxifen) 5~10 年（高風險加停經針）；停經後口服芳香環酶抑制劑 (AI) 5 年。",
+          "【安全免化療群族（管腔 A 型）】：ER/PR 高度陽性、HER2 陰性、Ki-67 低、無淋巴轉移之早期患者，單純口服荷爾蒙藥物效果即極佳，『完全免受化療之苦』！",
+          "【第 0 期（原位癌, DCIS）】：絕對不需化療！僅需局部手術 ＋ 放療 ＋/－ 荷爾蒙藥物。"
+        ],
+        col2Title: "🔬 何時必須化療？何時可用基因檢測免化療？",
+        col2Points: [
+          "【何時必須化療】：三陰性乳癌 (TNBC)（無受體可用，化療是主力）、HER2 陽性（需搭配化療協同擊殺）、管腔 B 型高風險（Ki-67 高、分級第3級、淋巴結多顆轉移）。",
+          "【基因檢測助攻免化療】：管腔型灰色地帶可自費做 21 基因檢測 (Oncotype DX)；TAILORx 國際大型實證證實：復發分數低者做化療無額外好處，『安心免化療』！"
+        ],
+        quote: "“化療不是人人都得做！管腔 A 型與低風險基因，每日一顆口服藥，安心免受化療之苦。”"
+      },
+      radio: {
+        title: "4. 放射治療療程：時間、頻率、要做到多久？",
+        badge: "門診通車照射 · 免住院 · 新一代大分割 3 週",
+        badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
+        summary: "保留手術後的必備基石（消滅顯微殘存病灶）；全切術後腫瘤 >5cm 或淋巴轉移 ≥4 顆亦需放療",
+        col1Title: "⏱️ 放療時間、頻率與總療程天數",
+        col1Points: [
+          "【頻率與單次時間】：週一至週五每天照射 1 次（週末休息）。進入照射室定位與照射僅約 10~15 分鐘（實際射線時間僅 2~3 分鐘）。",
+          "【新一代『大分割放療』(主流標準)】：每次劑量微幅提高，總療程從傳統 5~6 週大幅濃縮至『3 週（15~16 次）』！甚至超大分割只需 1 週（5 次）。",
+          "【日常生活完全如常】：完全『免住院』！照射無痛無感，照完可立刻回公司上班、開會，生活作息不中斷。"
+        ],
+        col2Title: "⚡ 現代精準放療科技突破",
+        col2Points: [
+          "【強度調控 (IMRT) 與弧形立體定位 (VMAT)】：360度順形照射，射線只對準乳腺組織，大幅降低傳統皮膚起水泡脫皮機率。",
+          "【保護心臟與肺部】：左側乳癌採用深吸氣閉氣技術 (DIBH)，將胸壁與心臟拉開距離，大幅減少未來心血管風險。"
+        ],
+        quote: "“新一代 3 週大分割放療，門診無痛照射、生活如常，精準保護心肺，鞏固 20 年不復發！”"
+      },
+      other: {
+        title: "5. 其他新科技療法：免疫療法、CDK4/6、PARP 抑制劑",
+        badge: "跨時代新科技 · 填補難治乳癌最後拼圖",
+        badgeColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
+        summary: "針對高復發風險、三陰性、BRCA 基因突變患者的最新標靶新武器",
+        col1Title: "🛡️ 免疫檢查點抑制劑 (Immunotherapy)",
+        col1Points: [
+          "【高風險早期三陰性乳癌 (TNBC)】：三陰性缺乏受體，KEYNOTE-522 國際臨床試驗證實：術前化療合併免疫藥物 (Keytruda, Pembrolizumab)，病理完全緩解率 (pCR) 從 51% 顯著暴升至 65%！",
+          "【機制】：阻斷癌細胞 PD-L1 偽裝，重新喚醒體內免疫 T 細胞大軍消滅癌細胞，大幅降低遠端轉移復發風險。"
+        ],
+        col2Title: "🚀 CDK4/6 抑制劑與 PARP 抑制劑",
+        col2Points: [
+          "【CDK4/6 細胞週期抑制劑 (如 Abemaciclib 捷癌寧)】：針對荷爾蒙陽性、淋巴結轉移 ≥4 顆等高復發風險早期患者，口服荷爾蒙加用 CDK4/6，顯著降低 30% 以上復發風險！",
+          "【PARP 抑制劑 (如 Olaparib 令歐妥)】：攜帶遺傳性 BRCA1/2 基因突變患者，利用『合成致死 (Synthetic Lethality)』機制截斷癌細胞 DNA 修復，顯著提升無病存活！"
+        ],
+        quote: "“三陰性有免疫大軍、高風險有 CDK4/6 與 PARP 抑制劑；現代醫學已無不可解之難題！”"
+      }
+    };
+
+    function selectP18Weapon(type) {
+      const data = p18Weapons[type];
+      if (!data) return;
+
+      ['surg', 'target', 'hormone', 'radio', 'other'].forEach(k => {
+        const btn = document.getElementById('p18-btn-' + k);
+        if (btn) {
+          if (k === type) {
+            btn.classList.add('ring-2', 'ring-pink-500', 'bg-pink-50/90');
+            btn.classList.remove('bg-slate-50');
+          } else {
+            btn.classList.remove('ring-2', 'ring-pink-500', 'bg-pink-50/90');
+            btn.classList.add('bg-slate-50');
+          }
+        }
+      });
+
+      const panel = document.getElementById('p18-spotlight-card');
+      if (panel) {
+        panel.innerHTML = `
+          <div class="space-y-3.5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+              <span class="px-3 py-0.5 rounded-full border text-xs font-black uppercase tracking-wider ${data.badgeColor}">
+                ${data.badge}
+              </span>
+              <span class="text-xs font-mono font-bold text-slate-400">EBM CLINICAL DECISION // 臨床實證</span>
+            </div>
+
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">${data.title}</h3>
+              <p class="text-xs sm:text-sm font-bold text-pink-400 mt-1">🎯 核心準則：${data.summary}</p>
+            </div>
+
+            <div class="space-y-3 pt-1">
+              <div class="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1.5">
+                <div class="text-xs font-black text-emerald-400 uppercase tracking-wider">${data.col1Title}</div>
+                <div class="space-y-1">
+                  ${data.col1Points.map(p => `<p class="text-sm sm:text-base text-slate-200 font-bold leading-relaxed">${p}</p>`).join('')}
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1.5">
+                <div class="text-xs font-black text-amber-400 uppercase tracking-wider">${data.col2Title}</div>
+                <div class="space-y-1">
+                  ${data.col2Points.map(p => `<p class="text-sm sm:text-base text-slate-200 font-bold leading-relaxed">${p}</p>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-2.5 border-t border-slate-800 flex items-center justify-between text-xs">
+            <div class="text-pink-300 font-black italic text-sm sm:text-base">${data.quote}</div>
+            <span class="text-slate-500 font-bold shrink-0 ml-3">梁祖瑋醫師 臨床實證叮嚀</span>
+          </div>
+        `;
+      }
+    }
+
+    // ==================== P19: 健保與重大傷病保護傘 ＋ 重返職場生活品質 ====================
+    const p19Umbrella = {
+      nhi: {
+        title: "國家健保與重大傷病卡保護傘",
+        badge: "免除部分負擔 · 財務無憂",
+        badgeColor: "bg-teal-100 text-teal-800 border-teal-200",
+        benefitTitle: "實質權益與費用減免",
+        benefitText: "確診後主治醫師即刻協助向健保署申請『重大傷病證明』。凡是乳癌相關的門診診察、住院、常規手術、化學治療、放射線治療、荷爾蒙藥物，一律『全額免除健保部分負擔』！",
+        extraTitle: "健保標靶新藥大步納入",
+        extraText: "近年台灣健保加速通過多項 HER2 標靶藥物、停經前口服標靶與基因檢測補助，常規治療絕大多數由國家健保守護，不必為醫療費用過度恐慌！",
+        quote: "“健保做堅強後盾，安心接受正規治療，絕不因費用放棄希望。”"
+      },
+      recon: {
+        title: "乳房即時整型重建手術 (Oncoplastic)",
+        badge: "外觀自信 · 身形完整",
+        badgeColor: "bg-pink-100 text-vivid-pink border-pink-200",
+        benefitTitle: "切除腫瘤與重建同步完成",
+        benefitText: "現代乳房外科與整形外科密切配合，在切除病灶的當下，即同步利用『自體組織皮瓣』或『植入矽膠假體』進行立體重建。一覺醒來，身體輪廓依然完整美麗！",
+        extraTitle: "守護女性尊嚴與自信心",
+        extraText: "重建手術大幅減少術後胸部凹陷失衡造成的脊椎代償性痠痛，術後穿衣、運動、穿著泳裝皆自然合身，維持飽滿的女性自信與生活品質。",
+        quote: "“治療腫瘤是職責，保留美麗與體態是我們的溫柔承諾。”"
+      },
+      career: {
+        title: "重返科技職場與高品質生活",
+        badge: "85% 以上順利重返崗位",
+        badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-200",
+        benefitTitle: "職涯不中斷，生活如常",
+        benefitText: "根據臨床長期追蹤，高達 80%~85% 的早期乳癌同仁在完成局部治療後，均能維持原有職能，順利重返專案開發、工程研發或管理崗位，科技人生不斷鏈！",
+        extraTitle: "健康系統的『熱修復 (Hotfix)』",
+        extraText: "將抗癌視為一次人生的 Code Refactor 與健康熱修復。透過規律運動、淋巴水腫護理與公司彈性支持，妳依然是團隊不可或缺的核心架構師！",
+        quote: "“生病只是一次系統重構；熱修復完成後，妳的生命更加強大穩健。”"
+      }
+    };
+
+    function selectP19Umbrella(type) {
+      const data = p19Umbrella[type];
+      if (!data) return;
+
+      ['nhi', 'recon', 'career'].forEach(k => {
+        const btn = document.getElementById('p19-btn-' + k);
+        if (btn) {
+          if (k === type) {
+            btn.classList.add('ring-2', 'ring-teal-500', 'bg-teal-50/80');
+            btn.classList.remove('bg-slate-50');
+          } else {
+            btn.classList.remove('ring-2', 'ring-teal-500', 'bg-teal-50/80');
+            btn.classList.add('bg-slate-50');
+          }
+        }
+      });
+
+      const panel = document.getElementById('p19-detail-card');
+      if (panel) {
+        panel.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <span class="px-3.5 py-1 rounded-full border text-xs font-black uppercase tracking-wider ${data.badgeColor}">
+                ${data.badge}
+              </span>
+              <span class="text-xs font-mono font-bold text-slate-400">PATIENT RIGHTS // 權益實錄</span>
+            </div>
+
+            <div>
+              <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">${data.title}</h3>
+            </div>
+
+            <div class="space-y-3 pt-1">
+              <div class="p-4 rounded-2xl bg-teal-50/70 border border-teal-200 space-y-1">
+                <div class="text-xs font-black text-teal-800 uppercase tracking-wider">🛡️ ${data.benefitTitle}</div>
+                <p class="text-base sm:text-lg text-slate-800 font-bold leading-relaxed">${data.benefitText}</p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-1">
+                <div class="text-xs font-black text-indigo-800 uppercase tracking-wider">💡 ${data.extraTitle}</div>
+                <p class="text-base sm:text-lg text-slate-800 font-bold leading-relaxed">${data.extraText}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <div class="text-teal-700 font-black italic text-sm sm:text-base">${data.quote}</div>
+            <span class="text-slate-400 font-bold">梁祖瑋醫師 守護叮嚀</span>
+          </div>
+        `;
+      }
+    }
+
 
     // P03: 數據解讀
     const p03Insights = [
@@ -4311,254 +4554,48 @@
     selectP17Symptom(0);
     resetP19Todos();
   
-    // S01 場次選擇器
-    function selectP01Venue(btn) {
-      document.querySelectorAll('.venue-btn').forEach(b => {
-        b.classList.remove('border-2', 'border-vivid-pink', 'bg-pink-50/80', 'shadow-md', 'ring-2', 'ring-pink-200');
-        b.classList.add('border', 'border-slate-200', 'bg-slate-50');
-      });
-      btn.classList.remove('border', 'border-slate-200', 'bg-slate-50', 'opacity-70');
-      btn.classList.add('border-2', 'border-vivid-pink', 'bg-pink-50/80', 'shadow-md', 'ring-2', 'ring-pink-200');
-    }
-
-    // ==================== P18: 現代乳癌 5 大臨床決策實證武器庫 ====================
-    const p18Weapons = {
-      surg: {
-        title: "1. 手術決策：何時微創？何時保留？何時全切？",
-        badge: "實證醫學 EBM · 保留與全切存活相當",
-        badgeColor: "bg-pink-500/20 text-pink-300 border-pink-500/30",
-        summary: "臨床決策依據：腫瘤大小與乳房比例、病灶分佈、基因風險與患者意願",
-        col1Title: "🩺 臨床判斷依據（何時保留 vs 何時全切）",
-        col1Points: [
-          "【何時可以保留 (BCS)】：單一病灶、腫瘤與乳房體積比例適當（切除後外觀不嚴重變形）、無廣泛惡性鈣化點、術後切緣無癌細胞 (Margin negative)。",
-          "【何時只能全乳切除 (Mastectomy)】：多中心病灶 (Multicentric)、廣泛瀰漫性惡性微鈣化、腫瘤過大相對於乳房、過去曾接受胸壁放療、懷孕無法放療者。",
-          "【何時可以微創 (Minimally Invasive)】：早期病灶可經乳暈/側乳微創切口，或搭配內視鏡/達文西保留乳頭乳暈全切 (NSM) 並同步立即重建。"
-        ],
-        col2Title: "📊 國際實證醫學 (EBM) 權威背書",
-        col2Points: [
-          "【保留 vs 全切】：國際經典 NSABP B-06 與 Milan 試驗 20 年長期追蹤證實：『乳房保留手術 ＋ 術後放射治療 (BCS + RT)』其整體存活率與全乳切除『完全相等』！",
-          "【前哨淋巴 SLNB vs 全廓清 ALND】：NSABP B-32 與 Z0011 試驗證實：前哨淋巴無轉移或僅 1~2 顆轉移且做放療者，『免做全腋下淋巴廓清』，存活率完全相同，但手臂淋巴水腫率由 20% 暴跌至 <5%！"
-        ],
-        quote: "“切得剛好才是真醫術；實證醫學證實：留住乳房與手臂靈活，存活率毫不打折！”"
+    
+    // ==================== S7: 外食微替換動態餐盤 (完全適配 S7 HTML) ====================
+    const p08MealData = {
+      bad: {
+        badge: "傳統高負載便當",
+        badgeColor: "bg-red-100 text-red-700 border-red-200",
+        calories: "約 950 ~ 1100 大卡",
+        summaryText: "⚠️ 高油炸、高精緻澱粉、半糖手搖！體內發炎反應 +65%，長期增加體內雌激素蓄積與肥胖風險。",
+        summaryBadge: "高發炎高負載",
+        summaryBadgeColor: "bg-red-100 text-red-700",
+        items: [
+          { icon: "🍗", name: "脆皮炸雞腿", desc: "高溫油炸反式脂肪", tag: "促發炎油脂", tagColor: "bg-red-50 text-red-600 border-red-200" },
+          { icon: "🍚", name: "精緻白米飯 (滿碗)", desc: "高 GI 升糖指數", tag: "胰島素飆升", tagColor: "bg-orange-50 text-orange-600 border-orange-200" },
+          { icon: "🌭", name: "重鹽炒香腸配菜", desc: "加工肉品含亞硝酸鹽", tag: "一級致癌物", tagColor: "bg-red-50 text-red-600 border-red-200" },
+          { icon: "🥤", name: "珍珠奶茶 (半糖)", desc: "高果糖玉米糖漿 35g", tag: "內臟脂肪堆積", tagColor: "bg-amber-50 text-amber-600 border-amber-200" }
+        ]
       },
-      target: {
-        title: "2. 標靶治療：健保給付標準 vs 何時需要自費？",
-        badge: "HER2 專屬巡弋飛彈 · 健保規範解碼",
-        badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
-        summary: "適用對象：HER2 基因過度表現陽性（IHC 3+ 或 FISH 擴增陽性，約佔 20%~25%）",
-        col1Title: "🏛️ 台灣健保目前給付標準",
-        col1Points: [
-          "【早期乳癌單標靶 (賀癌平 Trastuzumab)】：必須為『腋下淋巴結有轉移 (Node-positive)』且符合 HER2 陽性，健保全額給付 1 年賀癌平輔助治療！",
-          "【轉移性乳癌雙標靶 (賀癌平 + 賀疾妥 Pertuzumab)】：轉移性第一線給付雙標靶合併化療。",
-          "【術後殘存癌細胞 (T-DM1 Kadcyla)】：術前輔助化療加標靶後，手術檢體仍有殘存癌細胞者，健保近年放寬有條件給付。"
-        ],
-        col2Title: "💡 何時需要自費？（商業保險啟動時機）",
-        col2Points: [
-          "【早期 HER2 陽性但『無淋巴轉移』(Node-negative)】：腫瘤 > 1cm（或 0.5~1cm）臨床指引強烈建議打標靶，但健保不給付，需自費約 40~60 萬（1年賀癌平療程）。",
-          "【早期高風險自費雙標靶 (Pertuzumab)】：若無淋巴轉移但想追求極致預後加用賀疾妥，需全自費（年約 100 萬以上）。",
-          "【自費新一代抗體藥物複合體 (ADC, 如 Enhertu)】：針對後線或 HER2-弱陽性轉移，療效卓越但多數仍需自費或實支實付支應。"
-        ],
-        quote: "“淋巴轉移健保挺，無轉移及早自費或保險補位；定點殲滅，早期預後大幅提升至 95%！”"
-      },
-      hormone: {
-        title: "3. 荷爾蒙療法 vs 化學治療：何時用？何時免化療？",
-        badge: "佔比 70% · 釐清何時必化療 vs 安全免化療",
-        badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-        summary: "荷爾蒙受體 ER 或 PR 陽性（受體染色 ≥ 1%）即強烈建議接受 5~10 年口服荷爾蒙治療",
-        col1Title: "💊 荷爾蒙療法適用原則（每日口服一顆）",
-        col1Points: [
-          "【作用機轉】：阻斷體內雌激素滋養癌細胞。停經前口服泰莫西芬 (Tamoxifen) 5~10 年（高風險加停經針）；停經後口服芳香環酶抑制劑 (AI) 5 年。",
-          "【安全免化療群族（管腔 A 型）】：ER/PR 高度陽性、HER2 陰性、Ki-67 低、無淋巴轉移之早期患者，單純口服荷爾蒙藥物效果即極佳，『完全免受化療之苦』！",
-          "【第 0 期（原位癌, DCIS）】：絕對不需化療！僅需局部手術 ＋ 放療 ＋/－ 荷爾蒙藥物。"
-        ],
-        col2Title: "🔬 何時必須化療？何時可用基因檢測免化療？",
-        col2Points: [
-          "【何時必須化療】：三陰性乳癌 (TNBC)（無受體可用，化療是主力）、HER2 陽性（需搭配化療協同擊殺）、管腔 B 型高風險（Ki-67 高、分級第3級、淋巴結多顆轉移）。",
-          "【基因檢測助攻免化療】：管腔型灰色地帶可自費做 21 基因檢測 (Oncotype DX)；TAILORx 國際大型實證證實：復發分數低者做化療無額外好處，『安心免化療』！"
-        ],
-        quote: "“化療不是人人都得做！管腔 A 型與低風險基因，每日一顆口服藥，安心免受化療之苦。”"
-      },
-      radio: {
-        title: "4. 放射治療療程：時間、頻率、要做到多久？",
-        badge: "門診通車照射 · 免住院 · 新一代大分割 3 週",
-        badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
-        summary: "保留手術後的必備基石（消滅顯微殘存病灶）；全切術後腫瘤 >5cm 或淋巴轉移 ≥4 顆亦需放療",
-        col1Title: "⏱️ 放療時間、頻率與總療程天數",
-        col1Points: [
-          "【頻率與單次時間】：週一至週五每天照射 1 次（週末休息）。進入照射室定位與照射僅約 10~15 分鐘（實際射線時間僅 2~3 分鐘）。",
-          "【新一代『大分割放療』(主流標準)】：每次劑量微幅提高，總療程從傳統 5~6 週大幅濃縮至『3 週（15~16 次）』！甚至超大分割只需 1 週（5 次）。",
-          "【日常生活完全如常】：完全『免住院』！照射無痛無感，照完可立刻回公司上班、開會，生活作息不中斷。"
-        ],
-        col2Title: "⚡ 現代精準放療科技突破",
-        col2Points: [
-          "【強度調控 (IMRT) 與弧形立體定位 (VMAT)】：360度順形照射，射線只對準乳腺組織，大幅降低傳統皮膚起水泡脫皮機率。",
-          "【保護心臟與肺部】：左側乳癌採用深吸氣閉氣技術 (DIBH)，將胸壁與心臟拉開距離，大幅減少未來心血管風險。"
-        ],
-        quote: "“新一代 3 週大分割放療，門診無痛照射、生活如常，精準保護心肺，鞏固 20 年不復發！”"
-      },
-      other: {
-        title: "5. 其他新科技療法：免疫療法、CDK4/6、PARP 抑制劑",
-        badge: "跨時代新科技 · 填補難治乳癌最後拼圖",
-        badgeColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
-        summary: "針對高復發風險、三陰性、BRCA 基因突變患者的最新標靶新武器",
-        col1Title: "🛡️ 免疫檢查點抑制劑 (Immunotherapy)",
-        col1Points: [
-          "【高風險早期三陰性乳癌 (TNBC)】：三陰性缺乏受體，KEYNOTE-522 國際臨床試驗證實：術前化療合併免疫藥物 (Keytruda, Pembrolizumab)，病理完全緩解率 (pCR) 從 51% 顯著暴升至 65%！",
-          "【機制】：阻斷癌細胞 PD-L1 偽裝，重新喚醒體內免疫 T 細胞大軍消滅癌細胞，大幅降低遠端轉移復發風險。"
-        ],
-        col2Title: "🚀 CDK4/6 抑制劑與 PARP 抑制劑",
-        col2Points: [
-          "【CDK4/6 細胞週期抑制劑 (如 Abemaciclib 捷癌寧)】：針對荷爾蒙陽性、淋巴結轉移 ≥4 顆等高復發風險早期患者，口服荷爾蒙加用 CDK4/6，顯著降低 30% 以上復發風險！",
-          "【PARP 抑制劑 (如 Olaparib 令歐妥)】：攜帶遺傳性 BRCA1/2 基因突變患者，利用『合成致死 (Synthetic Lethality)』機制截斷癌細胞 DNA 修復，顯著提升無病存活！"
-        ],
-        quote: "“三陰性有免疫大軍、高風險有 CDK4/6 與 PARP 抑制劑；現代醫學已無不可解之難題！”"
+      good: {
+        badge: "護乳微替換動態餐盤",
+        badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+        calories: "約 580 ~ 650 大卡",
+        summaryText: "🌿 地中海抗發炎原則！富含 Omega-3、深色十字花科蔬果與兒茶素，阻斷發炎連鎖反應，抗氧化能力 +80%！",
+        summaryBadge: "抗發炎抗氧化",
+        summaryBadgeColor: "bg-emerald-100 text-emerald-800",
+        items: [
+          { icon: "🐟", name: "香煎烤鯖魚", desc: "深海優質 Omega-3 魚油", tag: "強效抗發炎", tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+          { icon: "🥣", name: "糙米五穀飯", desc: "高纖低 GI 維持血糖平穩", tag: "豐富膳食纖維", tagColor: "bg-teal-50 text-teal-700 border-teal-200" },
+          { icon: "🥦", name: "雙色花椰菜 + 綠木耳", desc: "十字花科吲哚-3-甲醇 (I3C)", tag: "調節雌激素代謝", tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+          { icon: "🍵", name: "無糖冷泡綠茶", desc: "富含兒茶素 EGCG", tag: "自由基清除", tagColor: "bg-teal-50 text-teal-700 border-teal-200" }
+        ]
       }
     };
 
-    function selectP18Weapon(type) {
-      const data = p18Weapons[type];
-      if (!data) return;
-
-      ['surg', 'target', 'hormone', 'radio', 'other'].forEach(k => {
-        const btn = document.getElementById('p18-btn-' + k);
-        if (btn) {
-          if (k === type) {
-            btn.classList.add('ring-2', 'ring-pink-500', 'bg-pink-50/90');
-            btn.classList.remove('bg-slate-50');
-          } else {
-            btn.classList.remove('ring-2', 'ring-pink-500', 'bg-pink-50/90');
-            btn.classList.add('bg-slate-50');
-          }
-        }
-      });
-
-      const panel = document.getElementById('p18-spotlight-card');
-      if (panel) {
-        panel.innerHTML = `
-          <div class="space-y-3.5">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
-              <span class="px-3 py-0.5 rounded-full border text-xs font-black uppercase tracking-wider ${data.badgeColor}">
-                ${data.badge}
-              </span>
-              <span class="text-xs font-mono font-bold text-slate-400">EBM CLINICAL DECISION // 臨床實證</span>
-            </div>
-
-            <div>
-              <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">${data.title}</h3>
-              <p class="text-xs sm:text-sm font-bold text-pink-400 mt-1">🎯 核心準則：${data.summary}</p>
-            </div>
-
-            <div class="space-y-3 pt-1">
-              <div class="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1.5">
-                <div class="text-xs font-black text-emerald-400 uppercase tracking-wider">${data.col1Title}</div>
-                <div class="space-y-1">
-                  ${data.col1Points.map(p => `<p class="text-sm sm:text-base text-slate-200 font-bold leading-relaxed">${p}</p>`).join('')}
-                </div>
-              </div>
-
-              <div class="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1.5">
-                <div class="text-xs font-black text-amber-400 uppercase tracking-wider">${data.col2Title}</div>
-                <div class="space-y-1">
-                  ${data.col2Points.map(p => `<p class="text-sm sm:text-base text-slate-200 font-bold leading-relaxed">${p}</p>`).join('')}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-2.5 border-t border-slate-800 flex items-center justify-between text-xs">
-            <div class="text-pink-300 font-black italic text-sm sm:text-base">${data.quote}</div>
-            <span class="text-slate-500 font-bold shrink-0 ml-3">梁祖瑋醫師 臨床實證叮嚀</span>
-          </div>
-        `;
-      }
-    }
-
-    // ==================== P19: 健保與重大傷病保護傘 ＋ 重返職場生活品質 ====================
-    const p19Umbrella = {
-      nhi: {
-        title: "國家健保與重大傷病卡保護傘",
-        badge: "免除部分負擔 · 財務無憂",
-        badgeColor: "bg-teal-100 text-teal-800 border-teal-200",
-        benefitTitle: "實質權益與費用減免",
-        benefitText: "確診後主治醫師即刻協助向健保署申請『重大傷病證明』。凡是乳癌相關的門診診察、住院、常規手術、化學治療、放射線治療、荷爾蒙藥物，一律『全額免除健保部分負擔』！",
-        extraTitle: "健保標靶新藥大步納入",
-        extraText: "近年台灣健保加速通過多項 HER2 標靶藥物、停經前口服標靶與基因檢測補助，常規治療絕大多數由國家健保守護，不必為醫療費用過度恐慌！",
-        quote: "“健保做堅強後盾，安心接受正規治療，絕不因費用放棄希望。”"
-      },
-      recon: {
-        title: "乳房即時整型重建手術 (Oncoplastic)",
-        badge: "外觀自信 · 身形完整",
-        badgeColor: "bg-pink-100 text-vivid-pink border-pink-200",
-        benefitTitle: "切除腫瘤與重建同步完成",
-        benefitText: "現代乳房外科與整形外科密切配合，在切除病灶的當下，即同步利用『自體組織皮瓣』或『植入矽膠假體』進行立體重建。一覺醒來，身體輪廓依然完整美麗！",
-        extraTitle: "守護女性尊嚴與自信心",
-        extraText: "重建手術大幅減少術後胸部凹陷失衡造成的脊椎代償性痠痛，術後穿衣、運動、穿著泳裝皆自然合身，維持飽滿的女性自信與生活品質。",
-        quote: "“治療腫瘤是職責，保留美麗與體態是我們的溫柔承諾。”"
-      },
-      career: {
-        title: "重返科技職場與高品質生活",
-        badge: "85% 以上順利重返崗位",
-        badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-200",
-        benefitTitle: "職涯不中斷，生活如常",
-        benefitText: "根據臨床長期追蹤，高達 80%~85% 的早期乳癌同仁在完成局部治療後，均能維持原有職能，順利重返專案開發、工程研發或管理崗位，科技人生不斷鏈！",
-        extraTitle: "健康系統的『熱修復 (Hotfix)』",
-        extraText: "將抗癌視為一次人生的 Code Refactor 與健康熱修復。透過規律運動、淋巴水腫護理與公司彈性支持，妳依然是團隊不可或缺的核心架構師！",
-        quote: "“生病只是一次系統重構；熱修復完成後，妳的生命更加強大穩健。”"
-      }
-    };
-
-    function selectP19Umbrella(type) {
-      const data = p19Umbrella[type];
-      if (!data) return;
-
-      ['nhi', 'recon', 'career'].forEach(k => {
-        const btn = document.getElementById('p19-btn-' + k);
-        if (btn) {
-          if (k === type) {
-            btn.classList.add('ring-2', 'ring-teal-500', 'bg-teal-50/80');
-            btn.classList.remove('bg-slate-50');
-          } else {
-            btn.classList.remove('ring-2', 'ring-teal-500', 'bg-teal-50/80');
-            btn.classList.add('bg-slate-50');
-          }
-        }
-      });
-
-      const panel = document.getElementById('p19-detail-card');
-      if (panel) {
-        panel.innerHTML = `
-          <div class="space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-              <span class="px-3.5 py-1 rounded-full border text-xs font-black uppercase tracking-wider ${data.badgeColor}">
-                ${data.badge}
-              </span>
-              <span class="text-xs font-mono font-bold text-slate-400">PATIENT RIGHTS // 權益實錄</span>
-            </div>
-
-            <div>
-              <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">${data.title}</h3>
-            </div>
-
-            <div class="space-y-3 pt-1">
-              <div class="p-4 rounded-2xl bg-teal-50/70 border border-teal-200 space-y-1">
-                <div class="text-xs font-black text-teal-800 uppercase tracking-wider">🛡️ ${data.benefitTitle}</div>
-                <p class="text-base sm:text-lg text-slate-800 font-bold leading-relaxed">${data.benefitText}</p>
-              </div>
-
-              <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 space-y-1">
-                <div class="text-xs font-black text-indigo-800 uppercase tracking-wider">💡 ${data.extraTitle}</div>
-                <p class="text-base sm:text-lg text-slate-800 font-bold leading-relaxed">${data.extraText}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <div class="text-teal-700 font-black italic text-sm sm:text-base">${data.quote}</div>
-            <span class="text-slate-400 font-bold">梁祖瑋醫師 守護叮嚀</span>
-          </div>
-        `;
-      }
-    }
-</script>
+    function try { toggleP08MealMode('bad'); } catch (e) {}
+    try { resetP09Energy(); } catch (e) {}
+    try { setP10Mode('blue'); } catch (e) {}
+    try { selectP18Weapon('surg'); } catch (e) {}
+    try { selectP19Umbrella('nhi'); } catch (e) {}
+    try { checkP11Eligibility(); } catch (e) {}
+    try { setP13Step(1); } catch (e) {}
+    try { selectP17Symptom(0); } catch (e) {}
+    try { resetP19Todos(); } catch (e) {}
+  </script>
 </body>
 </html>
