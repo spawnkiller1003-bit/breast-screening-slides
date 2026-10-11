@@ -216,14 +216,14 @@ html_content = '''<!DOCTYPE html>
     <section class="slide w-full h-full flex flex-col justify-center slide-enter" data-slide="1"
       data-scene="你是不是每年健檢，都自動跳過乳房攝影那一格？"
       data-quote="健康，是最重要的事業"
-      data-notes="【活力開場】各位瑞健的同仁、科技界的優秀夥伴們，大家下午好！我是國軍桃園總醫院/敏盛綜合醫院乳房外科梁祖瑋醫師。今天在座不僅有女性同仁，也有許多男性主管與工程師夥伴。乳癌是台灣發生率第一的癌症，但男性同樣有罹患風險，更是守護身邊太太、母親、女兒與女同事的關鍵神隊友！今天我們把這 1 小時當作一次『身體系統健康升級通關』，幫大家輕鬆拿回自己與全家人的健康主控權！">
+      data-notes="【活力開場·南崁專場】各位瑞健南崁廠的同仁、科技界的優秀夥伴們，大家下午好！我是國軍桃園總醫院/敏盛綜合醫院乳房外科梁祖瑋醫師。今天在座不僅有女性同仁，也有許多男性主管與工程師夥伴。乳癌是台灣發生率第一的癌症，但男性同樣有罹患風險，更是守護身邊太太、母親、女兒與女同事的關鍵神隊友！今天我們把這 1 小時當作一次『身體系統健康升級通關』，幫大家輕鬆拿回自己與全家人的健康主控權！">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full max-h-[82vh]">
         <div class="lg:col-span-7 space-y-6 flex flex-col justify-center">
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-vivid-pink text-xs font-black tracking-wider uppercase border border-pink-200 w-fit">
             <span>🚀 WOMEN IN TECH WELLNESS</span>
             <span class="text-pink-300">•</span>
-            <span>瑞健公司健康巡檢專場</span>
+            <span>瑞健南崁廠專場 (10/14)</span>
           </div>
 
           <div class="space-y-2">
@@ -243,13 +243,16 @@ html_content = '''<!DOCTYPE html>
           <div class="p-5 rounded-3xl bg-white border border-slate-200 pop-shadow space-y-3">
             <span class="text-xs font-black text-slate-400 uppercase tracking-wider">📍 瑞健公司巡迴巡檢專場（點選場次）：</span>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/50 text-left transition flex flex-col justify-between">
-                <span class="text-xs font-black text-vivid-pink">場次一 · 10/07 (三)</span>
-                <span class="text-sm font-bold text-slate-900 mt-1">瑞健桃園廠</span>
+              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 opacity-70 hover:opacity-100 hover:bg-white text-left transition flex flex-col justify-between">
+                <span class="text-xs font-black text-slate-500">場次一 · 10/07 (三) [已圓滿]</span>
+                <span class="text-sm font-bold text-slate-700 mt-1">瑞健桃園廠</span>
               </button>
-              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between">
-                <span class="text-xs font-black text-slate-500">場次二 · 10/14 (三)</span>
-                <span class="text-sm font-bold text-slate-900 mt-1">瑞健南崁廠</span>
+              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/80 text-left transition flex flex-col justify-between shadow-md ring-2 ring-pink-200">
+                <span class="text-xs font-black text-vivid-pink flex items-center gap-1">
+                  <span>場次二 · 10/14 (三)</span>
+                  <span class="px-1.5 py-0.2 rounded-full bg-vivid-pink text-white text-[10px] font-black">🌟 本場專屬</span>
+                </span>
+                <span class="text-sm font-black text-slate-900 mt-1">瑞健南崁廠</span>
               </button>
               <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between">
                 <span class="text-xs font-black text-slate-500">場次三 · 10/21 (三)</span>
@@ -2995,4 +2998,13 @@ html_content = '''<!DOCTYPE html>
         `;
       }
     }
+    function selectP01Venue(btn) {
+      document.querySelectorAll('.venue-btn').forEach(b => {
+        b.classList.remove('border-2', 'border-vivid-pink', 'bg-pink-50/80', 'shadow-md', 'ring-2', 'ring-pink-200');
+        b.classList.add('border', 'border-slate-200', 'bg-slate-50');
+      });
+      btn.classList.remove('border', 'border-slate-200', 'bg-slate-50', 'opacity-70');
+      btn.classList.add('border-2', 'border-vivid-pink', 'bg-pink-50/80', 'shadow-md', 'ring-2', 'ring-pink-200');
+    }
+
 
