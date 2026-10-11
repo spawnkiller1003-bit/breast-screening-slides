@@ -1,22 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Builder script for Plan C: 活力輕科技敘事風 (大字滿版·高互動完全版 - 24 頁全覆蓋)
-Updated with user-requested fixes:
-- P03: 早 10 年 調整成一行、10-12% 不超出格子
-- P05: 點選「後天可控」按鍵時，卡片出現在右側 (md:col-start-2)
-- P08: 微替換動態餐盤升級為方案 B 同款動態互動（便當組合 vs 護乳餐盤切換、發炎/抗氧化進度條、熱量評估），風格維持 C
-- P10: 23:00 數位停機修復模式全面改為 22:00
-- P11: 公費篩檢依官方最新公開法規（114年起 40-74 歲全面補助，未滿 40 歲高風險家族史建議超音波），保留勾選危險因子即時判定
-- P13: 攝影流程拆解全面升級為互動式 Stepper 模擬器（含 3 秒微壓迫倒數體驗與減痛技巧）
-- P17 (Slide 17): 七大乳房異常警訊每格生成相對應的高品質專業 SVG 醫療示意小圖示
-- P23 (Slide 23): 修正網址，特約機構改為國健署認證名冊 (https://health99.hpa.gov.tw/material/6479)，TBCA 改為正確官網 (https://tbca-npo.org.tw/)
-"""
-
-import os
-
-output_path = "/Users/liangzuwei/Library/CloudStorage/GoogleDrive-spawnkiller1003@gmail.com/我的雲端硬碟/14_Antigravity2專案用/乳癌篩檢講座專案/投影片方案/守護乳房健康_活力輕科技敘事風.html"
-
-html_content = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -216,14 +198,14 @@ html_content = '''<!DOCTYPE html>
     <section class="slide w-full h-full flex flex-col justify-center slide-enter" data-slide="1"
       data-scene="你是不是每年健檢，都自動跳過乳房攝影那一格？"
       data-quote="健康，是最重要的事業"
-      data-notes="【活力開場】各位瑞健的同仁、科技界的優秀夥伴們，大家下午好！我是國軍桃園總醫院/敏盛綜合醫院乳房外科梁祖瑋醫師。今天在座不僅有女性同仁，也有許多男性主管與工程師夥伴。乳癌是台灣發生率第一的癌症，但男性同樣有罹患風險，更是守護身邊太太、母親、女兒與女同事的關鍵神隊友！今天我們把這 1 小時當作一次『身體系統健康升級通關』，幫大家輕鬆拿回自己與全家人的健康主控權！">
+      data-notes="【活力開場·南崁專場】各位瑞健南崁廠的同仁、科技界的優秀夥伴們，大家下午好！我是國軍桃園總醫院/敏盛綜合醫院乳房外科梁祖瑋醫師。今天在座不僅有女性同仁，也有許多男性主管與工程師夥伴。乳癌是台灣發生率第一的癌症，但男性同樣有罹患風險，更是守護身邊太太、母親、女兒與女同事的關鍵神隊友！今天我們把這 1 小時當作一次『身體系統健康升級通關』，幫大家輕鬆拿回自己與全家人的健康主控權！">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full max-h-[82vh]">
         <div class="lg:col-span-7 space-y-6 flex flex-col justify-center">
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-vivid-pink text-xs font-black tracking-wider uppercase border border-pink-200 w-fit">
             <span>🚀 WOMEN IN TECH WELLNESS</span>
             <span class="text-pink-300">•</span>
-            <span>瑞健公司健康巡檢專場</span>
+            <span>瑞健南崁廠專場 (10/14)</span>
           </div>
 
           <div class="space-y-2">
@@ -243,13 +225,16 @@ html_content = '''<!DOCTYPE html>
           <div class="p-5 rounded-3xl bg-white border border-slate-200 pop-shadow space-y-3">
             <span class="text-xs font-black text-slate-400 uppercase tracking-wider">📍 瑞健公司巡迴巡檢專場（點選場次）：</span>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/50 text-left transition flex flex-col justify-between">
-                <span class="text-xs font-black text-vivid-pink">場次一 · 10/07 (三)</span>
-                <span class="text-sm font-bold text-slate-900 mt-1">瑞健桃園廠</span>
+              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 opacity-70 hover:opacity-100 hover:bg-white text-left transition flex flex-col justify-between">
+                <span class="text-xs font-black text-slate-500">場次一 · 10/07 (三) [已圓滿]</span>
+                <span class="text-sm font-bold text-slate-700 mt-1">瑞健桃園廠</span>
               </button>
-              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between">
-                <span class="text-xs font-black text-slate-500">場次二 · 10/14 (三)</span>
-                <span class="text-sm font-bold text-slate-900 mt-1">瑞健南崁廠</span>
+              <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/80 text-left transition flex flex-col justify-between shadow-md ring-2 ring-pink-200">
+                <span class="text-xs font-black text-vivid-pink flex items-center gap-1">
+                  <span>場次二 · 10/14 (三)</span>
+                  <span class="px-1.5 py-0.2 rounded-full bg-vivid-pink text-white text-[10px] font-black">🌟 本場專屬</span>
+                </span>
+                <span class="text-sm font-black text-slate-900 mt-1">瑞健南崁廠</span>
               </button>
               <button onclick="selectP01Venue(this)" class="venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between">
                 <span class="text-xs font-black text-slate-500">場次三 · 10/21 (三)</span>
@@ -2720,7 +2705,41 @@ html_content = '''<!DOCTYPE html>
     </div>
   </div>
 
-  // 轉場專屬生命週期 hook (以 try-catch 嚴密保護，防禦任何局部異常中斷講者畫面與廣播)
+  <!-- ================= 互動驅動腳本 ================= -->
+  <script>
+    let currentSlide = 1;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index, broadcast = true) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      currentSlide = index;
+
+      slides.forEach((slide, idx) => {
+        if (idx + 1 === currentSlide) {
+          slide.classList.remove('hidden');
+          slide.classList.add('flex', 'slide-enter');
+          
+          const scene = slide.getAttribute('data-scene') || '';
+          const quote = slide.getAttribute('data-quote') || '';
+          const notes = slide.getAttribute('data-notes') || '';
+          
+          document.getElementById('scene-opener-text').innerText = scene;
+          document.getElementById('key-takeaway-text').innerText = quote;
+          document.getElementById('speaker-notes-content').innerText = notes;
+        } else {
+          slide.classList.add('hidden');
+          slide.classList.remove('flex', 'slide-enter');
+        }
+      });
+
+      document.getElementById('current-slide-num').innerText = currentSlide;
+      document.getElementById('total-slides-num').innerText = totalSlides;
+      const progressPercent = (currentSlide / totalSlides) * 100;
+      document.getElementById('deck-progress-bar').style.width = `${progressPercent}%`;
+
+      // 轉場專屬生命週期 hook (以 try-catch 嚴密保護，防禦任何局部異常中斷講者畫面與廣播)
       try {
         if (currentSlide === 5) {
           filterP05Category('born');
@@ -2753,7 +2772,1555 @@ html_content = '''<!DOCTYPE html>
         } else if (currentSlide === 21) {
           resetP19Todos();
         }
+      } catch (hookErr) {
+        console.warn('Slide hook notice on stage ' + currentSlide + ':', hookErr);
+      }
+
+      // 雙螢幕同步廣播與 UI 更新
+      if (broadcast) {
+        broadcastSlideChange(currentSlide);
+      }
+      updateSpeakerViewUI(currentSlide);
+      try { updateFloatingNav(); } catch (e) {}
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function jumpTo(slideNum) {
+      showSlide(slideNum);
+      const drawer = document.getElementById('index-drawer');
+      if (!drawer.classList.contains('hidden')) {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    // ================= 全方位無障礙導航系統 (鍵盤 + 簡報筆 + 觸控手勢) =================
+    // 支援所有常見簡報筆與鍵盤按鍵：
+    // 下一頁：ArrowRight, ArrowDown, PageDown, Space, Enter, n, N
+    // 上一頁：ArrowLeft, ArrowUp, PageUp, Backspace, p, P (若非講者視窗)
+    document.addEventListener('keydown', (e) => {
+      // 避免在文字輸入框打字時誤觸換頁
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        return;
+      }
+
+      const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter', 'n', 'N'];
+      const prevKeys = ['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'];
+
+      if (nextKeys.includes(e.key)) {
+        e.preventDefault();
+        nextSlide();
+      } else if (prevKeys.includes(e.key)) {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullScreen();
+      } else if (e.key === 's' || e.key === 'S') {
+        toggleSpeakerNotes();
+      } else if (e.key === 'Escape') {
+        closeQrModal();
+        closeVividQuoteModal();
+      } else if (e.key === 'v' || e.key === 'V') {
+        if (isSpeakerView) {
+          e.preventDefault();
+          toggleSpeakerLayout();
+        }
+      } else if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        openSpeakerView();
+      } else if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        toggleBlankScreen();
+      } else if (e.key === 'm' || e.key === 'M') {
+        toggleIndexDrawer();
+      } else if (e.key === 'Home') {
+        showSlide(1);
+      } else if (e.key === 'End') {
+        showSlide(totalSlides);
+      }
+    });
+
+    // 手機播放模式保護機制：已依指示停用手勢左滑/右滑切頁，避免在點選互動方塊或上下捲動時誤觸換頁
+    // 換頁全面統一由螢幕兩側之「超大懸浮導航箭頭（‹ 與 ›）」或底部控制列進行切換
+
+    // 更新浮動按鈕可見狀態
+    function updateFloatingNav() {
+      const btnPrev = document.getElementById('floating-btn-prev');
+      const btnNext = document.getElementById('floating-btn-next');
+      if (btnPrev) btnPrev.style.display = currentSlide <= 1 ? 'none' : 'flex';
+      if (btnNext) btnNext.style.display = currentSlide >= totalSlides ? 'none' : 'flex';
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    }
+
+    function toggleSpeakerNotes() {
+      document.getElementById('speaker-notes-modal').classList.toggle('hidden');
+    }
+
+    function toggleIndexDrawer() {
+      document.getElementById('index-drawer').classList.toggle('hidden');
+    }
+
+    function openQrModal() {
+      document.getElementById('qr-modal').classList.remove('hidden');
+    }
+
+    function closeQrModal() {
+      document.getElementById('qr-modal').classList.add('hidden');
+    }
+
+    function openVividQuoteModal() {
+      const currentQuote = document.getElementById('key-takeaway-text').innerText;
+      document.getElementById('modal-quote-text').innerText = currentQuote;
+      document.getElementById('vivid-quote-modal').classList.remove('hidden');
+    }
+
+    function closeVividQuoteModal() {
+      document.getElementById('vivid-quote-modal').classList.add('hidden');
+    }
+
+
+    // ================= 雙螢幕跨視窗同步引擎 (Dual-Screen Broadcast Engine) =================
+    // ==================== 跨視窗雙螢幕極致同步引擎 (Quad-Sync Engine) ====================
+    let speakerWindowRef = null;
+    const SYNC_CHANNEL_NAME = 'breast_screening_slides_sync';
+    let syncChannel = null;
+    try {
+      if (typeof BroadcastChannel !== 'undefined') {
+        syncChannel = new BroadcastChannel(SYNC_CHANNEL_NAME);
+      }
+    } catch (e) {}
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isSpeakerView = urlParams.get('view') === 'speaker';
+    const initialSlideParam = parseInt(urlParams.get('slide')) || 1;
+
+    // 開啟講者獨立視窗 (Speaker View - 支援 file://, http://, https:// 全環境)
+    function openSpeakerView() {
+      let base = window.location.href.split('?')[0].split('#')[0];
+      const url = `${base}?view=speaker&slide=${currentSlide}`;
+      const w = 1320;
+      const h = 860;
+      const left = window.screen.width ? (window.screen.width - w) / 2 : 50;
+      const top = window.screen.height ? (window.screen.height - h) / 2 : 50;
+
+      if (speakerWindowRef && !speakerWindowRef.closed) {
+        speakerWindowRef.focus();
+        sendSyncMessage({ type: 'SLIDE_CHANGE', index: currentSlide });
+        return;
+      }
+
+      speakerWindowRef = window.open(
+        url,
+        'SpeakerViewWindow',
+        `width=${w},height=${h},top=${top},left=${left},resizable=yes,scrollbars=yes`
+      );
+
+      if (speakerWindowRef) {
+        speakerWindowRef.focus();
+      }
+    }
+
+    // 更新講者控制台連線狀態徽章
+    function updateSyncStatusBadge(connected) {
+      const badge = document.getElementById('spk-sync-status');
+      if (!badge) return;
+      if (connected) {
+        badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+        badge.innerHTML = '🟢 大螢幕已連線同步';
+      } else {
+        badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30';
+        badge.innerHTML = '🟡 等待大螢幕連線';
+      }
+    }
+
+    // 統一分發同步訊息至所有可用通訊通道 (四重備援通道)
+    function sendSyncMessage(payload) {
+      // 通道 1: postMessage 至子視窗 (主視窗 -> 講者控制台)
+      if (speakerWindowRef && !speakerWindowRef.closed) {
+        try { speakerWindowRef.postMessage(payload, '*'); } catch (e) {}
+        try { if (speakerWindowRef.handleSyncDirect) speakerWindowRef.handleSyncDirect(payload); } catch (e) {}
+      }
+
+      // 通道 2: postMessage 至父視窗 (講者控制台 -> 主視窗)
+      if (window.opener && !window.opener.closed) {
+        try { window.opener.postMessage(payload, '*'); } catch (e) {}
+        try { if (window.opener.handleSyncDirect) window.opener.handleSyncDirect(payload); } catch (e) {}
+      }
+
+      // 通道 3: BroadcastChannel (適用於線上與 localhost)
+      if (syncChannel) {
+        try { syncChannel.postMessage(payload); } catch (e) {}
+      }
+
+      // 通道 4: localStorage 跨分頁事件備援
+      try {
+        localStorage.setItem('breast_sync_msg', JSON.stringify({ ...payload, _t: Date.now() }));
+      } catch (e) {}
+    }
+
+    // 統一處理接收到的同步訊息
+    function handleSyncMessage(data, sourceWindow) {
+      if (!data || typeof data !== 'object') return;
+
+      if (sourceWindow && sourceWindow !== window) {
+        if (isSpeakerView) {
+          window.opener = sourceWindow;
+        } else {
+          speakerWindowRef = sourceWindow;
+        }
+      }
+
+      // 1. 投影片跳頁同步
+      if (data.type === 'SLIDE_CHANGE') {
+        const targetIdx = parseInt(data.index);
+        if (targetIdx && targetIdx !== currentSlide) {
+          showSlide(targetIdx, false);
+        }
+        updateSyncStatusBadge(true);
+      }
+      // 2. 黑屏同步
+      else if (data.type === 'BLANK_SCREEN') {
+        if (typeof data.blank === 'boolean' && data.blank !== isBlankScreen) {
+          toggleBlankScreen(false);
+        }
+        updateSyncStatusBadge(true);
+      }
+      // 3. 握手請求 (REQ_SYNC)
+      else if (data.type === 'REQ_SYNC') {
+        sendSyncMessage({
+          type: 'ACK_SYNC',
+          index: currentSlide,
+          blank: isBlankScreen,
+          timestamp: Date.now()
+        });
+        updateSyncStatusBadge(true);
+      }
+      // 4. 握手回應 (ACK_SYNC)
+      else if (data.type === 'ACK_SYNC') {
+        const targetIdx = parseInt(data.index);
+        if (targetIdx && targetIdx !== currentSlide) {
+          showSlide(targetIdx, false);
+        }
+        if (typeof data.blank === 'boolean' && data.blank !== isBlankScreen) {
+          toggleBlankScreen(false);
+        }
+        updateSyncStatusBadge(true);
+      }
+    }
+
+    // 同源/本地直接方法呼叫介面
+    window.handleSyncDirect = function(payload) {
+      handleSyncMessage(payload, null);
+    };
+
+    // 監聽 window postMessage (保證在 file:// 與 https:// 下均 100% 有效)
+    window.addEventListener('message', (e) => {
+      handleSyncMessage(e.data, e.source);
+    });
+
+    // 監聽 BroadcastChannel
+    if (syncChannel) {
+      syncChannel.onmessage = (e) => {
+        handleSyncMessage(e.data, null);
+      };
+    }
+
+    // 監聽 localStorage storage 事件
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'breast_sync_msg' && e.newValue) {
+        try {
+          const parsed = JSON.parse(e.newValue);
+          handleSyncMessage(parsed, null);
+        } catch (e) {}
+      }
+    });
+
+    // 廣播換頁
+    function broadcastSlideChange(idx) {
+      sendSyncMessage({ type: 'SLIDE_CHANGE', index: idx });
+    }
+
+    // 黑屏切換 (Blank Screen / 按 B 鍵)
+    let isBlankScreen = false;
+    function toggleBlankScreen(broadcast = true) {
+      isBlankScreen = !isBlankScreen;
+      const overlay = document.getElementById('blank-screen-overlay');
+      if (overlay) {
+        if (isBlankScreen) overlay.classList.remove('hidden');
+        else overlay.classList.add('hidden');
+      }
+      const spkBtn = document.getElementById('spk-blank-btn');
+      if (spkBtn) {
+        if (isBlankScreen) {
+          spkBtn.className = 'px-3 py-1.5 rounded-xl bg-rose-600 text-white font-black transition flex items-center gap-1';
+          spkBtn.innerHTML = '<span>🔴</span><span>黑屏生效中 (B)</span>';
+        } else {
+          spkBtn.className = 'px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1 border border-slate-700';
+          spkBtn.innerHTML = '<span>⬛</span><span>黑屏 (B)</span>';
+        }
+      }
+
+      if (broadcast) {
+        sendSyncMessage({ type: 'BLANK_SCREEN', blank: isBlankScreen });
+      }
+    }
+
+    // 講者控制台專屬導航函式
+    function spkNextSlide() {
+      nextSlide();
+    }
+    function spkPrevSlide() {
+      prevSlide();
+    }
+    function spkJumpTo(num) {
+      jumpTo(parseInt(num));
+    }
+
+    // 講者控制台專屬計時器
+    let spkTimerSeconds = 0;
+    let spkCountdownSeconds = 60 * 60;
+    let spkTimerInterval = null;
+    let spkTimerRunning = false;
+
+    function toggleSpkTimer() {
+      const btn = document.getElementById('spk-timer-toggle-btn');
+      if (spkTimerRunning) {
+        clearInterval(spkTimerInterval);
+        spkTimerRunning = false;
+        if (btn) btn.innerText = '▶';
+      } else {
+        spkTimerInterval = setInterval(() => {
+          spkTimerSeconds++;
+          if (spkCountdownSeconds > 0) spkCountdownSeconds--;
+          updateSpkTimerDisplay();
+        }, 1000);
+        spkTimerRunning = true;
+        if (btn) btn.innerText = '⏸';
+      }
+    }
+
+    function resetSpkTimer() {
+      clearInterval(spkTimerInterval);
+      spkTimerRunning = false;
+      spkTimerSeconds = 0;
+      spkCountdownSeconds = 60 * 60;
+      const btn = document.getElementById('spk-timer-toggle-btn');
+      if (btn) btn.innerText = '▶';
+      updateSpkTimerDisplay();
+    }
+
+    function updateSpkTimerDisplay() {
+      const elHours = Math.floor(spkTimerSeconds / 3600);
+      const elMins = Math.floor((spkTimerSeconds % 3600) / 60);
+      const elSecs = spkTimerSeconds % 60;
+      const elText = `${String(elHours).padStart(2,'0')}:${String(elMins).padStart(2,'0')}:${String(elSecs).padStart(2,'0')}`;
+      const elElem = document.getElementById('spk-elapsed-time');
+      if (elElem) elElem.innerText = elText;
+
+      const cdMins = Math.floor(spkCountdownSeconds / 60);
+      const cdSecs = spkCountdownSeconds % 60;
+      const cdElem = document.getElementById('spk-remaining-time');
+      if (cdElem) {
+        cdElem.innerText = `${String(cdMins).padStart(2,'0')}:${String(cdSecs).padStart(2,'0')}`;
+        if (spkCountdownSeconds <= 300) {
+          cdElem.className = 'text-base font-mono font-black text-rose-500 animate-pulse';
+        } else if (spkCountdownSeconds <= 600) {
+          cdElem.className = 'text-base font-mono font-black text-vivid-orange';
+        } else {
+          cdElem.className = 'text-base font-mono font-black text-vivid-mint';
+        }
+      }
+    }
+
+    // 更新講者控制台的所有動態面板 (縮圖、預覽、備忘)
+    function updateSpeakerViewUI(slideIndex) {
+      if (!isSpeakerView) return;
+
+      const currentSlideEl = document.querySelector(`.slide[data-slide="${slideIndex}"]`);
+      if (!currentSlideEl) return;
+
+      // 1. 數字更新
+      const curNum = document.getElementById('spk-current-num');
+      const totalNum = document.getElementById('spk-total-num');
+      if (curNum) curNum.innerText = slideIndex;
+      if (totalNum) totalNum.innerText = totalSlides;
+
+      // 2. 備忘話術更新
+      const scene = currentSlideEl.getAttribute('data-scene') || '無特定場景備註';
+      const quote = currentSlideEl.getAttribute('data-quote') || '健康，是最重要的事業';
+      const notes = currentSlideEl.getAttribute('data-notes') || '按章節節奏帶領觀眾深入淺出';
+
+      const nScene = document.getElementById('spk-notes-scene');
+      const nBody = document.getElementById('spk-notes-body');
+      const nQuote = document.getElementById('spk-notes-quote');
+      if (nScene) nScene.innerText = scene;
+      if (nBody) nBody.innerText = notes;
+      if (nQuote) nQuote.innerText = quote;
+
+      // 3. 下一張投影片預覽更新
+      const nextSlideIndex = slideIndex < totalSlides ? slideIndex + 1 : null;
+      const nextNum = document.getElementById('spk-next-num');
+      const nextTitle = document.getElementById('spk-next-title');
+      const nextScene = document.getElementById('spk-next-scene');
+
+      if (nextSlideIndex) {
+        const nextSlideEl = document.querySelector(`.slide[data-slide="${nextSlideIndex}"]`);
+        if (nextNum) nextNum.innerText = `STAGE ${nextSlideIndex} / ${totalSlides}`;
+        if (nextSlideEl) {
+          const h2 = nextSlideEl.querySelector('h2');
+          const titleText = h2 ? h2.innerText : `關卡 ${nextSlideIndex}`;
+          const nextSceneText = nextSlideEl.getAttribute('data-scene') || '';
+          if (nextTitle) nextTitle.innerText = titleText;
+          if (nextScene) nextScene.innerText = nextSceneText;
+        }
+      } else {
+        if (nextNum) nextNum.innerText = 'END OF DECK';
+        if (nextTitle) nextTitle.innerText = '🎉 演講圓滿結束！進入 Q&A 與聽眾互動';
+        if (nextScene) nextScene.innerText = '感謝大家專注聆聽，邀請大家掃碼帶走簡報。';
+      }
+
+      // 4. 下拉選單選中當前項
+      const jumpSelect = document.getElementById('spk-jump-select');
+      if (jumpSelect) jumpSelect.value = slideIndex;
+
+      // 5. 更新原生 DOM 16:9 縮放鏡像預覽 (零 iframe、零 CORS 限制、本地雙擊 100% 完美呈現)
+      updateSpeakerMirror(slideIndex);
+    }
+
+    
+    // 講者控制台視圖滿版切換 (8:4 滿版標準 vs 10:2 巨幅放大)
+    let spkLayoutMode = 'large';
+    function toggleSpeakerLayout() {
+      const leftCol = document.getElementById('spk-left-col');
+      const rightCol = document.getElementById('spk-right-col');
+      const btnText = document.getElementById('spk-layout-text');
+      if (!leftCol || !rightCol) return;
+
+      if (spkLayoutMode === 'large') {
+        spkLayoutMode = 'max';
+        leftCol.className = 'col-span-10 xl:col-span-10 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        rightCol.className = 'col-span-2 xl:col-span-2 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        if (btnText) btnText.innerText = '標準雙欄 (V)';
+      } else {
+        spkLayoutMode = 'large';
+        leftCol.className = 'col-span-8 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        rightCol.className = 'col-span-4 xl:col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
+        if (btnText) btnText.innerText = '巨幅滿版 (V)';
+      }
+      setTimeout(() => {
+        updateSpeakerMirror(currentSlide);
+      }, 50);
+    }
+
+    // 原生 DOM 16:9 極致滿版高清縮放鏡像預覽函式
+    function updateSpeakerMirror(slideIndex) {
+      const stage = document.getElementById('spk-preview-stage');
+      const sourceSlide = document.querySelector(`.slide[data-slide="${slideIndex}"]`);
+      if (!stage || !sourceSlide) return;
+
+      stage.innerHTML = '';
+
+      // 建立虛擬 16:9 畫布容器 (以 1280x720 比例縮放，填滿貼合)
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'absolute';
+      wrapper.style.width = '1280px';
+      wrapper.style.height = '720px';
+      wrapper.style.left = '50%';
+      wrapper.style.top = '50%';
+      wrapper.style.backgroundColor = '#ffffff';
+      wrapper.style.color = '#0f172a';
+      wrapper.style.borderRadius = '16px';
+      wrapper.style.padding = '24px 32px';
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.justifyContent = 'space-between';
+      wrapper.style.overflow = 'hidden';
+      wrapper.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.6)';
+      wrapper.style.pointerEvents = 'none';
+      wrapper.style.userSelect = 'none';
+
+      // 複製投影片內容
+      const clone = sourceSlide.cloneNode(true);
+      clone.classList.remove('hidden');
+      clone.classList.add('flex');
+      clone.style.display = 'flex';
+      clone.style.width = '100%';
+      clone.style.height = '100%';
+      clone.style.maxHeight = '100%';
+      clone.style.overflow = 'hidden';
+      clone.style.justifyContent = 'center';
+
+      wrapper.appendChild(clone);
+      stage.appendChild(wrapper);
+
+      // 計算並套用 scale (貼滿寬度與高度，最大化滿版展示)
+      function fitScale() {
+        const sw = stage.clientWidth;
+        const sh = stage.clientHeight;
+        if (!sw || !sh) return;
+        const scale = Math.min((sw - 4) / 1280, (sh - 4) / 720);
+        wrapper.style.transform = `translate(-50%, -50%) scale(${Math.max(scale, 0.15)})`;
+        wrapper.style.transformOrigin = 'center center';
+      }
+      fitScale();
+    }
+
+    window.addEventListener('resize', () => {
+      if (isSpeakerView) {
+        updateSpeakerMirror(currentSlide);
+      }
+    });
+
+    // P01: 場次切換
+    function selectP01Venue(btn) {
+      document.querySelectorAll('.venue-btn').forEach(b => {
+        b.className = 'venue-btn p-3 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white text-left transition flex flex-col justify-between';
+      });
+      btn.className = 'venue-btn p-3 rounded-2xl border-2 border-vivid-pink bg-pink-50/50 text-left transition flex flex-col justify-between';
+    }
+
+    // P03: 數據解讀
+    const p03Insights = [
+      { icon: '🥇', title: '連續多年女性癌症首位', desc: '平均每 36 分鐘就有 1 位國人女性被宣告罹患乳癌（男性亦有罹患機率），及早建立篩檢意識至關重要！' },
+      { icon: '📈', title: '每日新增 42 位確診同胞', desc: '每年總確診突破 15,000 例，乳癌已非罕見疾病，而是全民隨處可見的現代健康挑戰。' },
+      { icon: '⏳', title: '高峰年齡比歐美整整早 10 年', desc: '台灣高峰落在 45-69 歲，正是職場與家庭的中流砥柱，守護她們就是守護社會支柱！' },
+      { icon: '🎯', title: '女性一生 10-12% 罹病機率', desc: '每 8 到 10 位女性就有 1 位可能面臨挑戰，因此「定期篩檢」是所有職場夥伴必修的守護課題！' }
+    ];
+
+    function showP03Insight(idx) {
+      const item = p03Insights[idx];
+      document.getElementById('p03-icon').innerText = item.icon;
+      document.getElementById('p03-title').innerText = item.title;
+      document.getElementById('p03-desc').innerText = item.desc;
+      document.querySelectorAll('.p03-metric-card').forEach((c, i) => {
+        if (i === idx) {
+          c.classList.add('border-vivid-pink');
+          c.classList.remove('border-slate-200');
+        } else {
+          c.classList.remove('border-vivid-pink');
+          c.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P04: 6 大負載
+    const p04Loads = [
+      { badge: '長時間久坐的生物學機制', text: '久坐超過 6 小時會大幅降低肌肉脂蛋白脂肪酶（LPL）活性，促進內臟脂肪囤積。脂肪細胞含有芳香化酶，會把雄性素持續轉化為多餘的雌激素！' },
+      { badge: '熬夜與作息失調機制', text: '深夜屏幕藍光會強力壓抑松果體分泌褪黑激素（Melatonin）。褪黑激素是天然腫瘤抑制劑，分泌腰斬會讓受損的 DNA 失去夜間修復屏障！' },
+      { badge: '高壓責任感機制', text: '長期處於 Deadline 與突發狀況下，皮質醇（Cortisol）持續分泌，導致全身慢性發炎，並顯著抑制體內 NK 自然殺手細胞的巡邏功能！' },
+      { badge: '外食高油糖飲食機制', text: '精緻果糖與反式脂肪引發高胰島素血症，刺激類胰島素生長因子-1（IGF-1）飆升，是乳腺上皮細胞過度增生的催化劑！' },
+      { badge: '晚育或未育荷爾蒙機制', text: '女性在懷孕與哺乳期間，卵巢會暫停排卵，乳腺上皮得到分化成熟。若未曾懷孕或晚育，一生中暴露於雌激素的週期相對延長很多！' },
+      { badge: '飲酒與代謝負載機制', text: '酒精經肝臟代謝產生的乙醛是明確致癌物，同時會抑制肝臟代謝多餘雌激素的能力，每天多喝 1 杯酒，乳癌相對風險增加 7%！' }
+    ];
+
+    function showP04Load(idx) {
+      const item = p04Loads[idx];
+      document.getElementById('p04-detail-badge').innerText = item.badge;
+      document.getElementById('p04-detail-text').innerText = item.text;
+      document.querySelectorAll('.p04-card').forEach((c, i) => {
+        if (i === idx) {
+          c.classList.add('border-vivid-pink');
+          c.classList.remove('border-slate-200');
+        } else {
+          c.classList.remove('border-vivid-pink');
+          c.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P05: 先天 vs 後天 Switch (修改：點選後天可控時卡片固定在右側)
+    
+    // ==================== P05: 13 項危險因子聚光卡數據與控制 ====================
+    const p05Factors = [
+      { id: 0, cat: 'born', icon: '🧬', name: '乳癌家族史（一等親）', risk: '提高 2 ~ 3 倍', type: 'INBORN 先天因子',
+        mech: '一等親（母親、姊妹、女兒）罹患乳癌，代表帶有相同易感基因（如 BRCA1/2 等 DNA 修復修復缺陷基因）之機率顯著增加，乳腺細胞自發性修復突變能力較弱。',
+        action: '自 30 歲起提早每年安排乳房超音波；40 歲起享有每 2 年 1 次公費乳房 X 光攝影，並於間隔年加做超音波密切追蹤！' },
+      { id: 1, cat: 'born', icon: '🩸', name: '初經早於 12 歲', risk: '相對風險 1.3 ~ 1.5 倍', type: 'INBORN 先天因子',
+        mech: '過早來月經代表一生排卵週期數顯著增加，乳腺上皮組織暴露於自體雌激素（Estrogen）的總時長與濃度大幅延長。',
+        action: '屬於生理先天體質，無須恐慌，規律運動打斷久坐，並於 40 歲起準時完成每 2 年一次公費篩檢。' },
+      { id: 2, cat: 'born', icon: '⏳', name: '停經晚於 55 歲', risk: '相對風險 1.5 ~ 2.0 倍', type: 'INBORN 先天因子',
+        mech: '停經年齡延後，使更年期前的高濃度荷爾蒙刺激延續至 50 歲以後，累積的乳腺細胞增生劑量相對較高。',
+        action: '更年期後乳腺逐漸由脂肪取代，X 光攝影透視度大幅提高，務必把握 40-74 歲每 2 年 1 次免費攝影！' },
+      { id: 3, cat: 'born', icon: '👶', name: '晚育或未曾生育', risk: '相對風險 1.4 ~ 1.6 倍', type: 'INBORN 先天因子',
+        mech: '懷孕與完整哺乳過程會使乳腺上皮細胞完成「終末終端分化」，並暫停排卵約 1 年，未育者缺乏此分化保護週期。',
+        action: '職場頂客族或晚育同仁，請建立 30 歲起定期超音波、40 歲起定期攝影的科學自我守護習慣！' },
+      { id: 4, cat: 'born', icon: '🔬', name: '曾有良性乳房病變史', risk: '非典型增生高達 4 ~ 5 倍', type: 'INBORN 先天因子',
+        mech: '若切片曾證實為「非典型乳腺增生（ADH/ALH）」，代表局部乳腺組織已具備輕微基因異型性，具較高潛在癌變傾向。',
+        action: '切勿掉以輕心，請遵照乳房外科專科醫師指示，每 6 個月定期回診追蹤超音波與影像檢查。' },
+      { id: 5, cat: 'born', icon: '🥛', name: '緻密型乳房特徵', risk: '相對風險 1.5 ~ 2.0 倍', type: 'INBORN 先天因子',
+        mech: '亞洲族群逾 70% 屬於緻密型乳腺，除 X 光下呈現白茫茫可能遮蔽微小病灶外，乳腺上皮比例高本身即代表較多潛在分裂細胞。',
+        action: '公費攝影若報告為「Category 0」，請立刻搭配「乳房超音波」，雙雷達聯手讓腫塊無所遁形！' },
+      { id: 6, cat: 'ctrl', icon: '⚖️', name: '肥胖與缺乏運動 (BMI>25)', risk: '停經後風險提高 1.5 ~ 2 倍', type: 'ACQUIRED 後天可控',
+        mech: '停經後卵巢停止分泌，脂肪細胞中的「芳香化酶（Aromatase）」成為雌激素主要製造來源，過多脂肪直接持續刺激乳腺！',
+        action: '維持 BMI 18.5-24，落實每週 150 分鐘微運動，立刻逆轉脂肪芳香化酶活性！' },
+      { id: 7, cat: 'ctrl', icon: '🍔', name: '高油脂與精緻糖飲食', risk: '慢性發炎風險升高', type: 'ACQUIRED 後天可控',
+        mech: '油炸飽和脂肪與精緻糖引發胰島素阻抗，刺激「類胰島素生長因子（IGF-1）」分泌，促進異常癌細胞分裂與血管新生。',
+        action: '運用午餐「微替換原則」：炸排骨換烤雞腿、奶茶換無糖綠，體內發炎指數直接砍半！' },
+      { id: 8, cat: 'ctrl', icon: '🍺', name: '規律飲酒習慣', risk: '每日一杯風險增 7 ~ 10%', type: 'ACQUIRED 後天可控',
+        mech: '酒精代謝物乙醛具直接致突變性，且酒精會抑制肝臟代謝雌激素之功能，導致血液中游離荷爾蒙濃度升高。',
+        action: '應酬改喝氣泡水加檸檬片；能不喝就不喝，將酒精攝取降至最低！' },
+      { id: 9, cat: 'ctrl', icon: '🌙', name: '長期高壓熬夜與睡前藍光', risk: '免疫清查功能失調', type: 'ACQUIRED 後天可控',
+        mech: '睡前螢幕藍光抑制褪黑激素分泌達 80% 以上，皮質醇長時期處於高位，人體夜間 DNA 修復機制完全停擺！',
+        action: '今晚起設定 22:00 數位停機模式，放下手機讓大腦松果體自然釋放抗癌修復激素！' },
+      { id: 10, cat: 'ctrl', icon: '🚬', name: '抽菸與暴露二手菸', risk: '罹癌率升高 20 ~ 30%', type: 'ACQUIRED 後天可控',
+        mech: '香菸燃燒產生的多環芳香烴（PAHs）與亞硝胺等強致癌物，可穿透乳腺屏障沉積於乳腺導管液，直接破壞細胞 DNA。',
+        action: '戒菸並勇敢向職場與家庭二手菸說不，保護自己也保護家人！' },
+      { id: 11, cat: 'ctrl', icon: '💊', name: '長期荷爾蒙補充療法', risk: '合併使用 5 年以上風險微升', type: 'ACQUIRED 後天可控',
+        mech: '停經婦女長期合併使用雌激素與黃體素治療更年期症候群超過 5 年者，乳腺細胞受外源性刺激增加。',
+        action: '若需荷爾蒙治療，請務必由婦產科及乳房外科醫師共同評估最低有效劑量並定期追蹤。' },
+      { id: 12, cat: 'ctrl', icon: '🥤', name: '塑化劑與環境荷爾蒙', risk: '內分泌干擾物累積', type: 'ACQUIRED 後天可控',
+        mech: '塑化劑（鄰苯二甲酸酯、雙酚 A）分子結構類似雌激素，進入人體後假冒荷爾蒙與受體結合，擾亂正常細胞節律。',
+        action: '自備不鏽鋼/玻璃保溫杯，熱食切勿使用薄塑膠袋承裝，減少外食塑膠餐具！' }
+    ];
+
+    let p05CurrentCategory = 'all';
+    let p05SelectedId = 0;
+
+    function renderP05List(cat = 'all') {
+      p05CurrentCategory = cat;
+      const container = document.getElementById('p05-factors-list');
+      if (!container) return;
+
+      const filtered = cat === 'all' ? p05Factors : p05Factors.filter(f => f.cat === cat);
+      document.getElementById('p05-count-badge').innerText = `${filtered.length} 項清單`;
+
+      container.innerHTML = filtered.map(f => {
+        const isSelected = f.id === p05SelectedId;
+        return `
+          <button onclick="selectP05Factor(${f.id})" class="p05-item-btn w-full p-3.5 rounded-2xl text-left transition-all duration-200 flex items-center justify-between ${
+            isSelected
+              ? 'bg-pink-50/80 border-4 border-vivid-pink shadow-lg shadow-pink-500/15 scale-[1.02]'
+              : 'bg-slate-50 border border-slate-200 hover:border-pink-300 opacity-70 hover:opacity-100'
+          }">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">${f.icon}</span>
+              <div>
+                <div class="text-base sm:text-lg font-black text-slate-900">${f.name}</div>
+                <div class="text-xs ${f.cat === 'born' ? 'text-amber-700' : 'text-emerald-700'} font-bold">${f.cat === 'born' ? '先天無法改變' : '後天完全可控'}</div>
+              </div>
+            </div>
+            <span class="text-xs font-black px-2.5 py-1 rounded-full ${isSelected ? 'bg-vivid-pink text-white' : 'bg-slate-200 text-slate-700'}">
+              ${isSelected ? '焦點中' : '解碼'}
+            </span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectP05Factor(id) {
+      p05SelectedId = id;
+      const f = p05Factors.find(item => item.id === id);
+      if (!f) return;
+
+      document.getElementById('p05-spot-icon').innerText = f.icon;
+      document.getElementById('p05-spot-type').innerText = f.type;
+      document.getElementById('p05-spot-type').className = `px-3 py-0.5 rounded-full text-xs font-black ${
+        f.cat === 'born' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
+      }`;
+      document.getElementById('p05-spot-title').innerText = f.name;
+      document.getElementById('p05-spot-risk').innerText = f.risk;
+      document.getElementById('p05-spot-mech').innerText = f.mech;
+      document.getElementById('p05-spot-action').innerText = f.action;
+
+      renderP05List(p05CurrentCategory);
+    }
+
+    function filterP05Category(cat) {
+      p05CurrentCategory = cat;
+      const btnBorn = document.getElementById('p05-tab-born');
+      const btnCtrl = document.getElementById('p05-tab-ctrl');
+      const listContainer = document.getElementById('p05-list-container');
+      const spotPanel = document.getElementById('p05-spotlight-panel');
+      const listTitle = document.getElementById('p05-list-title');
+
+      if (cat === 'born') {
+        // 先天 6 項：左側為因子清單，右側為放大講解
+        btnBorn.className = 'px-5 py-2.5 rounded-full text-sm font-black bg-amber-600 text-white shadow-md transition flex items-center gap-2';
+        btnCtrl.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-2';
+
+        if (listContainer) {
+          listContainer.className = 'lg:col-span-5 lg:order-1 bg-white p-5 rounded-3xl border border-slate-200 pop-shadow space-y-2.5 max-h-[460px] overflow-y-auto';
+        }
+        if (spotPanel) {
+          spotPanel.className = 'lg:col-span-7 lg:order-2 bg-white p-7 sm:p-8 rounded-3xl border-2 border-amber-500 pop-shadow flex flex-col justify-between space-y-4';
+        }
+        if (listTitle) listTitle.innerText = '點擊先天因子查看右側解析：';
+      } else {
+        // 後天 7 項：反過來！左邊為放大講解，右邊為因子清單
+        btnBorn.className = 'px-5 py-2.5 rounded-full text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center gap-2';
+        btnCtrl.className = 'px-5 py-2.5 rounded-full text-sm font-black bg-emerald-600 text-white shadow-md transition flex items-center gap-2';
+
+        if (spotPanel) {
+          spotPanel.className = 'lg:col-span-7 lg:order-1 bg-white p-7 sm:p-8 rounded-3xl border-2 border-emerald-500 pop-shadow flex flex-col justify-between space-y-4';
+        }
+        if (listContainer) {
+          listContainer.className = 'lg:col-span-5 lg:order-2 bg-white p-5 rounded-3xl border border-slate-200 pop-shadow space-y-2.5 max-h-[460px] overflow-y-auto';
+        }
+        if (listTitle) listTitle.innerText = '點擊後天因子查看左側解析：';
+      }
+
+      renderP05List(cat);
+      const filtered = p05Factors.filter(f => f.cat === cat);
+      if (filtered.length > 0 && !filtered.some(f => f.id === p05SelectedId)) {
+        selectP05Factor(filtered[0].id);
+      }
+    }
+
+    // ==================== P12: 打破篩檢 5 大迷思聚光燈 ====================
+    const p12Myths = [
+      { id: 0,
+        myth: '家裡沒人得過，我就很安全？',
+        truth: '80% 以上的乳癌患者根本沒有家族史！環境、荷爾蒙、高壓與飲食等後天因子才是大宗！',
+        quote: '💡 守護準則：沒有家族史絕不等於免死金牌，符合年齡就要主動受檢！' },
+      { id: 1,
+        myth: '聽說會被夾到瘀青痛死？',
+        truth: '實際加壓僅維持 3 ~ 5 秒鐘！只要避開生理期前一週（水腫期），疼痛感直接大降 70%！',
+        quote: '💡 減痛秘訣：選在經期結束後一週受檢，輕柔吐氣放鬆，體驗比想像輕鬆很多！' },
+      { id: 2,
+        myth: 'X光射線輻射量很高會致癌？',
+        truth: '單次乳房攝影輻射僅約 0.7 毫西弗，相當於坐飛機去舊金山來回一趟！安全性極高！',
+        quote: '💡 科學依據：每年背景輻射約 1.6 毫西弗，篩檢早期發現的效益遠遠大於微量輻射風險！' },
+      { id: 3,
+        myth: '我平時洗澡摸沒有硬塊就沒事？',
+        truth: '早期原位癌（第 0 期）多數是如細沙般的微小鈣化點，手摸根本摸不出來！只能靠攝影！',
+        quote: '💡 關鍵事實：等摸到有感硬塊時通常已進展至第 1、2 期，儀器篩檢才是早期預警神器！' },
+      { id: 4,
+        myth: '我才 30 幾歲，乳癌跟我無關？',
+        truth: '台灣 40 歲以下乳癌佔比達 8 ~ 10%！好發年齡比歐美整整早 10 年，年輕族群不可輕忽！',
+        quote: '💡 青年防線：若摸到硬塊或有一等親家族史，請自 30 歲起以「乳房超音波」作為第一防線！' }
+    ];
+
+    function selectP12Myth(idx) {
+      const d = p12Myths[idx];
+      document.querySelectorAll('.p12-card').forEach((c, i) => {
+        const stamp = c.querySelector('.myth-stamp');
+        if (i === idx) {
+          c.className = 'p12-card cursor-pointer bg-white p-4 rounded-2xl border-4 border-vivid-pink bg-pink-50/50 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 scale-105 shadow-xl shadow-pink-500/15';
+          stamp.className = 'myth-stamp text-xs font-black text-emerald-700 bg-emerald-100 border border-emerald-300 rounded-full px-2 py-0.5 text-center animate-pulse';
+          stamp.innerText = '💥 已戳破！';
+        } else {
+          c.className = 'p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-40 hover:opacity-100 hover:scale-105';
+        }
+      });
+
+      document.getElementById('p12-spot-title').innerText = `迷思 0${idx + 1} 科學真相解碼：`;
+      document.getElementById('p12-spot-truth').innerText = d.truth;
+      document.getElementById('p12-spot-quote').innerText = d.quote;
+    }
+
+    // ==================== P15: 檢查工具總覽聚光燈 ====================
+    const p15Tools = {
+      mammo: {
+        icon: '🔬',
+        badge: 'MAMMOGRAPHY',
+        title: '乳房 X 光攝影（抓微小鈣化點）',
+        tag: '第 0 期原位癌唯一偵測利器',
+        pro: '抓微小鈣化點的第一高手！高達 80% 的第 0 期原位癌完全摸不到，僅在 X 光下以如細沙般的微小鈣化點呈現。',
+        con: '亞洲族群 70% 屬於緻密型乳房，緻密乳腺在 X 光下呈白色，可能遮蔽微小腫塊。對策：務必搭配「超音波」雙強聯手！'
+      },
+      us: {
+        icon: '📡',
+        badge: 'ULTRASOUND',
+        title: '乳房超音波（透視緻密乳腺與腫塊）',
+        tag: '無輻射 · 零痛感 · 辨別囊腫',
+        pro: '分辨液體水泡（良性囊腫）與實心腫瘤的第一名偵探！不受緻密乳腺遮蔽影響，可即時穿透濃霧辨別腫塊邊界是否平滑。',
+        con: '完全無法偵測初期微小鈣化點！若只做超音波，可能漏掉最早期無硬塊的原位癌，因此不可單獨取代攝影做普篩！'
+      }
+    };
+
+    function selectP15Tool(toolKey) {
+      const d = p15Tools[toolKey];
+      const btnMammo = document.getElementById('p15-btn-mammo');
+      const btnUs = document.getElementById('p15-btn-us');
+
+      if (toolKey === 'mammo') {
+        btnMammo.className = 'cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-pink bg-pink-50/40 pop-shadow transition-all duration-300 flex items-center justify-between scale-[1.02] shadow-xl shadow-pink-500/10';
+        btnUs.className = 'cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-50 hover:opacity-100 hover:scale-[1.01]';
+      } else {
+        btnMammo.className = 'cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-50 hover:opacity-100 hover:scale-[1.01]';
+        btnUs.className = 'cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-teal bg-teal-50/40 pop-shadow transition-all duration-300 flex items-center justify-between scale-[1.02] shadow-xl shadow-teal-500/10';
+      }
+
+      document.getElementById('p15-spot-icon').innerText = d.icon;
+      document.getElementById('p15-spot-badge').innerText = d.badge;
+      document.getElementById('p15-spot-title').innerText = d.title;
+      document.getElementById('p15-spot-tag').innerText = d.tag;
+      document.getElementById('p15-spot-pro').innerText = d.pro;
+      document.getElementById('p15-spot-con').innerText = d.con;
+    }
+
+    function calcP06Risk() {
+      const habits = document.querySelectorAll('.p06-habit');
+      let total = 0;
+      let count = 0;
+      habits.forEach(h => {
+        if (h.checked) {
+          total += parseInt(h.getAttribute('data-risk'));
+          count++;
+        }
+      });
+
+      const display = document.getElementById('p06-total-display');
+      const advice = document.getElementById('p06-advice-text');
+      const bar = document.getElementById('p06-bar');
+
+      if (display) display.innerText = `+${total}%`;
+      if (bar) bar.style.width = `${Math.min(total, 100)}%`;
+
+      if (total >= 50) {
+        if (display) display.className = 'text-4xl sm:text-5xl font-black text-vivid-pink tracking-tight animate-pulse my-2';
+        if (advice) advice.innerText = `已勾選 ${count} 項不良習慣（+${total}%）！建議今天換無糖茶或多走兩站，立刻逆轉發炎！`;
+      } else if (total > 0) {
+        if (display) display.className = 'text-4xl sm:text-5xl font-black text-vivid-orange tracking-tight my-2';
+        if (advice) advice.innerText = `負荷中等水平（+${total}%）！維持規律睡眠與運動，身體完全能自我修復！`;
+      } else {
+        if (display) display.className = 'text-4xl sm:text-5xl font-black text-vivid-mint tracking-tight my-2';
+        if (advice) advice.innerText = '所有壞習慣均已解除！體內免疫修復系統全速運轉！';
+      }
+    }
+
+    function resetP06Habits() {
+      document.querySelectorAll('.p06-habit').forEach(h => h.checked = false);
+      calcP06Risk();
+    }
+
+    // P08: 動態餐盤切換（同方案 B 互動邏輯，C 風格）
+    const p08MealData = {
+      before: {
+        badge: '🍱 典型加班便當組合',
+        badgeClass: 'text-red-600 bg-red-100',
+        calories: '預估熱量：約 980 大卡',
+        statusTag: 'HIGH RISK ⚠️',
+        statusTagClass: 'text-red-600',
+        inflamePct: 85,
+        inflameText: '85% 超載 (Overload)',
+        inflameBarClass: 'bg-red-500',
+        antiPct: 15,
+        antiText: '15% 偏低 (Deficit)',
+        summary: '長期高糖高脂外食容易促成脂肪芳香化。點擊上方「護乳微替換提案」切換按鈕，查看醫師推薦的無痛微替換方案！',
+        items: [
+          { icon: '🍗', title: '油炸酥脆大雞排 / 炸排骨', desc: '高溫氧化油脂、反式脂肪酸加劇體內慢性發炎反應', tag: '促發炎 ⚠️', tagClass: 'text-red-600 font-black' },
+          { icon: '🧋', title: '半糖波霸紅茶拿鐵 / 甜飲', desc: '高果糖玉米糖漿促使三酸甘油酯與內臟脂肪激增', tag: '刺激雌激素 ⚠️', tagClass: 'text-red-600 font-black' },
+          { icon: '🥡', title: '塑膠袋或淋膜紙盒直接裝熱湯', desc: '高溫高油溶出鄰苯二甲酸酯（環境荷爾蒙/塑化劑干擾）', tag: '環境荷爾蒙 ⚠️', tagClass: 'text-red-600 font-black' }
+        ]
+      },
+      after: {
+        badge: '🥗 智慧護乳微替換提案',
+        badgeClass: 'text-emerald-700 bg-emerald-100',
+        calories: '預估熱量：約 520 大卡（減 46%）',
+        statusTag: 'OPTIMAL PROTECT ✨',
+        statusTagClass: 'text-emerald-600',
+        inflamePct: 20,
+        inflameText: '20% 低風險 (Anti-inflammatory)',
+        inflameBarClass: 'bg-emerald-500',
+        antiPct: 90,
+        antiText: '90% 極佳 (Optimal Defense)',
+        summary: '恭喜切換！每週只要有 3 天午餐完成這 3 個微替換，全身慢性發炎指數立降 75%，細胞天然抗氧化屏障瞬間建立！',
+        items: [
+          { icon: '🐟', title: '舒肥烤雞胸 / 乾煎低溫鹽麴鮭魚', desc: '優質蛋白與 Omega-3 不飽和脂肪酸，強力抑制發炎因子', tag: '抗發炎蛋白 ✅', tagClass: 'text-emerald-600 font-black' },
+          { icon: '🍵', title: '無糖高山冷泡綠茶 / 鮮檸氣泡水', desc: '豐富茶多酚兒茶素（EGCG），中和自由基並抑制異常細胞增生', tag: '兒茶素防禦 ✅', tagClass: 'text-emerald-600 font-black' },
+          { icon: '🍱', title: '自備 304 不鏽鋼 / 耐熱玻璃保鮮盒', desc: '杜絕環境荷爾蒙滲入熱食，給內分泌系統乾淨安全的空間', tag: '零塑化劑 ✅', tagClass: 'text-emerald-600 font-black' }
+        ]
+      }
+    };
+
+    function toggleP08MealMode(mode) {
+      const btnBefore = document.getElementById('p08-btn-before');
+      const btnAfter = document.getElementById('p08-btn-after');
+      const data = p08MealData[mode];
+
+      if (mode === 'before') {
+        btnBefore.className = 'px-5 py-2 rounded-full bg-slate-900 text-white text-xs font-black transition shadow-sm';
+        btnAfter.className = 'px-5 py-2 rounded-full text-slate-600 hover:text-slate-900 text-xs font-bold transition';
+      } else {
+        btnBefore.className = 'px-5 py-2 rounded-full text-slate-600 hover:text-slate-900 text-xs font-bold transition';
+        btnAfter.className = 'px-5 py-2 rounded-full bg-emerald-600 text-white text-xs font-black transition shadow-sm';
+      }
+
+      // 更新 Badges 與文字
+      const badge = document.getElementById('p08-meal-badge');
+      badge.innerText = data.badge;
+      badge.className = `text-sm font-black px-4 py-1 rounded-full ${data.badgeClass}`;
+      document.getElementById('p08-calories-badge').innerText = data.calories;
       
+      const tag = document.getElementById('p08-status-tag');
+      tag.innerText = data.statusTag;
+      tag.className = `text-xs font-mono font-bold ${data.statusTagClass}`;
+
+      // 更新進度條
+      const inflameBar = document.getElementById('p08-bar-inflame');
+      inflameBar.style.width = `${data.inflamePct}%`;
+      inflameBar.className = `h-full rounded-full transition-all duration-500 ${data.inflameBarClass}`;
+      document.getElementById('p08-bar-inflame-val').innerText = data.inflameText;
+      document.getElementById('p08-bar-inflame-val').className = `font-black ${mode === 'before' ? 'text-red-600' : 'text-emerald-600'}`;
+
+      const antiBar = document.getElementById('p08-bar-anti');
+      antiBar.style.width = `${data.antiPct}%`;
+      document.getElementById('p08-bar-anti-val').innerText = data.antiText;
+      document.getElementById('p08-bar-anti-val').className = `font-black ${mode === 'before' ? 'text-slate-500' : 'text-emerald-600'}`;
+
+      document.getElementById('p08-summary-text').innerText = data.summary;
+
+      // 渲染 3 項食物卡片
+      const listContainer = document.getElementById('p08-food-list');
+      listContainer.innerHTML = data.items.map(item => `
+        <div class="p-4 sm:p-5 rounded-2xl ${mode === 'before' ? 'bg-slate-50 border-2 border-slate-200' : 'bg-emerald-50/70 border-2 border-emerald-300'} flex items-center justify-between transition-all">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl sm:text-4xl flex-shrink-0">${item.icon}</span>
+            <div>
+              <div class="font-black text-slate-900 text-base sm:text-lg">${item.title}</div>
+              <div class="text-sm sm:text-base text-slate-600 font-bold mt-0.5">${item.desc}</div>
+            </div>
+          </div>
+          <span class="text-xs sm:text-sm font-black px-3 py-1.5 rounded-full flex-shrink-0 ${item.tagClass}">${item.tag}</span>
+        </div>
+      `).join('');
+    }
+
+    // P09: 150 分鐘微運動蓄力（轉場歸零，單位改為「分鐘」中文字）
+    let p09CurrentMinutes = 0;
+    function addP09Energy(mins) {
+      p09CurrentMinutes += mins;
+      if (p09CurrentMinutes > 150) p09CurrentMinutes = 150;
+      updateP09Display();
+    }
+
+    function resetP09Energy() {
+      p09CurrentMinutes = 0;
+      updateP09Display();
+    }
+
+    function updateP09Display() {
+      document.getElementById('p09-display-num').innerHTML = `${p09CurrentMinutes} <span class="text-2xl text-slate-400 font-bold">/ 150 分鐘</span>`;
+      const pct = Math.round((p09CurrentMinutes / 150) * 100);
+      document.getElementById('p09-bar').style.width = `${pct}%`;
+      const msg = document.getElementById('p09-msg');
+      if (p09CurrentMinutes === 0) {
+        msg.innerHTML = '請點擊左側碎片活動按鈕，替每週 150 分鐘運動量蓄力充能！';
+        msg.className = 'text-xs text-slate-300 font-medium';
+      } else if (pct >= 100) {
+        msg.innerHTML = '🎉 恭喜達成 100% 本週微運動目標！降低乳癌風險 20% 成就解鎖！';
+        msg.className = 'text-xs text-vivid-mint font-black';
+      } else {
+        msg.innerHTML = `已達成目標 ${pct}%！再動一動，輕鬆累積每週健康能量！`;
+        msg.className = 'text-xs text-slate-300 font-medium';
+      }
+    }
+
+    // P11: 公費資格即時判定（依據 114 年官方最新擴大補助政策）
+    function checkP11Eligibility() {
+      const age = parseInt(document.getElementById('p11-age-input').value) || 0;
+      const checkedRisks = document.querySelectorAll('.p11-risk-item:checked').length;
+      const box = document.getElementById('p11-result-box');
+
+      if (age >= 40 && age <= 74) {
+        if (checkedRisks > 0) {
+          box.className = 'p-5 sm:p-6 rounded-3xl bg-emerald-50 border-2 border-emerald-400 text-slate-800 space-y-3';
+          box.innerHTML = `
+            <div class="text-xl sm:text-2xl font-black text-emerald-900 flex items-center gap-2">
+              <span>🎉 符合公費資格！</span>
+              <span class="text-xs sm:text-sm bg-emerald-200 text-emerald-900 px-3 py-1 rounded-full font-bold">40-74歲全面給付</span>
+            </div>
+            <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-bold">
+              自 114 年 1 月 1 日起，享有政府補助<strong>每 2 年 1 次免費乳房 X 光攝影</strong>（零自費）！
+            </p>
+            <div class="text-sm sm:text-base font-bold text-amber-900 bg-amber-100/70 p-3.5 rounded-2xl border border-amber-300 leading-relaxed">
+              💡 <strong>醫師高風險提醒：</strong>因勾選了 ${checkedRisks} 項高風險因子，強烈建議在每 2 年的公費攝影間隔年，主動搭配「乳房超音波」密切追蹤！
+            </div>
+          `;
+        } else {
+          box.className = 'p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-slate-800 space-y-1.5';
+          box.innerHTML = `
+            <div class="text-sm font-black text-emerald-900 flex items-center gap-1.5">
+              <span>🎉 恭喜！您完全符合「每 2 年 1 次公費免費乳房攝影」資格！</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+              自 114 年起，40～74 歲女性全面納入公費補助（男士同仁請務必提醒伴侶與媽媽受檢），攜帶健保卡至特約醫療機構即可免費檢查，零自費！
+            </p>
+            <div class="text-xs text-emerald-700 font-bold">
+              無顯著家族史或危險因子，只要每 2 年按時拍一次攝影，即可達到 95% 以上防護！
+            </div>
+          `;
+        }
+      } else if (age < 40) {
+        if (checkedRisks > 0) {
+          box.className = 'p-4 rounded-2xl bg-amber-50 border-2 border-amber-300 text-slate-800 space-y-1.5';
+          box.innerHTML = `
+            <div class="text-sm font-black text-amber-900 flex items-center gap-1.5">
+              <span>⚠️ 年齡未滿 40 歲（尚未達公費攝影年齡）</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+              因勾選了 ${checkedRisks} 項高風險因子，年輕族群乳腺緻密且不宜過早累積 X 光輻射。
+            </p>
+            <div class="text-xs font-bold text-rose-800 bg-white p-2 rounded-xl border border-rose-200">
+              🩺 <strong>醫師專業指引：</strong>強烈建議提早自 30 歲起，由乳房專科醫師安排「<strong>每年 1 次定期乳房超音波檢查</strong>」；若有強大家族遺傳史可諮詢基因篩檢！
+            </div>
+          `;
+        } else {
+          box.className = 'p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1.5';
+          box.innerHTML = `
+            <div class="text-sm font-black text-slate-800">
+              ✨ 您正值 40 歲以下黃金青春期（目前未達 40 歲公費攝影年齡）
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              目前無特定危險因子。建議養成每個月生理期後「自我檢查」習慣；30 歲起可在年度常規健檢中自選「乳房超音波」作為基線參考！
+            </p>
+          `;
+        }
+      } else {
+        box.className = 'p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1.5';
+        box.innerHTML = `
+          <div class="text-sm font-black text-slate-800">
+            超過 74 歲補助年齡。若有摸到硬塊或家族史，隨時可至乳房外科由健保給付門診檢查！
+          </div>
+        `;
+      }
+    }
+
+    // P12: 戳破迷思
+    function bustP12Myth(card, truth) {
+      const stamp = card.querySelector('.myth-stamp');
+      stamp.innerText = '💥 已戳破！';
+      stamp.className = 'myth-stamp text-xs font-black text-emerald-700 border border-emerald-300 rounded-full px-2 py-1 text-center bg-emerald-100 animate-pulse';
+      card.classList.add('border-vivid-pink', 'bg-pink-50/30');
+      const dText = document.getElementById('p12-detail-text') || document.getElementById('p12-spot-truth'); if (dText) dText.innerText = truth;
+    }
+
+    // P13: 攝影流程 Stepper 模擬器
+    const p13Steps = {
+      1: {
+        badge: '步驟 1 / 4 · 更衣與前置準備',
+        time: '耗時約 2 分鐘',
+        title: '換穿檢查袍，切勿在胸部塗抹爽身粉或止汗劑',
+        desc: '褪去上半身衣物與項鍊耳環，換穿專用檢查袍。<strong>特別注意：</strong>檢查當天胸部與腋下切勿塗抹止汗劑、爽身粉、護膚乳液，以免其中的礦物微粒在 X 光下產生假鈣化點，引發虛驚！',
+        tip: '💡 穿著建議：當天穿著「兩件式上衣＋褲/裙」，更衣最自在！',
+        simDisplay: '👕 更衣就緒',
+        simSub: '請配合女放射師引導進入檢查室',
+        btnText: '進入步驟 2：專業擺位 ➔',
+        action: () => setP13Step(2)
+      },
+      2: {
+        badge: '步驟 2 / 4 · 專業女放射師擺位',
+        time: '耗時約 2 分鐘',
+        title: '放鬆肩膀，放射師協助將乳腺組織妥善置於托架',
+        desc: '由合格女性放射師一對一服務。放射師會輕柔將一側乳房提托放置在攝影台上，調整角度，以確保深部乳腺組織與腋下淋巴都能完整呈現在底片中。',
+        tip: '💡 放鬆訣竅：雙腳站穩、雙肩下沉、吐氣放鬆，不要聳肩，擺位就會順暢！',
+        simDisplay: '📐 擺位完成',
+        simSub: '放射師即將輕柔下降壓迫板',
+        btnText: '進入步驟 3：微壓迫體驗 ➔',
+        action: () => setP13Step(3)
+      },
+      3: {
+        badge: '步驟 3 / 4 · 微壓迫取像（核心步驟）',
+        time: '僅維持 3～5 秒',
+        title: '壓平組織僅需 3 秒，配合吐氣痛感減半！',
+        desc: '透明壓迫板會緩緩固定加壓，把立體的乳房組織展平，避免重疊遮蔽病灶，並大幅減少輻射劑量。<strong>只有 3 秒鐘</strong>，聽到逼逼聲即拍攝完成並瞬間鬆開！',
+        tip: '💡 減痛黃金期：選在「月經結束後第 3～5 天」受檢，水腫消退痛感狂降 80%！',
+        simDisplay: '⏱️ 準備好了嗎？',
+        simSub: '點擊下方按鈕，體驗 3 秒微壓迫倒數！',
+        btnText: '▶ 開始體驗 3 秒微壓迫倒數',
+        action: () => startP13CountDown()
+      },
+      4: {
+        badge: '步驟 4 / 4 · 雙角度 4 張搞定',
+        time: '全流程 10 分鐘完成',
+        title: '左右兩側各拍正面與斜位，換衣打卡收工！',
+        desc: '雙側各拍由上往下（CC view）與內外斜位（MLO view）共 4 張標準影像。完成後即可更衣離開，約 10-14 天收到書面報告，或在健保快易通 APP 查看結果！',
+        tip: '💡 通關獎勵：給勇敢做完篩檢的自己一杯無糖拿鐵或一份健康午餐！',
+        simDisplay: '🎉 恭喜通關！',
+        simSub: '4 張清晰影像已歸檔，守護完成！',
+        btnText: '🔄 重新回顧流程',
+        action: () => setP13Step(1)
+      }
+    };
+
+    let p13CurrentStep = 1;
+    function setP13Step(step) {
+      p13CurrentStep = step;
+      document.querySelectorAll('.p13-step-btn').forEach((b, idx) => {
+        if (idx + 1 === step) {
+          b.className = 'p13-step-btn p-3.5 rounded-2xl bg-white border-2 border-vivid-teal pop-shadow text-left transition flex items-center gap-3';
+        } else {
+          b.className = 'p13-step-btn p-3.5 rounded-2xl bg-white border border-slate-200 pop-shadow text-left transition hover:border-vivid-teal flex items-center gap-3';
+        }
+      });
+
+      const d = p13Steps[step];
+      document.getElementById('p13-step-badge').innerText = d.badge;
+      document.getElementById('p13-step-time').innerText = d.time;
+      document.getElementById('p13-step-title').innerText = d.title;
+      document.getElementById('p13-step-desc').innerHTML = d.desc;
+      document.getElementById('p13-step-tip').innerHTML = d.tip;
+      document.getElementById('p13-sim-display').innerText = d.simDisplay;
+      document.getElementById('p13-sim-sub').innerText = d.simSub;
+      
+      const actionBtn = document.getElementById('p13-sim-action-btn');
+      actionBtn.innerText = d.btnText;
+      actionBtn.onclick = d.action;
+    }
+
+    function startP13CountDown() {
+      const display = document.getElementById('p13-sim-display');
+      const sub = document.getElementById('p13-sim-sub');
+      const btn = document.getElementById('p13-sim-action-btn');
+      btn.disabled = true;
+
+      let sec = 3;
+      display.className = 'text-5xl font-black text-vivid-pink animate-ping';
+      display.innerText = `${sec}`;
+      sub.innerText = '正在壓迫取像中... 配合深長吐氣！';
+
+      const interval = setInterval(() => {
+        sec--;
+        if (sec > 0) {
+          display.className = 'text-5xl font-black text-vivid-pink animate-ping';
+          display.innerText = `${sec}`;
+        } else {
+          clearInterval(interval);
+          display.className = 'text-4xl font-black text-emerald-600';
+          display.innerText = '嗶！拍攝完成！';
+          sub.innerText = '壓迫板瞬間鬆開！是不是完全在忍受範圍內？';
+          btn.disabled = false;
+          btn.innerText = '進入步驟 4：通關收工 ➔';
+          btn.onclick = () => setP13Step(4);
+        }
+      }, 1000);
+    }
+
+    // P10: 左右方框點擊切換互動
+    const p10Modes = {
+      blue: {
+        title: '🚨 當前模擬：睡前螢幕藍光警報狀態',
+        badge: '高發炎警戒 ⚠️',
+        badgeClass: 'bg-red-500 text-white',
+        melatonin: '暴跌 82% ⚠️（松果體誤判為白晝，抑癌素嚴重缺工）',
+        cortisol: '飆升 +65% ⚠️（體內皮質醇持續燃燒，早晨胰島素阻抗升高）',
+        repair: '被迫停擺 ⚠️（突變與 DNA 鏈損傷逃避夜間糾錯清查）',
+        quote: '梁醫師臨床警示：深夜滑手機就像不斷取消伺服器備份排程，讓癌變細胞有可乘之機！今晚 22:00 請務必停機！'
+      },
+      repair: {
+        title: '✨ 當前模擬：22:00 數位停機自癒修復模式',
+        badge: '黃金自癒中 🛡️',
+        badgeClass: 'bg-emerald-600 text-white',
+        melatonin: '達 100% 峰值釋放 ✨（超強天然抗氧化劑全面中和自由基）',
+        cortisol: '平穩回落 ✨（消除全身慢性發炎，免疫大軍精神飽滿）',
+        repair: '全速運轉 ✨（NK 自然殺手細胞全面巡邏清除異變細胞）',
+        quote: '梁醫師溫馨提醒：每晚 22:00 放下手機，就是送給身體最頂級、完全免費的天然抗癌重組程式！'
+      }
+    };
+
+    function setP10Mode(mode) {
+      const boxBlue = document.getElementById('p10-box-blue');
+      const boxRepair = document.getElementById('p10-box-repair');
+      const badgeBlue = document.getElementById('p10-badge-blue');
+      const badgeRepair = document.getElementById('p10-badge-repair');
+      const panel = document.getElementById('p10-monitor-panel');
+      const d = p10Modes[mode];
+
+      if (mode === 'blue') {
+        boxBlue.className = 'cursor-pointer bg-red-50/40 p-6 rounded-3xl border-2 border-red-500 pop-shadow space-y-3.5 transition-all duration-300 scale-[1.02] shadow-lg shadow-red-500/10';
+        boxRepair.className = 'cursor-pointer bg-white/70 p-6 rounded-3xl border border-slate-200 pop-shadow space-y-3.5 transition-all duration-300 opacity-60 hover:opacity-100';
+        badgeBlue.className = 'text-xs font-black text-white bg-red-600 px-2.5 py-0.5 rounded-full animate-pulse';
+        badgeRepair.className = 'text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full';
+        panel.className = 'p-4 rounded-2xl bg-red-50 border-2 border-red-200 text-slate-800 transition-all duration-300 space-y-2';
+      } else {
+        boxBlue.className = 'cursor-pointer bg-white/70 p-6 rounded-3xl border border-slate-200 pop-shadow space-y-3.5 transition-all duration-300 opacity-60 hover:opacity-100';
+        boxRepair.className = 'cursor-pointer bg-purple-50/40 p-6 rounded-3xl border-2 border-vivid-purple pop-shadow space-y-3.5 transition-all duration-300 scale-[1.02] shadow-lg shadow-purple-500/10';
+        badgeBlue.className = 'text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full';
+        badgeRepair.className = 'text-xs font-black text-white bg-vivid-purple px-2.5 py-0.5 rounded-full';
+        panel.className = 'p-4 rounded-2xl bg-purple-50 border-2 border-purple-200 text-slate-800 transition-all duration-300 space-y-2';
+      }
+
+      panel.innerHTML = `
+        <div class="flex items-center justify-between border-b border-black/10 pb-2.5">
+          <div class="font-black text-base sm:text-lg text-slate-900 flex items-center gap-2">
+            <span>📊 體內即時修復指標監測：</span>
+            <span>${d.title}</span>
+          </div>
+          <span class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full ${d.badgeClass}">${d.badge}</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm pt-2">
+          <div class="p-3.5 rounded-2xl bg-white/90 border border-black/5 shadow-sm">
+            <div class="font-bold text-slate-500 text-xs sm:text-sm">褪黑激素（Melatonin）</div>
+            <div class="font-black text-slate-900 text-xl sm:text-2xl mt-1">${d.melatonin}</div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/90 border border-black/5 shadow-sm">
+            <div class="font-bold text-slate-500 text-xs sm:text-sm">皮質醇發炎負荷</div>
+            <div class="font-black text-slate-900 text-xl sm:text-2xl mt-1">${d.cortisol}</div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/90 border border-black/5 shadow-sm">
+            <div class="font-bold text-slate-500 text-xs sm:text-sm">DNA 修復進程</div>
+            <div class="font-black text-slate-900 text-xl sm:text-2xl mt-1">${d.repair}</div>
+          </div>
+        </div>
+        <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-bold pt-2">
+          ${d.desc}
+        </p>
+      `;
+    }
+
+    // P17: 七大異常警訊互動式切換
+    const p17Symptoms = [
+      {
+        icon: '🚨',
+        name: '無痛單側腫塊（最常見警訊）',
+        badge: 'CLINICAL PRIORITY 01',
+        feel: '多數位於乳房外上方（接近腋下），質地堅硬如小石頭、邊界不規則、無法在皮下滑動。',
+        diff: '良性水泡或腺瘤多數有彈性且會微滑；「完全不痛且固定不動」的堅硬腫塊更具高度臨床意義！',
+        action: '切勿大力推拿揉捏！請於 1 週內掛號醫院乳房外科門診，安排高階超音波與攝影比對。'
+      },
+      {
+        icon: '🕳️',
+        name: '局部皮膚凹陷（酒窩徵兆）',
+        badge: 'CLINICAL PRIORITY 02',
+        feel: '雙手自然下垂或高舉時，某一局部皮膚表面牽拉凹陷，宛如酒窩般固定。',
+        diff: '腫瘤侵犯牽扯到乳房深層的庫柏氏韌帶（Cooper Ligament），造成表皮拉扯，屬結構性異常！',
+        action: '自我檢查照鏡子時最容易發現！發現皮膚牽拉凹陷，請直接就醫，由醫師觸診確認深部病灶。'
+      },
+      {
+        icon: '🩸',
+        name: '乳頭異常分泌（單側帶血絲）',
+        badge: 'CLINICAL PRIORITY 03',
+        feel: '非哺乳期、未經刻意擠壓，乳頭單孔自發性流出「清澈水狀」或「咖啡色帶血絲」液體。',
+        diff: '雙側多孔白色乳汁多為泌乳激素影響；「單側單孔自發性血水」需高度懷疑管內乳突瘤或惡性病變！',
+        action: '就診時可自備棉花棒採樣分泌物給醫師辨識，專科醫師會安排乳管造影或微創切片確認。'
+      },
+      {
+        icon: '⚓',
+        name: '乳頭凹陷回縮（牽拉變形）',
+        badge: 'CLINICAL PRIORITY 04',
+        feel: '原本正常的乳頭，在數週或數月內突然往內縮進去，無法輕易拉出。',
+        diff: '天生乳頭凹陷多屬先天發育；「後天成年後才新發生的內陷」常是深部乳管受到腫瘤牽引內縮！',
+        action: '若伴隨乳暈周圍皮膚變厚，請儘早讓乳房專科醫師評估，勿自行使用拔罐吸附器材。'
+      },
+      {
+        icon: '🍊',
+        name: '橘皮樣水腫（毛孔粗大凹陷）',
+        badge: 'CLINICAL PRIORITY 05',
+        feel: '乳房局部皮膚變厚、毛孔粗大凹陷，外觀就像橘子皮或葡萄柚皮一樣。',
+        diff: '真皮層表淺淋巴管受到阻塞導致水腫；若同時伴隨發紅發熱，需鑑別發炎性乳癌與乳腺炎！',
+        action: '若非哺乳期卻出現乳房大面積紅腫與橘皮變化，切勿當作普通毛囊炎，應立刻就醫！'
+      },
+      {
+        icon: '🪨',
+        name: '腋下淋巴水腫（淋巴腺腫大）',
+        badge: 'CLINICAL PRIORITY 06',
+        feel: '在腋窩深處摸到堅硬、不會痛、花生或鳥蛋大小的硬塊，可能單顆或成串固定。',
+        diff: '感冒發炎引發的淋巴結多數會紅腫壓痛；若「無感染卻摸到無痛堅硬淋巴」，具高度轉移警戒意義！',
+        action: '洗澡抹沐浴乳時順手由乳房外側往腋窩深處觸摸滑動，摸到無痛硬塊請立刻請乳房專科醫師掃描。'
+      },
+      {
+        icon: '📏',
+        name: '兩側大小突變（輪廓突然改變）',
+        badge: 'CLINICAL PRIORITY 07',
+        feel: '短時間（數週至數月）內一側乳房明顯變形、局部隆起腫大、邊界輪廓突然改變或左右明顯不對稱。',
+        diff: '天生雙側乳房微不對稱屬常態；若在短時間內「單側明顯膨出或局部扭曲改變」，需立即查明原因。',
+        action: '每月經期結束後在鏡前雙手自然下垂、高舉、叉腰觀察對比，發現明顯不對稱改變請及早由專科醫師檢查。'
+      }
+    ];
+
+    function selectP17Symptom(idx) {
+      document.querySelectorAll('.p17-sym-card').forEach((c, i) => {
+        if (i === idx) {
+          c.className = 'p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-4 border-red-500 bg-red-100 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 scale-110 shadow-2xl shadow-red-500/20 opacity-100';
+        } else {
+          c.className = 'p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105';
+        }
+      });
+
+      const d = p17Symptoms[idx];
+      document.getElementById('p17-detail-icon').innerText = d.icon;
+      document.getElementById('p17-detail-badge').innerText = d.badge;
+      document.getElementById('p17-detail-name').innerText = d.name;
+      document.getElementById('p17-detail-feel').innerText = d.feel;
+      document.getElementById('p17-detail-diff').innerText = d.diff;
+      document.getElementById('p17-detail-action').innerText = d.action;
+    }
+
+    // P19 (S21): To Do 清單連動
+    function calcP19Count() {
+      const checks = document.querySelectorAll('.p19-check');
+      let count = 0;
+      checks.forEach((c, idx) => {
+        const card = document.getElementById(`p19-card-${idx + 1}`);
+        const badge = document.getElementById(`p19-badge-${idx + 1}`);
+        if (c.checked) {
+          count++;
+          if (card) card.className = 'flex items-center justify-between p-4 rounded-2xl bg-emerald-50/70 border-2 border-emerald-400 cursor-pointer transition-all';
+          if (badge) {
+            badge.innerText = 'COMPLETED ✅';
+            badge.className = 'text-[11px] font-black text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full';
+          }
+        } else {
+          if (card) card.className = 'flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-vivid-pink cursor-pointer transition-all';
+          if (badge) {
+            badge.innerText = '待完成';
+            badge.className = 'text-[11px] font-bold text-slate-400';
+          }
+        }
+      });
+      document.getElementById('p19-count-display').innerText = `${count} / 3`;
+    }
+
+    function resetP19Todos() {
+      document.querySelectorAll('.p19-check').forEach(c => c.checked = false);
+      calcP19Count();
+    }
+
+    // P14: BI-RADS 報告分級
+    const p14Levels = [
+      { badge: 'Category 0 解碼：不是第 0 期癌！', title: '「影像不完全，請儘速加做乳房超音波比對」', desc: '亞洲女性 70% 屬於緻密型乳房，乳腺在 X 光下白茫茫一片，可能遮蔽微小病灶。Category 0 只是請妳掛號乳房外科，搭配超音波掃描一下，90% 以上加做後都是良性水泡或正常乳腺！' },
+      { badge: 'Category 1 解碼：乾乾淨淨', title: '「完全陰性，無異常發現」', desc: '乳腺組織完全對稱正常，無任何可疑鈣化點或結構扭曲。請繼續維持良好生活作息，並在 2 年後準時接受下一次公費篩檢即可！' },
+      { badge: 'Category 2 解碼：安心良性', title: '「確定良性發現，不具惡性傾向」', desc: '看到了明確的良性病灶，如良性纖維腺瘤、分泌囊腫、血管鈣化等。這些都不會變成癌症，一樣維持每 2 年定期檢查即可！' },
+      { badge: 'Category 3 解碼：定期快取', title: '「可能為良性，建議半年後短期追蹤」', desc: '惡性機率極低（< 2%）。就像軟體的非致命警告，醫師建議在 6 個月後針對該局部再照一次，確認它大小形狀完全沒變，連追兩年穩定後即可降回Category 2！' },
+      { badge: 'Category 4 解碼：疑雲釐清', title: '「疑似異常，強烈建議安排組織切片確認」', desc: '惡性機率約 2%～95%（細分 4A、4B、4C）。切片多採局部麻醉微創粗針切片，像抽血一樣取出微量組織送病理化驗，不用住院，絕不是開大刀！' },
+      { badge: 'Category 5 解碼：高度警戒', title: '「高度疑似惡性（> 95%），應儘速外科手術處置」', desc: '影像具有典型的毛刺狀、微細分枝狀鈣化。請不要驚慌，立刻至乳房專科進行全套規劃，早期發現早期切除，存活率依然極高！' }
+    ];
+
+    function showP14Level(lvl) {
+      const d = p14Levels[lvl];
+      document.getElementById('p14-badge').innerText = d.badge;
+      document.getElementById('p14-title').innerText = d.title;
+      document.getElementById('p14-desc').innerText = d.desc;
+      document.querySelectorAll('.p14-btn').forEach((b, i) => {
+        if (i === lvl) {
+          b.classList.add('border-2', 'border-vivid-pink');
+          b.classList.remove('border-slate-200');
+        } else {
+          b.classList.remove('border-2', 'border-vivid-pink');
+          b.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P14-2: 派工羅盤
+    const p142Tools = {
+      us: {
+        badge: '超音波（Ultrasound）',
+        badgeClass: 'bg-purple-100 text-purple-700',
+        title: '時機：攝影報告 0 類釐清、年輕緻密乳房、自己摸到硬塊時的第一首選',
+        tag: '無輻射 · 零痛感',
+        how: '平躺塗抹水性凝膠，探頭滑動掃描乳房與腋下淋巴，約 10-15 分鐘完成，無任何不適。',
+        pro: '能清楚分辨是液體水泡（囊腫）還是實心腫瘤；亞洲緻密乳房的最佳透視搭檔。',
+        con: '完全看不到初期的微小鈣化點！因此無法單獨取代乳房攝影做第一線普篩。'
+      },
+      mag: {
+        badge: '放大／局部壓迫攝影（Magnification / Spot View）',
+        badgeClass: 'bg-pink-100 text-vivid-pink',
+        title: '時機：初篩發現微小鈣化點，需拉近放大判定形態是良性或惡性',
+        tag: '微小鈣化剋星',
+        how: '使用特製小壓迫板，針對懷疑的 1-2 公分區域定點加壓拍攝，數分鐘內完成。',
+        pro: '將鈣化點形狀清晰放大數倍，協助醫師精準判讀，大幅減少不必要的開刀切片。',
+        con: '需針對局部再次壓迫，仍會有數秒的緊繃不適感。'
+      },
+      dbt: {
+        badge: '3D 斷層合成攝影（Digital Breast Tomosynthesis - DBT）',
+        badgeClass: 'bg-teal-100 text-teal-700',
+        title: '時機：高緻密乳房、組織重疊疑似病灶、大幅降低召回複查率',
+        tag: '1mm 薄切立體透視',
+        how: '姿勢同一般攝影，球管呈圓弧角度旋轉掃描，電腦重組出數十張 1mm 薄切面。',
+        pro: '徹底撥開重疊組織，緻密乳房侵襲癌偵測率提升 30-40%，大幅降低虛驚召回！',
+        con: '健保尚未全面給付（目前多數院所自費約 2000-3000 元）。'
+      },
+      mri: {
+        badge: '乳房磁振造影（Breast MRI）',
+        badgeClass: 'bg-amber-100 text-amber-800',
+        title: '時機：高風險基因帶原（BRCA）、術前評估侵犯範圍與對側乳房',
+        tag: '敏感度最高 (>90%)',
+        how: '俯臥於檢查床，乳房垂入專用線圈，需施打顯影劑，全程約 30-40 分鐘。',
+        pro: '完全無輻射，對軟組織與新生血管異常極度敏感，評估多發性病灶最精準。',
+        con: '費用較高（自費萬元以上），檢查時間較長且有運轉噪音，幽閉恐懼者需評估。'
+      }
+    };
+
+    function setP142Tool(tool) {
+      document.querySelectorAll('.p142-btn').forEach(b => {
+        b.className = 'p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-50 hover:opacity-100 hover:scale-105';
+      });
+      const targetBtn = document.getElementById('p142-btn-' + tool);
+      if (targetBtn) {
+        targetBtn.className = 'p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-purple bg-purple-50/40 pop-shadow text-left space-y-1 transition scale-105 shadow-xl shadow-purple-500/15 opacity-100';
+      }
+
+      const d = p142Tools[tool];
+      if (!d) return;
+      const badge = document.getElementById('p142-detail-badge');
+      if (badge) {
+        badge.innerText = d.badge;
+        badge.className = 'px-3.5 py-1 rounded-full text-sm font-black ' + (d.badgeClass || 'bg-purple-100 text-purple-700');
+      }
+      const tag = document.getElementById('p142-detail-tag');
+      if (tag) tag.innerText = d.tag;
+      const title = document.getElementById('p142-detail-title');
+      if (title) title.innerText = d.title;
+      const how = document.getElementById('p142-detail-how');
+      if (how) how.innerText = d.how;
+      const pro = document.getElementById('p142-detail-pro');
+      if (pro) pro.innerText = d.pro;
+      const con = document.getElementById('p142-detail-con');
+      if (con) con.innerText = d.con;
+    }
+
+    // P17: 期別切換
+    const p17Stages = [
+      { name: '第 0 期：原位癌（非侵襲性）', rate: '99.9%', color: 'text-vivid-mint', desc: '癌細胞完全局限在乳腺管或乳小葉內部，根本還沒跑出基底膜！只要微創切除，不需要化療，幾乎 100% 治癒！' },
+      { name: '第 1 期：腫瘤 < 2cm，無淋巴轉移', rate: '95.6%', color: 'text-vivid-mint', desc: '腫瘤非常微小，多數可做微創乳房保留手術。術後依型態搭配荷爾蒙或放療，存活率超過 95%！' },
+      { name: '第 2 期：腫瘤 2～5cm 或 少數淋巴轉移', rate: '89.7%', color: 'text-amber-500', desc: '腫瘤稍大或有 1-3 顆淋巴微小侵犯。正規手術搭配輔助治療，5 年存活率仍逼近 9 成！' },
+      { name: '第 3 期：局部晚期（> 5cm 或 多顆淋巴轉移）', rate: '72.3%', color: 'text-vivid-orange', desc: '現在有術前輔助化療與標靶治療，能先將腫瘤大幅縮小後再手術，依然有 7 成以上存活率！' },
+      { name: '第 4 期：遠端器官轉移', rate: '36.1%', color: 'text-red-500', desc: '新一代免疫治療、CDK4/6 抑制劑與 ADC 抗體藥物複合體問世，大幅延長存活時間並維持良好生活品質！' }
+    ];
+
+    function setP17Stage(idx) {
+      const d = p17Stages[idx];
+      document.getElementById('p17-stage-badge').innerText = d.name;
+      document.getElementById('p17-stage-desc').innerText = d.desc;
+      const rate = document.getElementById('p17-rate-display');
+      rate.innerText = d.rate;
+      rate.className = `text-6xl sm:text-7xl font-black ${d.color} tracking-tight`;
+
+      document.querySelectorAll('.p17-btn').forEach((b, i) => {
+        if (i === idx) {
+          b.classList.add('border-2', 'border-vivid-mint');
+          b.classList.remove('border-slate-200');
+        } else {
+          b.classList.remove('border-2', 'border-vivid-mint');
+          b.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // P19: 3 個 To Do
+    function calcP19Count() {
+      const checks = document.querySelectorAll('.p19-check');
+      let count = 0;
+      checks.forEach(c => {
+        if (c.checked) count++;
+      });
+      document.getElementById('p19-count-display').innerText = `${count} / 3`;
+    }
+
+    // P20: 金句卡選取
+    function selectQuoteCard(card) {
+      document.querySelectorAll('.quote-card').forEach(c => {
+        c.classList.remove('border-vivid-pink', 'bg-pink-50/40');
+      });
+      card.classList.add('border-vivid-pink', 'bg-pink-50/40');
+    }
+
+    // P21: FAQ
+    function toggleP21Faq(id) {
+      const ans = document.getElementById(`p21-ans-${id}`);
+      const icon = document.getElementById(`p21-icon-${id}`);
+      if (ans.classList.contains('hidden')) {
+        ans.classList.remove('hidden');
+        icon.innerText = '−';
+      } else {
+        ans.classList.add('hidden');
+        icon.innerText = '+';
+      }
+    }
+
+    // P22: 證書名字即時更新
+    function updateCertName() {
+      // 即時連動
+    }
+
+    // 60 分鐘計時器
+    let timerSeconds = 60 * 60;
+    let timerInterval = null;
+    const timerDisplay = document.getElementById('timer-display');
+    const timerBtn = document.getElementById('timer-btn');
+
+    function updateTimer() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      timerDisplay.innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      if (timerSeconds > 0) {
+        timerSeconds--;
+      } else {
+        clearInterval(timerInterval);
+        timerDisplay.classList.add('text-vivid-pink', 'animate-pulse');
+      }
+    }
+
+    timerBtn.addEventListener('click', () => {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timerBtn.innerText = '▶';
+      } else {
+        timerInterval = setInterval(updateTimer, 1000);
+        timerBtn.innerText = '⏸';
+      }
+    });
+
+    // 初始化講者控制台與雙螢幕模式
+    if (isSpeakerView) {
+      // 啟動講者專屬控制台視窗
+      document.body.classList.add('bg-slate-950');
+      const spkConsole = document.getElementById('speaker-view-console');
+      if (spkConsole) spkConsole.classList.remove('hidden');
+      
+      // 動態填入關卡跳轉選單
+      const sel = document.getElementById('spk-jump-select');
+      if (sel) {
+        sel.innerHTML = Array.from(slides).map((s, idx) => {
+          const h2 = s.querySelector('h2');
+          const title = h2 ? h2.innerText : `關卡 ${idx + 1}`;
+          return `<option value="${idx + 1}">P${idx + 1}: ${title}</option>`;
+        }).join('');
+      }
+
+      // 自動啟動演講計時器
+      toggleSpkTimer();
+
+      // 講者控制台初始優先依據 URL 的 slide 參數定位，且不廣播以防覆蓋主螢幕
+      showSlide(initialSlideParam, false);
+
+      // 向主螢幕發起握手請求
+      setTimeout(() => {
+        sendSyncMessage({ type: 'REQ_SYNC' });
+      }, 150);
+    } else {
+      // 主螢幕初始展示指定頁或第 1 頁
+      showSlide(initialSlideParam, false);
+    }
+    toggleP08MealMode('before');
+    checkP11Eligibility();
+    setP13Step(1);
+    setP10Mode('repair');
+    selectP17Symptom(0);
+    resetP19Todos();
+  
+    // S01 場次選擇器
+    function selectP01Venue(btn) {
+      document.querySelectorAll('.venue-btn').forEach(b => {
+        b.classList.remove('border-2', 'border-vivid-pink', 'bg-pink-50/80', 'shadow-md', 'ring-2', 'ring-pink-200');
+        b.classList.add('border', 'border-slate-200', 'bg-slate-50');
+      });
+      btn.classList.remove('border', 'border-slate-200', 'bg-slate-50', 'opacity-70');
+      btn.classList.add('border-2', 'border-vivid-pink', 'bg-pink-50/80', 'shadow-md', 'ring-2', 'ring-pink-200');
+    }
+
     // ==================== P18: 現代乳癌 5 大臨床決策實證武器庫 ====================
     const p18Weapons = {
       surg: {
@@ -2852,7 +4419,6 @@ html_content = '''<!DOCTYPE html>
       const data = p18Weapons[type];
       if (!data) return;
 
-      // Update button active styles
       ['surg', 'target', 'hormone', 'radio', 'other'].forEach(k => {
         const btn = document.getElementById('p18-btn-' + k);
         if (btn) {
@@ -2866,7 +4432,6 @@ html_content = '''<!DOCTYPE html>
         }
       });
 
-      // Update Spotlight Card
       const panel = document.getElementById('p18-spotlight-card');
       if (panel) {
         panel.innerHTML = `
@@ -2907,6 +4472,7 @@ html_content = '''<!DOCTYPE html>
         `;
       }
     }
+
     // ==================== P19: 健保與重大傷病保護傘 ＋ 重返職場生活品質 ====================
     const p19Umbrella = {
       nhi: {
@@ -2945,7 +4511,6 @@ html_content = '''<!DOCTYPE html>
       const data = p19Umbrella[type];
       if (!data) return;
 
-      // Update button active styles
       ['nhi', 'recon', 'career'].forEach(k => {
         const btn = document.getElementById('p19-btn-' + k);
         if (btn) {
@@ -2959,7 +4524,6 @@ html_content = '''<!DOCTYPE html>
         }
       });
 
-      // Update Detail Card
       const panel = document.getElementById('p19-detail-card');
       if (panel) {
         panel.innerHTML = `
@@ -2995,4 +4559,6 @@ html_content = '''<!DOCTYPE html>
         `;
       }
     }
-
+</script>
+</body>
+</html>
