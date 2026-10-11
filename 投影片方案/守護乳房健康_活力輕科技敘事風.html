@@ -1713,87 +1713,97 @@ html_content = '''<!DOCTYPE html>
     <!-- ==================== P18: 你不是一個人在戰鬥：台灣支持網絡 ==================== -->
     
 
-    <!-- ==================== P18: 【全新】確診不慌張！現代乳癌多元精準武器庫 ==================== -->
+    <!-- ==================== P18: 【實證醫學解碼】現代乳癌 5 大臨床決策武器庫 ==================== -->
     <section class="slide w-full h-full hidden flex-col justify-center" data-slide="18"
-      data-scene="萬一切片確診，先別慌！乳癌是全身所有癌症中，武器最多、個人化精準度最高的一種！"
-      data-quote="乳癌治療早已進入精準時代，量身定制，不再是一招打天下"
-      data-notes="【精準武器庫】許多同仁對癌症治療的印象還停留在幾十年前『全部切除、頭髮掉光、嘔吐虛弱』的恐懼中。我要告訴大家現代乳房外科的最真實面貌：乳癌是所有癌症中精準度最高的一種！大家看螢幕四大武器：第一，乳房保留手術比例超過7成，搭配前哨淋巴結切片，不用整隻手廓清淋巴，手臂不再腫脹；第二，HER2陽性有精準標靶，像巡弋飛彈直擊癌細胞；第三，最常見的荷爾蒙陽性患者，每天口服一顆藥物，很多早期同仁甚至『完全免做化療』！第四，新一代放療弧形調控保護心肺。量身定制，治療友善！">
+      data-scene="萬一切片確診，先別慌！乳癌是全身癌症中武器最多、實證醫學最完整的疾病！"
+      data-quote="實證醫學做後盾：切得剛好、精準用藥、安全免受多餘之苦"
+      data-notes="【5大臨床決策實證解碼】面對確診，大家心中有五大最關鍵疑問：第一，一定要全切嗎？實證醫學20年追蹤證實，保留加上放療存活率與全切完全相同！前哨淋巴切片更免除整隻手臂水腫；第二，標靶藥物有淋巴轉移健保給付，無淋巴轉移需自費約40到60萬；第三，荷爾蒙陽性患者佔7成，每天口服一顆藥，管腔A型或基因低風險者『安全免做化療』；第四，放療不用住院，新一代大分割只要3週15次；第五，三陰性乳癌有最新免疫療法突破。梁醫師用最嚴謹的科學證據，帶大家讀懂現代治療！">
       
-      <div class="w-full space-y-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-3">
+      <div class="w-full space-y-5">
+        <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-2.5">
           <div>
-            <span class="text-sm font-black tracking-widest text-vivid-pink uppercase">PRECISION ARSENAL // 精準治療武器庫</span>
-            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-1">確診不慌張！現代乳癌多元精準武器庫</h2>
+            <span class="text-sm font-black tracking-widest text-vivid-pink uppercase">CLINICAL DECISION // 5 大臨床決策實證</span>
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-1">確診不慌張！現代乳癌 5 大精準決策武器庫</h2>
           </div>
           <div class="text-base font-bold text-slate-500">
-            精準分型 · 量身定制 · 告別盲目化療恐懼
+            整合國際實證醫學 · 健保規範 · 臨床真實解碼
           </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          <!-- 左側 5 欄：4 大精準武器選擇器 -->
-          <div class="lg:col-span-5 bg-white p-6 rounded-3xl border-2 border-slate-200 pop-shadow flex flex-col justify-between space-y-3">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <!-- 左側 5 欄：5 大決策主題切換按鈕 -->
+          <div class="lg:col-span-5 bg-white p-5 rounded-3xl border-2 border-slate-200 pop-shadow flex flex-col justify-between space-y-2.5">
             <div>
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100 text-vivid-pink text-xs font-black">
-                🎯 點選切換 4 大精準武器
+              <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-pink-100 text-vivid-pink text-xs font-black">
+                🎯 點選切換 5 大臨床主題
               </div>
-              <h3 class="text-2xl font-black text-slate-900 mt-2">量身打造的個人化策略</h3>
-              <p class="text-sm text-slate-600 font-medium mt-0.5">依據腫瘤分子亞型（ER/PR/HER2/Ki-67）精準派工</p>
+              <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">破解治療迷思與決策路徑</h3>
             </div>
 
-            <div class="space-y-2.5">
-              <button id="p18-btn-surg" onclick="selectP18Weapon('surg')" class="w-full p-3.5 rounded-2xl border-2 border-slate-200 hover:border-pink-500 bg-slate-50 hover:bg-pink-50/50 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <span class="text-3xl">🔪</span>
+            <div class="space-y-2">
+              <button id="p18-btn-surg" onclick="selectP18Weapon('surg')" class="w-full p-3 rounded-2xl border-2 border-slate-200 hover:border-pink-500 bg-slate-50 hover:bg-pink-50/50 text-left transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl">🔪</span>
                   <div>
-                    <div class="text-base font-black text-slate-900">微創與保留手術</div>
-                    <div class="text-xs text-slate-500 font-medium">保留外觀 · 前哨淋巴免全廓清</div>
+                    <div class="text-sm sm:text-base font-black text-slate-900 leading-tight">1. 手術決策與實證</div>
+                    <div class="text-xs text-slate-500 font-medium">微創 vs 保留 vs 全切 · EBM證實存活相當</div>
                   </div>
                 </div>
-                <span class="text-xs font-black px-2.5 py-1 rounded-full bg-pink-100 text-vivid-pink">保留率 70%</span>
+                <span class="text-xs font-black px-2 py-0.5 rounded-full bg-pink-100 text-vivid-pink shrink-0">保留=全切</span>
               </button>
 
-              <button id="p18-btn-target" onclick="selectP18Weapon('target')" class="w-full p-3.5 rounded-2xl border-2 border-slate-200 hover:border-purple-500 bg-slate-50 hover:bg-purple-50/50 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <span class="text-3xl">🎯</span>
+              <button id="p18-btn-target" onclick="selectP18Weapon('target')" class="w-full p-3 rounded-2xl border-2 border-slate-200 hover:border-purple-500 bg-slate-50 hover:bg-purple-50/50 text-left transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl">🎯</span>
                   <div>
-                    <div class="text-base font-black text-slate-900">精準標靶治療</div>
-                    <div class="text-xs text-slate-500 font-medium">HER2 巡弋飛彈 · 鎖定癌細胞</div>
+                    <div class="text-sm sm:text-base font-black text-slate-900 leading-tight">2. 標靶健保與自費</div>
+                    <div class="text-xs text-slate-500 font-medium">HER2 陽性標準 · 淋巴轉移 vs 無轉移自費</div>
                   </div>
                 </div>
-                <span class="text-xs font-black px-2.5 py-1 rounded-full bg-purple-100 text-purple-700">精準定點</span>
+                <span class="text-xs font-black px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 shrink-0">健保規範</span>
               </button>
 
-              <button id="p18-btn-hormone" onclick="selectP18Weapon('hormone')" class="w-full p-3.5 rounded-2xl border-2 border-slate-200 hover:border-amber-500 bg-slate-50 hover:bg-amber-50/50 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <span class="text-3xl">💊</span>
+              <button id="p18-btn-hormone" onclick="selectP18Weapon('hormone')" class="w-full p-3 rounded-2xl border-2 border-slate-200 hover:border-amber-500 bg-slate-50 hover:bg-amber-50/50 text-left transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl">💊</span>
                   <div>
-                    <div class="text-base font-black text-slate-900">口服荷爾蒙療法</div>
-                    <div class="text-xs text-slate-500 font-medium">每日一顆阻斷受體 · 免化療</div>
+                    <div class="text-sm sm:text-base font-black text-slate-900 leading-tight">3. 荷爾蒙與免化療</div>
+                    <div class="text-xs text-slate-500 font-medium">何時用荷爾蒙？何時必化療？何時免化療？</div>
                   </div>
                 </div>
-                <span class="text-xs font-black px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">佔比 70%</span>
+                <span class="text-xs font-black px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 shrink-0">免化療條件</span>
               </button>
 
-              <button id="p18-btn-radio" onclick="selectP18Weapon('radio')" class="w-full p-3.5 rounded-2xl border-2 border-slate-200 hover:border-teal-500 bg-slate-50 hover:bg-teal-50/50 text-left transition-all flex items-center justify-between group">
-                <div class="flex items-center gap-3">
-                  <span class="text-3xl">⚡</span>
+              <button id="p18-btn-radio" onclick="selectP18Weapon('radio')" class="w-full p-3 rounded-2xl border-2 border-slate-200 hover:border-teal-500 bg-slate-50 hover:bg-teal-50/50 text-left transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl">⚡</span>
                   <div>
-                    <div class="text-base font-black text-slate-900">新一代放療與免疫</div>
-                    <div class="text-xs text-slate-500 font-medium">立體弧形調控護心肺 · 免疫突破</div>
+                    <div class="text-sm sm:text-base font-black text-slate-900 leading-tight">4. 放射治療療程</div>
+                    <div class="text-xs text-slate-500 font-medium">時間、頻率、做多久？新一代大分割 3 週</div>
                   </div>
                 </div>
-                <span class="text-xs font-black px-2.5 py-1 rounded-full bg-teal-100 text-teal-800">保護器官</span>
+                <span class="text-xs font-black px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 shrink-0">門診 3 週</span>
+              </button>
+
+              <button id="p18-btn-other" onclick="selectP18Weapon('other')" class="w-full p-3 rounded-2xl border-2 border-slate-200 hover:border-indigo-500 bg-slate-50 hover:bg-indigo-50/50 text-left transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-2xl">🛡️</span>
+                  <div>
+                    <div class="text-sm sm:text-base font-black text-slate-900 leading-tight">5. 免疫與新藥武器</div>
+                    <div class="text-xs text-slate-500 font-medium">三陰性免疫治療 · CDK4/6 · PARP 抑制劑</div>
+                  </div>
+                </div>
+                <span class="text-xs font-black px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800 shrink-0">最新突破</span>
               </button>
             </div>
 
-            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-600 text-center">
-              💡 點擊切換武器，檢視梁醫師臨床解碼與最新科技突破！
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-600 text-center">
+              💡 點選上方主題，檢視梁醫師臨床解碼與國際權威實證！
             </div>
           </div>
 
-          <!-- 右側 7 欄：巨幅滿版聚光燈剖析面板 -->
-          <div id="p18-spotlight-card" class="lg:col-span-7 bg-slate-900 text-white p-7 rounded-3xl border-2 border-slate-800 pop-shadow-lg flex flex-col justify-between space-y-5 transition-all">
+          <!-- 右側 7 欄：巨幅滿版實證與臨床解碼面板 -->
+          <div id="p18-spotlight-card" class="lg:col-span-7 bg-slate-900 text-white p-6 rounded-3xl border-2 border-slate-800 pop-shadow-lg flex flex-col justify-between space-y-4 transition-all">
             <!-- JS 動態生成巨幅內容 -->
           </div>
         </div>
@@ -2744,43 +2754,97 @@ html_content = '''<!DOCTYPE html>
           resetP19Todos();
         }
       
-    // ==================== P18: 現代乳癌精準治療武器庫 ====================
+    // ==================== P18: 現代乳癌 5 大臨床決策實證武器庫 ====================
     const p18Weapons = {
       surg: {
-        title: "微創與乳房保留手術 (Surgical Innovation)",
-        badge: "外觀保留率 > 70%",
+        title: "1. 手術決策：何時微創？何時保留？何時全切？",
+        badge: "實證醫學 EBM · 保留與全切存活相當",
         badgeColor: "bg-pink-500/20 text-pink-300 border-pink-500/30",
-        target: "早期乳癌、腫瘤與乳房體積比例適當之患者",
-        breakthrough: "乳房保留手術比例已超過 7 成！搭配『前哨淋巴結切片 (SLNB)』，僅切除 1~3 顆前哨淋巴結化驗，無擴散者免做全腋下廓清，徹底告別整隻手臂腫脹水腫的噩夢！",
-        advantage: "傷口微小、隱藏於乳暈或側乳褶痕，保留自然曲線與手部活動度，術後恢復極快。",
-        quote: "“切得剛剛好，才是真高明；留住美麗與靈活，是外科醫師的首要承諾。”"
+        summary: "臨床決策依據：腫瘤大小與乳房比例、病灶分佈、基因風險與患者意願",
+        col1Title: "🩺 臨床判斷依據（何時保留 vs 何時全切）",
+        col1Points: [
+          "【何時可以保留 (BCS)】：單一病灶、腫瘤與乳房體積比例適當（切除後外觀不嚴重變形）、無廣泛惡性鈣化點、術後切緣無癌細胞 (Margin negative)。",
+          "【何時只能全乳切除 (Mastectomy)】：多中心病灶 (Multicentric)、廣泛瀰漫性惡性微鈣化、腫瘤過大相對於乳房、過去曾接受胸壁放療、懷孕無法放療者。",
+          "【何時可以微創 (Minimally Invasive)】：早期病灶可經乳暈/側乳微創切口，或搭配內視鏡/達文西保留乳頭乳暈全切 (NSM) 並同步立即重建。"
+        ],
+        col2Title: "📊 國際實證醫學 (EBM) 權威背書",
+        col2Points: [
+          "【保留 vs 全切】：國際經典 NSABP B-06 與 Milan 試驗 20 年長期追蹤證實：『乳房保留手術 ＋ 術後放射治療 (BCS + RT)』其整體存活率與全乳切除『完全相等』！",
+          "【前哨淋巴 SLNB vs 全廓清 ALND】：NSABP B-32 與 Z0011 試驗證實：前哨淋巴無轉移或僅 1~2 顆轉移且做放療者，『免做全腋下淋巴廓清』，存活率完全相同，但手臂淋巴水腫率由 20% 暴跌至 <5%！"
+        ],
+        quote: "“切得剛好才是真醫術；實證醫學證實：留住乳房與手臂靈活，存活率毫不打折！”"
       },
       target: {
-        title: "精準標靶治療 (Targeted Therapy)",
-        badge: "HER2 專屬巡弋飛彈",
+        title: "2. 標靶治療：健保給付標準 vs 何時需要自費？",
+        badge: "HER2 專屬巡弋飛彈 · 健保規範解碼",
         badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
-        target: "HER2 基因過度表現陽性患者（約佔 20%~25%）",
-        breakthrough: "如同裝有精準雷達的定點飛彈（如賀癌平 Trastuzumab、賀疾妥 Pertuzumab 及最新 ADC 抗體藥物複合體），專一鎖定癌細胞表面受體，精準引爆，不傷及體內正常健康細胞！",
-        advantage: "大幅翻轉昔日 HER2 惡性度高的預後，搭配雙標靶治療，早期乳癌無病存活率提升至 95% 以上。",
-        quote: "“定點打擊、精準殲滅；不再無差別轟炸，給身體最優雅的防禦。”"
+        summary: "適用對象：HER2 基因過度表現陽性（IHC 3+ 或 FISH 擴增陽性，約佔 20%~25%）",
+        col1Title: "🏛️ 台灣健保目前給付標準",
+        col1Points: [
+          "【早期乳癌單標靶 (賀癌平 Trastuzumab)】：必須為『腋下淋巴結有轉移 (Node-positive)』且符合 HER2 陽性，健保全額給付 1 年賀癌平輔助治療！",
+          "【轉移性乳癌雙標靶 (賀癌平 + 賀疾妥 Pertuzumab)】：轉移性第一線給付雙標靶合併化療。",
+          "【術後殘存癌細胞 (T-DM1 Kadcyla)】：術前輔助化療加標靶後，手術檢體仍有殘存癌細胞者，健保近年放寬有條件給付。"
+        ],
+        col2Title: "💡 何時需要自費？（商業保險啟動時機）",
+        col2Points: [
+          "【早期 HER2 陽性但『無淋巴轉移』(Node-negative)】：腫瘤 > 1cm（或 0.5~1cm）臨床指引強烈建議打標靶，但健保不給付，需自費約 40~60 萬（1年賀癌平療程）。",
+          "【早期高風險自費雙標靶 (Pertuzumab)】：若無淋巴轉移但想追求極致預後加用賀疾妥，需全自費（年約 100 萬以上）。",
+          "【自費新一代抗體藥物複合體 (ADC, 如 Enhertu)】：針對後線或 HER2-弱陽性轉移，療效卓越但多數仍需自費或實支實付支應。"
+        ],
+        quote: "“淋巴轉移健保挺，無轉移及早自費或保險補位；定點殲滅，早期預後大幅提升至 95%！”"
       },
       hormone: {
-        title: "口服荷爾蒙療法 (Endocrine Therapy)",
-        badge: "佔比 70% · 多數免化療",
+        title: "3. 荷爾蒙療法 vs 化學治療：何時用？何時免化療？",
+        badge: "佔比 70% · 釐清何時必化療 vs 安全免化療",
         badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-        target: "荷爾蒙受體 ER/PR 陽性患者（最常見，高達 70%~75%）",
-        breakthrough: "癌細胞依賴體內雌激素滋養。每日僅需口服一顆藥物（如泰莫西芬 Tamoxifen 或芳香環酶抑制劑 AI），持續阻斷受體或切斷雌激素生成，許多早期同仁『完全免做化療』！",
-        advantage: "口服方便、不影響日常上班生活，副作用溫和，持續保護體內 5 到 10 年不復發。",
-        quote: "“每日一顆小藥丸，溫和切斷癌細胞養分，讓妳如常上班、精采生活。”"
+        summary: "荷爾蒙受體 ER 或 PR 陽性（受體染色 ≥ 1%）即強烈建議接受 5~10 年口服荷爾蒙治療",
+        col1Title: "💊 荷爾蒙療法適用原則（每日口服一顆）",
+        col1Points: [
+          "【作用機轉】：阻斷體內雌激素滋養癌細胞。停經前口服泰莫西芬 (Tamoxifen) 5~10 年（高風險加停經針）；停經後口服芳香環酶抑制劑 (AI) 5 年。",
+          "【安全免化療群族（管腔 A 型）】：ER/PR 高度陽性、HER2 陰性、Ki-67 低、無淋巴轉移之早期患者，單純口服荷爾蒙藥物效果即極佳，『完全免受化療之苦』！",
+          "【第 0 期（原位癌, DCIS）】：絕對不需化療！僅需局部手術 ＋ 放療 ＋/－ 荷爾蒙藥物。"
+        ],
+        col2Title: "🔬 何時必須化療？何時可用基因檢測免化療？",
+        col2Points: [
+          "【何時必須化療】：三陰性乳癌 (TNBC)（無受體可用，化療是主力）、HER2 陽性（需搭配化療協同擊殺）、管腔 B 型高風險（Ki-67 高、分級第3級、淋巴結多顆轉移）。",
+          "【基因檢測助攻免化療】：管腔型灰色地帶可自費做 21 基因檢測 (Oncotype DX)；TAILORx 國際大型實證證實：復發分數低者做化療無額外好處，『安心免化療』！"
+        ],
+        quote: "“化療不是人人都得做！管腔 A 型與低風險基因，每日一顆口服藥，安心免受化療之苦。”"
       },
       radio: {
-        title: "立體順形放療與免疫治療 (Radiotherapy & Immuno)",
-        badge: "弧形調控護心肺 · 免疫新突破",
+        title: "4. 放射治療療程：時間、頻率、要做到多久？",
+        badge: "門診通車照射 · 免住院 · 新一代大分割 3 週",
         badgeColor: "bg-teal-500/20 text-teal-300 border-teal-500/30",
-        target: "乳房保留手術後局部加強、或高惡性三陰性乳癌患者",
-        breakthrough: "新一代放射治療採用『強度調控 (IMRT)』與『體積調控弧形治療 (VMAT)』，精準避開左側心臟與肺部組織；三陰性乳癌則結合最新免疫檢查點抑制劑，喚醒自體 T 細胞大軍消滅殘存癌細胞。",
-        advantage: "照射時間縮短至數分鐘，皮膚紅腫大幅減輕；免疫療法為昔日棘手的三陰性乳癌帶來長效保護。",
-        quote: "“精準避開心肺關鍵器官，科技護航，補齊抗癌最後一塊拼圖。”"
+        summary: "保留手術後的必備基石（消滅顯微殘存病灶）；全切術後腫瘤 >5cm 或淋巴轉移 ≥4 顆亦需放療",
+        col1Title: "⏱️ 放療時間、頻率與總療程天數",
+        col1Points: [
+          "【頻率與單次時間】：週一至週五每天照射 1 次（週末休息）。進入照射室定位與照射僅約 10~15 分鐘（實際射線時間僅 2~3 分鐘）。",
+          "【新一代『大分割放療』(主流標準)】：每次劑量微幅提高，總療程從傳統 5~6 週大幅濃縮至『3 週（15~16 次）』！甚至超大分割只需 1 週（5 次）。",
+          "【日常生活完全如常】：完全『免住院』！照射無痛無感，照完可立刻回公司上班、開會，生活作息不中斷。"
+        ],
+        col2Title: "⚡ 現代精準放療科技突破",
+        col2Points: [
+          "【強度調控 (IMRT) 與弧形立體定位 (VMAT)】：360度順形照射，射線只對準乳腺組織，大幅降低傳統皮膚起水泡脫皮機率。",
+          "【保護心臟與肺部】：左側乳癌採用深吸氣閉氣技術 (DIBH)，將胸壁與心臟拉開距離，大幅減少未來心血管風險。"
+        ],
+        quote: "“新一代 3 週大分割放療，門診無痛照射、生活如常，精準保護心肺，鞏固 20 年不復發！”"
+      },
+      other: {
+        title: "5. 其他新科技療法：免疫療法、CDK4/6、PARP 抑制劑",
+        badge: "跨時代新科技 · 填補難治乳癌最後拼圖",
+        badgeColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
+        summary: "針對高復發風險、三陰性、BRCA 基因突變患者的最新標靶新武器",
+        col1Title: "🛡️ 免疫檢查點抑制劑 (Immunotherapy)",
+        col1Points: [
+          "【高風險早期三陰性乳癌 (TNBC)】：三陰性缺乏受體，KEYNOTE-522 國際臨床試驗證實：術前化療合併免疫藥物 (Keytruda, Pembrolizumab)，病理完全緩解率 (pCR) 從 51% 顯著暴升至 65%！",
+          "【機制】：阻斷癌細胞 PD-L1 偽裝，重新喚醒體內免疫 T 細胞大軍消滅癌細胞，大幅降低遠端轉移復發風險。"
+        ],
+        col2Title: "🚀 CDK4/6 抑制劑與 PARP 抑制劑",
+        col2Points: [
+          "【CDK4/6 細胞週期抑制劑 (如 Abemaciclib 捷癌寧)】：針對荷爾蒙陽性、淋巴結轉移 ≥4 顆等高復發風險早期患者，口服荷爾蒙加用 CDK4/6，顯著降低 30% 以上復發風險！",
+          "【PARP 抑制劑 (如 Olaparib 令歐妥)】：攜帶遺傳性 BRCA1/2 基因突變患者，利用『合成致死 (Synthetic Lethality)』機制截斷癌細胞 DNA 修復，顯著提升無病存活！"
+        ],
+        quote: "“三陰性有免疫大軍、高風險有 CDK4/6 與 PARP 抑制劑；現代醫學已無不可解之難題！”"
       }
     };
 
@@ -2789,14 +2853,14 @@ html_content = '''<!DOCTYPE html>
       if (!data) return;
 
       // Update button active styles
-      ['surg', 'target', 'hormone', 'radio'].forEach(k => {
+      ['surg', 'target', 'hormone', 'radio', 'other'].forEach(k => {
         const btn = document.getElementById('p18-btn-' + k);
         if (btn) {
           if (k === type) {
-            btn.classList.add('ring-2', 'ring-pink-500', 'bg-pink-50/80');
+            btn.classList.add('ring-2', 'ring-pink-500', 'bg-pink-50/90');
             btn.classList.remove('bg-slate-50');
           } else {
-            btn.classList.remove('ring-2', 'ring-pink-500', 'bg-pink-50/80');
+            btn.classList.remove('ring-2', 'ring-pink-500', 'bg-pink-50/90');
             btn.classList.add('bg-slate-50');
           }
         }
@@ -2806,40 +2870,43 @@ html_content = '''<!DOCTYPE html>
       const panel = document.getElementById('p18-spotlight-card');
       if (panel) {
         panel.innerHTML = `
-          <div class="space-y-4">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-              <span class="px-3.5 py-1 rounded-full border text-xs font-black uppercase tracking-wider ${data.badgeColor}">
+          <div class="space-y-3.5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+              <span class="px-3 py-0.5 rounded-full border text-xs font-black uppercase tracking-wider ${data.badgeColor}">
                 ${data.badge}
               </span>
-              <span class="text-xs font-mono font-bold text-slate-400">PRECISION ONCOLOGY // 臨床實戰</span>
+              <span class="text-xs font-mono font-bold text-slate-400">EBM CLINICAL DECISION // 臨床實證</span>
             </div>
 
             <div>
-              <h3 class="text-3xl sm:text-4xl font-black text-white tracking-tight">${data.title}</h3>
-              <p class="text-sm font-bold text-pink-400 mt-1">🎯 適用族群：${data.target}</p>
+              <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight leading-snug">${data.title}</h3>
+              <p class="text-xs sm:text-sm font-bold text-pink-400 mt-1">🎯 核心準則：${data.summary}</p>
             </div>
 
             <div class="space-y-3 pt-1">
-              <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1">
-                <div class="text-xs font-black text-emerald-400 uppercase tracking-wider">🔬 現代臨床重大突破機制</div>
-                <p class="text-base sm:text-lg text-slate-200 font-bold leading-relaxed">${data.breakthrough}</p>
+              <div class="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1.5">
+                <div class="text-xs font-black text-emerald-400 uppercase tracking-wider">${data.col1Title}</div>
+                <div class="space-y-1">
+                  ${data.col1Points.map(p => `<p class="text-sm sm:text-base text-slate-200 font-bold leading-relaxed">${p}</p>`).join('')}
+                </div>
               </div>
 
-              <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1">
-                <div class="text-xs font-black text-amber-400 uppercase tracking-wider">🌟 臨床治療優勢與生活品質</div>
-                <p class="text-base sm:text-lg text-slate-200 font-bold leading-relaxed">${data.advantage}</p>
+              <div class="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-1.5">
+                <div class="text-xs font-black text-amber-400 uppercase tracking-wider">${data.col2Title}</div>
+                <div class="space-y-1">
+                  ${data.col2Points.map(p => `<p class="text-sm sm:text-base text-slate-200 font-bold leading-relaxed">${p}</p>`).join('')}
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+          <div class="pt-2.5 border-t border-slate-800 flex items-center justify-between text-xs">
             <div class="text-pink-300 font-black italic text-sm sm:text-base">${data.quote}</div>
-            <span class="text-slate-500 font-bold">梁祖瑋醫師 臨床備忘</span>
+            <span class="text-slate-500 font-bold shrink-0 ml-3">梁祖瑋醫師 臨床實證叮嚀</span>
           </div>
         `;
       }
     }
-
     // ==================== P19: 健保與重大傷病保護傘 ＋ 重返職場生活品質 ====================
     const p19Umbrella = {
       nhi: {
