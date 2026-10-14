@@ -1426,7 +1426,7 @@
 <section class="slide w-full h-full hidden flex-col justify-center" data-slide="15"
       data-scene="醫生說要加做檢查，到底是加做什麼？需要自費嗎？"
       data-quote="對症派工，每一分健康預算都花在刀口上"
-      data-notes="【精準派工】如果初步報告有疑慮，醫師通常會建議加做 4 種進階檢查之一：超音波、放大攝影、3D DBT 斷層攝影或乳房 MRI。大家看大螢幕，這就是我們的『檢查派工羅盤』。點選不同的工具，立刻了解它的適用時機、做法、優缺點，讓大家面對自費或加做時不再迷惘！">
+      data-notes="【精準派工】如果初步報告有疑慮，醫師通常會建議加做 4 種純影像檢查之一：3D 全自動乳房超音波 (ABUS)、放大攝影、3D DBT 斷層攝影或乳房 MRI。大家看大螢幕，這就是我們的『檢查派工羅盤』。點選不同的工具，立刻了解它的適用時機、做法、優缺點，讓大家面對自費或加做時不再迷惘！">
       
       <div class="w-full space-y-4">
         <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-2.5">
@@ -1441,9 +1441,9 @@
 
         <!-- 4 大檢查工具切換按鈕（大字化、聚光燈反饋） -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <button onclick="setP142Tool('us')" id="p142-btn-us" class="p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-purple bg-purple-50/40 pop-shadow text-left space-y-1 transition scale-105 shadow-lg">
-            <span class="text-xs font-black text-vivid-purple">01 // 首選搭檔</span>
-            <div class="text-lg font-black text-slate-900">乳房超音波</div>
+          <button onclick="setP142Tool('abus')" id="p142-btn-abus" class="p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-teal bg-teal-50/40 pop-shadow text-left space-y-1 transition scale-105 shadow-lg">
+            <span class="text-xs font-black text-vivid-teal">01 // 3D 全乳立體掃描</span>
+            <div class="text-lg font-black text-slate-900">3D 全自動超音波 (ABUS)</div>
           </button>
           <button onclick="setP142Tool('mag')" id="p142-btn-mag" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-60 hover:opacity-100 hover:scale-105">
             <span class="text-xs font-black text-slate-400">02 // 鈣化專用</span>
@@ -1462,33 +1462,33 @@
         <!-- 滿版超大字對症派工深層卡 -->
         <div id="p142-spotlight-panel" class="bg-white p-7 sm:p-8 rounded-3xl border-2 border-slate-200 pop-shadow space-y-4">
           <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3">
-            <span id="p142-detail-badge" class="px-3.5 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-black">
-              超音波（Ultrasound）
+            <span id="p142-detail-badge" class="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-sm font-black">
+              全自動 3D 乳房超音波（Automated Breast Ultrasound - ABUS）
             </span>
-            <span id="p142-detail-tag" class="text-base font-bold text-slate-500">無輻射 · 零痛感</span>
+            <span id="p142-detail-tag" class="text-base font-bold text-slate-500">3D 冠狀切面 · 零人為盲區</span>
           </div>
 
           <div class="text-xl sm:text-2xl font-black text-slate-900" id="p142-detail-title">
-            時機：攝影報告 0 類釐清、年輕緻密乳房、自己摸到硬塊時的第一首選
+            時機：極度緻密型乳房 (Dense Breast)、消除手持超音波死角、追求標準化全乳影像
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-1">
             <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border-2 border-slate-200 space-y-2">
               <span class="font-black text-slate-900 text-base sm:text-lg block">📋 做法與過程：</span>
               <p class="text-slate-800 leading-relaxed font-bold text-base sm:text-lg" id="p142-detail-how">
-                平躺塗抹水性凝膠，探頭滑動掃描乳房與腋下淋巴，約 10-15 分鐘完成，無任何不適。
+                平躺後以全自動寬幅探頭平壓貼合，由電腦標準化掃描全乳，約 10-15 分鐘完成 3D 體積重組。
               </p>
             </div>
             <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50/80 border-2 border-emerald-300 space-y-2">
               <span class="font-black text-emerald-950 text-base sm:text-lg block">🎯 優點與強項：</span>
               <p class="text-emerald-950 leading-relaxed font-bold text-base sm:text-lg" id="p142-detail-pro">
-                能清楚分辨是液體水泡（囊腫）還是實心腫瘤；亞洲緻密乳房的最佳透視搭檔。
+                完全排除傳統手持超音波受限於醫師手勢或經驗的盲區，深部腫塊無所遁形，特別適合亞洲女性！
               </p>
             </div>
             <div class="p-4 sm:p-5 rounded-2xl bg-rose-50/80 border-2 border-rose-300 space-y-2">
               <span class="font-black text-rose-950 text-base sm:text-lg block">⚠️ 缺點與限制：</span>
               <p class="text-rose-950 leading-relaxed font-bold text-base sm:text-lg" id="p142-detail-con">
-                完全看不到初期的微小鈣化點！因此無法單獨取代乳房攝影做第一線普篩。
+                多為自費項目（約 2,500~4,000 元）；主要針對實質病灶，微小鈣化點仍需攝影協同判讀。
               </p>
             </div>
           </div>
@@ -2779,29 +2779,30 @@
           try { toggleP08MealMode('bad'); } catch(e){}
         } else if (currentSlide === 8) {
           try { resetP09Energy(); } catch(e){}
+        } else if (currentSlide === 9) {
           try { setP10Mode('blue'); } catch(e){}
         } else if (currentSlide === 10) {
-          try { selectP12Myth(0); } catch(e){}
+          try { checkP11Eligibility(); } catch(e){}
         } else if (currentSlide === 11) {
-          try { setP13Step(1); } catch(e){}
+          try { selectP12Myth(0); } catch(e){}
         } else if (currentSlide === 12) {
-          try { showP14Level(0); } catch(e){}
+          try { setP13Step(1); } catch(e){}
         } else if (currentSlide === 13) {
-          try { selectP15Tool('mammo'); } catch(e){}
+          try { showP14Level(0); } catch(e){}
         } else if (currentSlide === 14) {
-          try { setP142Tool('us'); } catch(e){}
+          try { selectP15Tool('mammo'); } catch(e){}
         } else if (currentSlide === 15) {
+          try { setP142Tool('abus'); } catch(e){}
+        } else if (currentSlide === 16) {
           try { selectP17Symptom(0); } catch(e){}
-        } else if (currentSlide === 17) {
-          try { setP17Stage('0'); } catch(e){}
         } else if (currentSlide === 18) {
-          try { selectP18Weapon('surg'); } catch(e){}
+          try { setP17Stage('0'); } catch(e){}
         } else if (currentSlide === 19) {
+          try { selectP18Weapon('surg'); } catch(e){}
+        } else if (currentSlide === 20) {
           try { selectP19Umbrella('nhi'); } catch(e){}
-        } else if (currentSlide === 21) {
+        } else if (currentSlide === 22) {
           try { resetP19Todos(); } catch(e){}
-        } else if (currentSlide === 21) {
-          resetP19Todos();
         }
       } catch (hookErr) {
         console.warn('Slide hook notice on stage ' + currentSlide + ':', hookErr);
@@ -3924,14 +3925,14 @@
 
       if (container) {
         container.innerHTML = d.items.map(it => `
-          <div class="p-3.5 rounded-2xl ${mode === 'bad' ? 'bg-slate-50 border border-slate-200' : 'bg-emerald-50/60 border-2 border-emerald-300'} flex items-start gap-3 transition-all hover:scale-[1.01]">
-            <span class="text-3xl flex-shrink-0">${it.icon}</span>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center justify-between gap-1">
-                <span class="font-black text-slate-900 text-sm sm:text-base truncate">${it.name}</span>
-                <span class="text-[11px] font-black px-2 py-0.5 rounded-md border shrink-0 ${it.tagColor}">${it.tag}</span>
-              </div>
-              <p class="text-xs text-slate-600 font-bold mt-1 line-clamp-1">${it.desc}</p>
+          <div class="p-4 sm:p-5 rounded-2xl ${mode === 'bad' ? 'bg-slate-50 border-2 border-slate-200' : 'bg-emerald-50/70 border-2 border-emerald-300'} flex flex-col justify-between gap-3 transition-all hover:scale-[1.01] pop-shadow-sm">
+            <div class="flex items-center justify-between gap-2 border-b border-black/5 pb-2.5">
+              <span class="text-3xl sm:text-4xl">${it.icon}</span>
+              <span class="text-xs font-black px-2.5 py-1 rounded-lg border shrink-0 ${it.tagColor}">${it.tag}</span>
+            </div>
+            <div class="space-y-1.5">
+              <div class="font-black text-slate-900 text-base sm:text-lg leading-snug">${it.name}</div>
+              <p class="text-xs sm:text-sm text-slate-600 font-bold leading-relaxed">${it.desc}</p>
             </div>
           </div>
         `).join('');
@@ -4021,53 +4022,59 @@
             <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-bold">
               自 114 年 1 月 1 日起，享有政府補助<strong>每 2 年 1 次免費乳房 X 光攝影</strong>（零自費）！
             </p>
-            <div class="text-sm sm:text-base font-bold text-amber-900 bg-amber-100/70 p-3.5 rounded-2xl border border-amber-300 leading-relaxed">
+            <div class="text-sm sm:text-base font-bold text-amber-900 bg-amber-100/80 p-3.5 rounded-2xl border border-amber-300 leading-relaxed">
               💡 <strong>醫師高風險提醒：</strong>因勾選了 ${checkedRisks} 項高風險因子，強烈建議在每 2 年的公費攝影間隔年，主動搭配「乳房超音波」密切追蹤！
             </div>
           `;
         } else {
-          box.className = 'p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-slate-800 space-y-1.5';
+          box.className = 'p-5 sm:p-6 rounded-3xl bg-emerald-50 border-2 border-emerald-400 text-slate-800 space-y-3';
           box.innerHTML = `
-            <div class="text-sm font-black text-emerald-900 flex items-center gap-1.5">
-              <span>🎉 恭喜！您完全符合「每 2 年 1 次公費免費乳房攝影」資格！</span>
+            <div class="text-xl sm:text-2xl font-black text-emerald-900 flex items-center gap-2">
+              <span>🎉 符合公費資格！</span>
+              <span class="text-xs sm:text-sm bg-emerald-200 text-emerald-900 px-3 py-1 rounded-full font-bold">40-74歲全面給付</span>
             </div>
-            <p class="text-xs text-slate-700 leading-relaxed font-medium">
-              自 114 年起，40～74 歲女性全面納入公費補助（男士同仁請務必提醒伴侶與媽媽受檢），攜帶健保卡至特約醫療機構即可免費檢查，零自費！
+            <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-bold">
+              自 114 年起，40～74 歲女性全面納入公費補助（男士同仁請提醒伴侶與長輩受檢），攜帶健保卡至特約院所即可免費檢查，零自費！
             </p>
-            <div class="text-xs text-emerald-700 font-bold">
-              無顯著家族史或危險因子，只要每 2 年按時拍一次攝影，即可達到 95% 以上防護！
+            <div class="text-sm sm:text-base font-bold text-emerald-900 bg-emerald-100/80 p-3.5 rounded-2xl border border-emerald-300 leading-relaxed">
+              🛡️ <strong>健康定期守護：</strong>無顯著家族史或危險因子，只要每 2 年按時做一次攝影檢查，即可獲得 95% 以上防護！
             </div>
           `;
         }
       } else if (age < 40) {
         if (checkedRisks > 0) {
-          box.className = 'p-4 rounded-2xl bg-amber-50 border-2 border-amber-300 text-slate-800 space-y-1.5';
+          box.className = 'p-5 sm:p-6 rounded-3xl bg-amber-50 border-2 border-amber-400 text-slate-800 space-y-3';
           box.innerHTML = `
-            <div class="text-sm font-black text-amber-900 flex items-center gap-1.5">
+            <div class="text-xl sm:text-2xl font-black text-amber-900 flex items-center gap-2">
               <span>⚠️ 年齡未滿 40 歲（尚未達公費攝影年齡）</span>
+              <span class="text-xs sm:text-sm bg-amber-200 text-amber-900 px-3 py-1 rounded-full font-bold">年輕高風險關注</span>
             </div>
-            <p class="text-xs text-slate-700 leading-relaxed font-medium">
+            <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-bold">
               因勾選了 ${checkedRisks} 項高風險因子，年輕族群乳腺緻密且不宜過早累積 X 光輻射。
             </p>
-            <div class="text-xs font-bold text-rose-800 bg-white p-2 rounded-xl border border-rose-200">
+            <div class="text-sm sm:text-base font-bold text-rose-900 bg-white p-3.5 rounded-2xl border-2 border-rose-300 shadow-sm leading-relaxed">
               🩺 <strong>醫師專業指引：</strong>強烈建議提早自 30 歲起，由乳房專科醫師安排「<strong>每年 1 次定期乳房超音波檢查</strong>」；若有強大家族遺傳史可諮詢基因篩檢！
             </div>
           `;
         } else {
-          box.className = 'p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1.5';
+          box.className = 'p-5 sm:p-6 rounded-3xl bg-slate-50 border-2 border-slate-300 text-slate-800 space-y-3';
           box.innerHTML = `
-            <div class="text-sm font-black text-slate-800">
-              ✨ 您正值 40 歲以下黃金青春期（目前未達 40 歲公費攝影年齡）
+            <div class="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2">
+              <span>✨ 年齡未滿 40 歲（尚未達公費攝影年齡）</span>
+              <span class="text-xs sm:text-sm bg-slate-200 text-slate-700 px-3 py-1 rounded-full font-bold">青春黃金期</span>
             </div>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              目前無特定危險因子。建議養成每個月生理期後「自我檢查」習慣；30 歲起可在年度常規健檢中自選「乳房超音波」作為基線參考！
+            <p class="text-base sm:text-lg text-slate-700 leading-relaxed font-bold">
+              目前無特定高風險因子。
             </p>
+            <div class="text-sm sm:text-base font-bold text-teal-900 bg-teal-50 p-3.5 rounded-2xl border border-teal-200 leading-relaxed">
+              💡 <strong>醫師健康建議：</strong>養成每個月生理期後「自我檢查」習慣；30 歲起可在年度常規健檢中自選「乳房超音波」作為個人的健康基線參考！
+            </div>
           `;
         }
       } else {
-        box.className = 'p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 space-y-1.5';
+        box.className = 'p-5 sm:p-6 rounded-3xl bg-slate-50 border-2 border-slate-300 text-slate-800 space-y-3';
         box.innerHTML = `
-          <div class="text-sm font-black text-slate-800">
+          <div class="text-xl sm:text-2xl font-black text-slate-900">
             超過 74 歲補助年齡。若有摸到硬塊或家族史，隨時可至乳房外科由健保給付門診檢查！
           </div>
         `;
@@ -4399,16 +4406,16 @@
       });
     }
 
-    // P14-2: 派工羅盤
-        const p142Tools = {
-      dbt: {
-        badge: '3D 斷層合成攝影（Digital Breast Tomosynthesis - DBT）',
+    // P14-2: 派工羅盤（純影像檢查 4 大矩陣）
+    const p142Tools = {
+      abus: {
+        badge: '全自動 3D 乳房超音波（Automated Breast Ultrasound - ABUS）',
         badgeClass: 'bg-teal-100 text-teal-800',
-        title: '時機：亞洲緻密乳房、一般攝影組織重疊疑似病灶、大幅降低假陽性召回',
-        tag: '1mm 薄切立體透視',
-        how: '姿勢同一般攝影，球管呈圓弧角度旋轉掃描，由電腦重組出數十張 1mm 薄切面。',
-        pro: '徹底撥開重疊組織，緻密乳房侵襲癌偵測率提升 30%~40%，大幅降低虛驚召回率！',
-        con: '目前健保尚未全面給付（自費約 2000~3000 元）。'
+        title: '時機：極度緻密型乳房 (Dense Breast)、消除手持超音波死角、追求標準化全乳影像',
+        tag: '3D 冠狀切面 · 零人為盲區',
+        how: '平躺後以全自動寬幅探頭平壓貼合，由電腦標準化掃描全乳，約 10-15 分鐘完成 3D 體積重組。',
+        pro: '完全排除傳統手持超音波受限於醫師手勢或經驗的盲區，深部腫塊無所遁形，特別適合亞洲女性！',
+        con: '多為自費項目（約 2,500~4,000 元）；主要針對實質病灶，微小鈣化點仍需攝影協同判讀。'
       },
       mag: {
         badge: '放大／局部壓迫攝影（Magnification / Spot View）',
@@ -4419,6 +4426,15 @@
         pro: '將鈣化點形狀清晰放大數倍，協助專科醫師精準鑑別，免除不必要的開刀切片。',
         con: '需針對局部再次壓迫，仍會有數秒的緊繃不適感。'
       },
+      dbt: {
+        badge: '3D 斷層合成攝影（Digital Breast Tomosynthesis - DBT）',
+        badgeClass: 'bg-teal-100 text-teal-800',
+        title: '時機：亞洲緻密乳房、一般攝影組織重疊疑似病灶、大幅降低假陽性召回',
+        tag: '1mm 薄切立體透視',
+        how: '姿勢同一般攝影，球管呈圓弧角度旋轉掃描，由電腦重組出數十張 1mm 薄切面。',
+        pro: '徹底撥開重疊組織，緻密乳房侵襲癌偵測率提升 30%~40%，大幅降低虛驚召回率！',
+        con: '目前健保尚未全面給付（自費約 2000~3000 元）。'
+      },
       mri: {
         badge: '乳房磁振造影（Breast MRI）',
         badgeClass: 'bg-amber-100 text-amber-800',
@@ -4427,15 +4443,6 @@
         how: '俯臥於專用檢查床上，需施打顯影劑，檢查時間約 30~40 分鐘。',
         pro: '軟組織對比度極高，對多發性及深層病灶偵測靈敏度高達 95% 以上，且無輻射劑量。',
         con: '費用較高（自費約 12000~16000 元），且體內有金屬植入物或幽閉恐懼者不適用。'
-      },
-      biopsy: {
-        badge: '微創粗針組織切片（Core Needle Biopsy / 麥瑪通真空抽吸）',
-        badgeClass: 'bg-purple-100 text-purple-700',
-        title: '時機：BI-RADS 4 類以上疑似惡性病灶、需取得組織進行病理化驗之「終極金標準」',
-        tag: '門診局部麻醉 · 免開大刀',
-        how: '超音波或立體定位導引，門診局部麻醉 15 分鐘完成，取極微量組織送檢，傷口僅 0.3 公分。',
-        pro: '當天即可返家不需住院，傷口免縫合、不留疤、不破壞乳房外觀，準確度逾 99%！',
-        con: '術後需加壓止血 30 分鐘，少數人局部可能微瘀青，數天內自然消退。'
       }
     };
 
