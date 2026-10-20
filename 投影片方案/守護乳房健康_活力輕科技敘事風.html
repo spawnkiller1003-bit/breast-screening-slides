@@ -633,7 +633,7 @@
 <section class="slide w-full h-full hidden flex-col justify-center" data-slide="5"
       data-scene="危險因子一大堆，到底哪些是注定的？哪些是我能改變的？"
       data-quote="關注能改變的，接納不能改變的並用篩檢防禦"
-      data-notes="【理性分類】大家常看報章雜誌講危險因子，越看越焦慮。其實只要把 13 項因子分成兩組：『先天無法改變』與『後天完全可控』。先天的因子（如家族史、初經早停經晚），我們不用焦慮，只要按時篩檢就好；後天的因子（飲食、體重、酒精），就是我們每天可以主動出招的武器！">
+      data-notes="【理性分類】大家常看報章雜誌講危險因子，越看越焦慮。其實只要把 13 項因子分成兩組：『先天無法改變』與『後天完全可控』。先天的因子（如家族史、初經早停經晚），我們不用焦慮，只要按時篩檢就好；後天的因子（飲食、體重、酒精），就是我們每天可以主動出招的武器！【飲酒實證解碼】科技同仁常問：『紅酒不是抗氧化抗老嗎？偶爾週末小酌有關係嗎？』實證醫學給出明確答案：1. 酒類無差別：紅酒、白酒、啤酒、烈酒致癌風險完全等同，紅酒白藜蘆醇無法抵銷乙醛致癌！2. 無安全低消：每天多喝 1 杯（10g酒精），風險增加 7%~10%；2 杯增加 20%；3 杯以上激增 30~50%！3. 週末暴飲更傷：平日不喝但週末一次喝 4 杯以上，雌激素與乙醛瞬間暴衝，與年輕乳癌高度相關！梁醫師建議：能不喝就不喝，應酬改喝氣泡水加檸檬片，儀式感滿分、健康 100 分！">
       
       <div class="w-full space-y-4">
         <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-2.5">
@@ -668,40 +668,114 @@
 
           <!-- 放大講解聚光卡 (動態切換 lg:order-2 或 lg:order-1) -->
           <div id="p05-spotlight-panel" class="lg:col-span-7 lg:order-2 bg-white p-7 sm:p-8 rounded-3xl border-2 border-amber-500 pop-shadow flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3">
-                <div class="flex items-center gap-3">
-                  <span id="p05-spot-icon" class="text-4xl">🧬</span>
-                  <div>
-                    <span id="p05-spot-type" class="px-3 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-800">INBORN 先天因子</span>
-                    <h3 id="p05-spot-title" class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">乳癌家族史（一等親）</h3>
+            <!-- 常規 12 項因子視圖 -->
+            <div id="p05-normal-view" class="flex flex-col justify-between h-full space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3">
+                  <div class="flex items-center gap-3">
+                    <span id="p05-spot-icon" class="text-4xl">🧬</span>
+                    <div>
+                      <span id="p05-spot-type" class="px-3 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-800">INBORN 先天因子</span>
+                      <h3 id="p05-spot-title" class="text-2xl sm:text-3xl font-black text-slate-900 mt-1">乳癌家族史（一等親）</h3>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-xs text-slate-400 font-bold uppercase">相對風險倍數</div>
+                    <div id="p05-spot-risk" class="text-2xl sm:text-3xl font-black text-rose-600">提高 2 ~ 3 倍</div>
                   </div>
                 </div>
-                <div class="text-right">
-                  <div class="text-xs text-slate-400 font-bold uppercase">相對風險倍數</div>
-                  <div id="p05-spot-risk" class="text-2xl sm:text-3xl font-black text-rose-600">提高 2 ~ 3 倍</div>
+
+                <!-- 生物醫學致病機轉 -->
+                <div class="space-y-1.5 pt-1">
+                  <div class="text-sm font-black text-slate-500 uppercase tracking-wide flex items-center gap-2">
+                    <span>🔬</span> 生物醫學機轉解析
+                  </div>
+                  <p id="p05-spot-mech" class="text-lg sm:text-xl font-bold text-slate-800 leading-relaxed">
+                    一等親（母親、姊妹、女兒）罹患乳癌，代表帶有相同易感基因（如 BRCA1/2 等 DNA 修復修復缺陷基因）之機率顯著增加，乳腺細胞自發性修復突變能力較弱。
+                  </p>
                 </div>
               </div>
 
-              <!-- 生物醫學致病機轉 -->
-              <div class="space-y-1.5 pt-1">
-                <div class="text-sm font-black text-slate-500 uppercase tracking-wide flex items-center gap-2">
-                  <span>🔬</span> 生物醫學機轉解析
+              <!-- 梁醫師臨床防禦對策 -->
+              <div id="p05-spot-action-box" class="p-4 sm:p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 space-y-1.5">
+                <div class="text-base sm:text-lg font-black text-amber-950 flex items-center gap-2">
+                  <span>🛡️</span> 梁醫師精準對策
                 </div>
-                <p id="p05-spot-mech" class="text-lg sm:text-xl font-bold text-slate-800 leading-relaxed">
-                  一等親（母親、姊妹、女兒）罹患乳癌，代表帶有相同易感基因（如 BRCA1/2 等 DNA 修復修復缺陷基因）之機率顯著增加，乳腺細胞自發性修復突變能力較弱。
+                <p id="p05-spot-action" class="text-base sm:text-lg font-bold text-amber-950 leading-relaxed">
+                  自 30 歲起提早每年安排乳房超音波；40 歲起享有每 2 年 1 次公費乳房 X 光攝影，並於間隔年加做超音波密切追蹤！
                 </p>
               </div>
             </div>
 
-            <!-- 梁醫師臨床防禦對策 -->
-            <div id="p05-spot-action-box" class="p-4 sm:p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 space-y-1.5">
-              <div class="text-base sm:text-lg font-black text-amber-950 flex items-center gap-2">
-                <span>🛡️</span> 梁醫師精準對策
+            <!-- 飲酒實證醫學專報視圖 (點擊「規律飲酒習慣」時專屬呈現) -->
+            <div id="p05-alcohol-view" class="hidden flex-col justify-between h-full space-y-3.5">
+              <!-- 頂部標題區 -->
+              <div class="flex items-center justify-between border-b-2 border-slate-100 pb-2.5">
+                <div class="flex items-center gap-3">
+                  <span class="text-4xl">🍺</span>
+                  <div>
+                    <span class="px-3 py-0.5 rounded-full text-xs font-black bg-rose-100 text-rose-800">ACQUIRED 後天可控 · 實證醫學特報</span>
+                    <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mt-0.5">飲酒與乳癌實證醫學查證報告</h3>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-xs text-slate-400 font-bold uppercase">WHO / WCRF 實證</div>
+                  <div class="text-lg sm:text-xl font-black text-rose-600">無安全飲用劑量</div>
+                </div>
               </div>
-              <p id="p05-spot-action" class="text-base sm:text-lg font-bold text-amber-950 leading-relaxed">
-                自 30 歲起提早每年安排乳房超音波；40 歲起享有每 2 年 1 次公費乳房 X 光攝影，並於間隔年加做超音波密切追蹤！
-              </p>
+
+              <!-- 4 大實證模組 (2x2 Grid) -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- 模組 1: 酒類無差別 -->
+                <div class="p-3.5 rounded-2xl bg-amber-50 border-2 border-amber-300 space-y-1">
+                  <div class="text-sm sm:text-base font-black text-amber-950 flex items-center gap-1.5">
+                    <span>🍷</span> <span>酒類無差別（紅酒無特權）</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-amber-900 font-bold leading-relaxed">
+                    紅酒、白酒、啤酒、烈酒對乳癌風險<strong>完全等同</strong>！關鍵在純酒精總克數，紅酒微量白藜蘆醇無法抵銷代謝物乙醛的一級致癌性。
+                  </p>
+                </div>
+
+                <!-- 模組 2: 劑量效應 -->
+                <div class="p-3.5 rounded-2xl bg-rose-50 border-2 border-rose-300 space-y-1">
+                  <div class="text-sm sm:text-base font-black text-rose-950 flex items-center gap-1.5">
+                    <span>📈</span> <span>線性劑量效應（無安全低消）</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-rose-900 font-bold leading-relaxed">
+                    每日每多喝 10g 酒精（約 1 杯紅酒/1 罐啤酒），風險 <strong>+7%~10%</strong>；每日 2 杯 <strong>+20%</strong>；每日 3 杯以上激增 <strong>+30%~50%</strong>！
+                  </p>
+                </div>
+
+                <!-- 模組 3: 頻率與暴飲 -->
+                <div class="p-3.5 rounded-2xl bg-purple-50 border-2 border-purple-200 space-y-1">
+                  <div class="text-sm sm:text-base font-black text-purple-950 flex items-center gap-1.5">
+                    <span>⚡</span> <span>頻率與暴飲（週末大喝更傷身）</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-purple-900 font-bold leading-relaxed">
+                    週末一次飲用 ≥ 4 杯（Binge Drinking），血液中乙醛與游離雌激素瞬間<strong>暴衝</strong>，加劇 DNA 雙鏈斷裂，與年輕乳癌高度相關。
+                  </p>
+                </div>
+
+                <!-- 模組 4: 三大致癌機轉 -->
+                <div class="p-3.5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 space-y-1">
+                  <div class="text-sm sm:text-base font-black text-emerald-950 flex items-center gap-1.5">
+                    <span>🔬</span> <span>三大生化致癌機轉</span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-emerald-900 font-bold leading-relaxed">
+                    1. 活化芳香化酶升高雌激素（促 ER+ 細胞增生）；2. 一級致癌物乙醛破壞 DNA 修復；3. 干擾葉酸一碳代謝致抑癌基因異常。
+                  </p>
+                </div>
+              </div>
+
+              <!-- 梁醫師精準對策 -->
+              <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-900 text-white space-y-1 border border-slate-700">
+                <div class="text-sm font-black text-vivid-pink flex items-center gap-2">
+                  <span>🛡️</span> 梁醫師精準防禦對策：社交應酬「微替換」
+                </div>
+                <p class="text-xs sm:text-sm text-slate-200 font-bold leading-relaxed">
+                  原則是<strong>「能不喝就不喝，將酒精降至最低」</strong>！社交場合落實<strong>微替換</strong>：改點氣泡水加檸檬片、無酒精無糖啤酒，兼顧敬酒儀式感，更 100% 阻斷致癌風險！
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -3599,7 +3673,7 @@
       { badge: '高壓責任感機制', text: '長期處於 Deadline 與突發狀況下，皮質醇（Cortisol）持續分泌，導致全身慢性發炎，並顯著抑制體內 NK 自然殺手細胞的巡邏功能！' },
       { badge: '外食高油糖飲食機制', text: '精緻果糖與反式脂肪引發高胰島素血症，刺激類胰島素生長因子-1（IGF-1）飆升，是乳腺上皮細胞過度增生的催化劑！' },
       { badge: '晚育或未育荷爾蒙機制', text: '女性在懷孕與哺乳期間，卵巢會暫停排卵，乳腺上皮得到分化成熟。若未曾懷孕或晚育，一生中暴露於雌激素的週期相對延長很多！' },
-      { badge: '飲酒與代謝負載機制', text: '酒精經肝臟代謝產生的乙醛是明確致癌物，同時會抑制肝臟代謝多餘雌激素的能力，每天多喝 1 杯酒，乳癌相對風險增加 7%！' }
+      { badge: '飲酒與代謝負載機制（實證醫學）', text: '酒類無差別（紅酒白酒啤酒等效）且無安全劑量！每多喝 1 杯（10g酒精），乳癌相對風險增加 7%~10%；週末暴飲（≥4杯）更使體內乙醛與游離雌激素瞬間暴衝！' }
     ];
 
     function showP04Load(idx) {
@@ -3701,15 +3775,54 @@
       const f = p05Factors.find(item => item.id === id);
       if (!f) return;
 
-      document.getElementById('p05-spot-icon').innerText = f.icon;
-      document.getElementById('p05-spot-type').innerText = f.type;
-      document.getElementById('p05-spot-type').className = `px-3 py-0.5 rounded-full text-xs font-black ${
-        f.cat === 'born' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
-      }`;
-      document.getElementById('p05-spot-title').innerText = f.name;
-      document.getElementById('p05-spot-risk').innerText = f.risk;
-      document.getElementById('p05-spot-mech').innerText = f.mech;
-      document.getElementById('p05-spot-action').innerText = f.action;
+      const normalView = document.getElementById('p05-normal-view');
+      const alcoholView = document.getElementById('p05-alcohol-view');
+      const panel = document.getElementById('p05-spotlight-panel');
+      const isCtrl = p05CurrentCategory === 'ctrl';
+      const orderClass = isCtrl ? 'lg:order-1' : 'lg:order-2';
+
+      if (id === 8) {
+        // 專屬展示飲酒實證醫學特刊
+        if (normalView) normalView.classList.add('hidden');
+        if (alcoholView) {
+          alcoholView.classList.remove('hidden');
+          alcoholView.classList.add('flex');
+        }
+        if (panel) {
+          panel.className = `lg:col-span-7 ${orderClass} bg-white p-7 sm:p-8 rounded-3xl border-4 border-vivid-pink pop-shadow flex flex-col justify-between space-y-4`;
+        }
+      } else {
+        if (alcoholView) {
+          alcoholView.classList.add('hidden');
+          alcoholView.classList.remove('flex');
+        }
+        if (normalView) {
+          normalView.classList.remove('hidden');
+        }
+        if (panel) {
+          panel.className = `lg:col-span-7 ${orderClass} bg-white p-7 sm:p-8 rounded-3xl border-2 ${
+            f.cat === 'born' ? 'border-amber-500' : 'border-emerald-500'
+          } pop-shadow flex flex-col justify-between space-y-4`;
+        }
+
+        const iconEl = document.getElementById('p05-spot-icon');
+        if (iconEl) iconEl.innerText = f.icon;
+        const typeEl = document.getElementById('p05-spot-type');
+        if (typeEl) {
+          typeEl.innerText = f.type;
+          typeEl.className = `px-3 py-0.5 rounded-full text-xs font-black ${
+            f.cat === 'born' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
+          }`;
+        }
+        const titleEl = document.getElementById('p05-spot-title');
+        if (titleEl) titleEl.innerText = f.name;
+        const riskEl = document.getElementById('p05-spot-risk');
+        if (riskEl) riskEl.innerText = f.risk;
+        const mechEl = document.getElementById('p05-spot-mech');
+        if (mechEl) mechEl.innerText = f.mech;
+        const actionEl = document.getElementById('p05-spot-action');
+        if (actionEl) actionEl.innerText = f.action;
+      }
 
       renderP05List(p05CurrentCategory);
     }
@@ -3939,7 +4052,7 @@
       }
 
       if (summaryBox) {
-        summaryBox.className = `p-4 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 ${mode === 'bad' ? 'bg-red-50/80 border-red-200' : 'bg-emerald-50/90 border-emerald-300'}`;
+        summaryBox.className = `p-4 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 ${mode === 'bad' ? 'bg-red-50/80 border-red-200' : 'bg-emerald-50 border-emerald-300'}`;
         summaryBox.innerHTML = `
           <div class="space-y-0.5">
             <div class="flex items-center gap-2">
