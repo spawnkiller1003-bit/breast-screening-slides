@@ -270,6 +270,32 @@
     ::-webkit-scrollbar {
       display: none;
     }
+  
+    /* 確保講者視窗與備忘彈窗滾動條清晰可見、易於拖曳 */
+    .spk-scrollable::-webkit-scrollbar,
+    #spk-notes-scroll-container::-webkit-scrollbar,
+    #speaker-notes-content::-webkit-scrollbar {
+      display: block !important;
+      width: 8px !important;
+    }
+    .spk-scrollable::-webkit-scrollbar-track,
+    #spk-notes-scroll-container::-webkit-scrollbar-track,
+    #speaker-notes-content::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6) !important;
+      border-radius: 9999px !important;
+    }
+    .spk-scrollable::-webkit-scrollbar-thumb,
+    #spk-notes-scroll-container::-webkit-scrollbar-thumb,
+    #speaker-notes-content::-webkit-scrollbar-thumb {
+      background: #FF3366 !important;
+      border-radius: 9999px !important;
+    }
+    .spk-scrollable::-webkit-scrollbar-thumb:hover,
+    #spk-notes-scroll-container::-webkit-scrollbar-thumb:hover,
+    #speaker-notes-content::-webkit-scrollbar-thumb:hover {
+      background: #FF5E62 !important;
+    }
+
   </style>
 </head>
 <body class="w-screen h-screen flex flex-col justify-between relative selection:bg-vivid-pink selection:text-white">
@@ -2487,9 +2513,9 @@
     </header>
 
     <!-- 講者控制台主要雙欄區域 (滿版強化：左側投影片佔比擴大至 8~9 欄，貼滿邊界) -->
-    <main id="spk-main-grid" class="flex-1 grid grid-cols-12 gap-3 p-3 overflow-hidden bg-slate-950">
+    <main id="spk-main-grid" class="flex-1 grid grid-cols-12 gap-3 p-3 overflow-hidden bg-slate-950 min-h-0">
       <!-- 左欄：當前投影片超大滿版即時鏡像 + 翻頁大按鈕 -->
-      <div id="spk-left-col" class="col-span-8 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300">
+      <div id="spk-left-col" class="col-span-8 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
         <!-- 當前投影片畫面容器 -->
         <div class="flex-1 bg-slate-900 rounded-2xl border border-slate-800 p-2.5 flex flex-col justify-between overflow-hidden shadow-2xl relative">
           <div class="flex items-center justify-between text-xs text-slate-400 font-mono pb-1.5 border-b border-slate-800/80">
@@ -2530,7 +2556,7 @@
       </div>
 
       <!-- 右欄：下一頁預覽 + 大字版講者備忘話術 -->
-      <div id="spk-right-col" class="col-span-4 xl:col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300">
+      <div id="spk-right-col" class="col-span-4 xl:col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
         <!-- 下一頁預覽卡片 (Next Slide Preview) -->
         <div class="bg-slate-900 p-4 rounded-3xl border border-slate-800 space-y-2 flex-shrink-0 shadow-lg">
           <div class="flex items-center justify-between text-xs font-mono">
@@ -2547,17 +2573,19 @@
         </div>
 
         <!-- 講者私房備忘話術 (超大高對比字體) -->
-        <div class="flex-1 bg-slate-900 p-5 rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-lg space-y-3">
+        <div class="flex-1 bg-slate-900 p-5 rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-lg space-y-3 min-h-0">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2 flex-shrink-0">
             <div class="flex items-center gap-2 text-xs font-black text-vivid-purple uppercase tracking-wider">
               <span>📝</span>
               <span>SPEAKER NOTES // 梁醫師講者私房指引</span>
             </div>
-            <span class="text-[11px] text-slate-500">超大字好讀模式</span>
+            <span class="text-[11px] font-bold text-vivid-pink flex items-center gap-1">
+              <span>↕</span> <span>可滑鼠/觸控滾動</span>
+            </span>
           </div>
 
-          <!-- 滾動備忘內文 -->
-          <div class="flex-1 overflow-y-auto pr-1 space-y-3.5 text-slate-200 font-sans">
+          <!-- 滾動備忘內文 (保證 100% 順暢上下滾動) -->
+          <div id="spk-notes-scroll-container" class="flex-1 overflow-y-auto pr-2 space-y-3.5 text-slate-200 font-sans min-h-0 spk-scrollable" style="overflow-y: scroll !important;">
             <!-- 場景痛點 -->
             <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-pink-500/20 space-y-1">
               <span class="text-[11px] font-black text-vivid-pink uppercase tracking-wide">🎬 本關場景引子</span>
@@ -2602,9 +2630,9 @@
   </div>
 
   <!-- ================= 演講者指引備忘彈窗 (Speaker Notes Modal - S 鍵) ================= -->
-  <div id="speaker-notes-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
-    <div class="bg-white max-w-2xl w-full p-8 rounded-3xl pop-shadow-lg border border-slate-200 space-y-4">
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+  <div id="speaker-notes-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) toggleSpeakerNotes()">
+    <div class="bg-white max-w-2xl w-full max-h-[85vh] p-6 sm:p-8 rounded-3xl pop-shadow-lg border border-slate-200 flex flex-col space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3 flex-shrink-0">
         <div class="flex items-center gap-2">
           <span class="w-3 h-3 rounded-full bg-vivid-pink"></span>
           <span class="text-base font-black text-slate-900">梁祖瑋醫師 · 講者指引備忘</span>
@@ -2612,14 +2640,14 @@
         <button onclick="toggleSpeakerNotes()" class="text-slate-400 hover:text-slate-800 text-2xl leading-none">&times;</button>
       </div>
 
-      <div class="space-y-2">
-        <div class="text-xs font-black text-vivid-pink uppercase">SPEAKER FOCUS // 本關演講節奏引導：</div>
-        <div id="speaker-notes-content" class="text-base text-slate-700 leading-relaxed bg-slate-50 p-5 rounded-2xl border border-slate-200 font-medium">
+      <div class="space-y-2 flex-1 flex flex-col min-h-0">
+        <div class="text-xs font-black text-vivid-pink uppercase flex-shrink-0">SPEAKER FOCUS // 本關演講節奏引導：</div>
+        <div id="speaker-notes-content" class="text-base text-slate-700 leading-relaxed bg-slate-50 p-5 rounded-2xl border border-slate-200 font-medium overflow-y-auto flex-1 max-h-[55vh] spk-scrollable" style="overflow-y: scroll !important;">
           --
         </div>
       </div>
 
-      <div class="flex justify-between items-center text-xs text-slate-500 pt-2 border-t border-slate-100">
+      <div class="flex justify-between items-center text-xs text-slate-500 pt-2 border-t border-slate-100 flex-shrink-0">
         <span>快捷鍵：按 <kbd class="px-2 py-0.5 bg-slate-100 rounded font-mono text-slate-800">S</kbd> 開關</span>
         <button onclick="toggleSpeakerNotes()" class="px-5 py-2 rounded-full bg-vivid-pink text-white font-bold hover:bg-pink-600 transition">
           關閉備忘
@@ -3265,6 +3293,8 @@
       if (nScene) nScene.innerText = scene;
       if (nBody) nBody.innerText = notes;
       if (nQuote) nQuote.innerText = quote;
+      const notesScrollContainer = document.getElementById('spk-notes-scroll-container');
+      if (notesScrollContainer) notesScrollContainer.scrollTop = 0;
 
       // 3. 下一張投影片預覽更新
       const nextSlideIndex = slideIndex < totalSlides ? slideIndex + 1 : null;

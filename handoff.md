@@ -1,5 +1,18 @@
 # 交接紀錄 (HANDOFF.md)
 
+- ✅ **【講者視窗/備忘彈窗長講稿滾動修復】**：
+  - 診斷原因：
+    1. 雙螢幕講者控制台（`?view=speaker` / P 鍵）中，Flexbox 列佈局缺少關鍵的 `min-h-0`，導致備忘卡片高度被文字撐大並在父容器被截斷，無法向下滾動。
+    2. 全域 CSS 規則 `::-webkit-scrollbar { display: none; }` 隱藏了原生滾動條，無法透過滑鼠拖曳拉軸。
+    3. 主螢幕按 S 鍵開啟的備忘彈窗缺少容器限制高度與 `overflow-y-auto`。
+  - 修復成果：
+    1. 在 `main`、左欄、右欄、備忘卡片全面補足 Flexbox `min-h-0`，並為滾動容器加入行內 `overflow-y: scroll !important;`。
+    2. 新增高對比粉紅圓角專屬滾動條樣式（`.spk-scrollable::-webkit-scrollbar`），視覺清晰、滑鼠點擊即可拖曳。
+    3. 在 `updateSpeakerViewUI` 換頁事件加入 `notesScrollContainer.scrollTop = 0`，每次換頁自動回到最頂端。
+    4. S 鍵彈窗同步加上 `max-h-[85vh]` 與 `overflow-y-auto max-h-[55vh]`。
+    5. 全專案四大檔案全面同步更新並推送至 GitHub Pages。
+
+
 - ✅ **【S5 飲酒實證 2×2 四大卡片精簡為大字標題】**：
   - 依據梁醫師現場投影需求，將 2×2 四大實證矩陣框中的繁雜內文移除，保留超大字標題與生動圖示：
     1. 🍷 **酒類無差別（紅酒無特權）**
