@@ -2498,9 +2498,9 @@
 
       <!-- 右側按鍵操作提示 -->
       <div class="flex items-center gap-2 text-xs">
-        <button onclick="toggleSpeakerLayout()" id="spk-layout-btn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1.5 border border-slate-700" title="切換投影片畫面滿版程度 (V)">
+        <button onclick="toggleSpeakerLayout()" id="spk-layout-btn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1.5 border border-slate-700" title="切換講稿/提示畫面佔比 (V)">
           <span>📐</span>
-          <span id="spk-layout-text">巨幅滿版 (V)</span>
+          <span id="spk-layout-text">講稿為主 (V)</span>
         </button>
         <button onclick="toggleBlankScreen()" id="spk-blank-btn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1 border border-slate-700">
           <span>⬛</span>
@@ -2512,100 +2512,120 @@
       </div>
     </header>
 
-    <!-- 講者控制台主要雙欄區域 (滿版強化：左側投影片佔比擴大至 8~9 欄，貼滿邊界) -->
+    <!-- 講者控制台主要雙欄區域：講稿重點放大，大螢幕畫面縮小為提示 -->
     <main id="spk-main-grid" class="flex-1 grid grid-cols-12 gap-3 p-3 overflow-hidden bg-slate-950 min-h-0">
-      <!-- 左欄：當前投影片超大滿版即時鏡像 + 翻頁大按鈕 -->
-      <div id="spk-left-col" class="col-span-8 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
-        <!-- 當前投影片畫面容器 -->
-        <div class="flex-1 bg-slate-900 rounded-2xl border border-slate-800 p-2.5 flex flex-col justify-between overflow-hidden shadow-2xl relative">
-          <div class="flex items-center justify-between text-xs text-slate-400 font-mono pb-1.5 border-b border-slate-800/80">
+      <!-- 左欄：大螢幕畫面縮小提示 + 下一關預覽 + 翻頁控制大按鈕 -->
+      <div id="spk-left-col" class="col-span-12 lg:col-span-5 xl:col-span-4 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0">
+        <!-- 當前畫面提示卡 (Confidence Mirror) -->
+        <div class="flex-1 bg-slate-900 rounded-2xl border border-slate-800 p-2.5 flex flex-col justify-between overflow-hidden shadow-2xl relative min-h-0">
+          <div class="flex items-center justify-between text-xs text-slate-400 font-mono pb-1.5 border-b border-slate-800/80 flex-shrink-0">
             <span class="flex items-center gap-1.5 text-vivid-pink font-bold">
               <span class="w-2 h-2 rounded-full bg-vivid-pink animate-pulse"></span>
-              LIVE ON STAGE // 當前大螢幕滿版畫面
+              LIVE MIRROR // 當前畫面提示
             </span>
             <span class="font-bold text-white">
-              STAGE <span id="spk-current-num" class="text-vivid-pink text-base">1</span> / <span id="spk-total-num">24</span>
+              STAGE <span id="spk-current-num" class="text-vivid-pink text-base">1</span> / <span id="spk-total-num">25</span>
             </span>
           </div>
 
-          <!-- 鏡像即時視窗 (原生 DOM 16:9 極致滿版縮放鏡像，無多餘黑邊) -->
-          <div id="spk-mirror-wrapper" class="flex-1 w-full my-1 rounded-xl overflow-hidden bg-slate-950 text-slate-900 relative shadow-inner flex items-center justify-center border border-slate-800/60">
+          <!-- 鏡像即時視窗 (精巧 16:9 等比縮放提示) -->
+          <div id="spk-mirror-wrapper" class="flex-1 w-full my-1.5 rounded-xl overflow-hidden bg-slate-950 text-slate-900 relative shadow-inner flex items-center justify-center border border-slate-800/60 min-h-0">
             <div id="spk-preview-stage" class="w-full h-full relative flex items-center justify-center overflow-hidden select-none pointer-events-none">
               <!-- JS 動態生成 1280x720 等比縮放鏡像 -->
             </div>
           </div>
-
-          <!-- 底部快速導航與大按鈕 (緊湊高雅，節省垂直空間) -->
-          <div class="flex items-center justify-between pt-1">
-            <button onclick="spkPrevSlide()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition flex items-center gap-2 border border-slate-700">
-              <span>◀</span>
-              <span>上一關 (←)</span>
-            </button>
-
-            <!-- 關卡選單 -->
-            <select id="spk-jump-select" onchange="spkJumpTo(this.value)" class="bg-slate-800 text-xs font-bold text-slate-200 py-2 px-3 rounded-xl border border-slate-700 focus:outline-none">
-              <!-- JS 動態生成 24 關選項 -->
-            </select>
-
-            <button onclick="spkNextSlide()" class="px-6 py-2 rounded-xl bg-vivid-pink hover:bg-pink-600 text-white font-black text-sm transition flex items-center gap-2 shadow-lg shadow-pink-500/20">
-              <span>下一關 (Space / →)</span>
-              <span>▶</span>
-            </button>
-          </div>
         </div>
-      </div>
 
-      <!-- 右欄：下一頁預覽 + 大字版講者備忘話術 -->
-      <div id="spk-right-col" class="col-span-4 xl:col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
-        <!-- 下一頁預覽卡片 (Next Slide Preview) -->
-        <div class="bg-slate-900 p-4 rounded-3xl border border-slate-800 space-y-2 flex-shrink-0 shadow-lg">
+        <!-- 下一頁預覽卡片 (Next Slide Preview - 整合至左側提示區) -->
+        <div class="bg-slate-900 p-3 rounded-2xl border border-slate-800 flex-shrink-0 shadow-lg space-y-1">
           <div class="flex items-center justify-between text-xs font-mono">
             <span class="text-vivid-mint font-bold flex items-center gap-1.5">
               <span>⏭️</span>
-              <span>NEXT SLIDE PREVIEW // 下一關預覽</span>
+              <span>NEXT // 下一關預覽</span>
             </span>
-            <span id="spk-next-num" class="text-slate-400">STAGE 2</span>
+            <span id="spk-next-num" class="text-slate-400 text-[11px] font-bold">STAGE 2 / 25</span>
           </div>
-          <div class="p-3 rounded-2xl bg-slate-950 border border-slate-800/80 space-y-1">
-            <div id="spk-next-title" class="text-sm font-black text-slate-200">--</div>
-            <div id="spk-next-scene" class="text-xs text-slate-400 line-clamp-2">--</div>
+          <div class="p-2 rounded-xl bg-slate-950 border border-slate-800/80 space-y-0.5">
+            <div id="spk-next-title" class="text-xs font-black text-slate-200 line-clamp-1">--</div>
+            <div id="spk-next-scene" class="text-[11px] text-slate-400 line-clamp-1">--</div>
           </div>
         </div>
 
-        <!-- 講者私房備忘話術 (超大高對比字體) -->
-        <div class="flex-1 bg-slate-900 p-5 rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-lg space-y-3 min-h-0">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-2 flex-shrink-0">
-            <div class="flex items-center gap-2 text-xs font-black text-vivid-purple uppercase tracking-wider">
+        <!-- 底部快速導航與大按鈕 -->
+        <div class="flex items-center justify-between gap-1.5 flex-shrink-0 bg-slate-900 p-2 rounded-2xl border border-slate-800 shadow-md">
+          <button onclick="spkPrevSlide()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition flex items-center gap-1.5 border border-slate-700 flex-shrink-0">
+            <span>◀</span>
+            <span>上一關 (←)</span>
+          </button>
+
+          <!-- 關卡選單 -->
+          <select id="spk-jump-select" onchange="spkJumpTo(this.value)" class="flex-1 bg-slate-950 text-xs font-bold text-slate-200 py-2 px-2 rounded-xl border border-slate-700 focus:outline-none truncate">
+            <!-- JS 動態生成選項 -->
+          </select>
+
+          <button onclick="spkNextSlide()" class="px-4 py-2 rounded-xl bg-vivid-pink hover:bg-pink-600 text-white font-black text-xs transition flex items-center gap-1.5 shadow-lg shadow-pink-500/20 flex-shrink-0">
+            <span>下一關 (Space)</span>
+            <span>▶</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 右欄：講者私房備忘話術（超大字核心區，佔滿 100% 垂直高度） -->
+      <div id="spk-right-col" class="col-span-12 lg:col-span-7 xl:col-span-8 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
+        <div class="flex-1 bg-slate-900 p-5 rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-2xl space-y-3 min-h-0">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2.5 flex-shrink-0">
+            <div class="flex items-center gap-2 font-black text-vivid-purple uppercase tracking-wider text-sm sm:text-base">
               <span>📝</span>
-              <span>SPEAKER NOTES // 梁醫師講者私房指引</span>
+              <span>SPEAKER NOTES // 梁醫師講者講稿</span>
             </div>
-            <span class="text-[11px] font-bold text-vivid-pink flex items-center gap-1">
-              <span>↕</span> <span>可滑鼠/觸控滾動</span>
-            </span>
+            <!-- 字體縮放按鈕群 + 滾動提示 -->
+            <div class="flex items-center gap-3">
+              <div class="flex items-center gap-1 bg-slate-950 px-2.5 py-1 rounded-xl border border-slate-800">
+                <span class="text-[11px] font-bold text-slate-400 mr-1">講稿字級:</span>
+                <button onclick="adjustNotesFont(-1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-center transition" title="縮小講稿字體">A-</button>
+                <span id="spk-font-indicator" class="text-xs font-mono font-black text-vivid-pink px-1.5">特大</span>
+                <button onclick="adjustNotesFont(1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs flex items-center justify-center transition" title="放大講稿字體">A+</button>
+              </div>
+              <span class="text-xs font-bold text-slate-400 flex items-center gap-1">
+                <span>↕</span> <span>可滾動</span>
+              </span>
+            </div>
           </div>
 
-          <!-- 滾動備忘內文 (保證 100% 順暢上下滾動) -->
-          <div id="spk-notes-scroll-container" class="flex-1 overflow-y-auto pr-2 space-y-3.5 text-slate-200 font-sans min-h-0 spk-scrollable" style="overflow-y: scroll !important;">
+          <!-- 滾動備忘內文 (字體超大、高對比、行距寬鬆) -->
+          <div id="spk-notes-scroll-container" class="flex-1 overflow-y-auto pr-3 space-y-4 text-slate-200 font-sans min-h-0 spk-scrollable" style="overflow-y: scroll !important;">
             <!-- 場景痛點 -->
-            <div class="p-3.5 rounded-2xl bg-slate-950/70 border border-pink-500/20 space-y-1">
-              <span class="text-[11px] font-black text-vivid-pink uppercase tracking-wide">🎬 本關場景引子</span>
-              <p id="spk-notes-scene" class="text-sm font-bold text-slate-300 leading-relaxed">
+            <div class="p-4 rounded-2xl bg-slate-950/80 border border-pink-500/25 space-y-1.5 shadow-sm">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-vivid-pink"></span>
+                <span class="text-xs font-black text-vivid-pink uppercase tracking-wide">🎬 本關場景引子</span>
+              </div>
+              <p id="spk-notes-scene" class="text-lg font-bold text-slate-200 leading-relaxed">
                 --
               </p>
             </div>
 
-            <!-- 核心演講指引話術 -->
-            <div class="p-4 rounded-2xl bg-purple-950/30 border border-purple-500/30 space-y-1.5">
-              <span class="text-xs font-black text-purple-300 uppercase tracking-wide">🎯 節奏掌控與核心話術</span>
-              <p id="spk-notes-body" class="text-base sm:text-lg font-bold text-slate-100 leading-relaxed">
+            <!-- 核心演講指引話術 (重點放大！) -->
+            <div class="p-5 rounded-2xl bg-purple-950/30 border border-purple-500/35 space-y-2.5 shadow-md">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-vivid-purple"></span>
+                  <span class="text-sm font-black text-purple-300 uppercase tracking-wide">🎯 節奏掌控與核心話術（演講重點）</span>
+                </div>
+                <span class="text-xs font-mono text-purple-400/80 font-bold">CORE SCRIPT</span>
+              </div>
+              <p id="spk-notes-body" class="text-2xl font-bold text-white leading-loose tracking-wide">
                 --
               </p>
             </div>
 
             <!-- 金句帶走 -->
-            <div class="p-3.5 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 space-y-1">
-              <span class="text-[11px] font-black text-vivid-mint uppercase tracking-wide">💡 本關帶走金句</span>
-              <p id="spk-notes-quote" class="text-base font-black text-emerald-300">
+            <div class="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/25 space-y-1.5 shadow-sm">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span class="text-xs font-black text-vivid-mint uppercase tracking-wide">💡 本關帶走金句</span>
+              </div>
+              <p id="spk-notes-quote" class="text-xl font-black text-emerald-300 leading-snug">
                 --
               </p>
             </div>
@@ -3293,6 +3313,7 @@
       if (nScene) nScene.innerText = scene;
       if (nBody) nBody.innerText = notes;
       if (nQuote) nQuote.innerText = quote;
+      applyNotesFont();
       const notesScrollContainer = document.getElementById('spk-notes-scroll-container');
       if (notesScrollContainer) notesScrollContainer.scrollTop = 0;
 
@@ -3326,25 +3347,62 @@
       updateSpeakerMirror(slideIndex);
     }
 
-    
-    // 講者控制台視圖滿版切換 (8:4 滿版標準 vs 10:2 巨幅放大)
-    let spkLayoutMode = 'large';
+    // 講稿字級調節系統 (預設特大字體，支援 A- / A+ 即時切換)
+    let notesFontLevel = 2; // 0: 中, 1: 大, 2: 特大 (預設), 3: 巨幅
+    const fontLevels = [
+      { name: '中', body: 'text-lg leading-relaxed', scene: 'text-sm leading-normal', quote: 'text-base leading-snug' },
+      { name: '大', body: 'text-xl leading-relaxed', scene: 'text-base leading-relaxed', quote: 'text-lg leading-snug' },
+      { name: '特大', body: 'text-2xl leading-loose', scene: 'text-lg leading-relaxed', quote: 'text-xl leading-snug' },
+      { name: '巨幅', body: 'text-3xl leading-loose', scene: 'text-xl leading-relaxed', quote: 'text-2xl leading-snug' }
+    ];
+
+    function adjustNotesFont(delta) {
+      notesFontLevel = Math.max(0, Math.min(fontLevels.length - 1, notesFontLevel + delta));
+      applyNotesFont();
+    }
+
+    function applyNotesFont() {
+      const cfg = fontLevels[notesFontLevel];
+      const indicator = document.getElementById('spk-font-indicator');
+      const nBody = document.getElementById('spk-notes-body');
+      const nScene = document.getElementById('spk-notes-scene');
+      const nQuote = document.getElementById('spk-notes-quote');
+
+      if (indicator) indicator.innerText = cfg.name;
+      if (nBody) {
+        nBody.className = `${cfg.body} font-bold text-white tracking-wide`;
+      }
+      if (nScene) {
+        nScene.className = `${cfg.scene} font-bold text-slate-200`;
+      }
+      if (nQuote) {
+        nQuote.className = `${cfg.quote} font-black text-emerald-300`;
+      }
+    }
+
+    // 講者控制台視圖滿版切換 (預設講稿為主 4:8 vs 巨幅講稿 3:9 vs 均衡雙欄 6:6)
+    let spkLayoutMode = 'notes-focus';
     function toggleSpeakerLayout() {
       const leftCol = document.getElementById('spk-left-col');
       const rightCol = document.getElementById('spk-right-col');
       const btnText = document.getElementById('spk-layout-text');
       if (!leftCol || !rightCol) return;
 
-      if (spkLayoutMode === 'large') {
-        spkLayoutMode = 'max';
-        leftCol.className = 'col-span-10 xl:col-span-10 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
-        rightCol.className = 'col-span-2 xl:col-span-2 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
-        if (btnText) btnText.innerText = '標準雙欄 (V)';
+      if (spkLayoutMode === 'notes-focus') {
+        spkLayoutMode = 'notes-max';
+        leftCol.className = 'col-span-12 lg:col-span-3 xl:col-span-3 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0';
+        rightCol.className = 'col-span-12 lg:col-span-9 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        if (btnText) btnText.innerText = '巨幅講稿 (V)';
+      } else if (spkLayoutMode === 'notes-max') {
+        spkLayoutMode = 'balanced';
+        leftCol.className = 'col-span-12 lg:col-span-6 xl:col-span-6 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0';
+        rightCol.className = 'col-span-12 lg:col-span-6 xl:col-span-6 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        if (btnText) btnText.innerText = '均衡雙欄 (V)';
       } else {
-        spkLayoutMode = 'large';
-        leftCol.className = 'col-span-8 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
-        rightCol.className = 'col-span-4 xl:col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300';
-        if (btnText) btnText.innerText = '巨幅滿版 (V)';
+        spkLayoutMode = 'notes-focus';
+        leftCol.className = 'col-span-12 lg:col-span-5 xl:col-span-4 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0';
+        rightCol.className = 'col-span-12 lg:col-span-7 xl:col-span-8 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        if (btnText) btnText.innerText = '講稿為主 (V)';
       }
       setTimeout(() => {
         updateSpeakerMirror(currentSlide);
@@ -4705,6 +4763,9 @@
 
       // 自動啟動演講計時器
       toggleSpkTimer();
+
+      // 套用講者講稿大字體
+      applyNotesFont();
 
       // 講者控制台初始優先依據 URL 的 slide 參數定位，且不廣播以防覆蓋主螢幕
       showSlide(initialSlideParam, false);
