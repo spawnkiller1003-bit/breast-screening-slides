@@ -1198,9 +1198,9 @@
           </div>
         </div>
 
-        <!-- 5 張迷思選擇列 -->
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
-          <div id="p12-card-0" onclick="selectP12Myth(0)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border-4 border-vivid-pink bg-pink-50/50 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 scale-105 shadow-xl shadow-pink-500/10">
+        <!-- 5 張迷思選擇列 (加上安全邊界與向上浮動，消除左右裁切) -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 px-1.5 py-1">
+          <div id="p12-card-0" onclick="selectP12Myth(0)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border-4 border-vivid-pink bg-pink-50/50 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 -translate-y-1 shadow-lg shadow-pink-500/10">
             <span class="text-xs font-black text-vivid-pink">MYTH 01</span>
             <div class="text-base font-black text-slate-900 leading-tight">家裡沒人得過，我就很安全？</div>
             <div class="myth-stamp text-xs font-black text-emerald-700 bg-emerald-100 border border-emerald-300 rounded-full px-2 py-0.5 text-center">
@@ -1208,7 +1208,7 @@
             </div>
           </div>
 
-          <div id="p12-card-1" onclick="selectP12Myth(1)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:scale-105">
+          <div id="p12-card-1" onclick="selectP12Myth(1)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:-translate-y-1">
             <span class="text-xs font-black text-slate-400">MYTH 02</span>
             <div class="text-base font-black text-slate-900 leading-tight">聽說會被夾到瘀青痛死？</div>
             <div class="myth-stamp text-xs font-black text-red-500 bg-red-50 border border-red-200 rounded-full px-2 py-0.5 text-center">
@@ -1216,7 +1216,7 @@
             </div>
           </div>
 
-          <div id="p12-card-2" onclick="selectP12Myth(2)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:scale-105">
+          <div id="p12-card-2" onclick="selectP12Myth(2)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:-translate-y-1">
             <span class="text-xs font-black text-slate-400">MYTH 03</span>
             <div class="text-base font-black text-slate-900 leading-tight">X光輻射量很高會致癌？</div>
             <div class="myth-stamp text-xs font-black text-red-500 bg-red-50 border border-red-200 rounded-full px-2 py-0.5 text-center">
@@ -1224,7 +1224,7 @@
             </div>
           </div>
 
-          <div id="p12-card-3" onclick="selectP12Myth(3)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:scale-105">
+          <div id="p12-card-3" onclick="selectP12Myth(3)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:-translate-y-1">
             <span class="text-xs font-black text-slate-400">MYTH 04</span>
             <div class="text-base font-black text-slate-900 leading-tight">沒摸到硬塊就沒事？</div>
             <div class="myth-stamp text-xs font-black text-red-500 bg-red-50 border border-red-200 rounded-full px-2 py-0.5 text-center">
@@ -1232,7 +1232,7 @@
             </div>
           </div>
 
-          <div id="p12-card-4" onclick="selectP12Myth(4)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:scale-105">
+          <div id="p12-card-4" onclick="selectP12Myth(4)" class="p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-60 hover:opacity-100 hover:-translate-y-1">
             <span class="text-xs font-black text-slate-400">MYTH 05</span>
             <div class="text-base font-black text-slate-900 leading-tight">我才 30 幾歲不用驗？</div>
             <div class="myth-stamp text-xs font-black text-red-500 bg-red-50 border border-red-200 rounded-full px-2 py-0.5 text-center">
@@ -1371,7 +1371,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-6 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-6 gap-3 px-1.5 py-1">
           <button onclick="showP14Level(0)" class="p14-btn p-4 rounded-2xl bg-white border-2 border-vivid-pink pop-shadow text-center space-y-1 transition">
             <div class="text-2xl font-black text-vivid-pink">Category 0</div>
             <div class="text-xs font-bold text-slate-800">需加做檢查</div>
@@ -1438,9 +1438,9 @@
           </div>
         </div>
 
-        <!-- 兩大核心武器切換按鈕 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div id="p15-btn-mammo" onclick="selectP15Tool('mammo')" class="cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-pink bg-pink-50/40 pop-shadow transition-all duration-300 flex items-center justify-between scale-[1.02] shadow-xl shadow-pink-500/10">
+        <!-- 兩大核心武器切換按鈕 (加上安全邊界與向上浮動，消除左右裁切) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-1.5 py-1">
+          <div id="p15-btn-mammo" onclick="selectP15Tool('mammo')" class="cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-pink bg-pink-50/40 pop-shadow transition-all duration-300 flex items-center justify-between -translate-y-1 shadow-lg shadow-pink-500/10">
             <div class="flex items-center gap-3">
               <span class="text-3xl">🔬</span>
               <div>
@@ -1451,7 +1451,7 @@
             <span class="text-xs font-black text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">公費第一線</span>
           </div>
 
-          <div id="p15-btn-us" onclick="selectP15Tool('us')" class="cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-60 hover:opacity-100 hover:scale-[1.01]">
+          <div id="p15-btn-us" onclick="selectP15Tool('us')" class="cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-60 hover:opacity-100 hover:-translate-y-1">
             <div class="flex items-center gap-3">
               <span class="text-3xl">📡</span>
               <div>
@@ -1523,21 +1523,21 @@
           </div>
         </div>
 
-        <!-- 4 大檢查工具切換按鈕（大字化、聚光燈反饋） -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <button onclick="setP142Tool('abus')" id="p142-btn-abus" class="p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-teal bg-teal-50/40 pop-shadow text-left space-y-1 transition scale-105 shadow-lg">
+        <!-- 4 大檢查工具切換按鈕 (加上安全邊界與向上浮動，消除左右裁切) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-1.5 py-1">
+          <button onclick="setP142Tool('abus')" id="p142-btn-abus" class="p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-teal bg-teal-50/40 pop-shadow text-left space-y-1 transition -translate-y-1 shadow-lg">
             <span class="text-xs font-black text-vivid-teal">01 // 3D 全乳立體掃描</span>
             <div class="text-lg font-black text-slate-900">3D 全自動超音波 (ABUS)</div>
           </button>
-          <button onclick="setP142Tool('mag')" id="p142-btn-mag" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-60 hover:opacity-100 hover:scale-105">
+          <button onclick="setP142Tool('mag')" id="p142-btn-mag" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-60 hover:opacity-100 hover:-translate-y-1">
             <span class="text-xs font-black text-slate-400">02 // 鈣化專用</span>
             <div class="text-lg font-black text-slate-900">放大／局部壓迫</div>
           </button>
-          <button onclick="setP142Tool('dbt')" id="p142-btn-dbt" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-60 hover:opacity-100 hover:scale-105">
+          <button onclick="setP142Tool('dbt')" id="p142-btn-dbt" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-60 hover:opacity-100 hover:-translate-y-1">
             <span class="text-xs font-black text-slate-400">03 // 立體薄切</span>
             <div class="text-lg font-black text-slate-900">3D 斷層合成 (DBT)</div>
           </button>
-          <button onclick="setP142Tool('mri')" id="p142-btn-mri" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-60 hover:opacity-100 hover:scale-105">
+          <button onclick="setP142Tool('mri')" id="p142-btn-mri" class="p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-60 hover:opacity-100 hover:-translate-y-1">
             <span class="text-xs font-black text-slate-400">04 // 最高敏感度</span>
             <div class="text-lg font-black text-slate-900">乳房磁振造影 (MRI)</div>
           </button>
@@ -3911,11 +3911,11 @@
       document.querySelectorAll('.p12-card').forEach((c, i) => {
         const stamp = c.querySelector('.myth-stamp');
         if (i === idx) {
-          c.className = 'p12-card cursor-pointer bg-white p-4 rounded-2xl border-4 border-vivid-pink bg-pink-50/50 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 scale-105 shadow-xl shadow-pink-500/15';
+          c.className = 'p12-card cursor-pointer bg-white p-4 rounded-2xl border-4 border-vivid-pink bg-pink-50/50 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 -translate-y-1 shadow-lg shadow-pink-500/15';
           stamp.className = 'myth-stamp text-xs font-black text-emerald-700 bg-emerald-100 border border-emerald-300 rounded-full px-2 py-0.5 text-center animate-pulse';
           stamp.innerText = '💥 已戳破！';
         } else {
-          c.className = 'p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-40 hover:opacity-100 hover:scale-105';
+          c.className = 'p12-card cursor-pointer bg-white p-4 rounded-2xl border border-slate-200 pop-shadow transition-all duration-300 flex flex-col justify-between h-32 opacity-40 hover:opacity-100 hover:-translate-y-1';
         }
       });
 
@@ -3950,11 +3950,11 @@
       const btnUs = document.getElementById('p15-btn-us');
 
       if (toolKey === 'mammo') {
-        btnMammo.className = 'cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-pink bg-pink-50/40 pop-shadow transition-all duration-300 flex items-center justify-between scale-[1.02] shadow-xl shadow-pink-500/10';
-        btnUs.className = 'cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-50 hover:opacity-100 hover:scale-[1.01]';
+        btnMammo.className = 'cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-pink bg-pink-50/40 pop-shadow transition-all duration-300 flex items-center justify-between -translate-y-1 shadow-lg shadow-pink-500/10';
+        btnUs.className = 'cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-50 hover:opacity-100 hover:-translate-y-1';
       } else {
-        btnMammo.className = 'cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-50 hover:opacity-100 hover:scale-[1.01]';
-        btnUs.className = 'cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-teal bg-teal-50/40 pop-shadow transition-all duration-300 flex items-center justify-between scale-[1.02] shadow-xl shadow-teal-500/10';
+        btnMammo.className = 'cursor-pointer bg-white p-5 rounded-3xl border border-slate-200 pop-shadow transition-all duration-300 flex items-center justify-between opacity-50 hover:opacity-100 hover:-translate-y-1';
+        btnUs.className = 'cursor-pointer bg-white p-5 rounded-3xl border-4 border-vivid-teal bg-teal-50/40 pop-shadow transition-all duration-300 flex items-center justify-between -translate-y-1 shadow-lg shadow-teal-500/10';
       }
 
       document.getElementById('p15-spot-icon').innerText = d.icon;
@@ -4575,11 +4575,11 @@
 
     function setP142Tool(tool) {
       document.querySelectorAll('.p142-btn').forEach(b => {
-        b.className = 'p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-50 hover:opacity-100 hover:scale-105';
+        b.className = 'p142-btn p-4 rounded-2xl bg-white border border-slate-200 pop-shadow text-left space-y-1 transition opacity-50 hover:opacity-100 hover:-translate-y-1';
       });
       const targetBtn = document.getElementById('p142-btn-' + tool);
       if (targetBtn) {
-        targetBtn.className = 'p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-purple bg-purple-50/40 pop-shadow text-left space-y-1 transition scale-105 shadow-xl shadow-purple-500/15 opacity-100';
+        targetBtn.className = 'p142-btn p-4 rounded-2xl bg-white border-4 border-vivid-teal bg-teal-50/40 pop-shadow text-left space-y-1 transition -translate-y-1 shadow-lg opacity-100';
       }
 
       const d = p142Tools[tool];
