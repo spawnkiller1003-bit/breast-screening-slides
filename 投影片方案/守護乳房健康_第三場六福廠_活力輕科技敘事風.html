@@ -1596,9 +1596,9 @@
           </div>
         </div>
 
-        <!-- 七大警訊選擇矩陣（點選項目聚焦，其餘淡化） -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-          <div id="p17-card-0" onclick="selectP17Symptom(0)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-4 border-red-500 bg-red-100 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 scale-110 shadow-2xl shadow-red-500/20">
+        <!-- 七大警訊選擇矩陣（點選項目聚焦，其餘淡化，無水平溢出） -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3 px-1.5 py-1">
+          <div id="p17-card-0" onclick="selectP17Symptom(0)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-4 border-red-500 bg-red-100 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 -translate-y-1 shadow-lg shadow-red-500/20 opacity-100 ring-2 ring-red-400">
             <span class="text-3xl">🚨</span>
             <div>
               <div class="text-sm font-black text-slate-900">無痛單側腫塊</div>
@@ -1606,7 +1606,7 @@
             </div>
           </div>
 
-          <div id="p17-card-1" onclick="selectP17Symptom(1)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
+          <div id="p17-card-1" onclick="selectP17Symptom(1)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-2 border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 opacity-50 hover:opacity-100 hover:-translate-y-1 hover:border-red-300">
             <span class="text-3xl">🕳️</span>
             <div>
               <div class="text-sm font-black text-slate-900">局部皮膚凹陷</div>
@@ -1614,7 +1614,7 @@
             </div>
           </div>
 
-          <div id="p17-card-2" onclick="selectP17Symptom(2)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
+          <div id="p17-card-2" onclick="selectP17Symptom(2)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-2 border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 opacity-50 hover:opacity-100 hover:-translate-y-1 hover:border-red-300">
             <span class="text-3xl">🩸</span>
             <div>
               <div class="text-sm font-black text-slate-900">乳頭異常分泌</div>
@@ -1622,7 +1622,7 @@
             </div>
           </div>
 
-          <div id="p17-card-3" onclick="selectP17Symptom(3)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
+          <div id="p17-card-3" onclick="selectP17Symptom(3)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-2 border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 opacity-50 hover:opacity-100 hover:-translate-y-1 hover:border-red-300">
             <span class="text-3xl">⚓</span>
             <div>
               <div class="text-sm font-black text-slate-900">乳頭凹陷回縮</div>
@@ -1630,7 +1630,7 @@
             </div>
           </div>
 
-          <div id="p17-card-4" onclick="selectP17Symptom(4)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
+          <div id="p17-card-4" onclick="selectP17Symptom(4)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-2 border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 opacity-50 hover:opacity-100 hover:-translate-y-1 hover:border-red-300">
             <span class="text-3xl">🍊</span>
             <div>
               <div class="text-sm font-black text-slate-900">橘皮樣水腫</div>
@@ -1638,7 +1638,7 @@
             </div>
           </div>
 
-          <div id="p17-card-5" onclick="selectP17Symptom(5)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
+          <div id="p17-card-5" onclick="selectP17Symptom(5)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-2 border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 opacity-50 hover:opacity-100 hover:-translate-y-1 hover:border-red-300">
             <span class="text-3xl">🪨</span>
             <div>
               <div class="text-sm font-black text-slate-900">腋下淋巴水腫</div>
@@ -1646,7 +1646,7 @@
             </div>
           </div>
 
-          <div id="p17-card-6" onclick="selectP17Symptom(6)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105">
+          <div id="p17-card-6" onclick="selectP17Symptom(6)" class="p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-2 border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 opacity-50 hover:opacity-100 hover:-translate-y-1 hover:border-red-300">
             <span class="text-3xl">📏</span>
             <div>
               <div class="text-sm font-black text-slate-900">兩側大小突變</div>
@@ -3848,7 +3848,7 @@
         return `
           <button onclick="selectP05Factor(${f.id})" class="p05-item-btn w-full p-3.5 rounded-2xl text-left transition-all duration-200 flex items-center justify-between ${
             isSelected
-              ? 'bg-pink-50/80 border-4 border-vivid-pink shadow-lg shadow-pink-500/15 scale-[1.02]'
+              ? 'bg-pink-50/80 border-4 border-vivid-pink shadow-lg shadow-pink-500/15 -translate-y-0.5'
               : 'bg-slate-50 border border-slate-200 hover:border-pink-300 opacity-70 hover:opacity-100'
           }">
             <div class="flex items-center gap-3">
@@ -4134,7 +4134,7 @@
 
       if (container) {
         container.innerHTML = d.items.map(it => `
-          <div class="p-4 sm:p-5 rounded-2xl ${mode === 'bad' ? 'bg-slate-50 border-2 border-slate-200' : 'bg-emerald-50/70 border-2 border-emerald-300'} flex flex-col justify-between gap-3 transition-all hover:scale-[1.01] pop-shadow-sm">
+          <div class="p-4 sm:p-5 rounded-2xl ${mode === 'bad' ? 'bg-slate-50 border-2 border-slate-200' : 'bg-emerald-50/70 border-2 border-emerald-300'} flex flex-col justify-between gap-3 transition-all hover:-translate-y-0.5 pop-shadow-sm">
             <div class="flex items-center justify-between gap-2 border-b border-black/5 pb-2.5">
               <span class="text-3xl sm:text-4xl">${it.icon}</span>
               <span class="text-xs font-black px-2.5 py-1 rounded-lg border shrink-0 ${it.tagColor}">${it.tag}</span>
@@ -4544,9 +4544,9 @@
     function selectP17Symptom(idx) {
       document.querySelectorAll('.p17-sym-card').forEach((c, i) => {
         if (i === idx) {
-          c.className = 'p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-4 border-red-500 bg-red-100 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 scale-110 shadow-2xl shadow-red-500/20 opacity-100';
+          c.className = 'p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-4 border-red-500 bg-red-100 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 -translate-y-1 shadow-lg shadow-red-500/20 opacity-100 ring-2 ring-red-400';
         } else {
-          c.className = 'p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-300 opacity-40 hover:opacity-100 hover:scale-105';
+          c.className = 'p17-sym-card cursor-pointer bg-white p-3 rounded-2xl border-2 border-slate-200 pop-shadow text-center space-y-1.5 flex flex-col justify-between transition-all duration-200 opacity-50 hover:opacity-100 hover:-translate-y-1 hover:border-red-300';
         }
       });
 
