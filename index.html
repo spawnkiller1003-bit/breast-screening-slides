@@ -2459,45 +2459,49 @@
   </div>
 
   <!-- ================= 專屬雙螢幕講者控制台 (Speaker View Console - 透過 ?view=speaker 啟動) ================= -->
-  <div id="speaker-view-console" class="fixed inset-0 bg-slate-950 text-white z-50 hidden flex-col h-screen w-screen overflow-hidden select-none font-sans">
-    <!-- 頂部資訊與控制列 -->
-    <header class="h-16 px-6 bg-slate-900 border-b border-slate-800 flex items-center justify-between flex-shrink-0">
+  <div id="speaker-view-console" class="fixed inset-0 bg-slate-950 text-white z-50 hidden flex-col h-full w-full min-h-screen overflow-hidden select-none font-sans">
+    <!-- 頂部資訊與控制列 (緊湊高雅，最大化釋放垂直空間) -->
+    <header class="h-14 px-4 sm:px-6 bg-slate-900 border-b border-slate-800 flex items-center justify-between flex-shrink-0">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-2xl bg-vivid-pink/20 border border-vivid-pink/40 flex items-center justify-center text-lg">
+        <div class="w-8 h-8 rounded-xl bg-vivid-pink/20 border border-vivid-pink/40 flex items-center justify-center text-base">
           🎙️
         </div>
         <div>
-          <div class="font-black text-sm text-white flex items-center gap-2">
-            <span>梁祖瑋醫師 · 講者控制台 (Speaker View)</span>
+          <div class="font-black text-xs sm:text-sm text-white flex items-center gap-2">
+            <span>梁祖瑋醫師 · 講者控制台</span>
             <span id="spk-sync-status" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
               🟢 大螢幕同步中
             </span>
           </div>
-          <div class="text-[11px] text-slate-400 font-mono">
+          <div class="text-[10px] text-slate-400 font-mono">
             守護乳房健康 · 活力輕科技敘事風
           </div>
         </div>
       </div>
 
       <!-- 中間計時器群組 -->
-      <div class="flex items-center gap-4 bg-slate-950/80 px-4 py-2 rounded-2xl border border-slate-800">
+      <div class="flex items-center gap-3 bg-slate-950/80 px-3.5 py-1.5 rounded-xl border border-slate-800">
         <div class="text-center">
-          <div class="text-[10px] font-bold text-slate-500 uppercase">演講進行時間</div>
-          <div id="spk-elapsed-time" class="text-base font-mono font-black text-white">00:00:00</div>
+          <div class="text-[9px] font-bold text-slate-500 uppercase">進行時間</div>
+          <div id="spk-elapsed-time" class="text-sm font-mono font-black text-white">00:00:00</div>
         </div>
-        <div class="w-px h-6 bg-slate-800"></div>
+        <div class="w-px h-5 bg-slate-800"></div>
         <div class="text-center">
-          <div class="text-[10px] font-bold text-slate-500 uppercase">60 分鐘倒數</div>
-          <div id="spk-remaining-time" class="text-base font-mono font-black text-vivid-mint">60:00</div>
+          <div class="text-[9px] font-bold text-slate-500 uppercase">60分倒數</div>
+          <div id="spk-remaining-time" class="text-sm font-mono font-black text-vivid-mint">60:00</div>
         </div>
-        <div class="flex items-center gap-1.5 ml-1">
-          <button id="spk-timer-toggle-btn" onclick="toggleSpkTimer()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-white transition" title="啟動/暫停計時">▶</button>
-          <button onclick="resetSpkTimer()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-slate-400 hover:text-white transition" title="重置計時">🔄</button>
+        <div class="flex items-center gap-1 ml-1">
+          <button id="spk-timer-toggle-btn" onclick="toggleSpkTimer()" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-white transition" title="啟動/暫停計時">▶</button>
+          <button onclick="resetSpkTimer()" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-400 hover:text-white transition" title="重置計時">🔄</button>
         </div>
       </div>
 
       <!-- 右側按鍵操作提示 -->
       <div class="flex items-center gap-2 text-xs">
+        <button onclick="toggleSpeakerFullScreen()" id="spk-fullscreen-btn" class="px-3 py-1.5 rounded-xl bg-vivid-pink/20 hover:bg-vivid-pink/30 text-pink-300 font-bold transition flex items-center gap-1.5 border border-vivid-pink/30 shadow-sm" title="進入/退出螢幕滿版 (F)">
+          <span>⛶</span>
+          <span>螢幕滿版 (F)</span>
+        </button>
         <button onclick="toggleSpeakerLayout()" id="spk-layout-btn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition flex items-center gap-1.5 border border-slate-700" title="切換講稿/提示畫面佔比 (V)">
           <span>📐</span>
           <span id="spk-layout-text">講稿為主 (V)</span>
@@ -2507,15 +2511,15 @@
           <span>黑屏 (B)</span>
         </button>
         <button onclick="window.close()" class="px-3 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 font-bold transition border border-rose-500/30">
-          關閉控制台
+          關閉
         </button>
       </div>
     </header>
 
-    <!-- 講者控制台主要雙欄區域：講稿重點放大，大螢幕畫面縮小為提示 -->
-    <main id="spk-main-grid" class="flex-1 grid grid-cols-12 gap-3 p-3 overflow-hidden bg-slate-950 min-h-0">
+    <!-- 講者控制台主要雙欄區域：講稿重點放大，大螢幕畫面縮小為提示，滿版拉長貼齊邊界 -->
+    <main id="spk-main-grid" class="flex-1 grid grid-cols-12 gap-2.5 p-2 sm:p-2.5 overflow-hidden bg-slate-950 min-h-0 w-full h-full">
       <!-- 左欄：大螢幕畫面縮小提示 + 下一關預覽 + 翻頁控制大按鈕 -->
-      <div id="spk-left-col" class="col-span-12 lg:col-span-5 xl:col-span-4 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0">
+      <div id="spk-left-col" class="col-span-4 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
         <!-- 當前畫面提示卡 (Confidence Mirror) -->
         <div class="flex-1 bg-slate-900 rounded-2xl border border-slate-800 p-2.5 flex flex-col justify-between overflow-hidden shadow-2xl relative min-h-0">
           <div class="flex items-center justify-between text-xs text-slate-400 font-mono pb-1.5 border-b border-slate-800/80 flex-shrink-0">
@@ -2570,8 +2574,8 @@
         </div>
       </div>
 
-      <!-- 右欄：講者私房備忘話術（超大字核心區，佔滿 100% 垂直高度） -->
-      <div id="spk-right-col" class="col-span-12 lg:col-span-7 xl:col-span-8 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
+      <!-- 右欄：講者私房備忘話術（超大字核心區，佔滿 100% 垂直高度與 8 欄寬度） -->
+      <div id="spk-right-col" class="col-span-8 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0">
         <div class="flex-1 bg-slate-900 p-5 rounded-3xl border border-slate-800 flex flex-col overflow-hidden shadow-2xl space-y-3 min-h-0">
           <div class="flex items-center justify-between border-b border-slate-800 pb-2.5 flex-shrink-0">
             <div class="flex items-center gap-2 font-black text-vivid-purple uppercase tracking-wider text-sm sm:text-base">
@@ -3051,14 +3055,12 @@
     const isSpeakerView = urlParams.get('view') === 'speaker';
     const initialSlideParam = parseInt(urlParams.get('slide')) || 1;
 
-    // 開啟講者獨立視窗 (Speaker View - 支援 file://, http://, https:// 全環境)
+    // 開啟講者獨立視窗 (Speaker View - 支援自適應滿版鋪滿螢幕)
     function openSpeakerView() {
       let base = window.location.href.split('?')[0].split('#')[0];
       const url = `${base}?view=speaker&slide=${currentSlide}`;
-      const w = 1320;
-      const h = 860;
-      const left = window.screen.width ? (window.screen.width - w) / 2 : 50;
-      const top = window.screen.height ? (window.screen.height - h) / 2 : 50;
+      const w = window.screen.availWidth || window.screen.width || 1920;
+      const h = window.screen.availHeight || window.screen.height || 1080;
 
       if (speakerWindowRef && !speakerWindowRef.closed) {
         speakerWindowRef.focus();
@@ -3069,11 +3071,33 @@
       speakerWindowRef = window.open(
         url,
         'SpeakerViewWindow',
-        `width=${w},height=${h},top=${top},left=${left},resizable=yes,scrollbars=yes`
+        `width=${w},height=${h},top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes`
       );
 
       if (speakerWindowRef) {
         speakerWindowRef.focus();
+        try {
+          speakerWindowRef.moveTo(0, 0);
+          speakerWindowRef.resizeTo(w, h);
+        } catch (e) {}
+      }
+    }
+
+    // 講者控制台全螢幕模式切換 (F 鍵或頂部按鈕觸發)
+    function toggleSpeakerFullScreen() {
+      if (!document.fullscreenElement) {
+        const el = document.documentElement;
+        if (el.requestFullscreen) {
+          el.requestFullscreen().catch(() => {});
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
       }
     }
 
@@ -3390,18 +3414,18 @@
 
       if (spkLayoutMode === 'notes-focus') {
         spkLayoutMode = 'notes-max';
-        leftCol.className = 'col-span-12 lg:col-span-3 xl:col-span-3 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0';
-        rightCol.className = 'col-span-12 lg:col-span-9 xl:col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        leftCol.className = 'col-span-3 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        rightCol.className = 'col-span-9 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
         if (btnText) btnText.innerText = '巨幅講稿 (V)';
       } else if (spkLayoutMode === 'notes-max') {
         spkLayoutMode = 'balanced';
-        leftCol.className = 'col-span-12 lg:col-span-6 xl:col-span-6 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0';
-        rightCol.className = 'col-span-12 lg:col-span-6 xl:col-span-6 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        leftCol.className = 'col-span-6 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        rightCol.className = 'col-span-6 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
         if (btnText) btnText.innerText = '均衡雙欄 (V)';
       } else {
         spkLayoutMode = 'notes-focus';
-        leftCol.className = 'col-span-12 lg:col-span-5 xl:col-span-4 flex flex-col gap-2.5 h-full overflow-hidden transition-all duration-300 min-h-0';
-        rightCol.className = 'col-span-12 lg:col-span-7 xl:col-span-8 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        leftCol.className = 'col-span-4 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
+        rightCol.className = 'col-span-8 flex flex-col gap-2 h-full overflow-hidden transition-all duration-300 min-h-0';
         if (btnText) btnText.innerText = '講稿為主 (V)';
       }
       setTimeout(() => {
@@ -4746,8 +4770,10 @@
 
     // 初始化講者控制台與雙螢幕模式
     if (isSpeakerView) {
-      // 啟動講者專屬控制台視窗
+      // 啟動講者專屬控制台視窗 (螢幕滿版最佳化)
       document.body.classList.add('bg-slate-950');
+      document.documentElement.classList.add('overflow-hidden', 'h-full', 'w-full');
+      document.body.classList.add('overflow-hidden', 'h-full', 'w-full');
       const spkConsole = document.getElementById('speaker-view-console');
       if (spkConsole) spkConsole.classList.remove('hidden');
       
